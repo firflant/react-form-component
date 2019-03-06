@@ -1,6 +1,8 @@
 import React, { Component, createContext } from 'react'
 import PropTypes from 'prop-types'
 import { debounce } from 'throttle-debounce'
+import withStyles from 'react-jss'
+import classNames from 'classnames'
 import {
   initiateFormFields,
   processField,
@@ -75,9 +77,9 @@ class Form extends Component {
   }
 
   render() {
-    const { className } = this.props
+    const { className, classes } = this.props
     return (
-      <div className={`form${className ? ` ${className}` : ''}`}>
+      <div className={classNames(classes.form, { [className]: className })}>
         <FieldsContext.Provider value={this.state.fieldsData}>
           <SetValueContext.Provider value={this.setValue.bind(this)}>
             {this.props.children}
@@ -96,4 +98,8 @@ Form.propTypes = {
   callbackOnChange: PropTypes.func,
 }
 
-export default Form
+export default withStyles({
+  form: {
+    margin: 0,
+  },
+})(Form)
