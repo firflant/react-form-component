@@ -4,7 +4,7 @@
   "description": "Create forms in React quickly and clean. Form library based on Context API with a wide selection of user friendly inputs.",
   "main": "lib/index.js",
   "scripts": {
-    "start": "webpack --watch",
+    "start": "webpack --mode development --watch",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,11 +28,17 @@
     "react": "^16.8.4"
   },
   "dependencies": {
+    "bem-modifiers": "^1.0.7",
     "react": "^16.8.4",
+    "react-loading": "^2.0.3",
+    "react-notifications": "^1.4.3",
+    "throttle-debounce": "^2.1.0",
+    "validator": "^10.11.0",
     "webpack": "^4.29.6"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
@@ -45,6 +51,7 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-standard": "^4.0.0",
+    "react-dom": "^16.8.4",
     "webpack-cli": "^3.2.3"
   }
 }
