@@ -1,0 +1,25 @@
+{
+  "name": "react-individual-form",
+  "version": "0.0.1",
+  "description": "Create forms in React quickly and clean. Form library based on Contex API with a wide selection of user friendly inputs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "not-yet"
+  },
+  "keywords": [
+    "react",
+    "form",
+    "forms",
+    "context",
+    "component",
+    "minimalistic",
+    "quick",
+    "standard"
+  ],
+  "author": "Michal Kokocinski <michal@kokocinski.me> (http://kokocinski.me)",
+  "license": "GPL-2.0"
+}
