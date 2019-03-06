@@ -2,8 +2,10 @@
   "name": "react-individual-form",
   "version": "0.0.1",
   "description": "Create forms in React quickly and clean. Form library based on Contex API with a wide selection of user friendly inputs.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +23,19 @@
     "standard"
   ],
   "author": "Michal Kokocinski <michal@kokocinski.me> (http://kokocinski.me)",
-  "license": "GPL-2.0"
+  "license": "GPL-2.0",
+  "peerDependencies": {
+    "react": "^16.8.4"
+  },
+  "dependencies": {
+    "react": "^16.8.4",
+    "webpack": "^4.29.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "webpack-cli": "^3.2.3"
+  }
 }
