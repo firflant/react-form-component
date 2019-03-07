@@ -1,5 +1,8 @@
 import React from 'react'
+import withStyles from 'react-jss'
 import withFormControl from './FormControl'
+import { breakpoint } from './themeHelpers'
+import theme from './theme'
 
 
 class MultiFormInput extends React.Component {
@@ -29,7 +32,7 @@ class MultiFormInput extends React.Component {
     return null
   }
   render() {
-    const { form, moreLabel } = this.props
+    const { form, moreLabel, classes } = this.props
     const { value } = this.state
     return (
       <React.Fragment>
@@ -48,10 +51,10 @@ class MultiFormInput extends React.Component {
             },
           }
           return (
-            <div className='form__multi-form-input' key={index}>
+            <div className={classes.multiFormInput} key={index}>
               {formWithProps}
               <button
-                className='form__multi-form-delete'
+                className={classes.delete}
                 onClick={() => {
                   this.setState({ value: value.filter((item, newIndex) => newIndex !== index) })
                 }}
@@ -73,4 +76,30 @@ MultiFormInput.defaultProps = {
   moreLabel: 'Add more',
 }
 
-export default withFormControl(MultiFormInput)
+export default withFormControl(withStyles({
+  multiFormInput: {
+    display: 'flex',
+    '& + &': {
+      marginTop: theme.formItemMargin,
+    },
+    '& > *:first-child': {
+      flexGrow: 1,
+    },
+  },
+  delete: {
+    backgroundImage: 'none',
+    backgroundColor: theme.formItemBorderColor,
+    color: 'white',
+    fontSize: theme.formItemFontSize,
+    padding: 5,
+    marginLeft: 15,
+    border: 'none',
+    cursor: 'pointer',
+    [breakpoint(theme.breakpoints.sm)]: {
+      marginLeft: 30,
+    },
+    '&:hover': {
+      backgroundColor: theme.formItemBorderColor,
+    },
+  },
+})(MultiFormInput))

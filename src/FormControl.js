@@ -4,6 +4,7 @@ import withStyles from 'react-jss'
 import classNames from 'classnames'
 import { FormConsumer } from './Form'
 import { breakpoint, inputHeight } from './themeHelpers'
+import theme from './theme'
 
 
 class FormControl extends React.Component {
@@ -37,14 +38,16 @@ class FormControl extends React.Component {
       inlineLabel,
       tiny,
       large,
+      inline,
       children,
     } = this.props
     return (
       <div
-        className={classNames(classes.formControl, {
+        className={classNames(classes.formControl, 'form-control', {
           [classes.inlineLabel]: inlineLabel,
           [classes.tiny]: tiny,
-          [classes.lg]: large,
+          [classes.large]: large,
+          [classes.inline]: inline,
           [classes[validation]]: validation,
           [classes.disabled]: disabled,
           [className]: className,
@@ -79,35 +82,12 @@ FormControl.propTypes = {
   inlineLabel: PropTypes.bool,
   tiny: PropTypes.bool,
   large: PropTypes.bool,
+  inline: PropTypes.bool,
   initialValue: PropTypes.any,
   required: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 }
-
-const theme = {
-  formItemHeight: 40,
-  formItemWidth: '100%',
-  formItemMargin: 30,
-  formItemTinyInputWidth: 140,
-  formItemInlineLabelWidth: 130,
-  formItemBgColor: 'white',
-  formItemBorderColor: '#e6edf4',
-  formItemColor: '#3d4348',
-  bodyBg: 'white',
-  brandPrimary: '#1fc59c',
-  success: '#00a651',
-  error: '#e50038',
-  regular: 300,
-  fontSizeXsmall: 12,
-  breakpoints: {
-    xs: 0, // Extra small screen / phone
-    sm: '768px', // Small screen / tablet
-    md: '1000px', // Medium screen / desktop
-    lg: '1400px', // Large screen / wide desktop
-  },
-}
-
 
 const StyledFormControl = withStyles({
   formControl: {
@@ -119,7 +99,7 @@ const StyledFormControl = withStyles({
     boxSizing: 'border-box',
     maxWidth: '100%',
     ...inputHeight(theme.formItemHeight),
-    '& .form__input': {
+    '& .form-input': {
       width: '100%',
       margin: 0,
       border: `1px solid ${theme.formItemBorderColor}`,
@@ -135,41 +115,16 @@ const StyledFormControl = withStyles({
         color: theme.formItemColor,
       },
     },
-    '& textarea.form__input': { // TODO: Move textarea to textarea
-      resize: 'vertical',
-    },
-    '& .form__input[type=number]': {
+    '& .form-input[type=number]': {
       '-moz-appearance': 'textfield',
       appearance: 'textfield',
       '&::-webkit-inner-spin-button': {
         '-webkit-appearance': 'none',
       },
     },
-    '& select.form__input, & .form__input--multiselect': {
-      paddingRight: 30,
-      cursor: 'pointer',
-      // Remove default caret
-      '-webkit-appearance': 'none',
-      '&::-ms-expand': {
-        display: 'none',
-      },
-      // Custom caret
-      '&:not([multiple])': {
-        backgroundImage: `linear-gradient(45deg, transparent 50%, ${theme.formItemBorderColor}), linear-gradient(135deg, ${theme.formItemBorderColor} 50%, transparent 50%)`,
-        backgroundSize: '5px 5px, 5px 5px',
-        backgroundRepeat: 'no-repeat',
-      },
-      '&[multiple]': {
-        height: 'auto',
-      },
-      '&:-webkit-autofill': {
-        backgroundColor: `${theme.bodyBg} !important`,
-        transition: 'background-color 5000s ease-in-out 0s',
-      },
-    },
 
     // States
-    '& .form__input:focus': {
+    '& .form-input:focus': {
       border: `1px solid ${theme.brandPrimary}`,
       boxShadow: 'none',
       outlineWidth: 0,
@@ -178,7 +133,7 @@ const StyledFormControl = withStyles({
   disabled: {
     opacity: 0.5,
     cursor: 'not-allowed',
-    '& input, & textarea, & select, & input, & textarea, & select, & .form__checkbox, & .form__radio': {
+    '& input, & textarea, & select, & input, & textarea, & .form-checkbox, & .form-radio': {
       pointerEvents: 'none',
     },
   },
@@ -186,15 +141,15 @@ const StyledFormControl = withStyles({
     '& $label, & $addon, & $help': {
       color: theme.success,
     },
-    '& .form__input:not(:focus)': {
+    '& .form-input:not(:focus)': {
       borderColor: theme.success,
     },
   },
   error: {
-    '& $label, & $addon, & $help, & .form__checkbox, & .form__radio, & .form__checkimages-input': {
+    '& $label, & $addon, & $help, & .form-checkbox, & .form-radio, & .form-checkimages-input': {
       color: theme.error,
     },
-    '& .form__input:not(:focus)': {
+    '& .form-input:not(:focus)': {
       borderColor: theme.error,
       backgroundColor: theme.error,
     },
@@ -234,17 +189,14 @@ const StyledFormControl = withStyles({
         order: -1,
         margin: 0,
       },
-      [breakpoint(theme.breakpoints.sm)]: {
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexDirection: 'row',
+      [breakpoint(theme.breakpoints.md)]: {
         '& $label': {
           marginRight: 10,
           minWidth: theme.formItemInlineLabelWidth,
           maxWidth: theme.formItemInlineLabelWidth,
           whiteSpace: 'nowrap',
         },
-        '& .form__input, & .form__checkbox, & .form__radio, & .form__checkimages': {
+        '& .form-input, & .form__checkbox, & .form__radio, & .form__checkimages': {
           flexBasis: `calc(100% - ${theme.formItemInlineLabelWidth + 10})`,
         },
         '& .form__checkimages': {
@@ -262,7 +214,7 @@ const StyledFormControl = withStyles({
       lineHeight: 17,
     },
     [breakpoint(theme.breakpoints.sm)]: {
-      '.form__input': {
+      '.form-input': {
         maxWidth: theme.formItemTinyInputWidth,
       },
       '& $help': {
@@ -278,9 +230,21 @@ const StyledFormControl = withStyles({
       },
     },
   },
-  lg: {
+  large: {
+    ...inputHeight(theme.formItemHeight + 4),
     '& + &': {
       marginTop: -theme.formItemMargin + 14,
+    },
+  },
+  inline: {
+    width: '100%',
+    '& .form-checkbox, & .form-radio': {
+      display: 'inline-block',
+      whiteSpace: 'nowrap',
+      marginRight: 20,
+      '&:last-of-type': {
+        marginLeft: 0,
+      },
     },
   },
 })(FormControl)
@@ -297,6 +261,7 @@ const withFormControl = (Component) => {
     name,
     tiny,
     large,
+    inline,
     disabled,
     ...otherProps
   }) =>
@@ -319,6 +284,7 @@ const withFormControl = (Component) => {
           help: help || initialHelp,
           tiny,
           large,
+          inline,
           initialValue,
           disabled,
           ...commonProps,

@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import withStyles from 'react-jss'
+import classNames from 'classnames'
 import withFormControl from './FormControl'
+
 
 const Radio = ({
   name,
@@ -8,16 +11,16 @@ const Radio = ({
   required,
   setValue,
   options,
+  classes,
 }) => (
   options.map((option, index) => (
-    <label className='form__radio' key={index} htmlFor={`${name}${index}`}>
+    <label className={classNames(classes.root, 'radio')} key={index} htmlFor={`${name}${index}`}>
       <input
         type='radio'
         name={name}
         value={option.value}
         id={`${name}${index}`}
         checked={option.value === value}
-        className={option.value === value ? 'is-checked' : ''} // Better IE support
         onChange={e => setValue(name, e.target.value, required)}
       /> {option.label}
     </label>
@@ -35,4 +38,9 @@ Radio.propTypes = {
   ])),
 }
 
-export default withFormControl(Radio)
+export default withFormControl(withStyles({
+  root: {
+    display: 'block',
+    cursor: 'pointer',
+  },
+})(Radio))

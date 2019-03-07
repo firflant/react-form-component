@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import withStyles from 'react-jss'
+import classNames from 'classnames'
 import withFormControl from './FormControl'
+import theme from './theme'
+
 
 const Select = ({
   name,
@@ -9,9 +13,10 @@ const Select = ({
   required,
   setValue,
   options,
+  classes,
 }) =>
   <select
-    className='form__input'
+    className={classNames(classes.select, 'form-input form-select')}
     name={name}
     value={value}
     onChange={e => setValue(name, e.target.value, required)}
@@ -39,4 +44,29 @@ Select.propTypes = {
   ])),
 }
 
-export default withFormControl(Select)
+export const selectTheme = { // TODO: reapply for form-input--multiselect
+  select: {
+    paddingRight: 30,
+    cursor: 'pointer',
+    // Remove default caret
+    '-webkit-appearance': 'none',
+    '&::-ms-expand': {
+      display: 'none',
+    },
+    // Custom caret
+    '&:not([multiple])': {
+      backgroundImage: `linear-gradient(45deg, transparent 50%, ${theme.formItemBorderColor}), linear-gradient(135deg, ${theme.formItemBorderColor} 50%, transparent 50%)`,
+      backgroundSize: '5px 5px, 5px 5px',
+      backgroundRepeat: 'no-repeat',
+    },
+    '&[multiple]': {
+      height: 'auto',
+    },
+    '&:-webkit-autofill': {
+      backgroundColor: `${theme.bodyBg} !important`,
+      transition: 'background-color 5000s ease-in-out 0s',
+    },
+  },
+}
+
+export default withFormControl(withStyles(selectTheme)(Select))

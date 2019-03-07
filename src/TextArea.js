@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import withStyles from 'react-jss'
+import classNames from 'classnames'
 import withFormControl from './FormControl'
+
 
 const TextArea = ({
   name,
@@ -9,11 +12,11 @@ const TextArea = ({
   required,
   setValue,
   rows,
+  classes,
 }) =>
   <textarea
-    className='form__input'
+    className={classNames(classes.textArea, 'form-input')}
     name={name}
-    type='textarea'
     rows={rows}
     placeholder={placeholder}
     onChange={e => setValue(name, e.target.value, required, 'textarea')}
@@ -33,4 +36,8 @@ TextArea.propTypes = {
   rows: PropTypes.number,
 }
 
-export default withFormControl(TextArea)
+export default withFormControl(withStyles({
+  textArea: {
+    resize: 'vertical',
+  },
+})(TextArea))

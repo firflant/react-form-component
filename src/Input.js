@@ -11,7 +11,7 @@ const Input = ({
   setValue,
 }) =>
   <input
-    className='form__input'
+    className='form-input'
     name={name}
     type={type}
     placeholder={placeholder}

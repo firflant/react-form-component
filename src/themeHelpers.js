@@ -1,17 +1,16 @@
 export function inputHeight(height) {
   return {
-    '& *.form__input': {
+    '& *.form-input': {
       height: height,
-      lineHeight: height - height / 3,
+      lineHeight: `${height - height / 3}px`,
       paddingTop: height / 6,
       paddingBottom: height / 6,
       '&[type=file]': {
-        lineHeight: height * 0.45,
+        lineHeight: `${height * 0.45}px`,
       },
     },
-    '& select.form__input:not([multiple])': {
+    '& .form-select:not([multiple])': {
       backgroundPosition: `calc(100% - 15px) ${height / 2 - 2}px, calc(100% - 10px) ${height / 2 - 2}px`,
-      // calc(100% - 15px) $height / 2 - 2px, calc(100% - 10px) $height / 2 - 2px
     },
     '& $addon': {
       height,
@@ -22,4 +21,34 @@ export function inputHeight(height) {
 
 export function breakpoint(height) {
   return `@media (min-width: ${height})`
+}
+
+export function clearfix() {
+  return {
+    '&:after': {
+      content: '',
+      display: 'table',
+      clear: 'both',
+    },
+  }
+}
+
+export function overlay() {
+  return {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: 100,
+  }
+}
+
+export function maxRows(amount) {
+  return {
+    overflow: 'hidden',
+    display: '-webkit-box',
+    '-webkit-line-clamp': amount,
+    '-webkit-box-orient': 'vertical',
+  }
 }
