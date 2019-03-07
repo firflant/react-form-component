@@ -46,9 +46,9 @@ class FormControl extends React.Component {
           [classes.tiny]: tiny,
           [classes.lg]: large,
           [classes[validation]]: validation,
-          className: className,
+          [classes.disabled]: disabled,
+          [className]: className,
         })}
-        disabled={disabled}
       >
         { label && ['Checkboxes', 'Radio'].includes(children.type.name)
           ? <span className={classes.label}>{label}</span>
@@ -57,7 +57,7 @@ class FormControl extends React.Component {
         }
         {children}
         { addon &&
-          <div className='form__addon'>{addon}</div>
+          <div className={classes.addon}>{addon}</div>
         }
         { help &&
           <span className={classes.help}>{help}</span>
@@ -96,6 +96,8 @@ const theme = {
   formItemColor: '#3d4348',
   bodyBg: 'white',
   brandPrimary: '#1fc59c',
+  success: '#00a651',
+  error: '#e50038',
   regular: 300,
   fontSizeXsmall: 12,
   breakpoints: {
@@ -165,11 +167,36 @@ const StyledFormControl = withStyles({
         transition: 'background-color 5000s ease-in-out 0s',
       },
     },
+
     // States
     '& .form__input:focus': {
       border: `1px solid ${theme.brandPrimary}`,
       boxShadow: 'none',
       outlineWidth: 0,
+    },
+  },
+  disabled: {
+    opacity: 0.5,
+    cursor: 'not-allowed',
+    '& input, & textarea, & select, & input, & textarea, & select, & .form__checkbox, & .form__radio': {
+      pointerEvents: 'none',
+    },
+  },
+  success: {
+    '& $label, & $addon, & $help': {
+      color: theme.success,
+    },
+    '& .form__input:not(:focus)': {
+      borderColor: theme.success,
+    },
+  },
+  error: {
+    '& $label, & $addon, & $help, & .form__checkbox, & .form__radio, & .form__checkimages-input': {
+      color: theme.error,
+    },
+    '& .form__input:not(:focus)': {
+      borderColor: theme.error,
+      backgroundColor: theme.error,
     },
   },
   label: {
@@ -191,6 +218,11 @@ const StyledFormControl = withStyles({
     lineHeight: 'normal',
     color: theme.formItemColor,
   },
+  addon: {
+    position: 'absolute',
+    bottom: 0,
+    right: 10,
+  },
 
   // Modifiers
   inlineLabel: {
@@ -198,7 +230,7 @@ const StyledFormControl = withStyles({
       display: 'flex',
       flexDirection: 'column',
       width: '100%',
-      '.form__label': {
+      '$label': {
         order: -1,
         margin: 0,
       },
@@ -206,19 +238,19 @@ const StyledFormControl = withStyles({
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        '.form__label': {
+        '& $label': {
           marginRight: 10,
           minWidth: theme.formItemInlineLabelWidth,
           maxWidth: theme.formItemInlineLabelWidth,
           whiteSpace: 'nowrap',
         },
-        '.form__input, .form__checkbox, .form__radio, .form__checkimages': {
+        '& .form__input, & .form__checkbox, & .form__radio, & .form__checkimages': {
           flexBasis: `calc(100% - ${theme.formItemInlineLabelWidth + 10})`,
         },
-        '.form__checkimages': {
+        '& .form__checkimages': {
           justifyContent: 'space-between',
         },
-        '.form__help': {
+        '& $help': {
           left: theme.formItemInlineLabelWidth + 10,
         },
       },
@@ -233,13 +265,13 @@ const StyledFormControl = withStyles({
       '.form__input': {
         maxWidth: theme.formItemTinyInputWidth,
       },
-      '.form__help': {
+      '& $help': {
         left: 'auto',
         right: 0,
         width: theme.formItemTinyInputWidth,
       },
       '&.form__item--inline-label': {
-        '.form__label': {
+        '$label': {
           minWidth: `calc(100% - ${theme.formItemTinyInputWidth} - 10px)`,
           maxWidth: `calc(100% - ${theme.formItemTinyInputWidth} - 10px)`,
         },
@@ -265,6 +297,7 @@ const withFormControl = (Component) => {
     name,
     tiny,
     large,
+    disabled,
     ...otherProps
   }) =>
     <FormConsumer>
@@ -287,6 +320,7 @@ const withFormControl = (Component) => {
           tiny,
           large,
           initialValue,
+          disabled,
           ...commonProps,
         }
         const inputProps = {

@@ -13,6 +13,10 @@ export function inputHeight(height) {
       backgroundPosition: `calc(100% - 15px) ${height / 2 - 2}px, calc(100% - 10px) ${height / 2 - 2}px`,
       // calc(100% - 15px) $height / 2 - 2px, calc(100% - 10px) $height / 2 - 2px
     },
+    '& $addon': {
+      height,
+      lineHeight: `${height}px`,
+    },
   }
 }
 
