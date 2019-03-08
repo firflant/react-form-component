@@ -23,7 +23,7 @@ const CheckImages = ({
       return (
         <div
           key={index}
-          className={classNames(classes.input, { [classes.isChecked]: checked })}
+          className={classNames(classes.input, 'form-checkimage', { [classes.isChecked]: checked })}
           onClick={() => {
             const finalValue = multiple ? checkboxHandler(!checked, option.value, value) : option.value
             setValue(name, finalValue, required)

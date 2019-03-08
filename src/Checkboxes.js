@@ -13,28 +13,29 @@ const Checkboxes = ({
   setValue,
   options,
   classes,
-}) => (
-  options.map((option, index) => {
-    const optionLabel = (typeof option === 'string') ? option : option.label
-    const optionValue = (typeof option === 'string') ? option : option.value
-    const checked = (value && value.includes(optionValue))
-    return (
-      <label className={classNames(classes.label, 'checkbox')} key={index} htmlFor={`${name}${index}`}>
-        <input
-          type='checkbox'
-          name={`${name}${index}`}
-          className={classes.input}
-          id={`${name}${index}`}
-          checked={checked}
-          onChange={() => {
-            const finalValue = checkboxHandler(!checked, optionValue, value)
-            setValue(name, finalValue, required, 'array')
-          }}
-        /> {optionLabel}
-      </label>
-    )
-  })
-)
+}) =>
+  <div>
+    {options.map((option, index) => {
+      const optionLabel = (typeof option === 'string') ? option : option.label
+      const optionValue = (typeof option === 'string') ? option : option.value
+      const checked = (value && value.includes(optionValue))
+      return (
+        <label className={classNames(classes.label, 'form-checkbox')} key={index} htmlFor={`${name}${index}`}>
+          <input
+            type='checkbox'
+            name={`${name}${index}`}
+            className={classes.input}
+            id={`${name}${index}`}
+            checked={checked}
+            onChange={() => {
+              const finalValue = checkboxHandler(!checked, optionValue, value)
+              setValue(name, finalValue, required, 'array')
+            }}
+          /> {optionLabel}
+        </label>
+      )
+    })}
+  </div>
 
 Checkboxes.propTypes = {
   name: PropTypes.string.isRequired,

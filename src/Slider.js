@@ -83,6 +83,5 @@ export default withFormControl(withStyles({
     position: 'absolute',
     top: -3,
     right: 0,
-    left: 0,
   },
 })(Slider))

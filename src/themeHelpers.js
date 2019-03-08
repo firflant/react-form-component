@@ -1,3 +1,5 @@
+import theme from './theme'
+
 export function inputHeight(height) {
   return {
     '& *.form-input': {
@@ -16,6 +18,11 @@ export function inputHeight(height) {
       height,
       lineHeight: `${height}px`,
     },
+    '&$inlineLabel $label': {
+      [breakpoint(theme.breakpoints.sm)]: {
+        lineHeight: `${height}px`,
+      },
+    }
   }
 }
 

@@ -35,7 +35,7 @@ class MultiFormInput extends React.Component {
     const { form, moreLabel, classes } = this.props
     const { value } = this.state
     return (
-      <React.Fragment>
+      <div>
         {value && value.map((fields, index) => {
           const checkedFields = Object.keys(fields).length ? { fields } : {}
           const formWithProps = {
@@ -67,7 +67,7 @@ class MultiFormInput extends React.Component {
           variant='link'
           onClick={() => this.setState({ value: [...value, {}] })}
         >{moreLabel}</button>
-      </React.Fragment>
+      </div>
     )
   }
 }
