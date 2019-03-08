@@ -22,7 +22,10 @@ export function inputHeight(height) {
       [breakpoint(theme.breakpoints.sm)]: {
         lineHeight: `${height}px`,
       },
-    }
+    },
+    '&$inlineLabel .form-checkitem': {
+      marginTop: height / 4,
+    },
   }
 }
 

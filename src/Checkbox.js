@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
+import classNames from 'classnames'
 import withFormControl from './FormControl'
 import theme from './theme'
 
@@ -11,9 +12,13 @@ const Checkbox = ({
   label,
   required,
   setValue,
+  small,
   classes,
 }) =>
-  <label className={classes.label} htmlFor={name}>
+  <label
+    className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
+    htmlFor={name}
+  >
     <input
       type='checkbox'
       name={name}
@@ -28,6 +33,7 @@ Checkbox.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   required: PropTypes.bool,
+  small: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
 }
 
@@ -75,6 +81,13 @@ export const checkboxTheme = {
         color: 'white',
         cursor: 'pointer',
       },
+    },
+  },
+  small: {
+    fontSize: 12,
+    lineHeight: '18px',
+    '& $input': {
+      transform: 'translateY(-2px)',
     },
   },
 }

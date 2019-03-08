@@ -37,7 +37,7 @@ class FormControl extends React.Component {
       validation,
       inlineLabel,
       inline,
-      tiny,
+      narrow,
       large,
       children,
     } = this.props
@@ -46,7 +46,7 @@ class FormControl extends React.Component {
         className={classNames(classes.formControl, 'form-control', {
           [classes.inlineLabel]: inlineLabel,
           [classes.inline]: inline,
-          [classes.tiny]: tiny,
+          [classes.narrow]: narrow,
           [classes.large]: large,
           [classes[validation]]: validation,
           [classes.disabled]: disabled,
@@ -81,7 +81,7 @@ FormControl.propTypes = {
   validation: PropTypes.oneOf(['success', 'error']),
   inlineLabel: PropTypes.bool,
   inline: PropTypes.bool,
-  tiny: PropTypes.bool,
+  narrow: PropTypes.bool,
   large: PropTypes.bool,
   initialValue: PropTypes.any,
   required: PropTypes.bool,
@@ -133,7 +133,7 @@ const StyledFormControl = withStyles({
   disabled: {
     opacity: 0.5,
     cursor: 'not-allowed',
-    '& .form-input, & .form-checkbox, & .form-radio, & .form-checkimage': {
+    '& .form-input, & .form-checkitem': {
       pointerEvents: 'none',
     },
   },
@@ -146,7 +146,7 @@ const StyledFormControl = withStyles({
     },
   },
   error: {
-    '& $label, & $addon, & $help, & .form-checkbox, & .form-radio, & .form-checkimage': {
+    '& $label, & $addon, & $help, & .form-checkitem': {
       color: theme.error,
     },
     '& .form-input:not(:focus)': {
@@ -207,7 +207,7 @@ const StyledFormControl = withStyles({
   },
   inline: {
     width: '100%',
-    '& .form-checkbox, & .form-radio': {
+    '& .form-checkitem': {
       display: 'inline-block',
       whiteSpace: 'nowrap',
       marginRight: 20,
@@ -216,30 +216,18 @@ const StyledFormControl = withStyles({
       },
     },
   },
-  tiny: {
-    '.form-checkbox': {
-      fontSize: 12,
-      lineHeight: 17,
-    },
-    [breakpoint(theme.breakpoints.sm)]: {
-      '.form-input': {
-        maxWidth: theme.formItemTinyInputWidth,
+  narrow: {
+    '& .form-input, & $help': {
+      [breakpoint(theme.breakpoints.sm)]: {
+        maxWidth: theme.formItemNarrowInputWidth,
       },
-      '& $help': {
-        left: 'auto',
-        right: 0,
-        width: theme.formItemTinyInputWidth,
-      },
-      // '&.form__item--inline-label': {
-      //   '$label': {
-      //     minWidth: `calc(100% - ${theme.formItemTinyInputWidth} - 10px)`,
-      //     maxWidth: `calc(100% - ${theme.formItemTinyInputWidth} - 10px)`,
-      //   },
-      // },
     },
   },
   large: {
     ...inputHeight(theme.formItemHeight + 4),
+    '& $label': {
+      marginBottom: 2,
+    },
     '& + &': {
       marginTop: -theme.formItemMargin + 14,
     },
@@ -256,7 +244,7 @@ const withFormControl = (Component) => {
     initialValue,
     initialHelp,
     name,
-    tiny,
+    narrow,
     large,
     inlineLabel,
     inline,
@@ -280,7 +268,7 @@ const withFormControl = (Component) => {
           className,
           addon,
           help: help || initialHelp,
-          tiny,
+          narrow,
           large,
           inlineLabel,
           inline,

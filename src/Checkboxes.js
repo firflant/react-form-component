@@ -12,6 +12,7 @@ const Checkboxes = ({
   required,
   setValue,
   options,
+  small,
   classes,
 }) =>
   <div>
@@ -20,7 +21,11 @@ const Checkboxes = ({
       const optionValue = (typeof option === 'string') ? option : option.value
       const checked = (value && value.includes(optionValue))
       return (
-        <label className={classNames(classes.label, 'form-checkbox')} key={index} htmlFor={`${name}${index}`}>
+        <label
+          className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
+          htmlFor={`${name}${index}`}
+          key={index}
+        >
           <input
             type='checkbox'
             name={`${name}${index}`}
@@ -41,6 +46,7 @@ Checkboxes.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   required: PropTypes.bool,
+  small: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,

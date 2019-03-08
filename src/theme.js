@@ -2,7 +2,7 @@ export default {
   formItemHeight: 40,
   formItemWidth: '100%',
   formItemMargin: 30,
-  formItemTinyInputWidth: 140,
+  formItemNarrowInputWidth: 140,
   formItemInlineLabelWidth: 130,
   formItemBgColor: 'white',
   formItemBorderColor: '#e6edf4',

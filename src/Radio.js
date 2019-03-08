@@ -9,13 +9,18 @@ const Radio = ({
   name,
   value,
   required,
+  small,
   setValue,
   options,
   classes,
 }) =>
   <div>
     {options.map((option, index) =>
-      <label className={classNames(classes.label, 'radio')} key={index} htmlFor={`${name}${index}`}>
+      <label
+        className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
+        key={index}
+        htmlFor={`${name}${index}`}
+      >
         <input
           type='radio'
           name={name}
@@ -47,5 +52,12 @@ export default withFormControl(withStyles({
   },
   input: {
     marginRight: 10,
+  },
+  small: {
+    fontSize: 12,
+    lineHeight: '18px',
+    '& $input': {
+      marginRight: 5,
+    },
   },
 })(Radio))

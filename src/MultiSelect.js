@@ -22,21 +22,22 @@ class MultiSelect extends React.Component {
       options,
       classes,
     } = this.props
+    const { isOpen } = this.state
     return (
-      <React.Fragment>
-        <div
-          className={classNames(classes.select, classes.multiSelect, 'form-input form-select')}
-          onClick={() => this.setState({ isOpen: true })}
-        >{value.length
-            ? value.map((item, index) =>
-              <span
-                key={index}
-                className={classes.value}
-              >{(typeof item === 'string') ? item : item.label}</span>
-            )
-            : 'All'}
-        </div>
-        {this.state.isOpen &&
+      <div
+        className={classNames(classes.select, classes.multiSelect, 'form-input form-select')}
+        onClick={() => {
+          if (!isOpen) { return this.setState({ isOpen: true }) }
+        }}
+      >{value.length
+          ? value.map((item, index) =>
+            <span
+              key={index}
+              className={classes.value}
+            >{(typeof item === 'string') ? item : item.label}</span>
+          )
+          : 'All'}
+        {isOpen &&
           <React.Fragment>
             <div
               className={classes.overlay}
@@ -56,14 +57,14 @@ class MultiSelect extends React.Component {
             </div>
           </React.Fragment>
         }
-      </React.Fragment>
+      </div>
     )
   }
 }
 
 MultiSelect.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   required: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.oneOfType([
@@ -74,6 +75,9 @@ MultiSelect.propTypes = {
 
 export default withFormControl(withStyles({
   ...selectTheme,
+  multiSelect: {
+    position: 'relative',
+  },
   value: {
     padding: '3px 5px',
     backgroundColor: theme.formItemBorderColor,
