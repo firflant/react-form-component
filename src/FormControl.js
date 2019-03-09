@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
 import { FormConsumer } from './Form'
-import { breakpoint, inputHeight } from './themeHelpers'
+import { breakpoint, inputHeight, placeholder } from './themeHelpers'
 import theme from './theme'
 
 
@@ -111,9 +111,9 @@ const StyledFormControl = withStyles({
       paddingLeft: 10,
       paddingRight: 10,
       color: theme.formItemColor,
-      '+placeholder': {
-        color: theme.formItemColor,
-      },
+      ...placeholder({
+        color: theme.formItemBorderColor,
+      }),
     },
     '& .form-input[type=number]': {
       '-moz-appearance': 'textfield',

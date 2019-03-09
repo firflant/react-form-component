@@ -62,3 +62,17 @@ export function maxRows(amount) {
     '-webkit-box-orient': 'vertical',
   }
 }
+
+export function placeholder(styles) {
+  return {
+    '&::-moz-placeholder': {
+      ...styles,
+    },
+    '&:-ms-input-placeholder': {
+      ...styles,
+    },
+    '&::-webkit-input-placeholder': {
+      ...styles,
+    },
+  }
+}
