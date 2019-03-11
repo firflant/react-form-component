@@ -1,8 +1,8 @@
 import React from 'react'
 import withStyles from 'react-jss'
-import withFormControl from './FormControl'
-import { breakpoint } from './themeHelpers'
-import theme from './theme'
+import withFormControl from '../FormControl'
+import { breakpoint } from '../themeHelpers'
+import theme from '../theme'
 
 
 class MultiFormInput extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withFormControl from './FormControl'
+import withFormControl from '../FormControl'
 
 const Input = ({
   name,

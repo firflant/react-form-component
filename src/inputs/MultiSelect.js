@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
-import withFormControl from './FormControl'
-import { checkboxHandler } from './helpers'
-import { overlay } from './themeHelpers'
+import withFormControl from '../FormControl'
+import { checkboxHandler } from '../helpers'
+import { overlay } from '../themeHelpers'
 import { selectTheme } from './Select'
-import theme from './theme'
+import theme from '../theme'
 
 
 class MultiSelect extends React.Component {

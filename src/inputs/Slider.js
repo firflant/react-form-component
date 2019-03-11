@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
-import withFormControl from './FormControl'
-import theme from './theme'
+import withFormControl from '../FormControl'
+import theme from '../theme'
 
 
 const Slider = ({
