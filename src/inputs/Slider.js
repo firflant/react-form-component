@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import withFormControl from '../FormControl'
-import theme from '../theme'
 
 
 const Slider = ({
@@ -47,7 +46,7 @@ Slider.propTypes = {
   unit: PropTypes.string,
 }
 
-export default withFormControl(withStyles({
+export default withFormControl(withStyles(theme => ({
   input: {
     padding: 0,
     '-webkit-appearance': 'none',
@@ -84,4 +83,4 @@ export default withFormControl(withStyles({
     top: -3,
     right: 0,
   },
-})(Slider))
+}))(Slider))

@@ -4,6 +4,7 @@ export default Form
 export { default as FormActions } from './FormActions'
 export { default as FormButton } from './FormButton'
 export { default as FormRow } from './FormRow'
+export { default as FormThemeProvider } from './FormThemeProvider'
 
 export { default as Checkbox } from './inputs/Checkbox'
 export { default as Checkboxes } from './inputs/Checkboxes'

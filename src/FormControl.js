@@ -89,7 +89,7 @@ FormControl.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-const StyledFormControl = withStyles({
+const StyledFormControl = withStyles(theme => ({
   formControl: {
     margin: 0,
     marginBottom: theme.formItemMargin,
@@ -232,7 +232,7 @@ const StyledFormControl = withStyles({
       marginTop: -theme.formItemMargin + 14,
     },
   },
-})(FormControl)
+}))(FormControl)
 
 
 const withFormControl = (Component) => {

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import withFormControl from '../FormControl'
 import { maxRows } from '../themeHelpers'
-import theme from '../theme'
 
 
 const ImageUpload = ({
@@ -69,7 +68,7 @@ ImageUpload.propTypes = {
   setValue: PropTypes.func.isRequired,
 }
 
-export default withFormControl(withStyles({
+export default withFormControl(withStyles(theme => ({
   root: {
     textAlign: 'center',
     padding: 20,
@@ -97,4 +96,4 @@ export default withFormControl(withStyles({
     textAlign: 'center',
     ...maxRows(),
   },
-})(ImageUpload))
+}))(ImageUpload))

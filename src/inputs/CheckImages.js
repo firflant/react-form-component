@@ -4,7 +4,6 @@ import withStyles from 'react-jss'
 import classNames from 'classnames'
 import withFormControl from '../FormControl'
 import { checkboxHandler } from '../helpers'
-import theme from '../theme'
 
 
 const CheckImages = ({
@@ -48,7 +47,7 @@ CheckImages.propTypes = {
   multiple: PropTypes.bool,
 }
 
-export default withFormControl(withStyles({
+export default withFormControl(withStyles(theme => ({
   checkImages: {
     display: 'flex',
     alignItems: 'center',
@@ -87,4 +86,4 @@ export default withFormControl(withStyles({
       zIndex: -1,
     },
   },
-})(CheckImages))
+}))(CheckImages))

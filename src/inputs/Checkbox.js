@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
 import withFormControl from '../FormControl'
-import theme from '../theme'
 
 
 const Checkbox = ({
@@ -37,7 +36,7 @@ Checkbox.propTypes = {
   setValue: PropTypes.func.isRequired,
 }
 
-export const checkboxTheme = {
+export const checkboxTheme = theme => ({
   label: {
     display: 'flex',
     position: 'relative',
@@ -90,6 +89,6 @@ export const checkboxTheme = {
       transform: 'translateY(-2px)',
     },
   },
-}
+})
 
 export default withFormControl(withStyles(checkboxTheme)(Checkbox))

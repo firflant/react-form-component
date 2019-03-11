@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
 import withFormControl from '../FormControl'
-import theme from '../theme'
 
 
 const Select = ({
@@ -44,7 +43,7 @@ Select.propTypes = {
   ])),
 }
 
-export const selectTheme = { // TODO: reapply for form-input--multiselect
+export const selectTheme = theme => ({ // TODO: reuse on MultiSelect
   select: {
     paddingRight: 30,
     cursor: 'pointer',
@@ -67,6 +66,6 @@ export const selectTheme = { // TODO: reapply for form-input--multiselect
       transition: 'background-color 5000s ease-in-out 0s',
     },
   },
-}
+})
 
 export default withFormControl(withStyles(selectTheme)(Select))

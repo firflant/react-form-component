@@ -6,7 +6,6 @@ import withFormControl from '../FormControl'
 import { checkboxHandler } from '../helpers'
 import { overlay } from '../themeHelpers'
 import { selectTheme } from './Select'
-import theme from '../theme'
 
 
 class MultiSelect extends React.Component {
@@ -73,7 +72,7 @@ MultiSelect.propTypes = {
   ])),
 }
 
-export default withFormControl(withStyles({
+export default withFormControl(withStyles(theme => ({
   ...selectTheme,
   multiSelect: {
     position: 'relative',
@@ -112,4 +111,4 @@ export default withFormControl(withStyles({
   overlay: {
     ...overlay(),
   },
-})(MultiSelect))
+}))(MultiSelect))
