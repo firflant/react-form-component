@@ -43,7 +43,7 @@ Select.propTypes = {
   ])),
 }
 
-export const selectTheme = theme => ({ // TODO: reuse on MultiSelect
+export const selectTheme = theme => ({
   select: {
     paddingRight: 30,
     cursor: 'pointer',
@@ -54,7 +54,7 @@ export const selectTheme = theme => ({ // TODO: reuse on MultiSelect
     },
     // Custom caret
     '&:not([multiple])': {
-      backgroundImage: `linear-gradient(45deg, transparent 50%, ${theme.formItemBorderColor}), linear-gradient(135deg, ${theme.formItemBorderColor} 50%, transparent 50%)`,
+      backgroundImage: `linear-gradient(45deg,transparent 50%,${theme.colors.inputText} 0),linear-gradient(135deg,${theme.colors.inputText} 50%,transparent 0)`,
       backgroundSize: '5px 5px, 5px 5px',
       backgroundRepeat: 'no-repeat',
     },
@@ -62,7 +62,7 @@ export const selectTheme = theme => ({ // TODO: reuse on MultiSelect
       height: 'auto',
     },
     '&:-webkit-autofill': {
-      backgroundColor: `${theme.bodyBg} !important`,
+      backgroundColor: `${theme.colors.inputBg} !important`,
       transition: 'background-color 5000s ease-in-out 0s',
     },
   },

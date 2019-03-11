@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
+import { lighten } from 'polished'
 import withFormControl from '../FormControl'
 import { checkboxHandler } from '../helpers'
 
@@ -59,12 +60,11 @@ export default withFormControl(withStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     fontSize: 9,
-    fontWeight: theme.regular,
     lineHeight: 'normal',
     marginTop: 5,
     marginBottom: 10,
     padding: '0 1px',
-    color: theme.formItemColor,
+    color: theme.colors.inputText,
     cursor: 'pointer',
     position: 'relative',
     zIndex: 1,
@@ -80,9 +80,8 @@ export default withFormControl(withStyles(theme => ({
       right: 1,
       bottom: -5,
       left: 1,
-      backgroundColor: theme.formItemBorderColor,
-      borderRadius: 6,
-      border: `1px dashed ${theme.formItemColor}`,
+      backgroundColor: lighten(0.6, theme.colors.accent),
+      border: `1px solid ${theme.colors.accent}`,
       zIndex: -1,
     },
   },

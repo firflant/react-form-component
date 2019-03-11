@@ -77,7 +77,7 @@ export default withFormControl(withStyles(theme => ({
   multiFormInput: {
     display: 'flex',
     '& + &': {
-      marginTop: theme.formItemMargin,
+      marginTop: theme.sizes.inputGutterBottom,
     },
     '& > *:first-child': {
       flexGrow: 1,
@@ -85,9 +85,9 @@ export default withFormControl(withStyles(theme => ({
   },
   delete: {
     backgroundImage: 'none',
-    backgroundColor: theme.formItemBorderColor,
+    backgroundColor: theme.colors.inputBorder, // lighen
     color: 'white',
-    fontSize: theme.formItemFontSize,
+    fontSize: theme.typography.inputFontSize,
     padding: 5,
     marginLeft: 15,
     border: 'none',
@@ -96,7 +96,7 @@ export default withFormControl(withStyles(theme => ({
       marginLeft: 30,
     },
     '&:hover': {
-      backgroundColor: theme.formItemBorderColor,
+      backgroundColor: theme.colors.inputBorder,
     },
   },
 }))(MultiFormInput))

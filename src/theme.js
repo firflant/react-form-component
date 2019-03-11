@@ -1,18 +1,28 @@
 export default {
-  formItemHeight: 40,
-  formItemWidth: '100%',
-  formItemMargin: 30,
-  formItemNarrowInputWidth: 140,
-  formItemInlineLabelWidth: 130,
-  formItemBgColor: 'white',
-  formItemBorderColor: '#e6edf4',
-  formItemColor: '#3d4348',
-  bodyBg: 'white',
-  brandPrimary: '#1fc59c',
-  success: '#00a651',
-  error: '#e50038',
-  regular: 300,
-  fontSizeXsmall: 12,
+  sizes: {
+    inputHeight: 40,
+    inputWidth: '100%',
+    inputGutterBottom: 30,
+    narrowInputWidth: 140,
+    inlineLabelWidth: 130,
+  },
+
+  colors: {
+    accent: '#1fc59c',
+    inputText: '#3d4348',
+    inputBorder: '#e6edf4',
+    inputBg: 'white',
+    success: '#00a651',
+    error: '#e50038',
+  },
+
+  typography: {
+    inputFontSize: 16,
+    labelFontSize: 14,
+    labelFontWeight: 'normal',
+    helpFontSize: 12,
+  },
+
   breakpoints: {
     xs: 0, // Extra small screen / phone
     sm: '768px', // Small screen / tablet

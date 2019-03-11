@@ -55,15 +55,15 @@ export const checkboxTheme = theme => ({
       height: 14,
       top: 0,
       left: 0,
-      backgroundColor: theme.formItemBgColor,
+      backgroundColor: theme.colors.inputBg,
       cursor: 'pointer',
-      border: `2px solid ${theme.formItemBorderColor}`,
+      border: `2px solid ${theme.colors.inputBorder}`,
       borderRadius: 2,
     },
     '&:checked': {
       '&::before': {
-        backgroundColor: theme.brandPrimary,
-        border: `2px solid ${theme.brandPrimary}`,
+        backgroundColor: theme.colors.accent,
+        border: `2px solid ${theme.colors.accent}`,
       },
       '&::after': {
         content: '"✓"',
@@ -83,7 +83,7 @@ export const checkboxTheme = theme => ({
     },
   },
   small: {
-    fontSize: 12,
+    fontSize: theme.typography.inputFontSize - 4,
     lineHeight: '18px',
     '& $input': {
       transform: 'translateY(-2px)',

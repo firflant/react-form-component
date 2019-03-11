@@ -3,7 +3,15 @@ import { ThemeProvider } from 'react-jss'
 import defautTheme from './theme'
 
 const FormThemeProvider = ({ theme, children }) =>
-  <ThemeProvider theme={theme ? { ...defautTheme, ...theme } : defautTheme}>
+  <ThemeProvider theme={theme
+    ? {
+      sizes: { ...defautTheme.sizes, ...theme.sizes },
+      colors: { ...defautTheme.colors, ...theme.colors },
+      typography: { ...defautTheme.typography, ...theme.typography },
+      breakpoints: { ...defautTheme.breakpoints, ...theme.breakpoints },
+    }
+    : defautTheme
+  }>
     {children}
   </ThemeProvider>
 

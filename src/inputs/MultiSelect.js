@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
+import { lighten, darken } from 'polished'
 import withFormControl from '../FormControl'
 import { checkboxHandler } from '../helpers'
 import { overlay } from '../themeHelpers'
@@ -22,6 +23,7 @@ class MultiSelect extends React.Component {
       classes,
     } = this.props
     const { isOpen } = this.state
+    console.log('selectTheme: ', selectTheme);
     return (
       <div
         className={classNames(classes.select, classes.multiSelect, 'form-input form-select')}
@@ -51,7 +53,7 @@ class MultiSelect extends React.Component {
                   key={index}
                   className={classNames(classes.option, { [classes.isChecked]: checked })}
                   onClick={() => setValue(name, checkboxHandler(!checked, optionValue, value), required)}
-                >{optionLabel}{checked && <span>✓</span>}</div>
+                >{optionLabel}{checked && <span className={classes.sign}>✓</span>}</div>
               })}
             </div>
           </React.Fragment>
@@ -73,14 +75,14 @@ MultiSelect.propTypes = {
 }
 
 export default withFormControl(withStyles(theme => ({
-  ...selectTheme,
+  ...selectTheme(theme),
   multiSelect: {
     position: 'relative',
   },
   value: {
     padding: '3px 5px',
-    backgroundColor: theme.formItemBorderColor,
-    borderRadius: 2,
+    backgroundColor: theme.colors.inputBorder,
+    borderRadius: 3,
     '& + &': {
       marginLeft: 5,
     },
@@ -88,11 +90,11 @@ export default withFormControl(withStyles(theme => ({
   options: {
     position: 'absolute',
     top: '100%',
-    left: 0,
-    right: 0,
-    height: theme.formItemHeight * 5,
-    border: `1px solid ${theme.formItemBorderColor}`,
-    backgroundColor: 'white',
+    left: -1,
+    right: -2,
+    height: theme.sizes.inputHeight * 5,
+    border: `1px solid ${theme.colors.inputBorder}`,
+    backgroundColor: theme.colors.inputBg,
     zIndex: 101,
     overflowY: 'scroll',
   },
@@ -102,11 +104,17 @@ export default withFormControl(withStyles(theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     '&:hover': {
-      backgroundColor: theme.formItemBorderColor,
+      backgroundColor: lighten(0.05, theme.colors.inputBorder),
     },
   },
   isChecked: {
-    backgroundColor: theme.formItemBorderColor,
+    backgroundColor: lighten(0.03, theme.colors.inputBorder),
+    '&:hover': {
+      backgroundColor: lighten(0.03, theme.colors.inputBorder),
+    },
+  },
+  sign: {
+    color: darken(0.05, theme.colors.inputBorder),
   },
   overlay: {
     ...overlay(),

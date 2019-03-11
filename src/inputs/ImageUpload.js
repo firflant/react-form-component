@@ -72,7 +72,7 @@ export default withFormControl(withStyles(theme => ({
   root: {
     textAlign: 'center',
     padding: 20,
-    backgroundColor: theme.formItemBorderColor,
+    backgroundColor: theme.colors.inputBorder,
     maxWidth: 300,
   },
   input: {
@@ -91,7 +91,7 @@ export default withFormControl(withStyles(theme => ({
     textOverflow: 'ellipsis',
     marginBottom: 10,
     fontSize: 11,
-    color: theme.formItemColor,
+    color: theme.colors.inputText,
     lineHeight: 'normal',
     textAlign: 'center',
     ...maxRows(),

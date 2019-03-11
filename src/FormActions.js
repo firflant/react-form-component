@@ -8,7 +8,7 @@ const FormActions = ({ children, classes }) =>
 
 export default withStyles(theme => ({
   formActions: {
-    marginTop: theme.formItemMargin * 2,
+    marginTop: theme.sizes.inputGutterBottom * 2,
     lineHeight: 'normal',
     ...clearfix(),
     [breakpoint(theme.breakpoints.sm)]: {

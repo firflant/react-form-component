@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
+import { darken } from 'polished'
 import withFormControl from '../FormControl'
 
 
@@ -44,10 +45,10 @@ export default withFormControl(withStyles(theme => ({
   },
   input: {
     position: 'relative',
-    width: 36,
+    width: 34,
     height: 14,
     display: 'inline-block',
-    backgroundColor: theme.error,
+    backgroundColor: darken(0.1, theme.colors.inputBorder),
     marginRight: 10,
     padding: 0,
     borderRadius: 7,
@@ -57,6 +58,7 @@ export default withFormControl(withStyles(theme => ({
     verticalAlign: 'middle',
     transform: 'translateY(0.3em)',
     cursor: 'pointer',
+    transition: 'background-color 100ms ease-in',
     '&::after': {
       content: '""',
       display: 'block',
@@ -65,16 +67,16 @@ export default withFormControl(withStyles(theme => ({
       position: 'absolute',
       left: 0,
       top: -3,
-      backgroundColor: theme.formItemBorderColor,
-      border: `1px solid ${theme.formItemBorderColor}`,
+      backgroundColor: theme.colors.inputBorder,
+      border: `1px solid ${darken(0.2, theme.colors.inputBorder)}`,
       borderRadius: 10,
       boxSizing: 'border-box',
+      transition: 'left 200ms ease-in',
     },
     '&:checked': {
-      backgroundColor: theme.success,
+      backgroundColor: theme.colors.success,
       '&::after': {
-        left: 'auto',
-        right: 0,
+        left: 'calc(100% - 20px)',
       },
     },
   },

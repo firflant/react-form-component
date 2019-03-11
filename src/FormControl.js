@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
+import { lighten } from 'polished'
 import { FormConsumer } from './Form'
 import { breakpoint, inputHeight, placeholder } from './themeHelpers'
-import theme from './theme'
 
 
 class FormControl extends React.Component {
@@ -92,27 +92,28 @@ FormControl.propTypes = {
 const StyledFormControl = withStyles(theme => ({
   formControl: {
     margin: 0,
-    marginBottom: theme.formItemMargin,
+    marginBottom: theme.sizes.inputGutterBottom,
     position: 'relative',
-    width: theme.formItemWidth,
+    width: theme.sizes.inputWidth,
     overflow: 'visible',
     boxSizing: 'border-box',
     maxWidth: '100%',
-    ...inputHeight(theme.formItemHeight),
+    ...inputHeight(theme.sizes.inputHeight),
     '& .form-input': {
       width: '100%',
       margin: 0,
-      border: `1px solid ${theme.formItemBorderColor}`,
+      border: `1px solid ${theme.colors.inputBorder}`,
       borderRadius: 0,
       boxSizing: 'border-box',
-      fontSize: theme.formItemFontSize,
+      fontSize: theme.typography.inputFontSize,
       transition: 'all 200ms ease-in',
-      backgroundColor: theme.formItemBgColor,
+      backgroundColor: theme.colors.inputBg,
       paddingLeft: 10,
       paddingRight: 10,
-      color: theme.formItemColor,
+      color: theme.colors.inputText,
       ...placeholder({
-        color: theme.formItemBorderColor,
+        color: theme.colors.inputText,
+        opacity: 0.25,
       }),
     },
     '& .form-input[type=number]': {
@@ -125,7 +126,7 @@ const StyledFormControl = withStyles(theme => ({
 
     // States
     '& .form-input:focus': {
-      border: `1px solid ${theme.brandPrimary}`,
+      border: `1px solid ${theme.colors.accent}`,
       boxShadow: 'none',
       outlineWidth: 0,
     },
@@ -139,39 +140,39 @@ const StyledFormControl = withStyles(theme => ({
   },
   success: {
     '& $label, & $addon, & $help': {
-      color: theme.success,
+      color: theme.colors.success,
     },
     '& .form-input:not(:focus)': {
-      borderColor: theme.success,
+      borderColor: theme.colors.success,
     },
   },
   error: {
     '& $label, & $addon, & $help, & .form-checkitem': {
-      color: theme.error,
+      color: theme.colors.error,
     },
     '& .form-input:not(:focus)': {
-      borderColor: theme.error,
-      backgroundColor: theme.error,
+      borderColor: theme.colors.error,
+      backgroundColor: lighten(0.54, theme.colors.error),
     },
   },
   label: {
     display: 'block',
     margin: 0,
     marginBottom: 10,
-    fontSize: 14,
+    fontSize: theme.typography.labelFontSize,
     lineHeight: 'normal',
     textTransform: 'none',
     textAlign: 'left',
-    fontWeight: theme.regular,
+    fontWeight: theme.typography.labelFontWeight,
   },
   help: {
     position: 'absolute',
     top: '100%',
     display: 'block',
     margin: 0,
-    fontSize: theme.fontSizeXsmall,
+    fontSize: theme.typography.helpFontSize,
     lineHeight: 'normal',
-    color: theme.formItemColor,
+    color: theme.colors.inputText,
   },
   addon: {
     position: 'absolute',
@@ -189,8 +190,8 @@ const StyledFormControl = withStyles(theme => ({
       [breakpoint(theme.breakpoints.sm)]: {
         marginBottom: 0,
         marginRight: 10,
-        minWidth: theme.formItemInlineLabelWidth,
-        maxWidth: theme.formItemInlineLabelWidth,
+        minWidth: theme.sizes.inlineLabelWidth,
+        maxWidth: theme.sizes.inlineLabelWidth,
         whiteSpace: 'nowrap',
       },
       '& + *': {
@@ -201,7 +202,7 @@ const StyledFormControl = withStyles(theme => ({
     },
     '& $help': {
       [breakpoint(theme.breakpoints.sm)]: {
-        left: theme.formItemInlineLabelWidth + 10,
+        left: theme.sizes.inlineLabelWidth + 10,
       },
     },
   },
@@ -219,17 +220,17 @@ const StyledFormControl = withStyles(theme => ({
   narrow: {
     '& .form-input, & $help': {
       [breakpoint(theme.breakpoints.sm)]: {
-        maxWidth: theme.formItemNarrowInputWidth,
+        maxWidth: theme.sizes.narrowInputWidth,
       },
     },
   },
   large: {
-    ...inputHeight(theme.formItemHeight + 4),
+    ...inputHeight(theme.sizes.inputHeight + 4),
     '& $label': {
       marginBottom: 2,
     },
     '& + &': {
-      marginTop: -theme.formItemMargin + 14,
+      marginTop: -theme.sizes.inputGutterBottom + 14,
     },
   },
 }))(FormControl)
