@@ -14,15 +14,13 @@ class MultiFormInput extends React.Component {
     if (prevState.value !== this.state.value) {
       this.props.setValue(this.props.name, this.state.value, this.props.required)
     }
-    // To prevent strange behaviors after deleting an item, force rerender of
-    // everything by setting value to null, then loading it up again.
+    // To prevent strange behaviors after deleting an item, force rerender by
+    // setting a value to null, then loading it up again.
     if (snapshot !== null) {
       this.setState({ value: [], cachedValue: snapshot })
     }
     if (!this.state.value.length && this.state.cachedValue) {
-      console.log('this.state.cachedValue: ', this.state.cachedValue)
-
-      this.setState({ value: this.state.cachedValue })
+      this.setState({ value: this.state.cachedValue, cachedValue: null })
     }
   }
   getSnapshotBeforeUpdate(prevProps, prevState) {
