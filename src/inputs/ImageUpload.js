@@ -74,6 +74,7 @@ export default withFormControl(withStyles(theme => ({
     padding: 20,
     backgroundColor: theme.colors.inputBorder,
     maxWidth: 300,
+    borderRadius: theme.sizes.borderRadius,
   },
   input: {
     display: 'none',

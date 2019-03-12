@@ -103,7 +103,7 @@ const StyledFormControl = withStyles(theme => ({
       width: '100%',
       margin: 0,
       border: `1px solid ${theme.colors.inputBorder}`,
-      borderRadius: 0,
+      borderRadius: theme.sizes.borderRadius,
       boxSizing: 'border-box',
       fontSize: theme.typography.inputFontSize,
       transition: 'all 200ms ease-in',

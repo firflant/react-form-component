@@ -82,6 +82,7 @@ export default withFormControl(withStyles(theme => ({
       left: 1,
       backgroundColor: lighten(0.6, theme.colors.accent),
       border: `1px solid ${theme.colors.accent}`,
+      borderRadius: theme.sizes.borderRadius,
       zIndex: -1,
     },
   },

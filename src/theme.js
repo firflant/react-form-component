@@ -5,6 +5,7 @@ export default {
     inputGutterBottom: 30,
     narrowInputWidth: 140,
     inlineLabelWidth: 130,
+    borderRadius: 0,
   },
 
   colors: {
