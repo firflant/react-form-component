@@ -1,7 +1,7 @@
 {
   "name": "react-standalone-form",
-  "version": "0.0.1",
-  "description": "Create forms in React quickly and clean. A form library based on the Context API with a wide selection of user friendly inputs.",
+  "version": "0.1.0",
+  "description": "Create React forms with a very minimalistic code, without having to write state management logic on your own.",
   "main": "lib/index.js",
   "scripts": {
     "start": "webpack --mode development --watch",
