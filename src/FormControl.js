@@ -53,16 +53,15 @@ class FormControl extends React.Component {
           [className]: className,
         })}
       >
-        { label && ['Checkboxes', 'Radio'].includes(children.type.name)
+        {label && ['Checkbox', 'Checkboxes', 'Radio', 'Switch'].includes(children.type.name)
           ? <span className={classes.label}>{label}</span>
-          : (label && children.type.name !== 'Checkbox') &&
-          <label className={classes.label} htmlFor={name}>{label}</label>
+          : <label className={classes.label} htmlFor={name}>{label}</label>
         }
         {children}
-        { addon &&
+        {addon &&
           <div className={classes.addon}>{addon}</div>
         }
-        { help &&
+        {help &&
           <span className={classes.help}>{help}</span>
         }
       </div>

@@ -9,7 +9,7 @@ import withFormControl from '../FormControl'
 const Switch = ({
   name,
   value,
-  label,
+  content,
   required,
   setValue,
   classes,
@@ -25,12 +25,13 @@ const Switch = ({
       id={name}
       checked={value}
       onChange={e => setValue(name, e.target.checked, required)}
-    /> {label}
+    /> {content}
   </label>
 
 Switch.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   required: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
 }
