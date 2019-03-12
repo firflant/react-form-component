@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
-import { lighten } from 'polished'
+import { lighten, darken } from 'polished'
 import { FormConsumer } from './Form'
 import { breakpoint, inputHeight, placeholder } from './themeHelpers'
 
@@ -111,8 +111,7 @@ const StyledFormControl = withStyles(theme => ({
       paddingRight: 10,
       color: theme.colors.inputText,
       ...placeholder({
-        color: theme.colors.inputText,
-        opacity: 0.25,
+        color: darken(0.1, theme.colors.inputBorder),
       }),
     },
     '& .form-input[type=number]': {
