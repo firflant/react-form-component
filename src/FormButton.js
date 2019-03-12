@@ -9,13 +9,25 @@ import { getValues, formIsInvalid } from './helpers'
 /**
  * A button component to handle form actions, like submit or reset.
  */
-const FormButton = ({ callback, size, variant, reset, loading, className, children }) => (
+const FormButton = ({
+  callback,
+  component,
+  size,
+  variant,
+  reset,
+  loading,
+  className,
+  children,
+  ...otherProps
+}) =>
   <FormConsumer>
     {({ fieldsData, setValue }) => {
+      const ComponentProp = component
       return (
-        <button
+        <ComponentProp
           size={size}
           variant={variant}
+          {...otherProps}
           onClick={() => {
             if (formIsInvalid(fieldsData)) {
               // Trigger valdiation check of all fields.
@@ -42,19 +54,23 @@ const FormButton = ({ callback, size, variant, reset, loading, className, childr
             </Fragment>
           }
           {children}
-        </button>
+        </ComponentProp>
       )
     }}
   </FormConsumer>
-)
 
 FormButton.propTypes = {
   callback: PropTypes.func,
+  component: PropTypes.elementType,
   size: PropTypes.string,
   variant: PropTypes.string,
   loading: PropTypes.bool,
   reset: PropTypes.bool,
   children: PropTypes.node.isRequired,
+}
+
+FormButton.defaultProps = {
+  component: 'button',
 }
 
 export default FormButton

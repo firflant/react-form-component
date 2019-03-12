@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import withFormControl from '../FormControl'
 import { breakpoint } from '../themeHelpers'
@@ -29,7 +30,14 @@ class MultiFormInput extends React.Component {
     return null
   }
   render() {
-    const { form, moreLabel, classes } = this.props
+    const {
+      form,
+      moreLabel,
+      moreComponent,
+      moreComponentProps,
+      classes,
+    } = this.props
+    const MoreComponentProp = moreComponent
     const { value } = this.state
     return (
       <div>
@@ -60,17 +68,25 @@ class MultiFormInput extends React.Component {
             </div>
           )
         })}
-        <button
-          variant='link'
+        <MoreComponentProp
           onClick={() => this.setState({ value: [...value, {}] })}
-        >{moreLabel}</button>
+          {...moreComponentProps}
+        >{moreLabel}</MoreComponentProp>
       </div>
     )
   }
 }
 
+MultiFormInput.propTypes = {
+  form: PropTypes.object,
+  moreLabel: PropTypes.string,
+  moreComponent: PropTypes.elementType,
+  moreComponentProps: PropTypes.object,
+}
+
 MultiFormInput.defaultProps = {
   moreLabel: 'Add more',
+  moreComponent: 'button',
 }
 
 export default withFormControl(withStyles(theme => ({
@@ -91,6 +107,8 @@ export default withFormControl(withStyles(theme => ({
     padding: 5,
     marginLeft: 15,
     border: 'none',
+    borderTopRightRadius: theme.sizes.borderRadius,
+    borderBottomRightRadius: theme.sizes.borderRadius,
     cursor: 'pointer',
     [breakpoint(theme.breakpoints.sm)]: {
       marginLeft: 30,

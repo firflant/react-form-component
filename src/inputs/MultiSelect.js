@@ -23,7 +23,6 @@ class MultiSelect extends React.Component {
       classes,
     } = this.props
     const { isOpen } = this.state
-    console.log('selectTheme: ', selectTheme);
     return (
       <div
         className={classNames(classes.select, classes.multiSelect, 'form-input form-select')}
