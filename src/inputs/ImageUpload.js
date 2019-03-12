@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
+import { lighten, darken } from 'polished'
 import withFormControl from '../FormControl'
 import { maxRows } from '../themeHelpers'
 
@@ -37,8 +38,8 @@ const ImageUpload = ({
         }}
       />
       <label htmlFor={name}>
-        <div size='sm' variant='primary'>
-          Upload {placeholder || 'image'}
+        <div className={classes.upload}>
+          + Upload {placeholder || 'image'}
         </div>
       </label>
     </div>
@@ -52,11 +53,10 @@ const ImageUpload = ({
         alt='Uploaded file'
       />
       <div className={classes.filename}>{ value.name || value.data.split('/').pop() }</div>
-      <div
-        size='sm'
-        variant='primary'
+      <button
+        className={classes.delete}
         onClick={() => setValue(name, '', required)}
-      >Delete {placeholder || 'image'}</div>
+      >Delete {placeholder || 'image'}</button>
     </div>
 )
 
@@ -79,12 +79,32 @@ export default withFormControl(withStyles(theme => ({
   input: {
     display: 'none',
   },
+  upload: {
+    border: `2px dashed ${darken(0.2, theme.colors.inputBorder)}`,
+    color: darken(0.3, theme.colors.inputBorder),
+    padding: '30px 20px',
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: lighten(0.02, theme.colors.inputBorder),
+    },
+  },
+  delete: {
+    backgroundColor: theme.colors.accent,
+    color: theme.colors.inputBg,
+    padding: '2px 8px',
+    border: 'none',
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: lighten(0.02, theme.colors.accent),
+    },
+  },
   image: {
     display: 'block',
     backgroundColor: 'white',
     padding: 5,
     margin: '0 auto 10px',
     maxWidth: '100%',
+    boxSizing: 'border-box',
   },
   filename: {
     maxWidth: '100%',
