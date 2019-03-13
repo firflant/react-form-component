@@ -8,7 +8,7 @@ import withFormControl from '../FormControl'
 const Checkbox = ({
   name,
   value,
-  content,
+  text,
   required,
   setValue,
   small,
@@ -25,14 +25,14 @@ const Checkbox = ({
       id={name}
       checked={value}
       onChange={e => setValue(name, e.target.checked, required)}
-    /> {content}
+    /> {text}
   </label>
 
 Checkbox.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   required: PropTypes.bool,
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   small: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
 }
