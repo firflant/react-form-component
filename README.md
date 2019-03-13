@@ -74,3 +74,7 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 * *Loading* state support for asynchronous operations
 * Multiple forms support (being able to put a form into a form as a multiple values field)
 * Easy way to create own custom inputs
+
+## Docs
+
+[Read components API and learn how to theme a forms](https://github.com/frontcraft/react-standalone-form/wiki)
