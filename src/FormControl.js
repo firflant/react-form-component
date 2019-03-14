@@ -72,9 +72,8 @@ class FormControl extends React.Component {
 FormControl.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
-  type: PropTypes.string,
   className: PropTypes.string,
-  addon: PropTypes.string,
+  addon: PropTypes.node,
   help: PropTypes.string,
   disabled: PropTypes.bool,
   validation: PropTypes.oneOf(['success', 'error']),
@@ -97,6 +96,7 @@ const StyledFormControl = withStyles(theme => ({
     overflow: 'visible',
     boxSizing: 'border-box',
     maxWidth: '100%',
+    textAlign: 'left',
     ...inputHeight(theme.sizes.inputHeight),
     '& .form-input': {
       width: '100%',
@@ -236,7 +236,6 @@ const StyledFormControl = withStyles(theme => ({
 
 const withFormControl = (Component) => {
   return ({
-    type,
     label,
     addon,
     className,

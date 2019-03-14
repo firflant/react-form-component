@@ -31,7 +31,7 @@ const Switch = ({
 Switch.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  text: PropTypes.node,
   required: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
 }

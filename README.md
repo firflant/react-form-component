@@ -61,7 +61,7 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 3. Inside a `<Form>`, use a high variety of input components to build a form. Give each a `name` prop that corresponds with one from `fields` values.
 4. Use `<FormButton>` to trigger a `callback` function with access to all field values in format of a simple javascript object.
 
-[See more detailed example](https://codesandbox.io/)
+[See more detailed examples](https://codesandbox.io/s/jp69w6kj35)
 
 ## Features
 
