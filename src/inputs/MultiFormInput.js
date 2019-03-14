@@ -37,37 +37,31 @@ class MultiFormInput extends React.Component {
       moreComponentProps,
       classes,
     } = this.props
+    const FormComponentProp = form
     const MoreComponentProp = moreComponent
     const { value } = this.state
     return (
       <div>
-        {value && value.map((fields, index) => {
-          const checkedFields = Object.keys(fields).length ? { fields } : {}
-          const formWithProps = {
-            ...form,
-            props: {
-              ...checkedFields,
-              onChange: updatedFields => {
+        {value && value.map((fields, index) =>
+          <div className={classes.multiFormInput} key={index}>
+            <FormComponentProp
+              fields={Object.keys(fields).length ? fields : []}
+              onChange={updatedFields => {
                 // Prevent splice directly on value, because it should stay immutable.
                 let mutableValue = [...value]
                 mutableValue.splice(index, 1, updatedFields)
                 this.setState({ value: mutableValue })
-              },
-            },
-          }
-          return (
-            <div className={classes.multiFormInput} key={index}>
-              {formWithProps}
-              <button
-                className={classes.delete}
-                onClick={() => {
-                  this.setState({ value: value.filter((item, newIndex) => newIndex !== index) })
-                }}
-                title='Delete'
-              >X</button>
-            </div>
-          )
-        })}
+              }}
+            />
+            <button
+              className={classes.delete}
+              onClick={() => {
+                this.setState({ value: value.filter((item, newIndex) => newIndex !== index) })
+              }}
+              title='Delete'
+            >X</button>
+          </div>
+        )}
         <MoreComponentProp
           onClick={() => this.setState({ value: [...value, {}] })}
           {...moreComponentProps}
@@ -78,7 +72,7 @@ class MultiFormInput extends React.Component {
 }
 
 MultiFormInput.propTypes = {
-  form: PropTypes.object,
+  form: PropTypes.elementType,
   moreLabel: PropTypes.string,
   moreComponent: PropTypes.elementType,
   moreComponentProps: PropTypes.object,
