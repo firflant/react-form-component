@@ -20,6 +20,7 @@ const FormButton = ({
   reset,
   loading,
   classes,
+  theme,
   className,
   children,
   ...otherProps
@@ -39,7 +40,7 @@ const FormButton = ({
               Object.keys(fieldsData).forEach(key => {
                 setValue(key, fieldsData[key].value, fieldsData[key].required, fieldsData[key].type)
               })
-              NotificationManager.error('Form contains errors. Check all fields.')
+              NotificationManager.error(theme.textLabels.formInvalid)
             } else {
               callback && callback(getValues(fieldsData))
               reset && setValue()
@@ -95,4 +96,4 @@ export default withStyles(theme => ({
       backgroundColor: lighten(0.1, theme.colors.accent),
     },
   },
-}))(FormButton)
+}), { injectTheme: true })(FormButton)

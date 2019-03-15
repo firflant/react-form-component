@@ -1,4 +1,4 @@
-import React, { Component, createContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { debounce } from 'throttle-debounce'
 import withStyles from 'react-jss'
@@ -13,8 +13,8 @@ import {
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/no-did-update-set-state */
 
-const FieldsContext = createContext({})
-const SetValueContext = createContext(() => {})
+const FieldsContext = React.createContext({})
+const SetValueContext = React.createContext(() => {})
 
 export const FormConsumer = ({ children }) => (
   <FieldsContext.Consumer>
@@ -34,7 +34,7 @@ FormConsumer.propTypes = {
  * This form component's Creates new context with defined fields that are
  * avaliable for all field items inside.
  */
-class Form extends Component {
+class Form extends React.Component {
   constructor(props) {
     super(props)
     const requiredFields = props.allRequired ? props.fields : props.required
@@ -45,7 +45,7 @@ class Form extends Component {
   }
 
   setValue(name, value, required, type = null) {
-    const { fields, allRequired, callbackOnChange } = this.props
+    const { fields, allRequired, callbackOnChange, theme } = this.props
 
     if (!name) {
       // If no field name is provided, reset whole form
@@ -57,7 +57,7 @@ class Form extends Component {
       this.setState(prevState => {
         const fieldsData = {
           ...prevState.fieldsData,
-          ...processField(name, value, required, type),
+          ...processField(name, value, required, type, theme.textLabels),
         }
         if (callbackOnChange) {
           // If callbackOnChange prop is present, run it on every form change.
@@ -98,8 +98,8 @@ Form.propTypes = {
   callbackOnChange: PropTypes.func,
 }
 
-export default withStyles({
+export default withStyles(theme => ({
   form: {
     margin: 0,
   },
-})(Form)
+}), { injectTheme: true })(Form)

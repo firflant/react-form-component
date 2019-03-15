@@ -8,7 +8,7 @@ import validator from 'validator'
  * @param {string|number|array|object} value Value received from the field
  * @param {string} type Type of the field that defines a method of validation
  */
-export function processField(name, value, required, type) {
+export function processField(name, value, required, type, textLabels = {}) {
   // If the value is an array, remove its empty values for safety.
   const processedValue = Array.isArray(value)
     ? value.filter(item => Number.isInteger(item) || item instanceof Object || item.length)
@@ -21,14 +21,14 @@ export function processField(name, value, required, type) {
     // If the field is required and its value is empty, set an error. Otherwise
     // continue the validation.
     validation = 'error'
-    help = 'This field is required.'
+    help = textLabels.requiredField
   } else if (processedValue && processedValue.length > 0) {
     switch (type) {
       case 'text':
         // Text should be longer than 3 chars.
         if (processedValue.length < 5) {
           validation = 'error'
-          help = 'This field should have at least 5 characters.'
+          help = textLabels.min5Chars
         }
         break
       case 'name':
@@ -38,32 +38,32 @@ export function processField(name, value, required, type) {
         // Password should be at least 6 characters long.
         if (processedValue.length < 6) {
           validation = 'error'
-          help = 'Password should be at least 6 characters long.'
+          help = textLabels.passwordInvalid
         }
         break
       case 'email':
         if (!validator.isEmail(value)) {
           validation = 'error'
-          help = 'This is not a valid email address.'
+          help = textLabels.emailInvalid
         }
         break
       case 'url':
         if (!validator.isURL(value)) {
           validation = 'error'
-          help = 'This is not a valid URL.'
+          help = textLabels.urlInvalid
         }
         break
       case 'tel':
         if (!validator.isMobilePhone(validator.trim(value, '+'))) {
           validation = 'error'
-          help = 'This is not a valid phone number.'
+          help = textLabels.phoneInvalid
         }
         break
 
       case 'postcode':
         if (!validator.isPostalCode(value, 'DE')) {
           validation = 'error'
-          help = 'This is not a valid postal code.'
+          help = textLabels.postCodeInvalid
         }
         break
 
@@ -71,14 +71,14 @@ export function processField(name, value, required, type) {
         // Text should be longer than 15 chars.
         if (processedValue.length < 15) {
           validation = 'error'
-          help = 'Text should be longer than 15 characters.'
+          help = textLabels.longTextInvalid
         }
         break
       case 'wysiwyg':
         // Text should be longer than 15 chars.
         if (processedValue.length < 15) {
           validation = 'error'
-          help = 'Text should be longer than 15 characters.'
+          help = textLabels.longTextInvalid
         }
         break
       case 'json':
@@ -86,7 +86,7 @@ export function processField(name, value, required, type) {
           JSON.parse(value)
         } catch (e) {
           validation = 'error'
-          help = 'Enter a valid JSON.'
+          help = textLabels.jsonInvalid
         }
         break
       case 'number':
