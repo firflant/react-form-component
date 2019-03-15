@@ -2,6 +2,9 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import ReactLoading from 'react-loading'
 import { NotificationManager } from 'react-notifications'
+import withStyles from 'react-jss'
+import classNames from 'classnames'
+import { lighten } from 'polished'
 import { FormConsumer } from './Form'
 import { getValues, formIsInvalid } from './helpers'
 
@@ -16,6 +19,7 @@ const FormButton = ({
   variant,
   reset,
   loading,
+  classes,
   className,
   children,
   ...otherProps
@@ -28,6 +32,7 @@ const FormButton = ({
           size={size}
           variant={variant}
           {...otherProps}
+          className={classNames(className, { [classes.button]: component === 'button' })}
           onClick={() => {
             if (formIsInvalid(fieldsData)) {
               // Trigger valdiation check of all fields.
@@ -41,7 +46,6 @@ const FormButton = ({
             }
           }}
           disabled={loading}
-          className={className}
         >
           {loading &&
             <Fragment>
@@ -73,4 +77,22 @@ FormButton.defaultProps = {
   component: 'button',
 }
 
-export default FormButton
+export default withStyles(theme => ({
+  button: {
+    padding: `0 ${theme.sizes.inputHeight / 2}px`,
+    fontSize: theme.typography.inputFontSize,
+    lineHeight: `${theme.sizes.inputHeight}px`,
+    height: theme.sizes.inputHeight,
+    borderWidth: 0,
+    borderRadius: theme.sizes.borderRadius,
+    whiteSpace: 'nowrap',
+    color: 'white',
+    backgroundColor: theme.colors.accent,
+    cursor: 'pointer',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    '&:hover': {
+      backgroundColor: lighten(0.1, theme.colors.accent),
+    },
+  },
+}))(FormButton)
