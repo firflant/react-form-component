@@ -4,7 +4,7 @@ export function inputHeight(height) {
   return {
     '& *.form-input': {
       height: height,
-      lineHeight: `${height - height / 3}px`,
+      lineHeight: `${height - (height / 3)}px`,
       paddingTop: height / 6,
       paddingBottom: height / 6,
       '&[type=file]': {
@@ -18,9 +18,10 @@ export function inputHeight(height) {
       height,
       lineHeight: `${height}px`,
     },
-    '&$inlineLabel $label': {
+    '&$inlineLabel > $label': {
       [breakpoint(theme.breakpoints.sm)]: {
         lineHeight: `${height}px`,
+        marginBottom: 0,
       },
     },
     '&$inlineLabel .form-checkitem': {
