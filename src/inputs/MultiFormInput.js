@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import withFormControl from '../FormControl'
+import DefaultButton from '../DefaultButton'
 import { breakpoint } from '../themeHelpers'
 
 
@@ -80,7 +81,7 @@ MultiFormInput.propTypes = {
 
 MultiFormInput.defaultProps = {
   moreLabel: 'Add more',
-  moreComponent: 'button',
+  moreComponent: DefaultButton,
 }
 
 export default withFormControl(withStyles(theme => ({

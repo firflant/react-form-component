@@ -84,6 +84,8 @@ export default withFormControl(withStyles(theme => ({
     color: darken(0.3, theme.colors.inputBorder),
     padding: '30px 20px',
     cursor: 'pointer',
+    fontSize: theme.typography.labelFontSize,
+    lineHeight: 'normal',
     '&:hover': {
       backgroundColor: lighten(0.02, theme.colors.inputBorder),
     },
@@ -91,7 +93,9 @@ export default withFormControl(withStyles(theme => ({
   delete: {
     backgroundColor: theme.colors.accent,
     color: theme.colors.inputBg,
-    padding: '2px 8px',
+    fontSize: theme.typography.labelFontSize,
+    lineHeight: 'normal',
+    padding: '5px 8px',
     border: 'none',
     cursor: 'pointer',
     '&:hover': {

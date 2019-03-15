@@ -68,7 +68,7 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 * Built in form state management
 * Wide range of UI form components
 * Validation states displayed to the user
-* Customizable theme
+* Customizable theme and text labels
 * Required or optional fields
 * Global form validation (it does not run a callback if form is not valid)
 * *Loading* state support for asynchronous operations

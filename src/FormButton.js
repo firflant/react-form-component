@@ -1,10 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import ReactLoading from 'react-loading'
 import { NotificationManager } from 'react-notifications'
-import withStyles from 'react-jss'
-import classNames from 'classnames'
-import { lighten } from 'polished'
+import { withTheme } from 'react-jss'
+import DefaultButton from './DefaultButton'
 import { FormConsumer } from './Form'
 import { getValues, formIsInvalid } from './helpers'
 
@@ -15,13 +14,9 @@ import { getValues, formIsInvalid } from './helpers'
 const FormButton = ({
   callback,
   component,
-  size,
-  variant,
   reset,
   loading,
-  classes,
   theme,
-  className,
   children,
   ...otherProps
 }) =>
@@ -30,10 +25,7 @@ const FormButton = ({
       const ComponentProp = component
       return (
         <ComponentProp
-          size={size}
-          variant={variant}
           {...otherProps}
-          className={classNames(className, { [classes.button]: component === 'button' })}
           onClick={() => {
             if (formIsInvalid(fieldsData)) {
               // Trigger valdiation check of all fields.
@@ -49,14 +41,14 @@ const FormButton = ({
           disabled={loading}
         >
           {loading &&
-            <Fragment>
+            <React.Fragment>
               <ReactLoading
                 type='spinningBubbles'
                 width={18}
                 height={18}
                 color='#ffffff'
               />&nbsp;
-            </Fragment>
+            </React.Fragment>
           }
           {children}
         </ComponentProp>
@@ -67,33 +59,13 @@ const FormButton = ({
 FormButton.propTypes = {
   callback: PropTypes.func,
   component: PropTypes.elementType,
-  size: PropTypes.string,
-  variant: PropTypes.string,
   loading: PropTypes.bool,
   reset: PropTypes.bool,
   children: PropTypes.node.isRequired,
 }
 
 FormButton.defaultProps = {
-  component: 'button',
+  component: DefaultButton,
 }
 
-export default withStyles(theme => ({
-  button: {
-    padding: `0 ${theme.sizes.inputHeight / 2}px`,
-    fontSize: theme.typography.inputFontSize,
-    lineHeight: `${theme.sizes.inputHeight}px`,
-    height: theme.sizes.inputHeight,
-    borderWidth: 0,
-    borderRadius: theme.sizes.borderRadius,
-    whiteSpace: 'nowrap',
-    color: 'white',
-    backgroundColor: theme.colors.accent,
-    cursor: 'pointer',
-    display: 'inline-flex',
-    justifyContent: 'center',
-    '&:hover': {
-      backgroundColor: lighten(0.1, theme.colors.accent),
-    },
-  },
-}), { injectTheme: true })(FormButton)
+export default withTheme(FormButton)

@@ -1,6 +1,5 @@
 import React from 'react'
 import withStyles from 'react-jss'
-import { breakpoint, clearfix } from './themeHelpers'
 
 
 const FormActions = ({ children, classes }) =>
@@ -10,15 +9,13 @@ export default withStyles(theme => ({
   formActions: {
     marginTop: theme.sizes.inputGutterBottom * 2,
     lineHeight: 'normal',
-    ...clearfix(),
-    [breakpoint(theme.breakpoints.sm)]: {
-      display: 'flex',
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-      '& > * + *': {
-        marginLeft: 20,
-        marginBottom: 0,
-      },
+    display: 'flex',
+    justifyContent: 'flex-end',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    margin: -10,
+    '& > *': {
+      margin: 10,
     },
   },
 }))(FormActions)
