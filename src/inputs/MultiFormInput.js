@@ -12,7 +12,7 @@ class MultiFormInput extends React.Component {
     cachedValue: null,
   }
   componentDidMount() {
-    if (!this.props.value || this.props.value === []) {
+    if (!this.props.value || !this.props.value.length) {
       this.setState({ value: [{}] })
     }
   }
