@@ -54,7 +54,7 @@ export function processField(name, value, required, type, textLabels = {}) {
         }
         break
       case 'tel':
-        if (!validator.isMobilePhone(validator.trim(value, '+'))) {
+        if (!value.match(/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/g)) {
           validation = 'error'
           help = textLabels.phoneInvalid
         }
