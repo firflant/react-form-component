@@ -8,7 +8,7 @@ import { breakpoint } from '../themeHelpers'
 
 class MultiFormInput extends React.Component {
   state = {
-    value: [],
+    value: this.props.value,
     cachedValue: null,
   }
   componentDidMount() {
@@ -79,6 +79,7 @@ class MultiFormInput extends React.Component {
 }
 
 MultiFormInput.propTypes = {
+  value: PropTypes.array,
   form: PropTypes.elementType,
   moreLabel: PropTypes.string,
   moreComponent: PropTypes.elementType,
