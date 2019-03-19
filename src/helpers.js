@@ -4,7 +4,7 @@ import validator from 'validator'
 /**
  * Process data from given field and prepare it for a form mutation.
  */
-export function processField(name, value, required, type, textLabels = {}) {
+export function processField(name, value, required, type, textLabels = {}, minLength) {
   // If the value is an array, remove its empty values for safety.
   const processedValue = Array.isArray(value)
     ? value.filter(item => Number.isInteger(item) || item instanceof Object || item.length)
@@ -20,32 +20,21 @@ export function processField(name, value, required, type, textLabels = {}) {
     help = textLabels.requiredField
   } else if (processedValue && processedValue.length > 0) {
     switch (type) {
-      case 'text':
-        // Text should be longer than 5 chars.
-        if (processedValue.length < 5) {
-          validation = 'error'
-          help = textLabels.min5Chars
-        }
-        break
-      case 'password':
-        // Password should be at least 6 characters long.
-        if (processedValue.length < 6) {
-          validation = 'error'
-          help = textLabels.passwordInvalid
-        }
-        break
+
       case 'email':
         if (!validator.isEmail(value)) {
           validation = 'error'
           help = textLabels.emailInvalid
         }
         break
+
       case 'url':
         if (!validator.isURL(value)) {
           validation = 'error'
           help = textLabels.urlInvalid
         }
         break
+
       case 'tel':
         if (!value.match(/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/g)) {
           validation = 'error'
@@ -60,20 +49,6 @@ export function processField(name, value, required, type, textLabels = {}) {
         }
         break
 
-      case 'textarea':
-        // Text should be longer than 15 chars.
-        if (processedValue.length < 15) {
-          validation = 'error'
-          help = textLabels.longTextInvalid
-        }
-        break
-      case 'wysiwyg':
-        // Text should be longer than 15 chars.
-        if (processedValue.length < 15) {
-          validation = 'error'
-          help = textLabels.longTextInvalid
-        }
-        break
       case 'json':
         try {
           JSON.parse(value)
@@ -82,7 +57,13 @@ export function processField(name, value, required, type, textLabels = {}) {
           help = textLabels.jsonInvalid
         }
         break
+
       default:
+        // Minimal length option support.
+        if (minLength && processedValue.length < minLength) {
+          validation = 'error'
+          help = textLabels.minChars.replace(':length:', minLength)
+        }
         break
     }
   }

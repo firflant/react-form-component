@@ -12,6 +12,7 @@ const TextArea = ({
   required,
   setValue,
   rows,
+  min,
   classes,
 }) =>
   <textarea
@@ -19,7 +20,7 @@ const TextArea = ({
     name={name}
     rows={rows}
     placeholder={placeholder}
-    onChange={e => setValue(name, e.target.value, required, 'textarea')}
+    onChange={e => setValue(name, e.target.value, required, null, min)}
     value={value}
   />
 
@@ -34,6 +35,7 @@ TextArea.propTypes = {
   required: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
   rows: PropTypes.number,
+  min: PropTypes.number,
 }
 
 export default withFormControl(withStyles({

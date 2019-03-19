@@ -34,13 +34,12 @@ export default {
   textLabels: {
     formInvalid: 'Form contains errors. Check all fields.',
     requiredField: 'This field is required.',
-    min5Chars: 'This field should have at least 5 characters.',
+    minChars: 'This field should have at least :length: characters.',
     passwordInvalid: 'Password should be at least 6 characters long.',
     emailInvalid: 'This is not a valid email address.',
     urlInvalid: 'This is not a valid URL.',
     phoneInvalid: 'This is not a valid phone number.',
     postCodeInvalid: 'This is not a valid postal code.',
-    longTextInvalid: 'Text should be longer than 15 characters.',
     jsonInvalid: 'Enter a valid JSON.',
   },
 }
