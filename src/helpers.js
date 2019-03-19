@@ -2,11 +2,7 @@ import validator from 'validator'
 
 
 /**
- * Process the data from given field and prepare it for form mutation.
- * @param {object} fieldsData Object that contains data of all fields
- * @param {string} name Unique identifier of the field
- * @param {string|number|array|object} value Value received from the field
- * @param {string} type Type of the field that defines a method of validation
+ * Process data from given field and prepare it for a form mutation.
  */
 export function processField(name, value, required, type, textLabels = {}) {
   // If the value is an array, remove its empty values for safety.
@@ -16,7 +12,7 @@ export function processField(name, value, required, type, textLabels = {}) {
 
   let validation; let help = null
 
-  // VALIDATION - If check will fail, set an error state and help message.
+  // VALIDATION - If any check will fail, raise error state and help message.
   if (required && (!processedValue || processedValue.length === 0)) {
     // If the field is required and its value is empty, set an error. Otherwise
     // continue the validation.
@@ -25,14 +21,11 @@ export function processField(name, value, required, type, textLabels = {}) {
   } else if (processedValue && processedValue.length > 0) {
     switch (type) {
       case 'text':
-        // Text should be longer than 3 chars.
+        // Text should be longer than 5 chars.
         if (processedValue.length < 5) {
           validation = 'error'
           help = textLabels.min5Chars
         }
-        break
-      case 'name':
-        // No special rule for name input.
         break
       case 'password':
         // Password should be at least 6 characters long.
@@ -89,25 +82,17 @@ export function processField(name, value, required, type, textLabels = {}) {
           help = textLabels.jsonInvalid
         }
         break
-      case 'number':
-        // TODO: Should we check anything there?
-        break
-      case 'array':
-        // TODO: If any item is mentioned twice, set validation error.
-        break
-      case 'object':
-        // TODO: Check whether it is really a javascript object.
-        break
       default:
         break
     }
   }
 
-  // If there is no error and value is not empty, we can talk about success.
+  // If there is no error and value is not empty, indicate success state.
   if (validation !== 'error' && ((processedValue && processedValue.length > 0) ||
   (typeof value === 'object' && !Array.isArray(value)))) {
     validation = 'success'
   }
+
   return {
     [name]: {
       value: processedValue,
@@ -120,12 +105,10 @@ export function processField(name, value, required, type, textLabels = {}) {
 
 
 /**
- * Returns a form object with initial null values from provided field names.
- * @param {array} fields List of all field names
- * @param {array} required List of names of all required fields
+ * Generate initial form state, where all values are set to null.
  */
-export function initiateFormFields(fields = [], required = []) {
-  return fields.reduce((acc, field) => (
+export function initiateFormFields(fieldNames = [], required = []) {
+  return fieldNames.reduce((acc, field) => (
     { ...acc,
       [field]: {
         value: null,
@@ -138,9 +121,7 @@ export function initiateFormFields(fields = [], required = []) {
 
 
 /**
- * Resets valdiation states and values of all fields in a form.
- * @param {object} fieldsData Object that contains data of all fields
- * @param {array} required List of names of all required fields
+ * Reset valdiation states of all fields in a form.
  */
 export function updateFieldsRequirements(fieldsData, required) {
   let updatedFieldsData = {}
@@ -160,10 +141,7 @@ export function updateFieldsRequirements(fieldsData, required) {
 
 
 /**
- * Handler for checkbox values from the same list.
- * @param {bool} checked
- * @param {string} value
- * @param {string} previousValue
+ * Update single checkbox value in a list of all checkboxes.
  */
 export function checkboxHandler(checked, value, previousValue) {
   if (checked) {
@@ -177,11 +155,10 @@ export function checkboxHandler(checked, value, previousValue) {
 
 
 /**
- * Checks whether the whole form is valid or not.
- * @param {object} fieldsData Object that contains data of all fields
- * @param {array} fieldKeys fields to check against. Otherwise it checks whole form.
+ * Check whether whole form is filled correctly.
  */
 export function formIsInvalid(fieldsData, fieldKeys = []) {
+  // Check only fields of given keys, otherwise check whole form.
   const fieldsToCheck = fieldKeys.length ? fieldKeys : Object.keys(fieldsData)
   let requiredButEmpty = false
   let hasAnyError = false
@@ -199,9 +176,9 @@ export function formIsInvalid(fieldsData, fieldKeys = []) {
   return requiredButEmpty || hasAnyError
 }
 
+
 /**
  * Get values from all fields and organize them into API friendly format.
- * @param {object} fieldsData Object that contains data of all fields
  */
 export function getValues(fieldsData) {
   let values = {}
@@ -211,10 +188,10 @@ export function getValues(fieldsData) {
   return values
 }
 
+
 /**
- * Converts the image url to image data object that is suitable for prepopulating
- * the image upload field with existing data.
- * @param {string} imageUrl Url of image
+ * Convert image url to image data format that is compatible with image upload
+ * input.
  */
 export function imageUrltoImageData(imageUrl) {
   if (imageUrl) {
