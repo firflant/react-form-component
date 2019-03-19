@@ -8,63 +8,69 @@ import { breakpoint } from '../themeHelpers'
 
 class MultiFormInput extends React.Component {
   state = {
-    value: this.props.value,
+    value: [],
     cachedValue: null,
   }
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevState.value !== this.state.value) {
-      this.props.setValue(this.props.name, this.state.value, this.props.required)
-    }
-    // To prevent strange behaviors after deleting an item, force rerender by
-    // setting a value to null, then loading it up again.
-    if (snapshot !== null) {
-      this.setState({ value: [], cachedValue: snapshot })
-    }
-    if (!this.state.value.length && this.state.cachedValue) {
-      this.setState({ value: this.state.cachedValue, cachedValue: null })
+  componentDidMount() {
+    if (!this.props.value || this.props.value === []) {
+      this.setState({ value: [{}] })
     }
   }
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    if (prevState.value.length > this.state.value.length && this.state.value.length) {
-      return this.state.value
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const { setValue, name, required } = this.props
+    const { value, cachedValue } = this.state
+
+    // Bind component state to Form's field state.
+    if (prevState.value !== value) {
+      setValue(name, value, required)
     }
-    return null
+
+    // To prevent unwanted behaviors after deleting an item, force rerender by
+    // emptying value, then loading it up again.
+    if (prevState.value.length > value.length && value.length) {
+      this.setState(prevState => ({ value: [], cachedValue: value }))
+    }
+    if (cachedValue) {
+      this.setState(prevState => ({ value: cachedValue, cachedValue: null }))
+    }
   }
   render() {
     const {
-      form,
+      form: FormComponentProp,
+      moreComponent: MoreComponentProp,
       moreLabel,
-      moreComponent,
       moreComponentProps,
       classes,
     } = this.props
-    const FormComponentProp = form
-    const MoreComponentProp = moreComponent
-    const { value } = this.state
+    const { value, cachedValue } = this.state
     return (
       <div>
-        {value && value.map((fields, index) =>
-          <div className={classes.multiFormInput} key={index}>
-            <FormComponentProp
-              fields={Object.keys(fields).length ? fields : []}
-              onChange={updatedFields => {
-                // Prevent splice directly on value, because it should stay immutable.
-                let mutableValue = [...value]
-                mutableValue.splice(index, 1, updatedFields)
-                this.setState({ value: mutableValue })
-              }}
-            />
-            <button
-              className={classes.delete}
-              onClick={() => {
-                this.setState({ value: value.filter((item, newIndex) => newIndex !== index) })
-              }}
-              title='Delete'
-            >X</button>
-          </div>
-        )}
+        {value && value.length && !cachedValue
+          ? value.map((fields, index) =>
+            <div className={classes.multiFormInput} key={index}>
+              <FormComponentProp
+                fields={Object.keys(fields).length ? fields : []}
+                onChange={updatedFields => this.setState(prevState => ({
+                  value: prevState.value.map((item, subIndex) =>
+                    index !== subIndex ? item : updatedFields
+                  ),
+                }))}
+              />
+              <button
+                className={classes.delete}
+                onClick={() => this.setState(prevState => ({
+                  value: prevState.value.filter((item, prevIndex) => prevIndex !== index),
+                }))}
+                title='Delete'
+              >X</button>
+            </div>
+          )
+          : null
+        }
         <MoreComponentProp
-          onClick={() => this.setState({ value: [...value, {}] })}
+          onClick={() => this.setState(prevState => ({
+            value: [...prevState.value, {}],
+          }))}
           {...moreComponentProps}
         >{moreLabel}</MoreComponentProp>
       </div>
