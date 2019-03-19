@@ -110,6 +110,7 @@ const StyledFormControl = withStyles(theme => ({
       paddingLeft: 10,
       paddingRight: 10,
       color: theme.colors.inputText,
+      '-webkit-appearance': 'none',
       ...placeholder({
         color: darken(0.1, theme.colors.inputBorder),
       }),

@@ -46,7 +46,7 @@ export default withFormControl(withStyles(theme => ({
   },
   input: {
     position: 'relative',
-    width: 34,
+    minWidth: 34,
     height: 14,
     display: 'inline-block',
     backgroundColor: darken(0.1, theme.colors.inputBorder),

@@ -46,10 +46,11 @@ export const checkboxTheme = theme => ({
     cursor: 'pointer',
   },
   input: {
-    width: 16,
-    margin: '.1em 10px 0 0',
+    margin: '0 10px 0 0',
     position: 'relative',
     outline: 'none',
+    transform: 'translateY(0.2em)',
+    minWidth: 18,
     '-webkit-appearance': 'none',
     '&::before': {
       content: '""',
