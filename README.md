@@ -23,29 +23,36 @@ import Form, {
   FormButton,
 } from 'react-standalone-form'
 
+
+const BasicFormExample = () =>
+  <Form fields={['name', 'email', 'role']}>
+    <Input
+      name='userName'
+      label='User name'
+    />
+    <Input
+      name='E-mail'
+      type='email'
+      label='User name'
+    />
+    <Select
+      name='role'
+      label='Role'
+      options={['Viewer', 'Moderator', 'Admin']}
+    />
+    <FormButton
+      callback={fields => console.log(fields)}
+    >Save</FormButton>
+  </Form>
+
+
 const App extends React.Component {
   render() {
     return (
       <FormThemeProvider>
-        <Form fields={['name', 'email', 'role']}>
-          <Input
-            name='userName'
-            label='User name'
-          />
-          <Input
-            name='E-mail'
-            type='email'
-            label='User name'
-          />
-          <Select
-            name='role'
-            label='Role'
-            options={['Viewer', 'Moderator', 'Admin']}
-          />
-          <FormButton
-            callback={fields => console.log(fields)}
-          >Save</FormButton>
-        </Form>
+        <div className='my-app'>
+          <BasicFormExample />
+        </div>
       </FormThemeProvider>
     )
   }
@@ -56,10 +63,10 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 
 #### Step by step:
 
-1. Wrap your app into `<FormThemeProvider>`.
-2. Put `<Form>` component anywhere in the app, define desired field names in a `fields` prop.
-3. Inside a `<Form>`, use a high variety of input components to build a form. Give each a `name` prop that corresponds with one from `fields` values.
-4. Use `<FormButton>` to trigger a `callback` function with access to all field values in format of a simple javascript object.
+1. Wrap your entitre app into `<FormThemeProvider>`.
+2. Put `<Form>` component anywhere inside the app, define each field by a name in `fields` prop.
+3. Use a high variety of input components to build a form. Give each input a `name` prop that corresponds with any from `fields` prop of parent `<Form>` wrapper. Add other props to customize the inputs.
+4. Use `<FormButton>` to trigger a submit function with access to all field values formatted as a simple javascript object.
 
 [See more detailed examples](https://codesandbox.io/s/jp69w6kj35)
 
@@ -67,14 +74,19 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 
 * Built in form state management
 * Wide range of UI form components
-* Validation states displayed to the user
+* Built in form validation system
 * Customizable theme and text labels
 * Required or optional fields
-* Global form validation (it does not run a callback if form is not valid)
 * *Loading* state support for asynchronous operations
-* Multiple forms support (being able to put a form into a form as a multiple values field)
-* Easy way to create own custom inputs
+* Submit action triggered by a submit button or by each change with debounce
+* Data collected from forms is well formatted for API calls
+* Multiple forms support (being able to put a form into a form as a field group)
+* Cross browser tested
+* Easy way to create custom own inputs
 
 ## Docs
 
-[Read components API and learn how to theme a forms](https://github.com/frontcraft/react-standalone-form/wiki)
+They are useful and up to date. Check the Component API, learn how to theme and
+customize the forms, see advanced usage examples.
+
+#### [Go to docs!](https://github.com/frontcraft/react-standalone-form/wiki)
