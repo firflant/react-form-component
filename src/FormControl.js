@@ -241,7 +241,7 @@ const withFormControl = (Component) => {
     addon,
     className,
     initialValue,
-    initialHelp,
+    help,
     name,
     narrow,
     large,
@@ -255,7 +255,7 @@ const withFormControl = (Component) => {
         if (!fieldsData[name]) {
           return null
         }
-        const { value, validation, required, help } = fieldsData[name]
+        const { value, validation, required, help: fieldsDataHelp } = fieldsData[name]
         const commonProps = {
           label,
           required,
@@ -266,7 +266,7 @@ const withFormControl = (Component) => {
           validation,
           className,
           addon,
-          help: help || initialHelp,
+          help: fieldsDataHelp || help,
           narrow,
           large,
           inlineLabel,

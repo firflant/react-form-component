@@ -28,7 +28,6 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.oneOf([
     'text',
-    'name',
     'email',
     'password',
     'url',

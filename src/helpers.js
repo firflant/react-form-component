@@ -20,7 +20,6 @@ export function processField(name, value, required, type, textLabels = {}, minLe
     help = textLabels.requiredField
   } else if (processedValue && processedValue.length > 0) {
     switch (type) {
-
       case 'email':
         if (!validator.isEmail(value)) {
           validation = 'error'
