@@ -15,23 +15,27 @@ const Radio = ({
   classes,
 }) =>
   <div>
-    {options.map((option, index) =>
-      <label
-        className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
-        key={index}
-        htmlFor={`${name}${index}`}
-      >
-        <input
-          type='radio'
-          name={name}
-          value={option.value}
-          className={classes.input}
-          id={`${name}${index}`}
-          checked={option.value === value}
-          onChange={e => setValue(name, e.target.value, required)}
-        /> {option.label}
-      </label>
-    )}
+    {options.map((option, index) => {
+      const optionLabel = (typeof option === 'string') ? option : option.label
+      const optionValue = (typeof option === 'string') ? option : option.value
+      return (
+        <label
+          className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
+          key={index}
+          htmlFor={`${name}${index}`}
+        >
+          <input
+            type='radio'
+            name={name}
+            value={optionValue}
+            className={classes.input}
+            id={`${name}${index}`}
+            checked={optionValue === value}
+            onChange={e => setValue(name, e.target.value, required)}
+          /> {optionLabel}
+        </label>
+      )
+    })}
   </div>
 
 Radio.propTypes = {
