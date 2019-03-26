@@ -36,7 +36,7 @@ Switch.propTypes = {
   setValue: PropTypes.func.isRequired,
 }
 
-export default withFormControl(withStyles(theme => ({
+export const switchTheme = theme => ({
   label: {
     display: 'flex',
     position: 'relative',
@@ -81,4 +81,6 @@ export default withFormControl(withStyles(theme => ({
       },
     },
   },
-}))(Switch))
+})
+
+export default withFormControl(withStyles(switchTheme)(Switch))
