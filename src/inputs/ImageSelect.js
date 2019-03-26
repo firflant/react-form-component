@@ -18,7 +18,6 @@ const ImageSelect = ({
 }) =>
   <div className={classes.ImageSelect}>
     {options.map((option, index) => {
-      const optionLabel = option.label ? option.label : option.value
       const checked = (value && multiple ? value.includes(option.value) : value === option.value)
       return (
         <div
@@ -28,8 +27,8 @@ const ImageSelect = ({
             const finalValue = multiple ? checkboxHandler(!checked, option.value, value) : option.value
             setValue(name, finalValue, required)
           }}>
-          <img className={classes.image} src={option.image} />
-          {optionLabel}
+          <img src={option.image} alt='' />
+          {option.label && <span className={classes.label}>{option.label}</span>}
         </div>
       )
     })}
@@ -69,8 +68,8 @@ export default withFormControl(withStyles(theme => ({
     position: 'relative',
     zIndex: 1,
   },
-  image: {
-    marginBottom: 12,
+  label: {
+    marginTop: 12,
   },
   isChecked: {
     '&:before': {
