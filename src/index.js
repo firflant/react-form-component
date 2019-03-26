@@ -8,7 +8,7 @@ export { default as FormThemeProvider } from './FormThemeProvider'
 
 export { default as Checkbox } from './inputs/Checkbox'
 export { default as Checkboxes } from './inputs/Checkboxes'
-export { default as CheckImages } from './inputs/CheckImages'
+export { default as ImageSelect } from './inputs/ImageSelect'
 export { default as ImageUpload } from './inputs/ImageUpload'
 export { default as Input } from './inputs/Input'
 export { default as MultiFormInput } from './inputs/MultiFormInput'

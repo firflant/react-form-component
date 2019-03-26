@@ -7,7 +7,7 @@ import withFormControl from '../FormControl'
 import { checkboxHandler } from '../helpers'
 
 
-const CheckImages = ({
+const ImageSelect = ({
   name,
   value,
   required,
@@ -16,7 +16,7 @@ const CheckImages = ({
   multiple,
   classes,
 }) =>
-  <div className={classes.checkImages}>
+  <div className={classes.ImageSelect}>
     {options.map((option, index) => {
       const optionLabel = option.label ? option.label : option.value
       const checked = (value && multiple ? value.includes(option.value) : value === option.value)
@@ -35,7 +35,7 @@ const CheckImages = ({
     })}
   </div>
 
-CheckImages.propTypes = {
+ImageSelect.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   required: PropTypes.bool,
@@ -49,7 +49,7 @@ CheckImages.propTypes = {
 }
 
 export default withFormControl(withStyles(theme => ({
-  checkImages: {
+  ImageSelect: {
     display: 'flex',
     alignItems: 'center',
   },
@@ -86,4 +86,4 @@ export default withFormControl(withStyles(theme => ({
       zIndex: -1,
     },
   },
-}))(CheckImages))
+}))(ImageSelect))
