@@ -1,7 +1,7 @@
 # react-standalone-form
 
 Create React forms with a very minimalistic code, without having to write state
-management logic on your own. Let everything happen under the hood. A themeable
+management logic on your own. Let everything happening under the hood. A themeable
 form library based on Context API with a wide selection of user friendly inputs.
 
 ## Install
@@ -10,7 +10,18 @@ form library based on Context API with a wide selection of user friendly inputs.
 yarn add react-standalone-form
 ```
 
+## Demo
+
+[See working examples with a code](https://codesandbox.io/s/jp69w6kj35)
+
 ## Example usage
+
+### Quick start:
+
+1. Wrap your entitre app into `<FormThemeProvider>`.
+2. Put `<Form>` component anywhere in the app, define each field by adding its name to a `fields` prop array.
+3. Use any of [visual input components](https://github.com/frontcraft/react-standalone-form/wiki/Components-API) to build a form. Give each input a `name` prop that corresponds with any name from a `fields` array. Add other props to customize the inputs.
+4. Use `<FormButton>` to trigger a submit function which gives access to all field values formatted in a form of simple javascript object.
 
 ```jsx
 // App.js
@@ -61,15 +72,6 @@ const App extends React.Component {
 ReactDOM.render(<App />, document.querySelector('#app'))
 ```
 
-#### Step by step:
-
-1. Wrap your entitre app into `<FormThemeProvider>`.
-2. Put `<Form>` component anywhere inside the app, define each field by a name in `fields` prop.
-3. Use a high variety of input components to build a form. Give each input a `name` prop that corresponds with any from `fields` prop of parent `<Form>` wrapper. Add other props to customize the inputs.
-4. Use `<FormButton>` to trigger a submit function with access to all field values formatted as a simple javascript object.
-
-[See more detailed examples](https://codesandbox.io/s/jp69w6kj35)
-
 ## Features
 
 * Built in form state management
@@ -86,7 +88,8 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 
 ## Docs
 
-They are useful and up to date. Check the Component API, learn how to theme and
-customize the forms, see advanced usage examples.
+* [Components API](https://github.com/frontcraft/react-standalone-form/wiki/Components-API)
+* [Form layouts](https://github.com/frontcraft/react-standalone-form/wiki/Form-layouts)
+* [Theming](https://github.com/frontcraft/react-standalone-form/wiki/Theming)
+* [Advanced usage](https://github.com/frontcraft/react-standalone-form/wiki/Advanced-usage)
 
-#### [Go to docs!](https://github.com/frontcraft/react-standalone-form/wiki)
