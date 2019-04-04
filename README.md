@@ -20,8 +20,8 @@ yarn add react-standalone-form
 
 1. Wrap your entitre app into `<FormThemeProvider>`.
 2. Put `<Form>` component anywhere in the app, define each field by adding its name to a `fields` prop array.
-3. Use any of [visual input components](https://github.com/frontcraft/react-standalone-form/wiki/Components-API) to build a form. Give each input a `name` prop that corresponds with any name from a `fields` array. Add other props to customize the inputs.
-4. Use `<FormButton>` to trigger a submit function which gives access to all field values formatted in a form of simple javascript object.
+3. Use any from built-in [visual input components](https://github.com/frontcraft/react-standalone-form/wiki/Components-API#Inputs) to compose a form. Give each input a `name` prop to tell which field from a `fields` array should be controlled by it. Add other props in order to customize the inputs.
+4. Use `<FormButton>` to trigger a submit function which gives access to all field values formatted in a form of a simple javascript object.
 
 ```jsx
 // App.js
@@ -36,19 +36,19 @@ import Form, {
 
 
 const BasicFormExample = () =>
-  <Form fields={['name', 'email', 'role']}>
+  <Form fields={['name', 'email', 'type']}>
     <Input
-      name='userName'
+      name='name'
       label='User name'
     />
     <Input
-      name='E-mail'
+      name='email'
       type='email'
-      label='User name'
+      label='E-mail'
     />
     <Select
-      name='role'
-      label='Role'
+      name='type'
+      label='Type of a user'
       options={['Viewer', 'Moderator', 'Admin']}
     />
     <FormButton
