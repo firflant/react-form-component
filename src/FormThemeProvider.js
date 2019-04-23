@@ -1,8 +1,8 @@
 import React from 'react'
 import { ThemeProvider } from 'react-jss'
-import { NotificationContainer } from 'react-notifications'
+import { ToastContainer } from 'react-toastify'
 import defautTheme from './theme'
-import 'react-notifications/lib/notifications.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const FormThemeProvider = ({ theme, children }) =>
@@ -18,7 +18,7 @@ const FormThemeProvider = ({ theme, children }) =>
   }>
     <React.Fragment>
       {children}
-      <NotificationContainer />
+      <ToastContainer hideProgressBar autoClose={5000} />
     </React.Fragment>
   </ThemeProvider>
 

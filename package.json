@@ -1,6 +1,6 @@
 {
   "name": "react-standalone-form",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "Create React forms with a very minimalistic code, without having to write state management logic on your own.",
   "main": "lib/index.js",
   "scripts": {
@@ -24,6 +24,12 @@
   ],
   "author": "Michal Kokocinski <michal@kokocinski.me> (http://kokocinski.me)",
   "license": "GPL-2.0",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "peerDependencies": {
     "react": "^16.8.4"
   },
@@ -33,7 +39,7 @@
     "react": "^16.8.4",
     "react-jss": "^8.6.1",
     "react-loading": "^2.0.3",
-    "react-notifications": "^1.4.3",
+    "react-toastify": "^5.1.0",
     "throttle-debounce": "^2.1.0",
     "validator": "^10.11.0",
     "webpack": "^4.29.6"

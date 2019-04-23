@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactLoading from 'react-loading'
-import { NotificationManager } from 'react-notifications'
+import { toast } from 'react-toastify'
 import { withTheme } from 'react-jss'
 import DefaultButton from './DefaultButton'
 import { FormConsumer } from './Form'
@@ -32,7 +32,7 @@ const FormButton = ({
               Object.keys(fieldsData).forEach(key => {
                 setValue(key, fieldsData[key].value, fieldsData[key].required, fieldsData[key].type)
               })
-              NotificationManager.error(theme.textLabels.formInvalid)
+              toast.error(theme.textLabels.formInvalid)
             } else {
               callback && callback(getValues(fieldsData))
               reset && setValue()
