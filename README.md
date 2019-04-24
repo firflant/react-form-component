@@ -12,7 +12,7 @@ yarn add react-standalone-form
 
 ## Demo
 
-[See working examples with a code](https://codesandbox.io/s/jp69w6kj35)
+[![See working example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/jp69w6kj35?fontsize=14&hidenavigation=1)
 
 ## Example usage
 
