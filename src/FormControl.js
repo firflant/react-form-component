@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
-import { lighten, darken } from 'polished'
+import { lighten } from 'polished'
 import { FormConsumer } from './Form'
 import { breakpoint, inputHeight, placeholder } from './themeHelpers'
 
@@ -101,18 +101,23 @@ const StyledFormControl = withStyles(theme => ({
     '& .form-input': {
       width: '100%',
       margin: 0,
-      border: `1px solid ${theme.colors.inputBorder}`,
+      borderStyle: 'solid',
+      borderColor: theme.colors.inputBorder,
       borderRadius: theme.sizes.borderRadius,
+      borderWidth: theme.sizes.onlyBottomBorder ? 0 : theme.sizes.borderWidth,
+      ...theme.sizes.onlyBottomBorder
+        ? { borderBottomWidth: theme.sizes.borderWidth }
+        : {},
       boxSizing: 'border-box',
       fontSize: theme.typography.inputFontSize,
       transition: 'all 200ms ease-in',
       backgroundColor: theme.colors.inputBg,
-      paddingLeft: 10,
-      paddingRight: 10,
+      paddingLeft: theme.sizes.inputSidePaddings,
+      paddingRight: theme.sizes.inputSidePaddings,
       color: theme.colors.inputText,
       '-webkit-appearance': 'none',
       ...placeholder({
-        color: darken(0.1, theme.colors.inputBorder),
+        color: theme.colors.placeholder,
       }),
     },
     '& .form-input[type=number]': {
@@ -125,7 +130,7 @@ const StyledFormControl = withStyles(theme => ({
 
     // States
     '& .form-input:focus': {
-      border: `1px solid ${theme.colors.accent}`,
+      borderColor: theme.colors.accent,
       boxShadow: 'none',
       outlineWidth: 0,
     },

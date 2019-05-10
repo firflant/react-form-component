@@ -3,9 +3,12 @@ export default {
     inputHeight: 40,
     inputWidth: '100%',
     inputGutterBottom: 30,
+    inputSidePaddings: 10,
     narrowInputWidth: 140,
     inlineLabelWidth: 130,
     borderRadius: 0,
+    borderWidth: 1,
+    onlyBottomBorder: false,
   },
 
   colors: {
@@ -13,6 +16,7 @@ export default {
     inputText: '#3d4348',
     inputBorder: '#e6edf4',
     inputBg: 'white',
+    placeholder: '#c3d4e4',
     success: '#00a651',
     error: '#e50038',
   },
