@@ -45,7 +45,7 @@ Select.propTypes = {
 
 export const selectTheme = theme => ({
   select: {
-    paddingRight: 30,
+    paddingRight: `35px !important`,
     cursor: 'pointer',
     // Remove default caret
     '-webkit-appearance': 'none',
