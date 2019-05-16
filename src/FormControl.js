@@ -39,6 +39,7 @@ class FormControl extends React.Component {
       inline,
       narrow,
       large,
+      noBottomGutter,
       children,
     } = this.props
     return (
@@ -48,6 +49,7 @@ class FormControl extends React.Component {
           [classes.inline]: inline,
           [classes.narrow]: narrow,
           [classes.large]: large,
+          [classes.noBottomGutter]: noBottomGutter,
           [classes[validation]]: validation,
           [classes.disabled]: disabled,
           [className]: className,
@@ -81,6 +83,7 @@ FormControl.propTypes = {
   inline: PropTypes.bool,
   narrow: PropTypes.bool,
   large: PropTypes.bool,
+  noBottomGutter: PropTypes.bool,
   initialValue: PropTypes.any,
   required: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
@@ -237,6 +240,9 @@ const StyledFormControl = withStyles(theme => ({
       marginTop: -theme.sizes.inputGutterBottom + 14,
     },
   },
+  noBottomGutter: {
+    marginBottom: 0,
+  },
 }))(FormControl)
 
 
@@ -252,6 +258,7 @@ const withFormControl = (Component) => {
     large,
     inlineLabel,
     inline,
+    noBottomGutter,
     disabled,
     ...otherProps
   }) =>
@@ -277,6 +284,7 @@ const withFormControl = (Component) => {
           inlineLabel,
           inline,
           initialValue,
+          noBottomGutter,
           disabled,
           ...commonProps,
         }
