@@ -7,7 +7,7 @@ const FormActions = ({ children, classes }) =>
 
 export default withStyles(theme => ({
   formActions: {
-    marginTop: theme.sizes.inputGutterBottom * 2,
+    marginTop: theme.sizes.formActionsDistance,
     lineHeight: 'normal',
     display: 'flex',
     justifyContent: 'flex-end',

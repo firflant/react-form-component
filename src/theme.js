@@ -8,6 +8,8 @@ export default {
     inlineLabelWidth: 130,
     borderRadius: 0,
     borderWidth: 1,
+    formRowGutter: 50,
+    formActionsDistance: 60,
     onlyBottomBorder: false,
   },
 

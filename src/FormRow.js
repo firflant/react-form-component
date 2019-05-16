@@ -16,7 +16,7 @@ export default withStyles(theme => ({
         marginBottom: 0,
       },
       '& > div + *': {
-        marginLeft: 50,
+        marginLeft: theme.sizes.formRowGutter,
       },
     },
   },
