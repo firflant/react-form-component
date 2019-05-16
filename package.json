@@ -20,6 +20,7 @@
     "context",
     "component",
     "validation",
+    "formik",
     "formstate"
   ],
   "author": "Michal Kokocinski <michal@kokocinski.me> (http://kokocinski.me)",
