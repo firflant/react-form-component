@@ -17,6 +17,7 @@ class MultiSelect extends React.Component {
     const {
       name,
       value,
+      placeholder,
       required,
       setValue,
       options,
@@ -36,7 +37,7 @@ class MultiSelect extends React.Component {
               className={classes.value}
             >{(typeof item === 'string') ? item : item.label}</span>
           )
-          : 'All'}
+          : placeholder || (required ? 'Select' : 'All')}
         {isOpen &&
           <React.Fragment>
             <div
@@ -65,6 +66,7 @@ class MultiSelect extends React.Component {
 MultiSelect.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  placeholder: PropTypes.string,
   required: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.oneOfType([
