@@ -77,15 +77,15 @@ class Form extends React.Component {
   }
 
   render() {
-    const { className, classes } = this.props
+    const { className, classes, component: ComponentProp } = this.props
     return (
-      <div className={classNames(classes.form, { [className]: className })}>
+      <ComponentProp className={classNames(classes.form, { [className]: className })}>
         <FieldsContext.Provider value={this.state.fieldsData}>
           <SetValueContext.Provider value={this.setValue.bind(this)}>
             {this.props.children}
           </SetValueContext.Provider>
         </FieldsContext.Provider>
-      </div>
+      </ComponentProp>
     )
   }
 }
@@ -94,8 +94,13 @@ Form.propTypes = {
   fields: PropTypes.array.isRequired,
   required: PropTypes.array,
   allRequired: PropTypes.bool,
+  component: PropTypes.string,
   children: PropTypes.node.isRequired,
   callbackOnChange: PropTypes.func,
+}
+
+Form.defaultProps = {
+  component: 'form',
 }
 
 export default withStyles(theme => ({
