@@ -6,6 +6,7 @@ export { default as FormButton } from './FormButton'
 export { default as FormRow } from './FormRow'
 export { default as FormThemeProvider } from './FormThemeProvider'
 export { default as withFormControl } from './FormControl'
+export { checkboxHandler } from './helpers'
 
 export { default as Checkbox } from './inputs/Checkbox'
 export { default as Checkboxes } from './inputs/Checkboxes'
