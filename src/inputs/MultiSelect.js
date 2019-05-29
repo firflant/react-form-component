@@ -9,6 +9,11 @@ import { overlay } from '../themeHelpers'
 import { selectTheme } from './Select'
 
 
+const renderValueItem = (item, options) => {
+  const value = options.find(option => option.value === item)
+  return typeof value === 'string' ? value : value.label
+}
+
 class MultiSelect extends React.Component {
   state = {
     isOpen: false,
@@ -35,7 +40,7 @@ class MultiSelect extends React.Component {
             <span
               key={index}
               className={classes.value}
-            >{(typeof item === 'string') ? item : item.label}</span>
+            >{renderValueItem(item, options)}</span>
           )
           : placeholder || (required ? 'Select' : 'All')}
         {isOpen &&
