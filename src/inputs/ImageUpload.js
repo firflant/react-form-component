@@ -72,7 +72,7 @@ export default withFormControl(withStyles(theme => ({
   root: {
     textAlign: 'center',
     padding: 20,
-    backgroundColor: theme.colors.inputBorder,
+    backgroundColor: theme.colors.fill,
     maxWidth: 300,
     borderRadius: theme.sizes.borderRadius,
   },
@@ -87,7 +87,7 @@ export default withFormControl(withStyles(theme => ({
     fontSize: theme.typography.labelFontSize,
     lineHeight: 'normal',
     '&:hover': {
-      backgroundColor: lighten(0.02, theme.colors.inputBorder),
+      backgroundColor: lighten(0.02, theme.colors.fill),
     },
   },
   delete: {

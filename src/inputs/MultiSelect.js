@@ -87,7 +87,7 @@ export default withFormControl(withStyles(theme => ({
   },
   value: {
     padding: '3px 5px',
-    backgroundColor: theme.colors.inputBorder,
+    backgroundColor: theme.colors.fill,
     borderRadius: 3,
     '& + &': {
       marginLeft: 5,
@@ -114,9 +114,9 @@ export default withFormControl(withStyles(theme => ({
     },
   },
   isChecked: {
-    backgroundColor: lighten(0.03, theme.colors.inputBorder),
+    backgroundColor: theme.colors.fill,
     '&:hover': {
-      backgroundColor: lighten(0.03, theme.colors.inputBorder),
+      backgroundColor: darken(0.03, theme.colors.fill),
     },
   },
   sign: {
