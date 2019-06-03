@@ -11,7 +11,9 @@ import { selectTheme } from './Select'
 
 const renderValueItem = (item, options) => {
   const value = options.find(option => option.value === item)
-  return typeof value === 'string' ? value : value.label
+  return value
+    ? typeof value === 'string' ? value : value.label
+    : 'n/d'
 }
 
 class MultiSelect extends React.Component {
@@ -84,6 +86,7 @@ export default withFormControl(withStyles(theme => ({
   ...selectTheme(theme),
   multiSelect: {
     position: 'relative',
+    whiteSpace: 'nowrap',
   },
   value: {
     padding: '3px 5px',
