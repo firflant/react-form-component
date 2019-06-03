@@ -52,7 +52,10 @@ const ImageUpload = ({
         className={classes.image}
         alt='Uploaded file'
       />
-      <div className={classes.filename}>{ value.name || value.data.split('/').pop() }</div>
+      <div className={classes.filename}>{typeof value === 'string'
+        ? value
+        : value.name || value.data.split('/').pop()
+      }</div>
       <button
         className={classes.delete}
         onClick={() => setValue(name, '', required)}
