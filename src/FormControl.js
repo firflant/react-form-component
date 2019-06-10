@@ -73,7 +73,7 @@ class FormControl extends React.Component {
 
 FormControl.propTypes = {
   name: PropTypes.string.isRequired,
-  label: PropTypes.string,
+  label: PropTypes.node,
   className: PropTypes.string,
   addon: PropTypes.node,
   help: PropTypes.string,

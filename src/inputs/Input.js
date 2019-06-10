@@ -43,7 +43,7 @@ Input.propTypes = {
     'postcode',
   ]),
   value: PropTypes.any,
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.node,
   min: PropTypes.number,
   required: PropTypes.bool,
   setValue: PropTypes.func.isRequired,

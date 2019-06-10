@@ -66,7 +66,7 @@ const ImageUpload = ({
 ImageUpload.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.any,
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.node,
   required: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
 }

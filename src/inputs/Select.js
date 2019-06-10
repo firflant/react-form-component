@@ -34,7 +34,7 @@ const Select = ({
 Select.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.node,
   required: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.oneOfType([

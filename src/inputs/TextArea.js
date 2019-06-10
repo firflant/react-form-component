@@ -31,7 +31,7 @@ TextArea.defaultProps = {
 TextArea.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.node,
   required: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
   rows: PropTypes.number,
