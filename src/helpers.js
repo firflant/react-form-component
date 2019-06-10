@@ -145,7 +145,11 @@ export function formIsInvalid(fieldsData, fieldKeys = []) {
 
   fieldsToCheck.forEach(key => {
     const { value, validation, required } = fieldsData[key]
-    if (required && !((!Array.isArray(value) && value) || (Array.isArray(value) && value.length))) {
+    if (required && (
+      (typeof value === 'string' && value === '') ||
+      (Array.isArray(value) && value.length === 0) ||
+      (typeof value === 'object' && !Array.isArray(value) && (value === null || Object.keys(value).length))
+    )) {
       requiredButEmpty = true
     }
     if (validation === 'error') {

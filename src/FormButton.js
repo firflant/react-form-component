@@ -26,7 +26,8 @@ const FormButton = ({
       return (
         <ComponentProp
           {...otherProps}
-          onClick={() => {
+          onClick={e => {
+            e.preventDefault()
             if (formIsInvalid(fieldsData)) {
               // Trigger valdiation check of all fields.
               Object.keys(fieldsData).forEach(key => {

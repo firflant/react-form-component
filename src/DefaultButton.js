@@ -4,7 +4,11 @@ import { lighten } from 'polished'
 
 
 const DefaultButton = ({ onClick, classes, children }) =>
-  <button className={classes.button} onClick={() => onClick()}>{children}</button>
+  <button
+    type='button'
+    className={classes.button}
+    onClick={e => onClick(e)}
+  >{children}</button>
 
 export default withStyles(theme => ({
   button: {
