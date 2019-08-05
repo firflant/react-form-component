@@ -81,6 +81,7 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 * Required or optional fields
 * *Loading* state support for asynchronous operations
 * Submit action triggered by a submit button or by each change with debounce
+* Ability to reset all fields after successful submit ([show docs](https://github.com/frontcraft/react-standalone-form/wiki/Components-API#FormButton))
 * Data collected from forms is well formatted for API calls
 * Multiple forms support (being able to put a form into a form as a field group)
 * Cross browser tested
