@@ -60,8 +60,13 @@ class Form extends React.Component {
           ...processField(name, value, required, type, theme.textLabels, min),
         }
         if (callbackOnChange) {
-          // If callbackOnChange prop is present, run it on every form change.
-          this.callbackOnChangeThrottled(getValues(fieldsData))
+          // If callbackOnChange prop is present, run it on every form change,
+          // except the initial load.
+          const formIsInitiated = Object.entries(prevState.fieldsData)
+            .every(item => typeof item[1].value === 'undefined')
+          if (!formIsInitiated) {
+            this.callbackOnChangeThrottled(getValues(fieldsData))
+          }
         }
         return { fieldsData }
       })

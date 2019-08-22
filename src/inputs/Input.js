@@ -17,7 +17,7 @@ const Input = ({
     type={type}
     placeholder={placeholder}
     onChange={e => setValue(name, e.target.value, required, type, min)}
-    value={value}
+    value={value || ''}
   />
 
 Input.defaultProps = {

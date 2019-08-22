@@ -25,9 +25,17 @@ class MultiFormInput extends React.Component {
       setValue(name, value, required)
     }
 
+    // Apply initial Value.
+    if (!prevProps.value && this.props.value) {
+      this.setState(prevState => ({
+        value: this.props.value,
+        cachedValue: this.props.value,
+      }))
+    }
+
     // To prevent unwanted behaviors after deleting an item, force rerender by
     // emptying value, then loading it up again.
-    if (prevState.value.length > value.length && value.length) {
+    if (prevState.value && prevState.value.length > value.length && value.length) {
       this.setState(prevState => ({ value: [], cachedValue: value }))
     }
     if (cachedValue) {

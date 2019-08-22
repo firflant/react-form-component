@@ -37,7 +37,7 @@ class MultiSelect extends React.Component {
         onClick={() => {
           if (!isOpen) { return this.setState({ isOpen: true }) }
         }}
-      >{value.length
+      >{value && value.length
           ? value.map((item, index) =>
             <span
               key={index}

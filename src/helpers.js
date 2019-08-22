@@ -10,7 +10,7 @@ export function processField(name, value, required, type, textLabels = {}, minLe
     ? value.filter(item => Number.isInteger(item) || item instanceof Object || item.length)
     : value
 
-  let validation; let help = null
+  let validation = null; let help = null
 
   // VALIDATION - If any check will fail, raise error state and help message.
   if (required && (!processedValue || processedValue.length === 0)) {
@@ -88,10 +88,14 @@ export function processField(name, value, required, type, textLabels = {}, minLe
  * Generate initial form state, where all values are set to null.
  */
 export function initiateFormFields(fieldNames = [], required = []) {
+  let valueUndefined
+  // Value undefined acts as a flag saying that field is only initiated, untouch.
+  // It becomes defined after first change. It is being used by the callbackOnChange prop.
+  // TODO: Consider adding additional property called `untouch`.
   return fieldNames.reduce((acc, field) => (
     { ...acc,
       [field]: {
-        value: null,
+        value: valueUndefined,
         validation: null,
         required: required.includes(field),
         help: null,
