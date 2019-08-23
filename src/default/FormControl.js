@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
 import { lighten } from 'polished'
-import { FormConsumer } from './Form'
-import { breakpoint, inputHeight, placeholder } from './themeHelpers'
+import { FormConsumer, breakpoint, inputHeight, placeholder } from '../.'
 
 
 class FormControl extends React.Component {
@@ -290,7 +289,7 @@ const withFormControl = (Component) => {
         }
         const inputProps = {
           name,
-          value: value !== null ? value : initialValue || '',
+          value: (value !== null ? value : initialValue) || '',
           ...commonProps,
           ...otherProps,
         }

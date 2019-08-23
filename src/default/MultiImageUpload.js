@@ -2,8 +2,7 @@ import React from 'react'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
 import { lighten } from 'polished'
-import withFormControl from '../FormControl'
-import { breakpoint } from '../themeHelpers'
+import { withFormControl, breakpoint } from '../.'
 
 
 const MultiImageUpload = ({

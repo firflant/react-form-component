@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
 import { darken } from 'polished'
-import withFormControl from '../FormControl'
+import { withFormControl } from '../.'
 
 
 const Switch = ({

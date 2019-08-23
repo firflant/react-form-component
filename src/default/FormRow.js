@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
-import { breakpoint } from './themeHelpers'
+import { breakpoint } from '../.'
 
 
 const FormRow = ({ children, mobile, classes }) =>

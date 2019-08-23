@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import ReactLoading from 'react-loading'
 import { toast } from 'react-toastify'
 import { withTheme } from 'react-jss'
+import { FormConsumer, getValues, formIsInvalid } from '../.'
 import DefaultButton from './DefaultButton'
-import { FormConsumer } from './Form'
-import { getValues, formIsInvalid } from './helpers'
 
 
 /**

@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import { lighten, darken } from 'polished'
-import withFormControl from '../FormControl'
-import { maxRows } from '../themeHelpers'
+import { withFormControl, maxRows } from '../.'
 
 
 const ImageUpload = ({

@@ -1,24 +1,43 @@
-import Form from './Form'
+import Form from './core/Form'
 export default Form
 
-export { default as FormActions } from './FormActions'
-export { default as FormButton } from './FormButton'
-export { default as FormRow } from './FormRow'
-export { default as FormThemeProvider } from './FormThemeProvider'
-export { default as withFormControl } from './FormControl'
-export { checkboxHandler } from './helpers'
+export { FormConsumer } from './core/Form'
+export { default as FormThemeProvider } from './core/FormThemeProvider'
+export {
+  processField,
+  initiateFormFields,
+  updateFieldsRequirements,
+  checkboxHandler,
+  formIsInvalid,
+  getValues,
+  imageUrltoImageData,
+} from './core/helpers'
+export {
+  inputHeight,
+  breakpoint,
+  clearfix,
+  overlay,
+  maxRows,
+  placeholder,
+} from './core/themeHelpers'
 
-export { default as Checkbox } from './inputs/Checkbox'
-export { default as Checkboxes } from './inputs/Checkboxes'
-export { default as ImageSelect } from './inputs/ImageSelect'
-export { default as ImageUpload } from './inputs/ImageUpload'
-export { default as MultiImageUpload } from './inputs/MultiImageUpload'
-export { default as Input } from './inputs/Input'
-export { default as MultiFormInput } from './inputs/MultiFormInput'
-export { default as MultiSelect } from './inputs/MultiSelect'
-export { default as Radio } from './inputs/Radio'
-export { default as Slider } from './inputs/Slider'
-export { default as Select } from './inputs/Select'
-export { default as Switch } from './inputs/Switch'
-export { default as Switches } from './inputs/Switches'
-export { default as TextArea } from './inputs/TextArea'
+export { default as withFormControl } from './default/FormControl'
+export { default as FormActions } from './default/FormActions'
+export { default as FormButton } from './default/FormButton'
+export { default as DefaultButton } from './default/DefaultButton'
+export { default as FormRow } from './default/FormRow'
+
+export { default as Checkbox, checkboxTheme } from './default/Checkbox'
+export { default as Checkboxes } from './default/Checkboxes'
+export { default as ImageSelect } from './default/ImageSelect'
+export { default as ImageUpload } from './default/ImageUpload'
+export { default as MultiImageUpload } from './default/MultiImageUpload'
+export { default as Input } from './default/Input'
+export { default as MultiFormInput } from './default/MultiFormInput'
+export { default as MultiSelect } from './default/MultiSelect'
+export { default as Radio } from './default/Radio'
+export { default as Slider } from './default/Slider'
+export { default as Select, selectTheme } from './default/Select'
+export { default as Switch, switchTheme } from './default/Switch'
+export { default as Switches } from './default/Switches'
+export { default as TextArea } from './default/TextArea'

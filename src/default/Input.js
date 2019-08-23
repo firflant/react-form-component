@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withFormControl from '../FormControl'
+import { withFormControl } from '../.'
+
 
 const Input = ({
   name,
@@ -17,7 +18,7 @@ const Input = ({
     type={type}
     placeholder={placeholder}
     onChange={e => setValue(name, e.target.value, required, type, min)}
-    value={value || ''}
+    value={value}
   />
 
 Input.defaultProps = {

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
-import withFormControl from '../FormControl'
+import { withFormControl } from '../.'
 
 
 const Select = ({

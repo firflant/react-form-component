@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
 import { lighten } from 'polished'
-import withFormControl from '../FormControl'
-import { checkboxHandler } from '../helpers'
+import { withFormControl, checkboxHandler } from '../.'
 
 
 const ImageSelect = ({

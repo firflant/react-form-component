@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
-import withFormControl from '../FormControl'
-import DefaultButton from '../DefaultButton'
-import { breakpoint } from '../themeHelpers'
+import { withFormControl, DefaultButton, breakpoint } from '../.'
 
 
 class MultiFormInput extends React.Component {

@@ -2,66 +2,58 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
-import withFormControl from '../FormControl'
+import { withFormControl, checkboxHandler, checkboxTheme } from '../.'
 
 
-const Radio = ({
+const Checkboxes = ({
   name,
   value,
   required,
-  small,
   setValue,
   options,
+  small,
   classes,
 }) =>
   <div>
     {options.map((option, index) => {
       const optionLabel = (typeof option === 'string') ? option : option.label
       const optionValue = (typeof option === 'string') ? option : option.value
+      const checked = (value && value.includes(optionValue))
       return (
         <label
           className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
-          key={index}
           htmlFor={`${name}${index}`}
+          key={index}
         >
           <input
-            type='radio'
-            name={name}
-            value={optionValue}
+            type='checkbox'
+            name={`${name}${index}`}
             className={classes.input}
             id={`${name}${index}`}
-            checked={optionValue === value}
-            onChange={e => setValue(name, e.target.value, required)}
+            checked={checked}
+            onChange={() => {
+              const finalValue = checkboxHandler(!checked, optionValue, value)
+              setValue(name, finalValue, required)
+            }}
           /> {optionLabel}
         </label>
       )
     })}
   </div>
 
-Radio.propTypes = {
+Checkboxes.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   required: PropTypes.bool,
+  small: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.shape({ label: PropTypes.string, value: PropTypes.string }),
+    PropTypes.shape({
+      label: PropTypes.node,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    }),
   ])),
 }
 
-export default withFormControl(withStyles({
-  label: {
-    display: 'block',
-    cursor: 'pointer',
-  },
-  input: {
-    marginRight: 10,
-  },
-  small: {
-    fontSize: 12,
-    lineHeight: '18px',
-    '& $input': {
-      marginRight: 5,
-    },
-  },
-})(Radio))
+export default withFormControl(withStyles(checkboxTheme)(Checkboxes))

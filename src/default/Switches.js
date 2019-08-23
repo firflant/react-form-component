@@ -2,17 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
-import withFormControl from '../FormControl'
-import { checkboxHandler } from '../helpers'
-import { checkboxTheme } from './Checkbox'
+import { withFormControl, checkboxHandler, switchTheme } from '../.'
 
-const Checkboxes = ({
+
+const Switches = ({
   name,
   value,
   required,
   setValue,
   options,
-  small,
   classes,
 }) =>
   <div>
@@ -22,7 +20,7 @@ const Checkboxes = ({
       const checked = (value && value.includes(optionValue))
       return (
         <label
-          className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
+          className={classNames(classes.label, 'form-checkitem')}
           htmlFor={`${name}${index}`}
           key={index}
         >
@@ -42,11 +40,10 @@ const Checkboxes = ({
     })}
   </div>
 
-Checkboxes.propTypes = {
+Switches.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   required: PropTypes.bool,
-  small: PropTypes.bool,
   setValue: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,
@@ -57,4 +54,4 @@ Checkboxes.propTypes = {
   ])),
 }
 
-export default withFormControl(withStyles(checkboxTheme)(Checkboxes))
+export default withFormControl(withStyles(switchTheme)(Switches))
