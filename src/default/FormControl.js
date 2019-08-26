@@ -245,7 +245,7 @@ const StyledFormControl = withStyles(theme => ({
 }))(FormControl)
 
 
-const withFormControl = (Component) => {
+const withFormControl = Component => {
   return ({
     label,
     addon,

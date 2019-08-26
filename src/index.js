@@ -20,6 +20,7 @@ export {
   maxRows,
   placeholder,
 } from './core/themeHelpers'
+export { default as withSubmit } from './core/withSubmit'
 
 export { default as withFormControl } from './default/FormControl'
 export { default as FormActions } from './default/FormActions'

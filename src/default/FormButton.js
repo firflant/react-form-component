@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactLoading from 'react-loading'
-import { toast } from 'react-toastify'
 import { withTheme } from 'react-jss'
-import { FormConsumer, getValues, formIsInvalid } from '../.'
 import DefaultButton from './DefaultButton'
+import withSubmit from '../core/withSubmit'
 
 
 /**
@@ -17,44 +16,30 @@ const FormButton = ({
   loading,
   theme,
   children,
+  submit,
   ...otherProps
-}) =>
-  <FormConsumer>
-    {({ fieldsData, setValue }) => {
-      const ComponentProp = component
-      return (
-        <ComponentProp
-          {...otherProps}
-          onClick={e => {
-            e.preventDefault()
-            if (formIsInvalid(fieldsData)) {
-              // Trigger valdiation check of all fields.
-              Object.keys(fieldsData).forEach(key => {
-                setValue(key, fieldsData[key].value, fieldsData[key].required, fieldsData[key].type)
-              })
-              toast.error(theme.textLabels.formInvalid)
-            } else {
-              callback && callback(getValues(fieldsData))
-              reset && setValue()
-            }
-          }}
-          disabled={loading}
-        >
-          {loading &&
-            <React.Fragment>
-              <ReactLoading
-                type='spinningBubbles'
-                width={18}
-                height={18}
-                color='#ffffff'
-              />&nbsp;
-            </React.Fragment>
-          }
-          {children}
-        </ComponentProp>
-      )
-    }}
-  </FormConsumer>
+}) => {
+  const Component = component
+  return (
+    <Component
+      {...otherProps}
+      onClick={e => submit(e, callback, reset)}
+      disabled={loading}
+    >
+      {loading &&
+        <React.Fragment>
+          <ReactLoading
+            type='spinningBubbles'
+            width={18}
+            height={18}
+            color='#ffffff'
+          />&nbsp;
+        </React.Fragment>
+      }
+      {children}
+    </Component>
+  )
+}
 
 FormButton.propTypes = {
   callback: PropTypes.func,
@@ -68,4 +53,4 @@ FormButton.defaultProps = {
   component: DefaultButton,
 }
 
-export default withTheme(FormButton)
+export default withSubmit(withTheme(FormButton))
