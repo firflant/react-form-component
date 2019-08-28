@@ -4,8 +4,7 @@
   "description": "Create React forms with a very minimalistic code, without having to write state management logic on your own.",
   "main": "lib/index.js",
   "scripts": {
-    "start": "webpack --mode development --watch",
-    "build": "webpack --mode production",
+    "build": "babel ./src -d ./lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,12 +31,12 @@
     "not op_mini all"
   ],
   "peerDependencies": {
-    "react": "^16.8.4"
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
   },
   "dependencies": {
     "bem-modifiers": "^1.0.7",
     "polished": "^3.0.3",
-    "react": "^16.8.4",
     "react-jss": "^8.6.1",
     "react-loading": "^2.0.3",
     "react-toastify": "^5.1.0",
@@ -46,6 +45,7 @@
     "webpack": "^4.29.6"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.3.4",
     "@babel/plugin-proposal-class-properties": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
@@ -62,7 +62,6 @@
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-standard": "^4.0.0",
     "file-loader": "^3.0.1",
-    "react-dom": "^16.8.4",
     "style-loader": "^0.23.1",
     "webpack-cli": "^3.2.3"
   }
