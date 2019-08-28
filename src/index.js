@@ -25,7 +25,7 @@ export { default as FormControlLogic } from './core/FormControlLogic'
 
 export { default as withFormControl } from './default/FormControl'
 export { default as FormActions } from './default/FormActions'
-export { default as FormButton } from './default/FormButton'
+export { default as FormButton } from './core/FormButton'
 export { default as DefaultButton } from './default/DefaultButton'
 export { default as FormRow } from './default/FormRow'
 
@@ -43,3 +43,4 @@ export { default as Select, selectTheme } from './default/Select'
 export { default as Switch, switchTheme } from './default/Switch'
 export { default as Switches } from './default/Switches'
 export { default as TextArea } from './default/TextArea'
+export { default as Loader } from './default/Loader'

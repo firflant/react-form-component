@@ -3,11 +3,12 @@ import withStyles from 'react-jss'
 import { lighten } from 'polished'
 
 
-const DefaultButton = ({ onClick, classes, children }) =>
+const DefaultButton = ({ onClick, classes, disabled, children }) =>
   <button
     type='button'
     className={classes.button}
     onClick={e => onClick(e)}
+    disabled={disabled}
   >{children}</button>
 
 export default withStyles(theme => ({
@@ -29,6 +30,10 @@ export default withStyles(theme => ({
     },
     '&:focus': {
       outline: 'none',
+    },
+    '&:disabled': {
+      opacity: 0.6,
+      pointerEvents: 'none',
     },
   },
 }))(DefaultButton)

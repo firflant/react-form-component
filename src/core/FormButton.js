@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactLoading from 'react-loading'
-import { withTheme } from 'react-jss'
-import DefaultButton from './DefaultButton'
-import withSubmit from '../core/withSubmit'
+import DefaultButton from '../default/DefaultButton'
+import withSubmit from './withSubmit'
+import Loader from '../default/Loader'
 
 
 /**
@@ -14,12 +13,13 @@ const FormButton = ({
   component,
   reset,
   loading,
-  theme,
+  loadingComponent,
   children,
   submit,
   ...otherProps
 }) => {
   const Component = component
+  const LoadingComponent = loadingComponent
   return (
     <Component
       {...otherProps}
@@ -28,12 +28,7 @@ const FormButton = ({
     >
       {loading &&
         <React.Fragment>
-          <ReactLoading
-            type='spinningBubbles'
-            width={18}
-            height={18}
-            color='#ffffff'
-          />&nbsp;
+          <LoadingComponent />&nbsp;
         </React.Fragment>
       }
       {children}
@@ -45,12 +40,14 @@ FormButton.propTypes = {
   callback: PropTypes.func,
   component: PropTypes.elementType,
   loading: PropTypes.bool,
+  loadingComponent: PropTypes.elementType,
   reset: PropTypes.bool,
   children: PropTypes.node.isRequired,
 }
 
 FormButton.defaultProps = {
   component: DefaultButton,
+  loadingComponent: Loader,
 }
 
-export default withSubmit(withTheme(FormButton))
+export default withSubmit(FormButton)
