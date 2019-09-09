@@ -76,6 +76,10 @@ const MultiImageUpload = ({
     </div>
   </div>
 
+MultiImageUpload.defaultProps = {
+  columns: 4,
+}
+
 export default withFormControl(withStyles(theme => ({
   root: {
     display: 'flex',
@@ -88,8 +92,8 @@ export default withFormControl(withStyles(theme => ({
     padding: 10,
     boxSizing: 'border-box',
     [breakpoint(theme.breakpoints.md)]: {
-      maxWidth: '25%',
-      minWidth: '25%',
+      maxWidth: props => `${100 / props.columns}%`,
+      minWidth: props => `${100 / props.columns}%`,
     },
   },
   imageWrapper: {
