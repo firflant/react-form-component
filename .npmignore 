@@ -4,3 +4,4 @@ node_modules
 .eslintrc
 .gitignore
 webpack.config.js
+screenshot.jpg
