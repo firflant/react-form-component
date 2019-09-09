@@ -6,13 +6,6 @@ import { lighten, darken } from 'polished'
 import { withFormControl, checkboxHandler, overlay, selectTheme } from '../.'
 
 
-const renderValueItem = (item, options) => {
-  const value = options.find(option => option.value === item)
-  return value
-    ? typeof value === 'string' ? value : value.label
-    : 'n/d'
-}
-
 class MultiSelect extends React.Component {
   state = {
     isOpen: false,
@@ -39,7 +32,12 @@ class MultiSelect extends React.Component {
             <span
               key={index}
               className={classes.value}
-            >{renderValueItem(item, options)}</span>
+            >
+              {typeof options[0] === 'string'
+                ? item
+                : options.filter(option => option.value === item)[0].label
+              }
+            </span>
           )
           : placeholder || (required ? 'Select' : 'All')}
         {isOpen &&
