@@ -3,5 +3,5 @@ node_modules
 .babelrc
 .eslintrc
 .gitignore
-webpack.config.js
+yarn-error.log
 screenshot.jpg
