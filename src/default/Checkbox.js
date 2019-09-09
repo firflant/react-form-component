@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
 import { withFormControl } from '../.'
+import { normalize } from 'path';
 
 
 const Checkbox = ({
@@ -39,25 +40,25 @@ Checkbox.propTypes = {
 
 export const checkboxTheme = theme => ({
   label: {
-    display: 'flex',
+    display: 'block',
     position: 'relative',
     textAlign: 'left',
-    alignItems: 'flex-start',
     cursor: 'pointer',
   },
   input: {
     margin: '0 10px 0 0',
     position: 'relative',
     outline: 'none',
-    transform: 'translateY(0.2em)',
+    transform: 'translateY(-5px)',
     minWidth: 18,
-    '-webkit-appearance': 'none',
+    // '-webkit-appearance': 'none',
     '&::before': {
       content: '""',
       display: 'block',
       position: 'absolute',
       width: 14,
       height: 14,
+      verticalAlign: 'baseline',
       top: 0,
       left: 0,
       backgroundColor: theme.colors.inputBg,
@@ -89,7 +90,7 @@ export const checkboxTheme = theme => ({
   },
   small: {
     fontSize: theme.typography.inputFontSize - 4,
-    lineHeight: '18px',
+    lineHeight: 18,
     '& $input': {
       transform: 'translateY(-2px)',
     },
