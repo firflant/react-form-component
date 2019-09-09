@@ -11,6 +11,10 @@ export function inputHeight(height) {
         lineHeight: `${height * 0.45}px`,
       },
     },
+    '& textarea.form-input': {
+      minHeight: height,
+      height: 'auto',
+    },
     '& .form-select:not([multiple])': {
       backgroundPosition: `calc(100% - 15px) ${height / 2 - 2}px, calc(100% - 10px) ${height / 2 - 2}px`,
     },

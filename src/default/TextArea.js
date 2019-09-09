@@ -41,8 +41,5 @@ TextArea.propTypes = {
 export default withFormControl(withStyles({
   textArea: {
     resize: 'vertical',
-    '&.form-input': {
-      height: 'auto',
-    },
   },
 })(TextArea))
