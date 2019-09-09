@@ -72,7 +72,9 @@ const withFormControl = InputComponent => {
               }
               <InputComponent {...inputProps} />
               {addon && <div className={classes.addon}>{addon}</div>}
-              {help && <span className={classes.help}>{fieldsDataHelp || help}</span>}
+              {(fieldsDataHelp || help) &&
+                <span className={classes.help}>{fieldsDataHelp || help}</span>
+              }
             </div>
           </FormControlLogic>
         )
