@@ -4,6 +4,7 @@ export default {
     inputWidth: '100%',
     inputGutterBottom: 30,
     inputSidePaddings: 10,
+    labelGutterBottom: 10,
     narrowInputWidth: 140,
     inlineLabelWidth: 130,
     borderRadius: 0,

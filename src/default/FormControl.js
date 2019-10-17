@@ -65,10 +65,11 @@ const withFormControl = InputComponent => {
                 [className]: className,
               })}
             >
-              {label && InputComponent.displayName &&
-                ['Checkbox', 'Checkboxes', 'Radio', 'Switch'].find(item => InputComponent.displayName.includes(item))
-                ? <span className={classes.label}>{label}</span>
-                : <label className={classes.label} htmlFor={name}>{label}</label>
+              {label && InputComponent.displayName
+                ? ['Checkbox', 'Checkboxes', 'Radio', 'Switch'].find(item => InputComponent.displayName.includes(item))
+                  ? <span className={classes.label}>{label}</span>
+                  : <label className={classes.label} htmlFor={name}>{label}</label>
+                : null
               }
               <InputComponent {...inputProps} />
               {addon && <div className={classes.addon}>{addon}</div>}
@@ -156,7 +157,7 @@ const withFormControl = InputComponent => {
     label: {
       display: 'block',
       margin: 0,
-      marginBottom: 10,
+      marginBottom: theme.sizes.labelGutterBottom,
       fontSize: theme.typography.labelFontSize,
       lineHeight: 'normal',
       textTransform: 'none',
