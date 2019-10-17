@@ -65,8 +65,8 @@ const withFormControl = InputComponent => {
                 [className]: className,
               })}
             >
-              {label && InputComponent.displayName
-                ? ['Checkbox', 'Checkboxes', 'Radio', 'Switch'].find(item => InputComponent.displayName.includes(item))
+              {label
+                ? InputComponent.displayName && ['Checkbox', 'Checkboxes', 'Radio', 'Switch'].find(item => InputComponent.displayName.includes(item))
                   ? <span className={classes.label}>{label}</span>
                   : <label className={classes.label} htmlFor={name}>{label}</label>
                 : null
