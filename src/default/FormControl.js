@@ -163,6 +163,7 @@ const withFormControl = InputComponent => {
       textTransform: 'none',
       textAlign: 'left',
       fontWeight: theme.typography.labelFontWeight,
+      color: theme.colors.label,
     },
     help: {
       position: 'absolute',
