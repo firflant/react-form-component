@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withTheme } from 'react-jss'
 import DefaultButton from '../default/DefaultButton'
 import withSubmit from './withSubmit'
 import Loader from '../default/Loader'
@@ -50,4 +51,4 @@ FormButton.defaultProps = {
   loadingComponent: Loader,
 }
 
-export default withSubmit(FormButton)
+export default withTheme(withSubmit(FormButton))

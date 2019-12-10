@@ -14,7 +14,7 @@ const withSubmit = Component => props =>
             Object.keys(fieldsData).forEach(key => {
               setValue(key, fieldsData[key].value, fieldsData[key].required, fieldsData[key].type)
             })
-            toast.error(theme.textLabels.formInvalid)
+            toast.error(props.theme.textLabels.formInvalid)
           } else {
             callback && callback(getValues(fieldsData))
             reset && setValue()

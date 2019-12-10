@@ -150,6 +150,7 @@ export function formIsInvalid(fieldsData, fieldKeys = []) {
   fieldsToCheck.forEach(key => {
     const { value, validation, required } = fieldsData[key]
     if (required && (
+      typeof value === 'undefined' ||
       (typeof value === 'string' && value === '') ||
       (Array.isArray(value) && value.length === 0) ||
       (typeof value === 'object' && !Array.isArray(value) && (value === null || !Object.keys(value).length))
