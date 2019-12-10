@@ -39,7 +39,7 @@ Select.propTypes = {
   setValue: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.shape({ label: PropTypes.string, value: PropTypes.string }),
+    PropTypes.shape({ label: PropTypes.node, value: PropTypes.string }),
   ])),
 }
 

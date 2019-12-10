@@ -85,7 +85,7 @@ class MultiFormInput extends React.Component {
 }
 
 MultiFormInput.propTypes = {
-  value: PropTypes.array,
+  value: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   form: PropTypes.elementType,
   moreLabel: PropTypes.string,
   moreComponent: PropTypes.elementType,
