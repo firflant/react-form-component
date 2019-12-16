@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
 import { withFormControl } from '../.'
-import { normalize } from 'path';
 
 
 const Checkbox = ({
