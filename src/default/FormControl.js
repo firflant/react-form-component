@@ -105,6 +105,7 @@ const withFormControl = InputComponent => {
           : {},
         boxSizing: 'border-box',
         fontSize: theme.typography.inputFontSize,
+        fontWeight: theme.typography.inputFontWeight,
         transition: 'all 200ms ease-in',
         backgroundColor: theme.colors.inputBg,
         paddingLeft: theme.sizes.inputSidePaddings,
@@ -177,7 +178,8 @@ const withFormControl = InputComponent => {
     addon: {
       position: 'absolute',
       bottom: 0,
-      right: 10,
+      right: !theme.sizes.moveAddonToLeft ? theme.sizes.addonSpacing : 'auto',
+      left: theme.sizes.moveAddonToLeft ? theme.sizes.addonSpacing : 'auto',
     },
 
     // Modifiers

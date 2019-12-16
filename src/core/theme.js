@@ -12,6 +12,8 @@ export default {
     formRowGutter: 50,
     formActionsDistance: 60,
     onlyBottomBorder: false,
+    moveAddonToLeft: false,
+    addonSpacing: 10,
   },
 
   colors: {
@@ -28,6 +30,7 @@ export default {
 
   typography: {
     inputFontSize: 16,
+    inputFontWeight: 'normal',
     labelFontSize: 14,
     labelFontWeight: 'normal',
     helpFontSize: 12,

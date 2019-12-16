@@ -1,6 +1,5 @@
 import React from 'react'
 import withStyles from 'react-jss'
-import './style.sass'
 
 
 const Combine = ({ classes, children }) =>
