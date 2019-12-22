@@ -27,22 +27,7 @@ Input.defaultProps = {
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf([
-    'text',
-    'email',
-    'password',
-    'url',
-    'tel',
-    'number',
-    'search',
-    'file',
-    'date',
-    'datetime-local',
-    'month',
-    'week',
-    'time',
-    'postcode',
-  ]),
+  type: PropTypes.string,
   value: PropTypes.any,
   placeholder: PropTypes.node,
   min: PropTypes.number,

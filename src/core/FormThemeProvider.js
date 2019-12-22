@@ -13,6 +13,7 @@ const FormThemeProvider = ({ theme, children }) =>
       typography: { ...defautTheme.typography, ...theme.typography },
       breakpoints: { ...defautTheme.breakpoints, ...theme.breakpoints },
       textLabels: { ...defautTheme.textLabels, ...theme.textLabels },
+      customValidationFunction: theme.customValidationFunction,
     }
     : defautTheme
   }>

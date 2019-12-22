@@ -4,7 +4,14 @@ import validator from 'validator'
 /**
  * Process data from given field and prepare it for a form mutation.
  */
-export function processField(name, value, required, options = {}, textLabels = {}) {
+export function processField(
+  name,
+  value,
+  required,
+  options = {},
+  textLabels = {},
+  customValidationFunction
+) {
   const { type = null, min = false } = options
 
   // If the value is an array, remove its empty values for safety.
@@ -14,7 +21,7 @@ export function processField(name, value, required, options = {}, textLabels = {
 
   let validation = null; let help = null
 
-  // VALIDATION - If any check will fail, raise error state and help message.
+  // VALIDATION - If any check will fail, raise error state and set help message.
   if (required && (!processedValue || processedValue.length === 0)) {
     // If the field is required and its value is empty, set an error. Otherwise
     // continue the validation.
@@ -60,6 +67,16 @@ export function processField(name, value, required, options = {}, textLabels = {
         break
 
       default:
+        // Handle custom validation function.
+        if (type && customValidationFunction) {
+          const error = customValidationFunction(value, type)
+          if (error) {
+            validation = 'error'
+            help = error
+            // TODO: Multilanguage support for error message.
+          }
+        }
+
         // Minimal length option support.
         if (min && processedValue.length < min) {
           validation = 'error'
