@@ -12,7 +12,7 @@ export function processField(
   textLabels = {},
   customValidationFunction
 ) {
-  const { type = null, min = false } = options
+  const { type, min, forcedErrorMessage } = options
 
   // If the value is an array, remove its empty values for safety.
   const processedValue = Array.isArray(value)
@@ -28,6 +28,19 @@ export function processField(
     validation = 'error'
     help = textLabels.requiredField
   } else if (processedValue && processedValue.length > 0) {
+
+    // Force error message if it is present and abandon further validation.
+    if (forcedErrorMessage) {
+      return {
+        [name]: {
+          value: processedValue,
+          validation: 'error',
+          required,
+          help: forcedErrorMessage,
+        },
+      }
+    }
+
     switch (type) {
       case 'email':
         if (!validator.isEmail(value)) {
