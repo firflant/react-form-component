@@ -44,7 +44,7 @@ class Form extends React.Component {
     }
   }
 
-  setValue(name, value, required, type = null, min = false) {
+  setValue(name, value, required, options) {
     const { fields, allRequired, callbackOnChange, theme } = this.props
 
     if (!name) {
@@ -57,7 +57,7 @@ class Form extends React.Component {
       this.setState(prevState => {
         const fieldsData = {
           ...prevState.fieldsData,
-          ...processField(name, value, required, type, theme.textLabels, min),
+          ...processField(name, value, required, options, theme.textLabels),
         }
         if (callbackOnChange) {
           // If callbackOnChange prop is present, run it on every form change,

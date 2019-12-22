@@ -11,8 +11,9 @@ const withSubmit = Component => props =>
           e.preventDefault()
           if (formIsInvalid(fieldsData)) {
             // Trigger valdiation check of all fields.
-            Object.keys(fieldsData).forEach(key => {
-              setValue(key, fieldsData[key].value, fieldsData[key].required, fieldsData[key].type)
+            Object.entries(fieldsData).forEach(([key, data]) => {
+              const { value, required, type } = data
+              setValue(key, value, required, { type })
             })
             toast.error(props.theme.textLabels.formInvalid)
           } else {

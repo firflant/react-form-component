@@ -32,7 +32,7 @@ const ImageUpload = ({
               type: fileType.split('/')[0],
               data,
               dataFile,
-            }, required, 'image')
+            }, required)
           }
         }}
       />

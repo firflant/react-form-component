@@ -17,7 +17,7 @@ const Input = ({
     name={name}
     type={type}
     placeholder={placeholder}
-    onChange={e => setValue(name, e.target.value, required, type, min)}
+    onChange={e => setValue(name, e.target.value, required, { type, min })}
     value={value}
   />
 

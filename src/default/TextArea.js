@@ -20,7 +20,7 @@ const TextArea = ({
     name={name}
     rows={rows}
     placeholder={placeholder}
-    onChange={e => setValue(name, e.target.value, required, null, min)}
+    onChange={e => setValue(name, e.target.value, required, { min })}
     value={value}
   />
 

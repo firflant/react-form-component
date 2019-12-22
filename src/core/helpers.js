@@ -4,7 +4,9 @@ import validator from 'validator'
 /**
  * Process data from given field and prepare it for a form mutation.
  */
-export function processField(name, value, required, type, textLabels = {}, minLength) {
+export function processField(name, value, required, options = {}, textLabels = {}) {
+  const { type = null, min = false } = options
+
   // If the value is an array, remove its empty values for safety.
   const processedValue = Array.isArray(value)
     ? value.filter(item => Number.isInteger(item) || item instanceof Object || item.length)
@@ -59,9 +61,9 @@ export function processField(name, value, required, type, textLabels = {}, minLe
 
       default:
         // Minimal length option support.
-        if (minLength && processedValue.length < minLength) {
+        if (min && processedValue.length < min) {
           validation = 'error'
-          help = textLabels.minChars.replace(':length:', minLength)
+          help = textLabels.minChars.replace(':length:', min)
         }
         break
     }

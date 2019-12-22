@@ -7,16 +7,16 @@ class FormControlLogic extends React.Component {
     // If default field value has changed, change the current value.
     if ((this.props.initialValue && this.props.initialValue !== prevProps.initialValue) ||
     (prevProps.initialValue && !this.props.initialValue)) {
-      const { name, initialValue, required, type, setValue } = this.props
-      setValue(name, initialValue, required, type)
+      const { name, initialValue, required, setValue } = this.props
+      setValue(name, initialValue, required)
     }
   }
 
   componentDidMount() {
     // Appply default field value.
     if (this.props.initialValue) {
-      const { name, initialValue, required, type, setValue } = this.props
-      setValue(name, initialValue, required, type)
+      const { name, initialValue, required, setValue } = this.props
+      setValue(name, initialValue, required)
     }
   }
 
