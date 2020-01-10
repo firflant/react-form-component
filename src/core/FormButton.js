@@ -19,8 +19,8 @@ const FormButton = ({
   submit,
   ...otherProps
 }) => {
-  const Component = component
-  const LoadingComponent = loadingComponent
+  const Component = component || DefaultButton
+  const LoadingComponent = loadingComponent || Loader
   return (
     <Component
       {...otherProps}
@@ -44,11 +44,6 @@ FormButton.propTypes = {
   loadingComponent: PropTypes.elementType,
   reset: PropTypes.bool,
   children: PropTypes.node.isRequired,
-}
-
-FormButton.defaultProps = {
-  component: DefaultButton,
-  loadingComponent: Loader,
 }
 
 export default withTheme(withSubmit(FormButton))
