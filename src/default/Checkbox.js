@@ -50,7 +50,6 @@ export const checkboxTheme = theme => ({
     outline: 'none',
     transform: 'translateY(-5px)',
     minWidth: 18,
-    // '-webkit-appearance': 'none',
     '&::before': {
       content: '""',
       display: 'block',
@@ -60,7 +59,7 @@ export const checkboxTheme = theme => ({
       verticalAlign: 'baseline',
       top: 0,
       left: 0,
-      backgroundColor: theme.colors.inputBg,
+      backgroundColor: theme.colors.inputBg !== 'transparent' ? theme.colors.inputBg : 'white',
       cursor: 'pointer',
       border: `2px solid ${theme.colors.inputBorder}`,
       borderRadius: 2,

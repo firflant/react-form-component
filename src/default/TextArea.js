@@ -40,6 +40,7 @@ TextArea.propTypes = {
 
 export default withFormControl(withStyles({
   textArea: {
+    display: 'block',
     resize: 'vertical',
   },
 })(TextArea))
