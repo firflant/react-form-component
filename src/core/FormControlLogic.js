@@ -29,7 +29,6 @@ FormControlLogic.propTypes = {
   name: PropTypes.string.isRequired,
   initialValue: PropTypes.any,
   required: PropTypes.bool,
-  type: PropTypes.string,
   setValue: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 }

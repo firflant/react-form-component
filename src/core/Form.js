@@ -72,7 +72,7 @@ class Form extends React.Component {
           const formIsInitiated = Object.entries(prevState.fieldsData)
             .every(item => typeof item[1].value === 'undefined')
           if (!formIsInitiated) {
-            this.callbackOnChangeThrottled(getValues(fieldsData))
+            this.callbackOnChangeThrottled(getValues(fieldsData), name)
           }
         }
         return { fieldsData }
