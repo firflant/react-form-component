@@ -45,7 +45,7 @@ class Form extends React.Component {
   }
 
   setValue(name, value, required, options) {
-    const { fields, allRequired, callbackOnChange, theme } = this.props
+    const { fields, allRequired, callbackOnChange, isMultiFormInput, theme } = this.props
 
     if (!name) {
       // If no field name is provided, reset whole form
@@ -68,10 +68,11 @@ class Form extends React.Component {
         }
         if (callbackOnChange) {
           // If callbackOnChange prop is present, run it on every form change,
-          // except the initial load.
+          // except the initial load. When isMultiFormInput prop is present,
+          // run it also on Initial load.
           const formIsInitiated = Object.entries(prevState.fieldsData)
             .every(item => typeof item[1].value === 'undefined')
-          if (!formIsInitiated) {
+          if (!formIsInitiated || isMultiFormInput) {
             this.callbackOnChangeThrottled(getValues(fieldsData), name)
           }
         }
@@ -89,15 +90,16 @@ class Form extends React.Component {
   }
 
   render() {
-    const { className, classes, component: ComponentProp } = this.props
+    const { className, classes, component, isMultiFormInput } = this.props
+    const Component = isMultiFormInput ? 'div' : component
     return (
-      <ComponentProp className={classNames(classes.form, { [className]: className })}>
+      <Component className={classNames(classes.form, { [className]: className })}>
         <FieldsContext.Provider value={this.state.fieldsData}>
           <SetValueContext.Provider value={this.setValue.bind(this)}>
             {this.props.children}
           </SetValueContext.Provider>
         </FieldsContext.Provider>
-      </ComponentProp>
+      </Component>
     )
   }
 }
@@ -109,6 +111,7 @@ Form.propTypes = {
   component: PropTypes.string,
   children: PropTypes.node.isRequired,
   callbackOnChange: PropTypes.func,
+  isMultiFormInput: PropTypes.bool,
 }
 
 Form.defaultProps = {
