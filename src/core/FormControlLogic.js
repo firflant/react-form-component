@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 class FormControlLogic extends React.Component {
   componentDidUpdate(prevProps) {
     // If default field value has changed, change the current value.
-    if ((this.props.initialValue && this.props.initialValue !== prevProps.initialValue) ||
+    if (((this.props.initialValue || this.props.initialValue === '') && this.props.initialValue !== prevProps.initialValue) ||
     (prevProps.initialValue && !this.props.initialValue)) {
       const { name, initialValue, required, setValue } = this.props
       setValue(name, initialValue, required)
