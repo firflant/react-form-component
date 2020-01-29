@@ -98,7 +98,7 @@ export default withFormControl(withStyles(theme => ({
     right: -2,
     height: theme.sizes.inputHeight * 5,
     border: `1px solid ${theme.colors.inputBorder}`,
-    backgroundColor: theme.colors.inputBg,
+    backgroundColor: 'white',
     zIndex: 101,
     overflowY: 'scroll',
   },
