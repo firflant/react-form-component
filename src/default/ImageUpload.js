@@ -94,7 +94,7 @@ export default withFormControl(withStyles(theme => ({
   },
   delete: {
     backgroundColor: theme.colors.accent,
-    color: theme.colors.inputBg,
+    color: theme.colors.inputBg !== 'transparent' ? theme.colors.inputBg : 'white',
     fontSize: theme.typography.labelFontSize,
     lineHeight: 'normal',
     padding: '5px 8px',
