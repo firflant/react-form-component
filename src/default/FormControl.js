@@ -124,8 +124,11 @@ const withFormControl = InputComponent => {
         },
       },
       '& textarea ~ $addon': {
-        top: Math.floor(theme.typography.labelFontSize * 1.4 + theme.sizes.labelGutterBottom),
+        top: 0,
         bottom: 'auto',
+      },
+      '& $label ~ textarea ~ $addon': {
+        top: Math.floor(theme.typography.labelFontSize * 1.4 + theme.sizes.labelGutterBottom),
       },
 
       // States
@@ -187,6 +190,18 @@ const withFormControl = InputComponent => {
     },
 
     // Modifiers
+    large: {
+      ...inputHeight(theme.sizes.inputHeight + 4),
+      '& $label': {
+        marginBottom: 2,
+      },
+      '& + &': {
+        marginTop: -theme.sizes.inputGutterBottom + 14,
+      },
+      '& $label ~ textarea ~ $addon': {
+        top: Math.floor(theme.typography.labelFontSize * 1.4 + 2),
+      },
+    },
     inlineLabel: {
       [breakpoint(theme.breakpoints.sm)]: {
         display: 'flex',
@@ -211,7 +226,7 @@ const withFormControl = InputComponent => {
           left: theme.sizes.inlineLabelWidth + 10,
         },
       },
-      '& textarea ~ $addon': {
+      '& $label ~ textarea ~ $addon': {
         [breakpoint(theme.breakpoints.sm)]: {
           top: 0,
         },
@@ -233,18 +248,6 @@ const withFormControl = InputComponent => {
         [breakpoint(theme.breakpoints.sm)]: {
           maxWidth: theme.sizes.narrowInputWidth,
         },
-      },
-    },
-    large: {
-      ...inputHeight(theme.sizes.inputHeight + 4),
-      '& $label': {
-        marginBottom: 2,
-      },
-      '& + &': {
-        marginTop: -theme.sizes.inputGutterBottom + 14,
-      },
-      '& textarea ~ $addon': {
-        top: Math.floor(theme.typography.labelFontSize * 1.4 + 2),
       },
     },
     noBottomGutter: {
