@@ -123,6 +123,10 @@ const withFormControl = InputComponent => {
           '-webkit-appearance': 'none',
         },
       },
+      '& textarea ~ $addon': {
+        top: Math.floor(theme.typography.labelFontSize * 1.4 + theme.sizes.labelGutterBottom),
+        bottom: 'auto',
+      },
 
       // States
       '& .form-input:focus': {
@@ -207,6 +211,11 @@ const withFormControl = InputComponent => {
           left: theme.sizes.inlineLabelWidth + 10,
         },
       },
+      '& textarea ~ $addon': {
+        [breakpoint(theme.breakpoints.sm)]: {
+          top: 0,
+        },
+      },
     },
     inline: {
       width: '100%',
@@ -233,6 +242,9 @@ const withFormControl = InputComponent => {
       },
       '& + &': {
         marginTop: -theme.sizes.inputGutterBottom + 14,
+      },
+      '& textarea ~ $addon': {
+        top: Math.floor(theme.typography.labelFontSize * 1.4 + 2),
       },
     },
     noBottomGutter: {
