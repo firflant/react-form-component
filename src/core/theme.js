@@ -54,4 +54,9 @@ export default {
     postCodeInvalid: 'This is not a valid postal code.',
     jsonInvalid: 'Enter a valid JSON.',
   },
+
+  toastContainerProps: {
+    hideProgressBar: true,
+    autoClose: 5000,
+  },
 }
