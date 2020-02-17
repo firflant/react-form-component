@@ -5,22 +5,30 @@ import defautTheme from './theme'
 import 'react-toastify/dist/ReactToastify.css'
 
 
-const FormThemeProvider = ({ theme, children }) =>
-  <ThemeProvider theme={theme
-    ? {
-      sizes: { ...defautTheme.sizes, ...theme.sizes },
-      colors: { ...defautTheme.colors, ...theme.colors },
-      typography: { ...defautTheme.typography, ...theme.typography },
-      breakpoints: { ...defautTheme.breakpoints, ...theme.breakpoints },
-      textLabels: { ...defautTheme.textLabels, ...theme.textLabels },
-      customValidationFunction: theme.customValidationFunction,
-    }
-    : defautTheme
-  }>
-    <React.Fragment>
-      {children}
-      <ToastContainer hideProgressBar autoClose={5000} />
-    </React.Fragment>
-  </ThemeProvider>
+const FormThemeProvider = ({ theme, children }) => {
+  return (
+    <ThemeProvider theme={outerTheme => {
+      if (outerTheme) {
+        setIsRoot(true)
+      }
+      const parentTheme = outerTheme || defautTheme
+      const currentTheme = {
+        sizes: { ...parentTheme.sizes, ...theme.sizes },
+        colors: { ...parentTheme.colors, ...theme.colors },
+        typography: { ...parentTheme.typography, ...theme.typography },
+        breakpoints: { ...parentTheme.breakpoints, ...theme.breakpoints },
+        textLabels: { ...parentTheme.textLabels, ...theme.textLabels },
+        ...parentTheme.customValidationFunction,
+        ...theme.customValidationFunction,
+      }
+      return currentTheme
+    }}>
+      <React.Fragment>
+        {children}
+        <ToastContainer hideProgressBar autoClose={5000} />
+      </React.Fragment>
+    </ThemeProvider>
+  )
+}
 
 export default FormThemeProvider
