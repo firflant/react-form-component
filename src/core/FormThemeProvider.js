@@ -6,9 +6,10 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 const FormThemeProvider = ({ theme, children }) => {
+  const [isRoot, setIsRoot] = React.useState(false)
   return (
     <ThemeProvider theme={outerTheme => {
-      if (outerTheme) {
+      if (!outerTheme && !isRoot) {
         setIsRoot(true)
       }
       const parentTheme = outerTheme || defautTheme
@@ -25,7 +26,7 @@ const FormThemeProvider = ({ theme, children }) => {
     }}>
       <React.Fragment>
         {children}
-        <ToastContainer hideProgressBar autoClose={5000} />
+        {isRoot && <ToastContainer hideProgressBar autoClose={5000} />}
       </React.Fragment>
     </ThemeProvider>
   )
