@@ -11,31 +11,22 @@ import Loader from '../default/Loader'
  */
 const FormButton = ({
   callback,
-  component,
+  component: Component,
   reset,
   loading,
-  loadingComponent,
+  loadingComponent: LoadingComponent,
   children,
   submit,
   ...otherProps
-}) => {
-  const Component = component || DefaultButton
-  const LoadingComponent = loadingComponent || Loader
-  return (
-    <Component
-      {...otherProps}
-      onClick={e => submit(e, callback, reset)}
-      disabled={loading}
-    >
-      {loading &&
-        <React.Fragment>
-          <LoadingComponent />&nbsp;
-        </React.Fragment>
-      }
-      {children}
-    </Component>
-  )
-}
+}) =>
+  <Component
+    {...otherProps}
+    onClick={e => submit(e, callback, reset)}
+    disabled={loading}
+  >
+    {loading && <><LoadingComponent />&nbsp;</>}
+    {children}
+  </Component>
 
 FormButton.propTypes = {
   callback: PropTypes.func,
@@ -44,6 +35,11 @@ FormButton.propTypes = {
   loadingComponent: PropTypes.elementType,
   reset: PropTypes.bool,
   children: PropTypes.node.isRequired,
+}
+
+FormButton.defaultProps = {
+  component: DefaultButton,
+  loadingComponent: Loader,
 }
 
 export default withTheme(withSubmit(FormButton))
