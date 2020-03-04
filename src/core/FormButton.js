@@ -30,9 +30,7 @@ const FormButton = ({
 
 FormButton.propTypes = {
   callback: PropTypes.func,
-  component: PropTypes.elementType,
   loading: PropTypes.bool,
-  loadingComponent: PropTypes.elementType,
   reset: PropTypes.bool,
   children: PropTypes.node.isRequired,
 }
