@@ -9,6 +9,7 @@ const Input = ({
   value,
   placeholder,
   min,
+  accept,
   required,
   setValue,
 }) =>
@@ -17,8 +18,27 @@ const Input = ({
     name={name}
     type={type}
     placeholder={placeholder}
-    onChange={e => setValue(name, e.target.value, required, { type, min })}
-    value={value}
+    onChange={e => {
+      if (type === 'file') {
+        const fileReader = new FileReader()
+        const { name: fileName, type: fileType } = e.target.files[0]
+        const dataFile = e.target.files[0]
+        fileReader.readAsDataURL(e.target.files[0])
+        fileReader.onload = () => {
+          const data = fileReader.result
+          setValue(name, {
+            name: fileName,
+            type: fileType.split('/')[0],
+            data,
+            dataFile,
+          }, required)
+        }
+      } else {
+        setValue(name, e.target.value, required, { type, min })
+      }
+    }}
+    accept={accept}
+    value={type !== 'file' ? value : undefined}
   />
 
 Input.defaultProps = {
