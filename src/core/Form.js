@@ -38,14 +38,14 @@ class Form extends React.Component {
   constructor(props) {
     super(props)
     const requiredFields = props.allRequired ? props.fields : props.required
-    this.callbackOnChangeThrottled = debounce(500, props.callbackOnChange)
+    this.onChangeThrottled = debounce(500, props.onChange)
     this.state = {
       fieldsData: initiateFormFields(props.fields, requiredFields),
     }
   }
 
   setValue(name, value, required, options) {
-    const { fields, allRequired, callbackOnChange, isMultiFormInput, theme } = this.props
+    const { fields, allRequired, onChange, runOnChangeInitially, theme } = this.props
 
     if (!name) {
       // If no field name is provided, reset whole form
@@ -66,14 +66,14 @@ class Form extends React.Component {
             theme.customValidationFunction
           ),
         }
-        if (callbackOnChange) {
-          // If callbackOnChange prop is present, run it on every form change,
-          // except the initial load. When isMultiFormInput prop is present,
+        if (onChange) {
+          // If onChange prop is present, run it on every form change,
+          // except the initial load. When runOnChangeInitially prop is present,
           // run it also on Initial load.
           const formIsInitiated = Object.entries(prevState.fieldsData)
             .every(item => typeof item[1].value === 'undefined')
-          if (!formIsInitiated || isMultiFormInput) {
-            this.callbackOnChangeThrottled(getValues(fieldsData), name)
+          if (!formIsInitiated || runOnChangeInitially) {
+            this.onChangeThrottled(getValues(fieldsData), name)
           }
         }
         return { fieldsData }
@@ -90,8 +90,9 @@ class Form extends React.Component {
   }
 
   render() {
-    const { className, classes, component, isMultiFormInput } = this.props
-    const Component = isMultiFormInput ? 'div' : component
+    const { className, classes, component, runOnChangeInitially } = this.props
+    // Prevent puting <form> tag into a <form> tag when using form in mutlivalue inputs.
+    const Component = runOnChangeInitially ? 'div' : component
     return (
       <Component className={classNames(classes.form, { [className]: className })}>
         <FieldsContext.Provider value={this.state.fieldsData}>
@@ -110,8 +111,8 @@ Form.propTypes = {
   allRequired: PropTypes.bool,
   component: PropTypes.string,
   children: PropTypes.node.isRequired,
-  callbackOnChange: PropTypes.func,
-  isMultiFormInput: PropTypes.bool,
+  onChange: PropTypes.func,
+  runOnChangeInitially: PropTypes.bool,
 }
 
 Form.defaultProps = {

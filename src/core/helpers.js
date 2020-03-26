@@ -122,7 +122,7 @@ export function processField(
 export function initiateFormFields(fieldNames = [], required = []) {
   let valueUndefined
   // Value undefined acts as a flag saying that field is only initiated, untouch.
-  // It becomes defined after first change. It is being used by the callbackOnChange prop.
+  // It becomes defined after first change. It is being used by the onChange Form prop.
   // TODO: Consider adding additional property called `untouch`.
   return fieldNames.reduce((acc, field) => (
     { ...acc,
