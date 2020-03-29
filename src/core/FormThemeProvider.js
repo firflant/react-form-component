@@ -5,7 +5,7 @@ import defautTheme from './theme'
 import 'react-toastify/dist/ReactToastify.css'
 
 
-const FormThemeProvider = ({ theme, children }) => {
+const FormThemeProvider = ({ theme, children, noToastContainer }) => {
   const [isRoot, setIsRoot] = React.useState(false)
   const [currentTheme, setCurrentTheme] = React.useState()
   const [toastContainerProps, setToastContainerProps] = React.useState({})
@@ -22,12 +22,14 @@ const FormThemeProvider = ({ theme, children }) => {
       typography: { ...parentTheme.typography, ...theme.typography },
       breakpoints: { ...parentTheme.breakpoints, ...theme.breakpoints },
       textLabels: { ...parentTheme.textLabels, ...theme.textLabels },
-      toastContainerProps: { ...parentTheme.toastContainerProps, ...theme.toastContainerProps },
+      ...noToastContainer ? {} : { toastContainerProps: {
+        ...parentTheme.toastContainerProps, ...theme.toastContainerProps,
+      } },
       ...parentTheme.customValidationFunction,
       ...theme.customValidationFunction,
     }
     setCurrentTheme(parsedTheme)
-    setToastContainerProps(parsedTheme.toastContainerProps)
+    !noToastContainer && setToastContainerProps(parsedTheme.toastContainerProps)
   }, [])
 
   return (
@@ -35,7 +37,9 @@ const FormThemeProvider = ({ theme, children }) => {
       ? <ThemeProvider theme={currentTheme}>
         <React.Fragment>
           {children}
-          {isRoot && toastContainerProps && <ToastContainer {...toastContainerProps} />}
+          {isRoot && !noToastContainer && toastContainerProps &&
+            <ToastContainer {...toastContainerProps} />
+          }
         </React.Fragment>
       </ThemeProvider>
       : null
