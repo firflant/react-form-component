@@ -24,6 +24,7 @@ export { default as withSubmit } from './core/withSubmit'
 export { default as FormControlLogic } from './core/FormControlLogic'
 
 export { default as withFormControl } from './default/FormControl'
+export { default as defautTheme } from './core/theme'
 export { default as FormActions } from './default/FormActions'
 export { default as FormButton } from './core/FormButton'
 export { default as DefaultButton } from './default/DefaultButton'
