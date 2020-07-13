@@ -35,7 +35,6 @@
     "react-dom": "^16.8.4"
   },
   "dependencies": {
-    "bem-modifiers": "^1.0.7",
     "polished": "^3.0.3",
     "react-jss": "^10.0.3",
     "react-loading": "^2.0.3",
