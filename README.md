@@ -78,16 +78,18 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 
 * Built in form state management
 * Wide range of UI form components
-* Built in form validation system
+* Built in, customizable form validation system
 * Customizable theme and text labels
 * Required or optional fields
 * *Loading* state support for asynchronous operations
-* Submit action triggered by a submit button or by each change with debounce
+* Submit action triggered by a submit button or on each change with debounce
 * Ability to reset all fields after successful submit ([show docs](https://github.com/frontcraft/react-standalone-form/wiki/Components-API#FormButton))
 * Data collected from forms is well formatted for API calls
-* Multiple forms support (being able to put a form into a form as a field group)
+* Nested forms (possibility to put a form into a form as a field group)
+* Build in notification plugin that can be repalced easly.
 * Cross browser tested
-* Easy way to create custom own inputs
+* Easy way of creating custom inputs
+
 
 ## Docs
 
