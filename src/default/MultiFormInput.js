@@ -43,9 +43,11 @@ class MultiFormInput extends React.Component {
   render() {
     const {
       form: FormComponentProp,
+      formProps,
       moreComponent: MoreComponentProp,
       moreLabel,
       moreComponentProps,
+      deleteIcon,
       classes,
     } = this.props
     const { value, cachedValue } = this.state
@@ -61,6 +63,7 @@ class MultiFormInput extends React.Component {
                     index !== subIndex ? item : updatedFields
                   ),
                 }))}
+                {...formProps}
               />
               <button
                 className={classes.delete}
@@ -68,7 +71,7 @@ class MultiFormInput extends React.Component {
                   value: prevState.value.filter((item, prevIndex) => prevIndex !== index),
                 }))}
                 title='Delete'
-              >X</button>
+              >{deleteIcon}</button>
             </div>
           )
           : null
@@ -87,14 +90,17 @@ class MultiFormInput extends React.Component {
 MultiFormInput.propTypes = {
   value: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   form: PropTypes.elementType,
+  formProps: PropTypes.object,
   moreLabel: PropTypes.string,
   moreComponent: PropTypes.elementType,
   moreComponentProps: PropTypes.object,
+  deleteIcon: PropTypes.node,
 }
 
 MultiFormInput.defaultProps = {
   moreLabel: 'Add more',
   moreComponent: DefaultButton,
+  deleteIcon: 'X',
 }
 
 export default withFormControl(withStyles(theme => ({
