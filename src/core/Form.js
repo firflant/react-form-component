@@ -38,7 +38,7 @@ class Form extends React.Component {
   constructor(props) {
     super(props)
     const requiredFields = props.allRequired ? props.fields : props.required
-    this.onChangeThrottled = debounce(500, (values, name) => { props.onChange(values, name) })
+    this.onChangeThrottled = debounce(500, props.onChange)
     this.state = {
       fieldsData: initiateFormFields(props.fields, requiredFields),
     }

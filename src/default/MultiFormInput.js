@@ -63,6 +63,7 @@ class MultiFormInput extends React.Component {
                     index !== subIndex ? item : updatedFields
                   ),
                 }))}
+                value={value}
                 {...formProps}
               />
               <button
