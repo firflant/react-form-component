@@ -28,17 +28,19 @@ class MultiSelect extends React.Component {
           if (!isOpen) { return this.setState({ isOpen: true }) }
         }}
       >{value && value.length
-          ? value.map((item, index) =>
-            <span
-              key={index}
-              className={classes.value}
-            >
-              {typeof options[0] === 'string'
-                ? item
-                : options.filter(option => option.value === item)[0].label
-              }
-            </span>
-          )
+          ? <div className={classes.values}>
+            {value.map((item, index) =>
+              <span
+                key={index}
+                className={classes.value}
+              >
+                {typeof options[0] === 'string'
+                  ? item
+                  : options.filter(option => option.value === item)[0].label
+                }
+              </span>
+            )}
+          </div>
           : placeholder || (required ? 'Select' : 'All')}
         {isOpen &&
           <React.Fragment>
@@ -81,15 +83,18 @@ export default withFormControl(withStyles(theme => ({
   ...selectTheme(theme),
   multiSelect: {
     position: 'relative',
-    whiteSpace: 'nowrap',
+    height: 'auto !important',
+  },
+  values: {
+    margin: -3,
   },
   value: {
-    padding: '3px 5px',
+    padding: '0 5px',
     backgroundColor: theme.colors.fill,
     borderRadius: 3,
-    '& + &': {
-      marginLeft: 5,
-    },
+    whiteSpace: 'nowrap',
+    display: 'inline-block',
+    margin: 3,
   },
   options: {
     position: 'absolute',
