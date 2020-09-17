@@ -34,7 +34,7 @@ class MultiSelect extends React.Component {
                 key={index}
                 className={classes.value}
               >
-                {typeof options[0] === 'string'
+                {typeof item === 'string'
                   ? item
                   : options.filter(option => option.value === item)[0].label
                 }
