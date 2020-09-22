@@ -26,7 +26,7 @@ class MultiSelect extends React.Component {
         className={classNames(classes.select, classes.multiSelect, 'form-input form-select')}
         onClick={() => !isOpen && this.setState({ isOpen: true })}
       >
-        {value?.length && options?.length
+        {value && value.length && options && options.length
           ? <div className={classes.values}>
             {value.map((item, index) => {
               const selectedOption = options.find(option => option.value === item)
