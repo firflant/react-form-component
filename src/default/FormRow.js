@@ -1,11 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
+import classNames from 'classnames'
 import { breakpoint } from '../.'
 
 
-const FormRow = ({ children, mobile, classes }) =>
-  <div className={mobile ? classes.formRowMobile : classes.formRow}>
+const FormRow = ({ children, mobile, classes, className }) =>
+  <div className={classNames({
+    [classes.formRow]: !mobile,
+    [classes.formRowMobile]: mobile,
+    [classes.noBottomGutter]: noBottomGutter,
+    [className]: className,
+  })}>
     {children}
   </div>
 
@@ -14,7 +20,7 @@ FormRow.propTypes = {
 }
 
 export default withStyles(theme => {
-  const styling = {
+  const commonStyling = {
     display: 'flex',
     alignItems: 'flex-end',
     marginBottom: theme.sizes.inputGutterBottom,
@@ -27,8 +33,11 @@ export default withStyles(theme => {
   }
   return {
     formRow: {
-      [breakpoint(theme.breakpoints.sm)]: styling,
+      [breakpoint(theme.breakpoints.sm)]: commonStyling,
     },
-    formRowMobile: styling,
+    formRowMobile: commonStyling,
+    noBottomGutter: {
+      marginBottom: 0,
+    },
   }
 })(FormRow)
