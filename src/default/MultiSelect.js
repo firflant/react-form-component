@@ -24,24 +24,25 @@ class MultiSelect extends React.Component {
     return (
       <div
         className={classNames(classes.select, classes.multiSelect, 'form-input form-select')}
-        onClick={() => {
-          if (!isOpen) { return this.setState({ isOpen: true }) }
-        }}
-      >{value && value.length
+        onClick={() => !isOpen && this.setState({ isOpen: true })}
+      >
+        {value?.length && options?.length
           ? <div className={classes.values}>
-            {value.map((item, index) =>
-              <span
+            {value.map((item, index) => {
+              const selectedOption = options.find(option => option.value === item)
+              return <span
                 key={index}
                 className={classes.value}
               >
-                {typeof item === 'string'
+                {typeof selectedOption === 'string'
                   ? item
-                  : options.filter(option => option.value === item)[0].label
+                  : selectedOption.label
                 }
               </span>
-            )}
+            })}
           </div>
-          : placeholder || (required ? 'Select' : 'All')}
+          : placeholder || (required ? 'Select' : 'All')
+        }
         {isOpen &&
           <React.Fragment>
             <div
