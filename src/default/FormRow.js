@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { breakpoint } from '../.'
 
 
-const FormRow = ({ children, mobile, classes, className }) =>
+const FormRow = ({ children, mobile, classes, className, noBottomGutter }) =>
   <div className={classNames({
     [classes.formRow]: !mobile,
     [classes.formRowMobile]: mobile,
