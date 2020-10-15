@@ -15,6 +15,7 @@ const FormButton = ({
   reset,
   loading,
   loadingComponent: LoadingComponent,
+  suppressErrorMessage,
   children,
   submit,
   ...otherProps
@@ -32,6 +33,7 @@ FormButton.propTypes = {
   callback: PropTypes.func,
   loading: PropTypes.bool,
   reset: PropTypes.bool,
+  suppressErrorMessage: PropTypes.bool,
   children: PropTypes.node.isRequired,
 }
 
