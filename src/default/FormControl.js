@@ -244,10 +244,8 @@ const withFormControl = InputComponent => {
       },
     },
     narrow: {
-      '& .form-input, & $help': {
-        [breakpoint(theme.breakpoints.sm)]: {
-          maxWidth: theme.sizes.narrowInputWidth,
-        },
+      [breakpoint(theme.breakpoints.sm)]: {
+        maxWidth: theme.sizes.narrowInputWidth,
       },
     },
     noBottomGutter: {
