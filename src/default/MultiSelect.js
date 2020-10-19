@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from 'react-jss'
 import classNames from 'classnames'
-import { lighten, darken } from 'polished'
 import { withFormControl, checkboxHandler, overlay, selectTheme } from '../.'
 
 
@@ -58,7 +57,14 @@ class MultiSelect extends React.Component {
                   key={index}
                   className={classNames(classes.option, { [classes.isChecked]: checked })}
                   onClick={() => setValue(name, checkboxHandler(!checked, optionValue, value), required)}
-                >{optionLabel}{checked && <span className={classes.sign}>✓</span>}</div>
+                >
+                  {optionLabel}{checked &&
+                    <>
+                      <span className={classes.check}>✓</span>
+                      <span className={classes.close}>✗</span>
+                    </>
+                  }
+                </div>
               })}
             </div>
           </React.Fragment>
@@ -110,21 +116,32 @@ export default withFormControl(withStyles(theme => ({
   },
   option: {
     padding: '3px 5px',
+    marginBottom: 1,
     cursor: 'pointer',
     display: 'flex',
     justifyContent: 'space-between',
     '&:hover': {
-      backgroundColor: lighten(0.05, theme.colors.inputBorder),
+      backgroundColor: 'rgba(0,0,0,0.04)',
     },
   },
   isChecked: {
-    backgroundColor: theme.colors.fill,
-    '&:hover': {
-      backgroundColor: darken(0.03, theme.colors.fill),
+    backgroundColor: 'rgba(0,0,0,0.12)',
+    '&:hover ': {
+      backgroundColor: 'rgba(0,0,0,0.08)',
+      '& $check': {
+        display: 'none',
+      },
+      '& $close': {
+        display: 'inline',
+      },
     },
   },
-  sign: {
-    color: darken(0.05, theme.colors.inputBorder),
+  check: {
+    color: 'rgba(0,0,0,0.12)',
+  },
+  close: {
+    display: 'none',
+    color: 'rgba(0,0,0,0.2)',
   },
   overlay: {
     ...overlay(),
