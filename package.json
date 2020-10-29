@@ -1,6 +1,6 @@
 {
   "name": "react-standalone-form",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Create React forms with a very minimalistic code, without having to write state management logic on your own.",
   "main": "lib/index.js",
   "scripts": {
