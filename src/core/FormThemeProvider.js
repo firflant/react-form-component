@@ -30,8 +30,7 @@ const FormThemeProvider = ({ theme, children }) => {
       ...usesToastifyPlugin ? { toastContainerProps: {
         ...parentTheme.toastContainerProps, ...theme.toastContainerProps,
       } } : {},
-      ...parentTheme.customValidationFunction,
-      ...theme.customValidationFunction,
+      customValidationFunction: parentTheme.customValidationFunction || theme.customValidationFunction,
     }
     setCurrentTheme(parsedTheme)
     if (usesToastifyPlugin) {
