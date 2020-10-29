@@ -16,7 +16,9 @@ const Input = ({
   <input
     className='form-input'
     name={name}
-    type={type}
+    type={type === 'password-novalidation' ? 'password' : type}
+    // This allows to add a custom validation rule for password field, while still
+    // being able to skip the check where it is not neccessary, eg. on login forms.
     placeholder={placeholder}
     onChange={e => {
       if (type === 'file') {
