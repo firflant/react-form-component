@@ -12,7 +12,7 @@ const Input = ({
   accept,
   required,
   setValue,
-  otherProps,
+  ...otherProps
 }) =>
   <input
     className='form-input'
