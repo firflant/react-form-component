@@ -12,6 +12,7 @@ const Input = ({
   accept,
   required,
   setValue,
+  otherProps,
 }) =>
   <input
     className='form-input'
@@ -41,6 +42,7 @@ const Input = ({
     }}
     accept={accept}
     value={type !== 'file' ? value : undefined}
+    {...otherProps}
   />
 
 Input.defaultProps = {
