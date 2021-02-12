@@ -5,7 +5,7 @@ import defautTheme from './theme'
 import 'react-toastify/dist/ReactToastify.css'
 
 
-const FormThemeProvider = ({ theme, children }) => {
+const FormThemeProvider = ({ theme = {}, children }) => {
   const [currentTheme, setCurrentTheme] = React.useState()
   const [toastContainerProps, setToastContainerProps] = React.useState({})
   const outerTheme = useTheme()
@@ -14,7 +14,7 @@ const FormThemeProvider = ({ theme, children }) => {
   React.useEffect(() => {
     const parentTheme = outerTheme || defautTheme
     // Use build in react-toastify plugin only if errorNotificationFunc is not defined.
-    const usesToastifyPlugin = !parentTheme?.errorNotificationFunc && !theme?.errorNotificationFunc
+    const usesToastifyPlugin = !parentTheme?.errorNotificationFunc && !theme.errorNotificationFunc
 
     const parsedTheme = {
       sizes: { ...parentTheme.sizes, ...theme.sizes },
