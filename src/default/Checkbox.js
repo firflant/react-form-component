@@ -88,7 +88,7 @@ export const checkboxTheme = theme => ({
   },
   small: {
     fontSize: theme.typography.inputFontSize - 4,
-    lineHeight: 18,
+    lineHeight: '18px',
     '& $input': {
       transform: 'translateY(-2px)',
     },
