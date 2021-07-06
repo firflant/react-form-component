@@ -38,6 +38,11 @@ const FormThemeProvider = ({ theme = {}, children }) => {
     }
   }, [])
 
+  // SSR support - prevents server from rendering a empty page.
+  if (typeof document === 'undefined') {
+    return <ThemeProvider theme={defautTheme}>{children}</ThemeProvider>
+  }
+
   return (
     currentTheme
       ? <ThemeProvider theme={currentTheme}>
