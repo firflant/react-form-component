@@ -21,6 +21,7 @@ export default {
     inputText: '#3d4348',
     inputBorder: '#e6edf4',
     inputBg: 'white',
+    inputFocusShadow: 'none',
     label: 'inherit',
     fill: '#e6edf4',
     placeholder: '#c3d4e4',

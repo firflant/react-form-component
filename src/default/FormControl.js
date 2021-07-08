@@ -134,8 +134,9 @@ const withFormControl = InputComponent => {
       // States
       '& .form-input:focus': {
         borderColor: theme.colors.accent,
-        boxShadow: 'none',
+        boxShadow: theme.colors.inputFocusShadow,
         outlineWidth: 0,
+        outline: 'none',
       },
     },
     disabled: {
