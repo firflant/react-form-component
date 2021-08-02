@@ -1,12 +1,13 @@
 import React from 'react'
 import { ThemeProvider, useTheme } from 'react-jss'
 import { ToastContainer, toast } from 'react-toastify'
+import PropTypes from 'prop-types'
 import defautTheme from './theme'
 import 'react-toastify/dist/ReactToastify.css'
 
 
 const FormThemeProvider = ({ theme = {}, children }) => {
-  const [currentTheme, setCurrentTheme] = React.useState()
+  const [customizedTheme, setCustomizedTheme] = React.useState()
   const [toastContainerProps, setToastContainerProps] = React.useState({})
   const outerTheme = useTheme()
   const isRoot = !outerTheme
@@ -32,29 +33,36 @@ const FormThemeProvider = ({ theme = {}, children }) => {
       } } : {},
       customValidationFunction: parentTheme.customValidationFunction || theme.customValidationFunction,
     }
-    setCurrentTheme(parsedTheme)
+    setCustomizedTheme(parsedTheme)
     if (usesToastifyPlugin) {
       setToastContainerProps(parsedTheme.toastContainerProps)
     }
   }, [])
 
-  // SSR support - prevents server from rendering a empty page.
-  if (typeof document === 'undefined') {
-    return <ThemeProvider theme={defautTheme}>{children}</ThemeProvider>
-  }
 
+  // SSR support - customizedTheme is construted via useEffect hook, which is
+  // triggered only on a client, after the render. So for the purpose of
+  // Server Side Rendering, if customizedTheme is not set yet, use defautTheme.
+  // To prevent ugly initial jump between customized/default look of forms
+  // that appears on initial view area of a page (for example in a hero section),
+  // set page opacity to 0.
   return (
-    currentTheme
-      ? <ThemeProvider theme={currentTheme}>
-        <React.Fragment>
-          {children}
-          {isRoot && toastContainerProps &&
-            <ToastContainer {...toastContainerProps} />
-          }
-        </React.Fragment>
-      </ThemeProvider>
-      : null
+    <ThemeProvider theme={customizedTheme || defautTheme}>
+      <React.Fragment>
+        {customizedTheme
+          ? children
+          : <div style={{ opacity: 0 }}>{children}</div>
+        }
+        {isRoot && toastContainerProps &&
+          <ToastContainer {...toastContainerProps} />
+        }
+      </React.Fragment>
+    </ThemeProvider>
   )
+}
+
+FormThemeProvider.propTypes = {
+  theme: PropTypes.object,
 }
 
 export default FormThemeProvider
