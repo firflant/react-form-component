@@ -2,7 +2,7 @@
 
 Create React forms just with a pure JSX and let the react-standalone-form
 manage its state for you. A themeable form library based on
-Context API with a wide selection of ready, user friendly inputs and wide customization abilities to match your design.
+Context API with a selection of user friendly inputs and wide customization abilities to match your design and functionality.
 
 ## Install
 
