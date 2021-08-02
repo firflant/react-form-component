@@ -97,4 +97,4 @@ ReactDOM.render(<App />, document.querySelector('#app'))
 * [Form layouts](https://github.com/frontcraft/react-standalone-form/wiki/Form-layouts)
 * [Theming](https://github.com/frontcraft/react-standalone-form/wiki/Theming)
 * [Advanced usage](https://github.com/frontcraft/react-standalone-form/wiki/Advanced-usage)
-
+* [Contribution guidelines](https://github.com/frontcraft/react-standalone-form/wiki/Contribution-guidelines)
