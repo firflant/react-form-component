@@ -62,7 +62,7 @@ const BasicFormExample = () =>
       options={['Viewer', 'Moderator', 'Admin']}
     />
     <FormButton
-      callback={fields => console.log(fields)}
+      onClick={fields => console.log(fields)}
     >Save</FormButton>
   </Form>
 

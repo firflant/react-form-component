@@ -10,7 +10,7 @@ import Loader from '../default/Loader'
  * A button component to handle form actions, like submit or reset.
  */
 const FormButton = ({
-  callback,
+  onClick,
   component: Component,
   reset,
   loading,
@@ -30,7 +30,7 @@ const FormButton = ({
   </Component>
 
 FormButton.propTypes = {
-  callback: PropTypes.func,
+  onClick: PropTypes.func,
   loading: PropTypes.bool,
   reset: PropTypes.bool,
   suppressErrorMessage: PropTypes.bool,
