@@ -3,5 +3,6 @@ node_modules
 .babelrc
 .eslintrc
 .gitignore
+.nvmrc
 yarn-error.log
 screenshot.jpg

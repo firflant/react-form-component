@@ -22,7 +22,7 @@ const FormButton = ({
 }) =>
   <Component
     {...otherProps}
-    onClick={e => submit(e, callback, reset)}
+    onClick={e => submit(e, onClick, reset)}
     disabled={loading}
   >
     {loading && <><LoadingComponent />&nbsp;</>}
