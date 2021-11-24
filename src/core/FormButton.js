@@ -15,7 +15,6 @@ const FormButton = ({
   reset,
   loading,
   loadingComponent: LoadingComponent,
-  suppressErrorMessage,
   children,
   submit,
   ...otherProps
