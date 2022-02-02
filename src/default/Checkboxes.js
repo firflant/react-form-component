@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from 'react-jss'
-import classNames from 'classnames'
-import { withFormControl, checkboxHandler, checkboxTheme } from '../.'
+import { checkboxHandler, checkboxTheme, withFormControl } from '../.'
 
+import PropTypes from 'prop-types'
+import React from 'react'
+import classNames from 'classnames'
+import withStyles from 'react-jss'
 
 const Checkboxes = ({
   name,
@@ -35,7 +35,7 @@ const Checkboxes = ({
               const finalValue = checkboxHandler(!checked, optionValue, value)
               setValue(name, finalValue, required)
             }}
-          /> {optionLabel}
+          /> {optionLabel}asdasd
         </label>
       )
     })}

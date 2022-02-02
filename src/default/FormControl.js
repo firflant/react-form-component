@@ -1,8 +1,3 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from 'react-jss'
-import classNames from 'classnames'
-import { lighten } from 'polished'
 import {
   FormConsumer,
   FormControlLogic,
@@ -11,6 +6,11 @@ import {
   placeholder,
 } from '../.'
 
+import PropTypes from 'prop-types'
+import React from 'react'
+import classNames from 'classnames'
+import { lighten } from 'polished'
+import withStyles from 'react-jss'
 
 const withFormControl = InputComponent => {
   const FormControl = ({
@@ -236,7 +236,7 @@ const withFormControl = InputComponent => {
     inline: {
       width: '100%',
       '& .form-checkitem': {
-        display: 'inline-block',
+        display: 'inline-flex',
         whiteSpace: 'nowrap',
         marginRight: 20,
         '&:last-of-type': {

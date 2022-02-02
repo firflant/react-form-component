@@ -1,9 +1,8 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import withStyles from 'react-jss'
+import React from 'react'
 import classNames from 'classnames'
 import { withFormControl } from '../.'
-
+import withStyles from 'react-jss'
 
 const Checkbox = ({
   name,
@@ -39,16 +38,17 @@ Checkbox.propTypes = {
 
 export const checkboxTheme = theme => ({
   label: {
-    display: 'block',
+    display: 'flex',
     position: 'relative',
     textAlign: 'left',
+    alignItems: 'flex-start',
     cursor: 'pointer',
   },
   input: {
     margin: '0 10px 0 0',
     position: 'relative',
     outline: 'none',
-    transform: 'translateY(-5px)',
+    transform: 'translateY(0.2em)',
     minWidth: 18,
     '&::before': {
       content: '""',

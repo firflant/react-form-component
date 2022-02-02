@@ -1,9 +1,8 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import withStyles from 'react-jss'
+import React from 'react'
 import classNames from 'classnames'
 import { withFormControl } from '../.'
-
+import withStyles from 'react-jss'
 
 const Radio = ({
   name,
@@ -51,11 +50,12 @@ Radio.propTypes = {
 
 export default withFormControl(withStyles({
   label: {
-    display: 'block',
+    display: 'flex',
     cursor: 'pointer',
   },
   input: {
     marginRight: 10,
+    transform: 'translateY(0.3em)',
   },
   small: {
     fontSize: 12,
