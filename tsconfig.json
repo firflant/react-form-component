@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+      "outDir": "./lib/",         // path to output directory
+      "strictNullChecks": true,   // enable strict null checks as a best practice
+      "module": "es6",            // specify module code generation
+      "noImplicitAny": true,
+      "jsx": "react",             // use typescript to transpile jsx to js
+      "target": "es5",            // specify ECMAScript target version
+      "allowJs": true,            // allow a partial TypeScript and JavaScript codebase
+      "skipLibCheck": true,       // Skip type checking of declaration files.
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true
+  },
+  "include": [
+      "./src/"
+  ]
+}
