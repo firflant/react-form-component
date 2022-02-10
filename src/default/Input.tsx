@@ -1,7 +1,17 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { setValue } from '../types'
 import { withFormControl } from '../.'
 
+interface InputProps {
+  name: string,
+  type?: string,
+  value: any,
+  placeholder: React.ReactNode,
+  min: number,
+  accept: string,
+  required: boolean,
+  setValue: setValue,
+}
 
 const Input = ({
   name,
@@ -13,7 +23,7 @@ const Input = ({
   required,
   setValue,
   ...otherProps
-}) =>
+}: InputProps) =>
   <input
     className='form-input'
     name={name}
@@ -21,11 +31,11 @@ const Input = ({
     // This allows to add a custom validation rule for password field, while still
     // being able to skip the check where it is not neccessary, eg. on login forms.
     placeholder={placeholder}
-    onChange={e => {
-      if (type === 'file') {
+    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+      if (type === 'file' && e.target.files?.length) {
         const fileReader = new FileReader()
-        const { name: fileName, type: fileType } = e.target.files[0]
         const dataFile = e.target.files[0]
+        const { name: fileName, type: fileType } = dataFile
         fileReader.readAsDataURL(e.target.files[0])
         fileReader.onload = () => {
           const data = fileReader.result
@@ -47,16 +57,6 @@ const Input = ({
 
 Input.defaultProps = {
   type: 'text',
-}
-
-Input.propTypes = {
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string,
-  value: PropTypes.any,
-  placeholder: PropTypes.node,
-  min: PropTypes.number,
-  required: PropTypes.bool,
-  setValue: PropTypes.func.isRequired,
 }
 
 export default withFormControl(Input)
