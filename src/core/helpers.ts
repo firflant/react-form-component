@@ -1,33 +1,37 @@
 import validator from 'validator'
+import { value, checkboxValue, fieldsData, textLabels } from '../typings'
 
 
 /**
  * Process data from given field and prepare it for a form mutation.
  */
 export function processField(
-  name,
-  value,
-  required,
-  options = {},
-  textLabels = {},
-  customValidationFunction
+  name: string,
+  value: value,
+  required: boolean,
+  options: {
+    type: string, min: number, forcedErrorMessage: string,
+  },
+  textLabels: textLabels,
+  customValidationFunction: (value: value, type: string ) => string,
 ) {
   const { type, min, forcedErrorMessage } = options
 
   // If the value is an array, remove its empty values for safety.
-  const processedValue = Array.isArray(value)
+  const valueIsArray = Array.isArray(value)
+  const processedValue = valueIsArray
     ? value.filter(item => Number.isInteger(item) || item instanceof Object || item.length)
     : value
 
   let validation = null; let help = null
 
   // VALIDATION - If any check will fail, raise error state and set help message.
-  if (required && (!processedValue || processedValue.length === 0)) {
+  if (required && (!processedValue || (valueIsArray && processedValue.length === 0))) {
     // If the field is required and its value is empty, set an error. Otherwise
     // continue the validation.
     validation = 'error'
     help = textLabels.requiredField
-  } else if (processedValue && processedValue.length > 0) {
+  } else if (processedValue?.length && processedValue.length > 0) {
 
     // Force error message if it is present and abandon further validation.
     if (forcedErrorMessage) {
@@ -93,7 +97,7 @@ export function processField(
         // Minimal length option support.
         if (min && processedValue.length < min) {
           validation = 'error'
-          help = textLabels.minChars.replace(':length:', min)
+          help = textLabels.minChars.replace(':length:', min.toString())
         }
         break
     }
@@ -120,9 +124,9 @@ export function processField(
  * Generate initial form state, where all values are set to null.
  */
 export function initiateFormFields(fieldNames = [], required = []) {
-  let valueUndefined
-  // Value undefined acts as a flag saying that field is only initiated, untouch.
-  // It becomes defined after first change. It is being used by the onChange Form prop.
+  let valueUndefined: undefined
+  // valueUndefined is a flag saying that field is in initial state, untouch.
+  // It becomes defined after first change. This logic is used by the onChange Form prop.
   // TODO: Consider adding additional property called `untouch`.
   return fieldNames.reduce((acc, field) => (
     { ...acc,
@@ -139,8 +143,8 @@ export function initiateFormFields(fieldNames = [], required = []) {
 /**
  * Reset valdiation states of all fields in a form.
  */
-export function updateFieldsRequirements(fieldsData, required) {
-  let updatedFieldsData = {}
+export function updateFieldsRequirements(fieldsData: fieldsData, required: [string]) {
+  let updatedFieldsData: object = {}
   Object.keys(fieldsData).forEach(key => {
     const { value, help } = fieldsData[key]
     const isRequired = required.includes(key)
@@ -159,21 +163,25 @@ export function updateFieldsRequirements(fieldsData, required) {
 /**
  * Update single checkbox value in a list of all checkboxes.
  */
-export function checkboxHandler(checked, value, previousValue) {
+export function checkboxHandler(
+  checked: boolean,
+  newValue: checkboxValue,
+  previousValues: [checkboxValue],
+) {
   if (checked) {
-    if (previousValue) {
-      return [...previousValue, value]
+    if (previousValues) {
+      return [...previousValues, newValue]
     }
-    return [value]
+    return [newValue]
   }
-  return previousValue.filter(item => item !== value)
+  return previousValues.filter(item => item !== newValue)
 }
 
 
 /**
  * Check whether whole form is filled correctly.
  */
-export function formIsInvalid(fieldsData, fieldKeys = []) {
+export function formIsInvalid(fieldsData: fieldsData, fieldKeys = []) {
   // Check only fields of given keys, otherwise check whole form.
   const fieldsToCheck = fieldKeys.length ? fieldKeys : Object.keys(fieldsData)
   let requiredButEmpty = false
@@ -201,8 +209,8 @@ export function formIsInvalid(fieldsData, fieldKeys = []) {
 /**
  * Get values from all fields and organize them into API friendly format.
  */
-export function getValues(fieldsData) {
-  let values = {}
+export function getValues(fieldsData: fieldsData) {
+  let values: object = {}
   Object.keys(fieldsData).forEach(key => {
     values[key] = fieldsData[key].value
   })
@@ -214,7 +222,7 @@ export function getValues(fieldsData) {
  * Convert image url to image data format that is compatible with image upload
  * input.
  */
-export function imageUrltoImageData(imageUrl) {
+export function imageUrltoImageData(imageUrl: string) {
   if (imageUrl) {
     return {
       name: imageUrl.split('/').pop(),

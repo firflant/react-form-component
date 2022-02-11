@@ -1,5 +1,5 @@
 import React from 'react'
-import { setValue } from '../typings'
+import { setValue, value } from '../typings'
 import { withFormControl } from '../.'
 
 const Input = ({
@@ -51,8 +51,8 @@ Input.defaultProps = {
 export interface InputProps {
   name: string,
   type?: string,
-  value: any,
-  placeholder: React.ReactNode,
+  value: value,
+  placeholder: string | undefined,
   min: number,
   accept: string,
   required: boolean,

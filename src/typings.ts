@@ -1,5 +1,35 @@
 export type setValue = (name: string, value: string | number | object, required: boolean, options?: object) => void
 
+export type value = any
+
+export type checkboxValue = boolean | string
+
+export type fieldsData = object
+
+export type textLabels = {
+  formInvalid: string,
+  requiredField:string,
+  minChars: string,
+  passwordInvalid: string,
+  emailInvalid: string,
+  urlInvalid: string,
+  phoneInvalid: string,
+  postCodeInvalid: string,
+  jsonInvalid: string,
+}
+
+export type textLabelsOptional = {
+  formInvalid?: string,
+  requiredField?:string,
+  minChars?: string,
+  passwordInvalid?: string,
+  emailInvalid?: string,
+  urlInvalid?: string,
+  phoneInvalid?: string,
+  postCodeInvalid?: string,
+  jsonInvalid?: string,
+}
+
 export type theme = {
   sizes?: {
     inputHeight?: number,
@@ -42,18 +72,8 @@ export type theme = {
     md?: string,
     lg?: string,
   },
-  textLabels?: {
-    formInvalid?: string,
-    requiredField?:string,
-    minChars?: string,
-    passwordInvalid?: string,
-    emailInvalid?: string,
-    urlInvalid?: string,
-    phoneInvalid?: string,
-    postCodeInvalid?: string,
-    jsonInvalid?: string,
-  },
+  textLabels?: textLabelsOptional,
   toastContainerProps?: object,
   errorNotificationFunc?: (message: string) => void,
-  customValidationFunction?: (value: any, type: string) => boolean,
+  customValidationFunction?: (value: value, type: string) => boolean,
 }
