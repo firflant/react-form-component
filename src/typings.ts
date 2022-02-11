@@ -1,10 +1,33 @@
-export type setValue = (name: string, value: string | number | object, required: boolean | undefined, options?: object) => void
+export type setValue = (
+  name?: string,
+  value?: string | number | object,
+  required?: boolean | undefined,
+  options?: object,
+) => void
 
 export type value = any
 
 export type checkboxValue = boolean | string
 
-export type fieldsData = object
+export type validation = 'error' | 'success' | null
+
+export type fieldData = {
+  value: value,
+  required: boolean,
+  type: string,
+  help: string,
+  validation: validation,
+}
+
+export type fieldsData = {} | {
+  [key: string]: fieldData,
+}
+
+export type submit = (
+  e:React.MouseEvent<HTMLButtonElement>,
+  onClick: (fieldsData: fieldsData) => void,
+  reset: boolean | undefined,
+) => void
 
 export type textLabels = {
   formInvalid: string,
@@ -18,6 +41,8 @@ export type textLabels = {
   jsonInvalid: string,
 }
 
+export type errorNotificationFunc = (message: string) => void
+
 export type textLabelsOptional = {
   formInvalid?: string,
   requiredField?:string,
@@ -30,7 +55,7 @@ export type textLabelsOptional = {
   jsonInvalid?: string,
 }
 
-export type theme = {
+export interface theme {
   sizes?: {
     inputHeight?: number,
     inputWidth?: number | string,
@@ -74,6 +99,6 @@ export type theme = {
   },
   textLabels?: textLabelsOptional,
   toastContainerProps?: object,
-  errorNotificationFunc?: (message: string) => void,
+  errorNotificationFunc?: errorNotificationFunc,
   customValidationFunction?: (value: value, type: string) => boolean,
 }
