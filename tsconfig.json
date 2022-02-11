@@ -10,9 +10,14 @@
       "skipLibCheck": true,       // Skip type checking of declaration files.
       "moduleResolution": "node",
       "allowSyntheticDefaultImports": true,
-      "esModuleInterop": true
+      "declaration": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "esModuleInterop": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "suppressImplicitAnyIndexErrors": true,
   },
-  "include": [
-      "./src/"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "lib"],
 }

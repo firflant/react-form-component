@@ -1,6 +1,4 @@
-import Form from './core/Form'
-export default Form
-
+export { default as Form } from './core/Form'
 export { FormConsumer } from './core/Form'
 export { default as FormThemeProvider } from './core/FormThemeProvider'
 export {

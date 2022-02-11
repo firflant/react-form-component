@@ -1,8 +1,8 @@
 import React from 'react'
-import { setValue } from '../types'
+import { setValue } from '../typings'
 import { withFormControl } from '../.'
 
-interface InputProps {
+export interface InputProps {
   name: string,
   type?: string,
   value: any,
