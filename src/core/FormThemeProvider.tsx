@@ -1,19 +1,20 @@
-import React from 'react'
-import { ThemeProvider, useTheme } from 'react-jss'
-import { ToastContainer, toast } from 'react-toastify'
-import PropTypes from 'prop-types'
-import defautTheme from './theme'
 import 'react-toastify/dist/ReactToastify.css'
 
+import { ThemeProvider, useTheme } from 'react-jss'
+import { ToastContainer, toast } from 'react-toastify'
 
-const FormThemeProvider = ({ theme = {}, children }) => {
-  const [customizedTheme, setCustomizedTheme] = React.useState()
+import React from 'react'
+import defautTheme from './theme'
+import { theme } from '../typings'
+
+const FormThemeProvider = ({ theme = {}, children }: FormThemeProviderProps) => {
+  const [customizedTheme, setCustomizedTheme] = React.useState<theme | null>(null)
   const [toastContainerProps, setToastContainerProps] = React.useState({})
   const outerTheme = useTheme()
   const isRoot = !outerTheme
 
   React.useEffect(() => {
-    const parentTheme = outerTheme || defautTheme
+    const parentTheme: theme = outerTheme || defautTheme
     // Use build in react-toastify plugin only if errorNotificationFunc is not defined.
     const usesToastifyPlugin = !parentTheme?.errorNotificationFunc && !theme.errorNotificationFunc
 
@@ -23,18 +24,20 @@ const FormThemeProvider = ({ theme = {}, children }) => {
       typography: { ...parentTheme.typography, ...theme.typography },
       breakpoints: { ...parentTheme.breakpoints, ...theme.breakpoints },
       textLabels: { ...parentTheme.textLabels, ...theme.textLabels },
-      errorNotificationFunc: message => usesToastifyPlugin
+      errorNotificationFunc: (message: string) => usesToastifyPlugin
         ? toast.error(message)
         : parentTheme.errorNotificationFunc
           ? parentTheme.errorNotificationFunc(message)
-          : theme.errorNotificationFunc(message),
+          : theme.errorNotificationFunc
+            ? theme.errorNotificationFunc(message)
+            : () => {},
       ...usesToastifyPlugin ? { toastContainerProps: {
         ...parentTheme.toastContainerProps, ...theme.toastContainerProps,
       } } : {},
       customValidationFunction: parentTheme.customValidationFunction || theme.customValidationFunction,
     }
     setCustomizedTheme(parsedTheme)
-    if (usesToastifyPlugin) {
+    if (parsedTheme.toastContainerProps) {
       setToastContainerProps(parsedTheme.toastContainerProps)
     }
   }, [])
@@ -61,8 +64,9 @@ const FormThemeProvider = ({ theme = {}, children }) => {
   )
 }
 
-FormThemeProvider.propTypes = {
-  theme: PropTypes.object,
+export interface FormThemeProviderProps {
+  theme?: theme,
+  children: React.ReactNode,
 }
 
 export default FormThemeProvider

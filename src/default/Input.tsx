@@ -2,17 +2,6 @@ import React from 'react'
 import { setValue } from '../typings'
 import { withFormControl } from '../.'
 
-export interface InputProps {
-  name: string,
-  type?: string,
-  value: any,
-  placeholder: React.ReactNode,
-  min: number,
-  accept: string,
-  required: boolean,
-  setValue: setValue,
-}
-
 const Input = ({
   name,
   type,
@@ -57,6 +46,17 @@ const Input = ({
 
 Input.defaultProps = {
   type: 'text',
+}
+
+export interface InputProps {
+  name: string,
+  type?: string,
+  value: any,
+  placeholder: React.ReactNode,
+  min: number,
+  accept: string,
+  required: boolean,
+  setValue: setValue,
 }
 
 export default withFormControl(Input)
