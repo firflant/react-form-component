@@ -1,6 +1,6 @@
 import theme from './theme'
 
-export function inputHeight(height) {
+export function inputHeight(height: number) {
   return {
     '& *.form-input': {
       height: height,
@@ -34,8 +34,8 @@ export function inputHeight(height) {
   }
 }
 
-export function breakpoint(height) {
-  return `@media (min-width: ${height})`
+export function breakpoint(width: string) {
+  return `@media (min-width: ${width})`
 }
 
 export function clearfix() {
@@ -59,7 +59,7 @@ export function overlay() {
   }
 }
 
-export function maxRows(amount) {
+export function maxRows(amount: number) {
   return {
     overflow: 'hidden',
     display: '-webkit-box',
@@ -68,7 +68,7 @@ export function maxRows(amount) {
   }
 }
 
-export function placeholder(styles) {
+export function placeholder(styles: React.CSSProperties) {
   return {
     '&::-moz-placeholder': {
       ...styles,
