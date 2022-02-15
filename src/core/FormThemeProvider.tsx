@@ -5,16 +5,16 @@ import { ToastContainer, toast } from 'react-toastify'
 
 import React from 'react'
 import defautTheme from './theme'
-import { theme } from '../typings'
+import { fullTheme, themeOverrides } from '../typings'
 
 const FormThemeProvider = ({ theme = {}, children }: FormThemeProviderProps) => {
-  const [customizedTheme, setCustomizedTheme] = React.useState<theme | null>(null)
+  const [customizedTheme, setCustomizedTheme] = React.useState<fullTheme | null>(null)
   const [toastContainerProps, setToastContainerProps] = React.useState({})
-  const outerTheme = useTheme()
+  const outerTheme = useTheme() as fullTheme
   const isRoot = !outerTheme
 
   React.useEffect(() => {
-    const parentTheme: theme = outerTheme || defautTheme
+    const parentTheme: fullTheme = outerTheme || defautTheme
     // Use build in react-toastify plugin only if errorNotificationFunc is not defined.
     const usesToastifyPlugin = !parentTheme?.errorNotificationFunc && !theme.errorNotificationFunc
 
@@ -35,7 +35,7 @@ const FormThemeProvider = ({ theme = {}, children }: FormThemeProviderProps) => 
         ...parentTheme.toastContainerProps, ...theme.toastContainerProps,
       } } : {},
       customValidationFunction: parentTheme.customValidationFunction || theme.customValidationFunction,
-    }
+    } as fullTheme
     setCustomizedTheme(parsedTheme)
     if (parsedTheme.toastContainerProps) {
       setToastContainerProps(parsedTheme.toastContainerProps)
@@ -65,7 +65,7 @@ const FormThemeProvider = ({ theme = {}, children }: FormThemeProviderProps) => 
 }
 
 export interface FormThemeProviderProps {
-  theme?: theme,
+  theme?: themeOverrides,
   children: React.ReactNode,
 }
 

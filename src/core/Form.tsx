@@ -12,8 +12,7 @@ import {
   fieldsData,
   fieldData,
   setValue,
-  textLabels,
-  customValidationFunction,
+  fullTheme,
 } from '../typings'
 
 
@@ -47,10 +46,7 @@ const Form = ({
 }: FormProps) => {
   const [fieldsData, setFieldsData] = React.useState({})
   const classes = useStyles()
-  const theme = useTheme() as {
-    textLabels: textLabels,
-    customValidationFunction: customValidationFunction
-  }
+  const theme = useTheme() as fullTheme
 
   React.useEffect(() => {
     setFieldsData(initiateFormFields(fields, requiredFields))

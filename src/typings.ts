@@ -41,23 +41,59 @@ export type textLabels = {
   jsonInvalid: string,
 }
 
-export type textLabelsOptional = {
-  formInvalid?: string,
-  requiredField?:string,
-  minChars?: string,
-  passwordInvalid?: string,
-  emailInvalid?: string,
-  urlInvalid?: string,
-  phoneInvalid?: string,
-  postCodeInvalid?: string,
-  jsonInvalid?: string,
-}
-
 export type errorNotificationFunc = (message: string) => void
 
 export type customValidationFunction = (value: value, type: string) => boolean
 
-export interface theme {
+export interface fullTheme {
+  sizes: {
+    inputHeight: number,
+    inputWidth: number | string,
+    inputGutterBottom: number,
+    inputSidePaddings: number,
+    labelGutterBottom: number,
+    narrowInputWidth: number,
+    inlineLabelWidth: number,
+    borderRadius: number,
+    borderWidth: number,
+    formRowGutter: number,
+    formActionsDistance: number,
+    onlyBottomBorder: boolean,
+    moveAddonToLeft: boolean,
+    addonSpacing: number,
+  },
+  colors: {
+    accent: string,
+    inputText: string,
+    inputBorder: string,
+    inputBg: string,
+    inputFocusShadow: string,
+    label: string,
+    fill: string,
+    placeholder: string,
+    success: string,
+    error: string,
+  },
+  typography: {
+    inputFontSize: number,
+    inputFontWeight: string,
+    labelFontSize: number,
+    labelFontWeight: string,
+    helpFontSize: number,
+  },
+  breakpoints: {
+    xs: number | string,
+    sm: string,
+    md: string,
+    lg: string,
+  },
+  textLabels: textLabels,
+  toastContainerProps: object,
+  errorNotificationFunc: errorNotificationFunc,
+  customValidationFunction: customValidationFunction,
+}
+
+export interface themeOverrides {
   sizes?: {
     inputHeight?: number,
     inputWidth?: number | string,
@@ -99,7 +135,17 @@ export interface theme {
     md?: string,
     lg?: string,
   },
-  textLabels?: textLabelsOptional,
+  textLabels?: {
+    formInvalid?: string,
+    requiredField?:string,
+    minChars?: string,
+    passwordInvalid?: string,
+    emailInvalid?: string,
+    urlInvalid?: string,
+    phoneInvalid?: string,
+    postCodeInvalid?: string,
+    jsonInvalid?: string,
+  },
   toastContainerProps?: object,
   errorNotificationFunc?: errorNotificationFunc,
   customValidationFunction?: customValidationFunction,
