@@ -22,7 +22,7 @@ const FormButton = ({
   const LoadingComponent = loadingComponent || Loader
   return (
     <Component
-      onClick={(e: React.MouseEvent<HTMLButtonElement>) => submit(e, onClick, reset)}
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => submit && submit(e, onClick, reset)}
       disabled={loading}
       {...otherProps}
     >
@@ -40,7 +40,7 @@ export interface FormButtonProps {
   reset?: boolean,
   suppressErrorMessage?: boolean,
   children: React.ReactNode,
-  submit: submit,
+  submit?: submit,
 }
 
 export default withSubmit(FormButton)

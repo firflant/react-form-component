@@ -14,9 +14,9 @@ export type validation = 'error' | 'success' | null
 export type fieldData = {
   value: value,
   required: boolean,
-  type: string,
   help: string,
   validation: validation,
+  type?: string,
 }
 
 export type fieldsData = {} | {

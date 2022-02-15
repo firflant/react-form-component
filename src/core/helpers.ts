@@ -123,6 +123,7 @@ export function processField(
       validation,
       required,
       help,
+      type,
     },
   }
 }
@@ -131,15 +132,14 @@ export function processField(
 /**
  * Generate initial form state, where all values are undefined.
  */
-export function initiateFormFields(fieldNames: [string], required?: [string]) {
-  let valueUndefined: undefined
-  // valueUndefined is a flag saying that field is in initial state, untouch.
-  // It becomes defined after first change. This logic is used by the onChange Form prop.
-  // TODO: Consider adding additional property called `untouch`.
+export function initiateFormFields(fieldNames: string[], required?: string[]) {
   return fieldNames.reduce((acc: object, field: string) => (
     { ...acc,
       [field]: {
-        value: valueUndefined,
+        value: undefined,
+        // undefined means that field is in the initial state.
+        // It is being used in formIsInitiated variable inside <Form> component.
+        // TODO: Consider adding additional property called `untouch`.
         validation: null,
         required: required && required.includes(field),
         help: null,
@@ -151,7 +151,7 @@ export function initiateFormFields(fieldNames: [string], required?: [string]) {
 /**
  * Reset valdiation states of all fields in a form.
  */
-export function updateFieldsRequirements(fieldsData: fieldsData, required: [string] | undefined) {
+export function updateFieldsRequirements(fieldsData: fieldsData, required?: string[]) {
   let updatedFieldsData: object = {}
   Object.keys(fieldsData).forEach(key => {
     const { value, help } = fieldsData[key]

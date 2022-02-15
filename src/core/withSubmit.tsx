@@ -29,7 +29,7 @@ function withSubmit<T>(
         submit={(e, callback, reset) => {
           e.preventDefault()
           if (formIsInvalid(fieldsData)) {
-            // Trigger valdiation check of all fields.
+            // Trigger valdiation check of all fields to prevent submitting before debounce etc.
             Object.entries(fieldsData).forEach(([key, data]) => {
               const { value, required, type } = data as fieldData
               setValue(key, value, required, { type })

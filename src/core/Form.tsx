@@ -1,6 +1,6 @@
 import React from 'react'
 import { debounce } from 'throttle-debounce'
-import withStyles from 'react-jss'
+import { createUseStyles, useTheme } from 'react-jss'
 import classNames from 'classnames'
 import {
   initiateFormFields,
@@ -16,10 +16,9 @@ import {
   customValidationFunction,
 } from '../typings'
 
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable react/no-did-update-set-state */
 
 const FieldsContext = React.createContext({})
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 const SetValueContext = React.createContext(() => {})
 
 export const FormConsumer = ({ children }: FormConsumerProps) => (
@@ -43,12 +42,19 @@ const Form = ({
   component,
   onChange,
   runOnChangeInitially,
-  className,
-  classes,
-  theme,
+  className = '',
   children,
 }: FormProps) => {
   const [fieldsData, setFieldsData] = React.useState({})
+  const classes = useStyles()
+  const theme = useTheme() as {
+    textLabels: textLabels,
+    customValidationFunction: customValidationFunction
+  }
+
+  React.useEffect(() => {
+    setFieldsData(initiateFormFields(fields, requiredFields))
+  }, [])
 
   React.useEffect(() => {
     setFieldsData(prevState => updateFieldsRequirements(
@@ -89,7 +95,7 @@ const Form = ({
             debouncedOnChange(getValues(fieldsData), name)
           }
         }
-        return { fieldsData }
+        return fieldsData
       })
     }
   }
@@ -108,23 +114,20 @@ const Form = ({
 }
 
 export interface FormProps {
-  fields: [string],
-  required?: [string],
-  allRequired: boolean | undefined,
+  fields: string[],
+  required?: string[],
+  allRequired?: boolean,
   component?: React.ComponentType,
-  children: React.ReactNode,
   onChange?: (fieldsData: fieldsData, fieldName?: string) => void,
   runOnChangeInitially?: boolean,
-  className: string,
-  classes: { form: object },
-  theme: {
-    textLabels: textLabels,
-    customValidationFunction: customValidationFunction
-  },
+  className?: string,
+  children: React.ReactNode,
 }
 
-export default withStyles(() => ({
+const useStyles = createUseStyles({
   form: {
     margin: 0,
   },
-}), { injectTheme: true })(Form)
+})
+
+export default Form

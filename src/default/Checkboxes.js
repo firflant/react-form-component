@@ -35,7 +35,7 @@ const Checkboxes = ({
               const finalValue = checkboxHandler(!checked, optionValue, value)
               setValue(name, finalValue, required)
             }}
-          /> {optionLabel}asdasd
+          /> {optionLabel}
         </label>
       )
     })}
