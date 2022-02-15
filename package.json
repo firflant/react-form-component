@@ -44,7 +44,7 @@
     "react-loading": "^2.0.3",
     "react-toastify": "^5.1.0",
     "throttle-debounce": "^2.1.0",
-    "validator": "^10.11.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.39",
