@@ -41,8 +41,6 @@ export type textLabels = {
   jsonInvalid: string,
 }
 
-export type errorNotificationFunc = (message: string) => void
-
 export type textLabelsOptional = {
   formInvalid?: string,
   requiredField?:string,
@@ -54,6 +52,10 @@ export type textLabelsOptional = {
   postCodeInvalid?: string,
   jsonInvalid?: string,
 }
+
+export type errorNotificationFunc = (message: string) => void
+
+export type customValidationFunction = (value: value, type: string) => boolean
 
 export interface theme {
   sizes?: {
@@ -100,5 +102,5 @@ export interface theme {
   textLabels?: textLabelsOptional,
   toastContainerProps?: object,
   errorNotificationFunc?: errorNotificationFunc,
-  customValidationFunction?: (value: value, type: string) => boolean,
+  customValidationFunction?: customValidationFunction,
 }

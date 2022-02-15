@@ -1,5 +1,11 @@
 import validator from 'validator'
-import { value, checkboxValue, fieldsData, textLabels } from '../typings'
+import {
+  value,
+  checkboxValue,
+  fieldsData,
+  textLabels,
+  customValidationFunction,
+} from '../typings'
 
 
 /**
@@ -10,10 +16,12 @@ export function processField(
   value: value,
   required: boolean,
   options: {
-    type: string, min: number, forcedErrorMessage: string,
-  },
+    type?: string,
+    min?: number,
+    forcedErrorMessage?: string,
+  } = {},
   textLabels: textLabels,
-  customValidationFunction: (value: value, type: string ) => string,
+  customValidationFunction: customValidationFunction,
 ) {
   const { type, min, forcedErrorMessage } = options
 
@@ -121,19 +129,19 @@ export function processField(
 
 
 /**
- * Generate initial form state, where all values are set to null.
+ * Generate initial form state, where all values are undefined.
  */
-export function initiateFormFields(fieldNames = [], required = []) {
+export function initiateFormFields(fieldNames: [string], required?: [string]) {
   let valueUndefined: undefined
   // valueUndefined is a flag saying that field is in initial state, untouch.
   // It becomes defined after first change. This logic is used by the onChange Form prop.
   // TODO: Consider adding additional property called `untouch`.
-  return fieldNames.reduce((acc, field) => (
+  return fieldNames.reduce((acc: object, field: string) => (
     { ...acc,
       [field]: {
         value: valueUndefined,
         validation: null,
-        required: required.includes(field),
+        required: required && required.includes(field),
         help: null,
       } }
   ), {})
@@ -143,11 +151,11 @@ export function initiateFormFields(fieldNames = [], required = []) {
 /**
  * Reset valdiation states of all fields in a form.
  */
-export function updateFieldsRequirements(fieldsData: fieldsData, required: [string]) {
+export function updateFieldsRequirements(fieldsData: fieldsData, required: [string] | undefined) {
   let updatedFieldsData: object = {}
   Object.keys(fieldsData).forEach(key => {
     const { value, help } = fieldsData[key]
-    const isRequired = required.includes(key)
+    const isRequired = required && required.includes(key)
     updatedFieldsData[key] = {
       value,
       // If the field is not on required anymore, validation must be cleaned up.
