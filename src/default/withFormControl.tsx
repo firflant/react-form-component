@@ -33,16 +33,16 @@ export function withFormControl<T>(
     const fieldsData = React.useContext(FieldsContext) as fieldsData
     const setValue = React.useContext(SetValueContext) as setValue
 
-    if (!fieldsData[name]) return null
-
-    const { value, validation, required, help: fieldsDataHelp } = fieldsData[name]
-
     React.useEffect(() => {
       // Appply default field value on init and when it changes.
       if (initialValue) {
         setValue(name, initialValue, required)
       }
     }, [initialValue])
+
+    if (!fieldsData[name]) return null
+
+    const { value, validation, required, help: fieldsDataHelp } = fieldsData[name]
 
     const inputProps = {
       ...otherProps,
