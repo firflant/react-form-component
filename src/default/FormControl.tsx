@@ -7,7 +7,7 @@ import {
   inputHeight,
   placeholder,
 } from '../.'
-import { validation, fullTheme } from '../typings'
+import { fullTheme, FormControlProps } from '../typings'
 
 
 const FormControl = ({
@@ -225,22 +225,5 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     marginBottom: 0,
   },
 }))
-
-export interface FormControlProps {
-  name: string,
-  inlineLabel?: boolean,
-  inline?: boolean,
-  narrow?: boolean,
-  large?: boolean,
-  noBottomGutter?: boolean,
-  validation: validation,
-  disabled?: boolean,
-  displayName: string,
-  label?: React.ReactNode,
-  help?: React.ReactNode,
-  addon?: React.ReactNode,
-  className?: string,
-  children: React.ReactNode,
-}
 
 export default FormControl

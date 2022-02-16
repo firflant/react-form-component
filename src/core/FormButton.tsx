@@ -1,8 +1,8 @@
 import React from 'react'
 import DefaultButton from '../default/DefaultButton'
-import withSubmit from './withSubmit'
+import useSubmit from './useSubmit'
 import Loader from '../default/Loader'
-import { fieldsData, submit } from '../typings'
+import { fieldsData } from '../typings'
 
 
 /**
@@ -14,12 +14,14 @@ const FormButton = ({
   reset,
   loading,
   loadingComponent,
+  suppressErrorMessage,
   children,
-  submit,
   ...otherProps
 }: FormButtonProps) => {
   const Component = component || DefaultButton
   const LoadingComponent = loadingComponent || Loader
+  const submit = useSubmit(suppressErrorMessage)
+
   return (
     <Component
       onClick={(e: React.MouseEvent<HTMLButtonElement>) => submit && submit(e, onClick, reset)}
@@ -40,7 +42,6 @@ export interface FormButtonProps {
   reset?: boolean,
   suppressErrorMessage?: boolean,
   children: React.ReactNode,
-  submit?: submit,
 }
 
-export default withSubmit(FormButton)
+export default FormButton

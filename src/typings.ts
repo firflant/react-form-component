@@ -1,3 +1,5 @@
+import React from 'react'
+
 export type setValue = (
   name?: string,
   value?: string | number | object,
@@ -22,12 +24,6 @@ export type fieldData = {
 export type fieldsData = {} | {
   [key: string]: fieldData,
 }
-
-export type submit = (
-  e:React.MouseEvent<HTMLButtonElement>,
-  onClick: (fieldsData: fieldsData) => void,
-  reset: boolean | undefined,
-) => void
 
 export type textLabels = {
   formInvalid: string,
@@ -149,4 +145,56 @@ export interface themeOverrides {
   toastContainerProps?: object,
   errorNotificationFunc?: errorNotificationFunc,
   customValidationFunction?: customValidationFunction,
+}
+
+export interface ControlLogicProps {
+  addon?: React.ReactNode,
+  children?: React.ReactNode,
+  className?: string,
+  disabled?: boolean,
+  help?: React.ReactNode,
+  initialValue?: any,
+  inline?: boolean,
+  inlineLabel?: boolean,
+  label?: React.ReactNode,
+  large?: boolean,
+  name: string,
+  narrow?: boolean,
+  noBottomGutter?: boolean,
+  required?: boolean,
+  type?: string,
+  validation?: validation,
+  [key: string]: any,
+}
+
+export interface FormControlProps {
+  name: string,
+  inlineLabel?: boolean,
+  inline?: boolean,
+  narrow?: boolean,
+  large?: boolean,
+  noBottomGutter?: boolean,
+  validation: validation,
+  disabled?: boolean,
+  displayName: string,
+  label?: React.ReactNode,
+  help?: React.ReactNode,
+  addon?: React.ReactNode,
+  className?: string,
+  children: React.ReactNode,
+}
+
+export type InputProps = {
+  name: string,
+  value: value,
+  required?: boolean,
+  type?: string,
+  validation?: validation,
+  setValue: setValue,
+  [key: string]: any,
+}
+
+export interface ControlLogicHook {
+  formControlProps: FormControlProps,
+  inputProps: InputProps,
 }

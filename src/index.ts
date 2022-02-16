@@ -18,7 +18,8 @@ export {
   maxRows,
   placeholder,
 } from './core/themeHelpers'
-export { default as withSubmit } from './core/withSubmit'
+export { default as useSubmit } from './core/useSubmit'
+export { default as useControlLogic } from './core/useControlLogic'
 
 export { default as withFormControl } from './default/withFormControl'
 export { default as FormControl } from './default/FormControl'
