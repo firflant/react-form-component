@@ -1,5 +1,5 @@
 export { default as Form } from './core/Form'
-export { FormConsumer } from './core/Form'
+export { FieldsContext, SetValueContext } from './core/Form'
 export { default as FormThemeProvider } from './core/FormThemeProvider'
 export {
   processField,
@@ -19,9 +19,9 @@ export {
   placeholder,
 } from './core/themeHelpers'
 export { default as withSubmit } from './core/withSubmit'
-export { default as FormControlLogic } from './core/FormControlLogic'
 
-export { default as withFormControl } from './default/FormControl'
+export { default as withFormControl } from './default/withFormControl'
+export { default as FormControl } from './default/FormControl'
 export { default as defautTheme } from './core/theme'
 export { default as FormActions } from './default/FormActions'
 export { default as FormButton } from './core/FormButton'

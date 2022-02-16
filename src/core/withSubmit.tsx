@@ -1,6 +1,6 @@
 import React from 'react'
 // import { useTheme } from 'react-jss'
-import { FormConsumer, getValues, formIsInvalid } from '../.'
+import { FieldsContext, SetValueContext, getValues, formIsInvalid } from '../.'
 import {
   fieldsData,
   fieldData,
@@ -21,9 +21,10 @@ function withSubmit<T>(
 ) {
   // const theme: themeI = useTheme()
   // eslint-disable-next-line react/display-name
-  return (props: T) =>
-  <FormConsumer>
-    {({ fieldsData, setValue }: { fieldsData: fieldsData, setValue: setValue }) =>
+  return (props: T) => {
+    const fieldsData = React.useContext(FieldsContext) as fieldsData
+    const setValue = React.useContext(SetValueContext) as setValue
+    return (
       <Component
         {...props}
         submit={(e, callback, reset) => {
@@ -44,8 +45,8 @@ function withSubmit<T>(
           }
         }}
       />
-    }
-  </FormConsumer>
+    )
+  }
 }
 
 export default withSubmit

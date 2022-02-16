@@ -16,23 +16,10 @@ import {
 } from '../typings'
 
 
-const FieldsContext = React.createContext({})
+export const FieldsContext = React.createContext({})
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-const SetValueContext = React.createContext(() => {})
+export const SetValueContext = React.createContext(() => {})
 
-export const FormConsumer = ({ children }: FormConsumerProps) => (
-  <FieldsContext.Consumer>
-    {fieldsData =>
-      <SetValueContext.Consumer>
-        {setValue => children({ fieldsData, setValue })}
-      </SetValueContext.Consumer>
-    }
-  </FieldsContext.Consumer>
-)
-
-export interface FormConsumerProps {
-  children: ({}) => React.ReactNode,
-}
 
 const Form = ({
   fields,
