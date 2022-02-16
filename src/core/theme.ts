@@ -8,7 +8,7 @@ export default {
     narrowInputWidth: 140,
     inlineLabelWidth: 130,
     borderRadius: 0,
-    borderWidth: 1,
+    borderWidth: 2,
     formRowGutter: 50,
     formActionsDistance: 60,
     onlyBottomBorder: false,
