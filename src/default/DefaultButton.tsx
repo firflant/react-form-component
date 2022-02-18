@@ -1,17 +1,28 @@
 import React from 'react'
-import withStyles from 'react-jss'
+import { createUseStyles } from 'react-jss'
 import { lighten } from 'polished'
+import { fullTheme } from '../typings'
 
 
-const DefaultButton = ({ onClick, classes, disabled, children }) =>
-  <button
-    type='button'
-    className={classes.button}
-    onClick={e => onClick(e)}
-    disabled={disabled}
-  >{children}</button>
+const DefaultButton = ({ onClick, disabled, children }: DefaultButtonProps) => {
+  const classes = useStyles()
+  return (
+    <button
+      type='button'
+      className={classes.button}
+      onClick={e => onClick(e)}
+      disabled={disabled}
+    >{children}</button>
+  )
+}
 
-export default withStyles(theme => ({
+export interface DefaultButtonProps {
+  onClick(event: React.MouseEvent): void,
+  disabled?: boolean,
+  children: React.ReactNode,
+}
+
+const useStyles = createUseStyles((theme: fullTheme) => ({
   button: {
     padding: `0 ${theme.sizes.inputHeight / 2}px`,
     fontSize: theme.typography.inputFontSize,
@@ -36,4 +47,6 @@ export default withStyles(theme => ({
       pointerEvents: 'none',
     },
   },
-}))(DefaultButton)
+}))
+
+export default DefaultButton
