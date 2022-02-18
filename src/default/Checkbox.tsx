@@ -1,8 +1,9 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 import classNames from 'classnames'
+import { createUseStyles } from 'react-jss'
 import { withFormControl } from '../.'
-import withStyles from 'react-jss'
+import { value, setValue, fullTheme } from '../typings'
+
 
 const Checkbox = ({
   name,
@@ -11,32 +12,35 @@ const Checkbox = ({
   required,
   setValue,
   small,
-  classes,
-}) =>
-  <label
-    className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
-    htmlFor={name}
-  >
-    <input
-      type='checkbox'
-      name={name}
-      className={classes.input}
-      id={name}
-      checked={value}
-      onChange={e => setValue(name, e.target.checked, required)}
-    /> {text}
-  </label>
-
-Checkbox.propTypes = {
-  name: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  required: PropTypes.bool,
-  text: PropTypes.node,
-  small: PropTypes.bool,
-  setValue: PropTypes.func.isRequired,
+}: CheckboxProps) => {
+  const classes = useCheckboxStyles()
+  return (
+    <label
+      className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
+      htmlFor={name}
+    >
+      <input
+        type='checkbox'
+        name={name}
+        className={classes.input}
+        id={name}
+        checked={value}
+        onChange={e => setValue(name, e.target.checked, required)}
+      /> {text}
+    </label>
+  )
 }
 
-export const checkboxTheme = theme => ({
+export interface CheckboxProps {
+  name: string,
+  value: value,
+  text: React.ReactNode,
+  required?: boolean,
+  setValue: setValue,
+  small?: boolean,
+}
+
+export const useCheckboxStyles = createUseStyles((theme: fullTheme) => ({
   label: {
     display: 'flex',
     position: 'relative',
@@ -93,6 +97,6 @@ export const checkboxTheme = theme => ({
       transform: 'translateY(-2px)',
     },
   },
-})
+}))
 
-export default withFormControl(withStyles(checkboxTheme)(Checkbox))
+export default withFormControl(Checkbox)

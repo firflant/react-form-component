@@ -1,13 +1,13 @@
 import React from 'react'
 
+export type value = any
+
 export type setValue = (
   name?: string,
-  value?: string | number | object,
+  value?: value,
   required?: boolean | undefined,
   options?: object,
 ) => void
-
-export type value = any
 
 export type checkboxValue = boolean | string
 

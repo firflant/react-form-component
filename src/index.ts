@@ -31,7 +31,7 @@ export { default as DefaultButton } from './default/DefaultButton'
 export { default as FormRow } from './default/FormRow'
 export { default as Combine } from './default/Combine'
 
-export { default as Checkbox, checkboxTheme } from './default/Checkbox'
+export { default as Checkbox, useCheckboxStyles } from './default/Checkbox'
 export { default as Checkboxes } from './default/Checkboxes'
 export { default as ImageSelect } from './default/ImageSelect'
 export { default as ImageUpload } from './default/ImageUpload'
