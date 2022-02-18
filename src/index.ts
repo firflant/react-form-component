@@ -5,6 +5,7 @@ export {
   processField,
   initiateFormFields,
   updateFieldsRequirements,
+  parseOption,
   checkboxHandler,
   formIsInvalid,
   getValues,
@@ -40,7 +41,7 @@ export { default as MultiFormInput } from './default/MultiFormInput'
 export { default as MultiSelect } from './default/MultiSelect'
 export { default as Radio } from './default/Radio'
 export { default as Slider } from './default/Slider'
-export { default as Select, selectTheme } from './default/Select'
+export { default as Select, useSelectStyles } from './default/Select'
 export { default as Switch, switchTheme } from './default/Switch'
 export { default as Switches } from './default/Switches'
 export { default as TextArea } from './default/TextArea'

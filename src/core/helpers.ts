@@ -5,6 +5,7 @@ import {
   fieldsData,
   textLabels,
   customValidationFunction,
+  option,
 } from '../typings'
 
 
@@ -167,6 +168,14 @@ export function updateFieldsRequirements(fieldsData: fieldsData, required?: stri
   return updatedFieldsData
 }
 
+/**
+ * Parse option, which can be a string or an object, to return an object.
+ */
+export function parseOption(option: option) {
+  const optionLabel = (typeof option === 'string') ? option : option.label
+  const optionValue = (typeof option === 'string') ? option : option.value
+  return { optionLabel, optionValue }
+}
 
 /**
  * Update single checkbox value in a list of all checkboxes.

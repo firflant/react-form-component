@@ -11,6 +11,10 @@ export type value = any
 
 export type checkboxValue = boolean | string
 
+export type option = string | { label: React.ReactNode, value: string }
+
+export type options = option[]
+
 export type validation = 'error' | 'success' | null
 
 export type fieldData = {
