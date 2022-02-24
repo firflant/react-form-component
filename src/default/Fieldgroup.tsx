@@ -44,6 +44,7 @@ const Fieldgroup = ({
 
   const handleDelete = async (e: React.MouseEvent<HTMLButtonElement>, index: number) => {
     e.preventDefault()
+    // Force rerender to prevent bugs when deleting any item.
     await setRenderItems(false)
     await setValue((prevState: valueT) =>
       prevState.filter((_item: anyObject, prevIndex: number) => prevIndex !== index),
