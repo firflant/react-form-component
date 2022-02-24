@@ -1,12 +1,17 @@
 import React from 'react'
-import withStyles from 'react-jss'
+import { createUseStyles } from 'react-jss'
 
 
-const Combine = ({ classes, children }) =>
-  <div className={classes.root}>{children}</div>
+const Compound = ({ children }: CompoundProps) => {
+  const classes = useStyles()
+  return <div className={classes.root}>{children}</div>
+}
 
+export interface CompoundProps {
+  children: React.ReactNode,
+}
 
-export default withStyles(theme => ({
+const useStyles = createUseStyles({
   root: {
     display: 'flex',
     '& > *:not(:last-child)': {
@@ -24,4 +29,6 @@ export default withStyles(theme => ({
       margin: '0 !important',
     },
   },
-}))(Combine)
+})
+
+export default Compound
