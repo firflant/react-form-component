@@ -1,7 +1,6 @@
 import React from 'react'
 import { debounce } from 'throttle-debounce'
-import { createUseStyles, useTheme } from 'react-jss'
-import classNames from 'classnames'
+import { useTheme } from 'react-jss'
 import {
   initiateFormFields,
   processField,
@@ -35,7 +34,6 @@ const Form = ({
   const [fieldsData, setFieldsData] = React.useState(
     initiateFormFields(fields, requiredFields),
   )
-  const classes = useStyles()
   const theme = useTheme() as fullTheme
 
   React.useEffect(() => {
@@ -85,7 +83,7 @@ const Form = ({
   // Prevent nesting <form> tags when using form as a Fieldgroup.
   const Component = fieldGroup ? 'div' : component || 'form'
   return (
-    <Component className={classNames(classes.form, { [className]: className })}>
+    <Component className={className || undefined}>
       <FieldsContext.Provider value={fieldsData}>
         <SetValueContext.Provider value={setValue}>
           {children}
@@ -106,11 +104,5 @@ export interface FormProps {
   className?: string,
   children: React.ReactNode,
 }
-
-const useStyles = createUseStyles({
-  form: {
-    margin: 0,
-  },
-})
 
 export default Form
