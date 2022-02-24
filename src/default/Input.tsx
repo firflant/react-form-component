@@ -17,10 +17,10 @@ const Input = ({
 }: InputProps) => {
   const [internalValue, setInternalValue] = React.useState('')
 
-  // Apply initial value.
+  // Apply initial value and react on initialValue change.
   React.useEffect(() => {
     setInternalValue(value)
-  }, [])
+  }, [value])
 
   const handleSetValue = (val: value) => {
     setValue(name, val, required, { type, min })

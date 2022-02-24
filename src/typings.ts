@@ -17,6 +17,8 @@ export type options = option[]
 
 export type validation = 'error' | 'success' | null
 
+export type anyObject = { [key: string]: any }
+
 export type fieldData = {
   value: value,
   required: boolean,

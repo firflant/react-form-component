@@ -27,17 +27,16 @@ const Form = ({
   allRequired,
   component,
   onChange,
+  fieldGroup,
   runOnChangeInitially,
   className = '',
   children,
 }: FormProps) => {
-  const [fieldsData, setFieldsData] = React.useState({})
+  const [fieldsData, setFieldsData] = React.useState(
+    initiateFormFields(fields, requiredFields),
+  )
   const classes = useStyles()
   const theme = useTheme() as fullTheme
-
-  React.useEffect(() => {
-    setFieldsData(initiateFormFields(fields, requiredFields))
-  }, [])
 
   React.useEffect(() => {
     setFieldsData(prevState => updateFieldsRequirements(
@@ -83,8 +82,8 @@ const Form = ({
     }
   }
 
-  // Prevent puting <form> tag into a <form> tag when using form in mutlivalue inputs.
-  const Component = runOnChangeInitially ? 'div' : component || 'form'
+  // Prevent nesting <form> tags when using form as a Fieldgroup.
+  const Component = fieldGroup ? 'div' : component || 'form'
   return (
     <Component className={classNames(classes.form, { [className]: className })}>
       <FieldsContext.Provider value={fieldsData}>
@@ -102,6 +101,7 @@ export interface FormProps {
   allRequired?: boolean,
   component?: React.ComponentType,
   onChange?: (fieldsData: fieldsData, fieldName?: string) => void,
+  fieldGroup?: boolean,
   runOnChangeInitially?: boolean,
   className?: string,
   children: React.ReactNode,
