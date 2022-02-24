@@ -9,19 +9,6 @@ import {
 } from '../typings'
 
 
-interface FieldgroupProps {
-  value: valueT,
-  setValue: setValueT,
-  name: string,
-  required: boolean,
-  form: React.ComponentType<{ fields: anyObject }>,
-  formProps: React.ComponentProps<any>,
-  moreComponent: React.ComponentType<{ onClick: any }>,
-  moreLabel: string,
-  moreComponentProps: React.ComponentProps<any>,
-  deleteIcon: React.ReactNode,
-}
-
 const DefaultDeleteIcon =
   <div style={{ fontSize: '2em', transform: 'translateY(-0.14em)' }}>⨯</div>
 
@@ -93,6 +80,19 @@ const Fieldgroup = ({
       >{moreLabel}</MoreComponentProp>
     </div>
   )
+}
+
+interface FieldgroupProps {
+  value: valueT,
+  setValue: setValueT,
+  name: string,
+  required: boolean,
+  form: React.ComponentType<{ fields: anyObject }>,
+  formProps: React.ComponentProps<any>,
+  moreComponent: React.ComponentType<{ onClick: any }>,
+  moreLabel: string,
+  moreComponentProps: React.ComponentProps<any>,
+  deleteIcon: React.ReactNode,
 }
 
 const useStyles = createUseStyles((theme: fullTheme) => ({
