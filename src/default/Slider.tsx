@@ -1,7 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from 'react-jss'
+import { createUseStyles } from 'react-jss'
 import { withFormControl } from '../.'
+import { value, setValue, fullTheme } from '../typings'
 
 
 const Slider = ({
@@ -9,44 +9,45 @@ const Slider = ({
   value,
   required,
   setValue,
-  min,
-  max,
-  step,
+  min = 0,
+  max = 300,
+  step = 1,
   unit,
-  classes,
-}) =>
-  <div>
-    <input
-      className={classes.input}
-      type='range'
-      name={name}
-      value={value || 0}
-      min={min}
-      max={max}
-      onChange={e => setValue(name, Math.floor(e.target.value / step) * step, required)}
-    />
-    <div className={classes.value}>
-      {value || '0'}{unit && ` ${unit}`}
+}: SliderProps) => {
+  const classes = useStyles()
+  return (
+    <div>
+      <input
+        className={classes.input}
+        type='range'
+        name={name}
+        value={value || 0}
+        min={min}
+        max={max}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          const newVal = parseInt(e.target.value)
+          setValue(name, Math.floor(newVal / step) * step, required)
+        }}
+      />
+      <div className={classes.value}>
+        {value || '0'}{unit && ` ${unit}`}
+      </div>
     </div>
-  </div>
-
-Slider.defaultProps = {
-  max: 300,
-  step: 1,
+  )
 }
 
-Slider.propTypes = {
-  name: PropTypes.string.isRequired,
-  value: PropTypes.any,
-  required: PropTypes.bool,
-  setValue: PropTypes.func.isRequired,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  step: PropTypes.number,
-  unit: PropTypes.string,
+export interface SliderProps {
+  name: string,
+  value: value,
+  required: boolean,
+  setValue: setValue,
+  min?: number,
+  max?: number,
+  step?: number,
+  unit?: string,
 }
 
-export default withFormControl(withStyles(theme => ({
+const useStyles = createUseStyles((theme: fullTheme) => ({
   input: {
     padding: 0,
     '-webkit-appearance': 'none',
@@ -83,4 +84,6 @@ export default withFormControl(withStyles(theme => ({
     top: -3,
     right: 0,
   },
-}))(Slider))
+}))
+
+export default withFormControl(Slider)
