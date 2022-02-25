@@ -59,11 +59,11 @@ export function overlay() {
   }
 }
 
-export function maxRows(amount: number) {
+export function maxRows(amount?: number) {
   return {
     overflow: 'hidden',
     display: '-webkit-box',
-    '-webkit-line-clamp': amount,
+    '-webkit-line-clamp': amount || 1,
     '-webkit-box-orient': 'vertical',
   }
 }
