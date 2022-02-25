@@ -1,9 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import withStyles from 'react-jss'
+import { createUseStyles } from 'react-jss'
 import classNames from 'classnames'
 import { darken } from 'polished'
 import { withFormControl } from '../.'
+import { value, setValue, fullTheme } from '../typings'
 
 
 const Switch = ({
@@ -12,31 +12,34 @@ const Switch = ({
   text,
   required,
   setValue,
-  classes,
-}) =>
-  <label
-    className={classNames(classes.label, 'form-checkitem')}
-    htmlFor={name}
-  >
-    <input
-      type='checkbox'
-      name={name}
-      className={classes.input}
-      id={name}
-      checked={value}
-      onChange={e => setValue(name, e.target.checked, required)}
-    /> {text}
-  </label>
-
-Switch.propTypes = {
-  name: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  text: PropTypes.node,
-  required: PropTypes.bool,
-  setValue: PropTypes.func.isRequired,
+}: SwitchProps) => {
+  const classes = useSwitchStyles()
+  return (
+    <label
+      className={classNames(classes.label, 'form-checkitem')}
+      htmlFor={name}
+    >
+      <input
+        type='checkbox'
+        name={name}
+        className={classes.input}
+        id={name}
+        checked={value}
+        onChange={e => setValue(name, e.target.checked, required)}
+      /> {text}
+    </label>
+  )
 }
 
-export const switchTheme = theme => ({
+export interface SwitchProps {
+  name: string,
+  value: value,
+  text: React.ReactNode,
+  required: boolean,
+  setValue: setValue,
+}
+
+export const useSwitchStyles = createUseStyles((theme: fullTheme) => ({
   label: {
     display: 'flex',
     position: 'relative',
@@ -81,6 +84,6 @@ export const switchTheme = theme => ({
       },
     },
   },
-})
+}))
 
-export default withFormControl(withStyles(switchTheme)(Switch))
+export default withFormControl(Switch)
