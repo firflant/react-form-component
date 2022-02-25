@@ -28,7 +28,7 @@ export { default as defautTheme } from './core/theme'
 export { default as FormActions } from './default/FormActions'
 export { default as FormButton } from './core/FormButton'
 export { default as DefaultButton } from './default/DefaultButton'
-export { default as FormRow } from './default/FormRow'
+export { default as Row } from './default/Row'
 export { default as Compound } from './default/Compound'
 
 export { default as Checkbox, useCheckboxStyles } from './default/Checkbox'
