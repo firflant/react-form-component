@@ -1,6 +1,6 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
-import { withFormControl, DefaultButton, breakpoint } from '../.'
+import { Form, withFormControl, DefaultButton, breakpoint } from '../.'
 import {
   value as valueT,
   setValue as setValueT,
@@ -18,12 +18,12 @@ const Fieldgroup = ({
   setValue: setValueProp,
   name,
   required,
-  form: FormComponentProp,
-  formProps,
+  fields,
   moreComponent,
   moreLabel = 'Add more',
   moreComponentProps,
   deleteIcon = DefaultDeleteIcon,
+  children: Children,
 }: FieldgroupProps) => {
   const classes = useStyles()
   const MoreComponentProp = moreComponent || DefaultButton
@@ -55,17 +55,19 @@ const Fieldgroup = ({
   return (
     <div>
       {renderItems
-        ? value.map((fields: anyObject, index: number) =>
+        ? value.map((fieldgroupValues: anyObject, index: number) =>
           <div className={classes.fieldgroup} key={index}>
-            <FormComponentProp
-              values={fields}
+            <Form
               onChange={(updatedFields: anyObject) => setValue((prevState: valueT) =>
                 prevState.map((item: valueT, subIndex: number) =>
                   index !== subIndex ? item : updatedFields,
                 ),
               )}
-              {...formProps}
-            />
+              fields={fields}
+              fieldGroup
+            >
+              <Children values={fieldgroupValues} />
+            </Form>
             <button
               className={classes.delete}
               onClick={e => handleDelete(e, index)}
@@ -88,12 +90,13 @@ interface FieldgroupProps {
   setValue: setValueT,
   name: string,
   required: boolean,
-  form: React.ComponentType<{ fields: anyObject }>,
+  fields: string[],
   formProps: React.ComponentProps<any>,
   moreComponent: React.ComponentType<{ onClick: any }>,
   moreLabel: string,
   moreComponentProps: React.ComponentProps<any>,
   deleteIcon: React.ReactNode,
+  children: React.ComponentType<{ values: anyObject }>
 }
 
 const useStyles = createUseStyles((theme: fullTheme) => ({
