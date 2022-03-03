@@ -28,6 +28,7 @@ const Form = ({
   onChange,
   fieldGroup,
   runOnChangeInitially,
+  onEnterPress,
   className = '',
   children,
 }: FormProps) => {
@@ -49,8 +50,11 @@ const Form = ({
   )
 
   const setValue:setValue = (name, value, required, options) => {
+    if (onEnterPress && options?.forceSubmit) {
+      onEnterPress(getValues(fieldsData))
+    }
     if (!name) {
-      // If no field name is provided, reset whole form
+      // Not providing field name - a method to reset the whole form.
       setFieldsData(initiateFormFields(fields, allRequired ? fields : requiredFields))
     } else {
       setFieldsData((prevState: fieldsData) => {
@@ -101,6 +105,7 @@ export interface FormProps {
   onChange?: (fieldsData: fieldsData, fieldName?: string) => void,
   fieldGroup?: boolean,
   runOnChangeInitially?: boolean,
+  onEnterPress?: (fieldsData: fieldsData) => void,
   className?: string,
   children: React.ReactNode,
 }

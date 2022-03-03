@@ -15,7 +15,6 @@
       "noUnusedLocals": true,
       "noUnusedParameters": true,
       "esModuleInterop": true,
-      "noImplicitReturns": true,
       "noImplicitThis": true,
       "suppressImplicitAnyIndexErrors": true,
   },

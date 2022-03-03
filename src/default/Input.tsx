@@ -11,6 +11,7 @@ const Input = ({
   min,
   debounceTime = 500,
   accept,
+  activateEnterPress,
   required,
   setValue,
   ...otherProps
@@ -59,6 +60,12 @@ const Input = ({
           debouncedSetValue(e.target.value)
         }
       }}
+      onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (activateEnterPress && e.code === 'Enter') {
+          e.preventDefault()
+          setValue(name, internalValue, required, { type, min, forceSubmit: true })
+        }
+      }}
       accept={accept}
       value={type !== 'file' ? internalValue : undefined}
       onBlur={e => handleSetValue(e.target.value)}
@@ -75,6 +82,7 @@ export interface InputProps {
   min: number,
   debounceTime: number,
   accept: string,
+  activateEnterPress?: boolean,
   required: boolean,
   setValue: setValue,
 }

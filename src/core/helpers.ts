@@ -19,12 +19,12 @@ export function processField(
   options: {
     type?: string,
     min?: number,
-    forcedErrorMessage?: string,
+    forceErrorMessage?: string,
   } = {},
   textLabels: textLabels,
   customValidationFunction: customValidationFunction,
 ) {
-  const { type, min, forcedErrorMessage } = options
+  const { type, min, forceErrorMessage } = options
 
   // If the value is an array, remove its empty values for safety.
   const valueIsArray = Array.isArray(value)
@@ -43,13 +43,13 @@ export function processField(
   } else if (processedValue?.length && processedValue.length > 0) {
 
     // Force error message if it is present and abandon further validation.
-    if (forcedErrorMessage) {
+    if (forceErrorMessage) {
       return {
         [name]: {
           value: processedValue,
           validation: 'error',
           required,
-          help: forcedErrorMessage,
+          help: forceErrorMessage,
         },
       }
     }

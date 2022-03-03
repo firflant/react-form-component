@@ -6,7 +6,7 @@ export type setValue = (
   name?: string,
   value?: value,
   required?: boolean | undefined,
-  options?: object,
+  options?: anyObject,
 ) => void
 
 export type checkboxValue = boolean | string
