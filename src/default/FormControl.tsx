@@ -22,7 +22,8 @@ const FormControl = ({
   displayName,
   label,
   help,
-  addon,
+  prefix,
+  suffix,
   className = '',
   children,
 }: FormControlProps) => {
@@ -36,6 +37,8 @@ const FormControl = ({
         [classes.narrow]: narrow,
         [classes.large]: large,
         [classes.noBottomGutter]: noBottomGutter,
+        [classes.withPrefix]: prefix,
+        [classes.withSuffix]: suffix,
         [classes[validation || '']]: validation,
         [classes.disabled]: disabled,
         [className]: className,
@@ -48,7 +51,8 @@ const FormControl = ({
         : null
       }
       {children}
-      {addon && <div className={classes.addon}>{addon}</div>}
+      {prefix && <div className={classes.prefix}>{prefix}</div>}
+      {suffix && <div className={classes.suffix}>{suffix}</div>}
       {help && <span className={classes.help}>{help}</span>}
     </div>
   )
@@ -126,6 +130,16 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
       borderColor: theme.colors.success,
     },
   },
+  withPrefix: {
+    '& .form-input': {
+      paddingLeft: theme.sizes.inputSidePaddings + theme.sizes.prefixExtraSpacing,
+    },
+  },
+  withSuffix: {
+    '& .form-input': {
+      paddingRight: theme.sizes.inputSidePaddings + theme.sizes.prefixExtraSpacing,
+    },
+  },
   error: {
     '& $label, & $addon, & $help, & .form-checkitem': {
       color: theme.colors.error,
@@ -155,24 +169,22 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     lineHeight: 'normal',
     color: theme.colors.inputText,
   },
-  addon: {
+  prefix: {
     position: 'absolute',
     bottom: 0,
-    right: !theme.sizes.moveAddonToLeft ? theme.sizes.addonSpacing : 'auto',
-    left: theme.sizes.moveAddonToLeft ? theme.sizes.addonSpacing : 'auto',
+    left: theme.sizes.inputSidePaddings,
+  },
+  suffix: {
+    position: 'absolute',
+    bottom: 0,
+    right: theme.sizes.inputSidePaddings,
   },
 
   // Modifiers
   large: {
-    ...inputHeight(theme.sizes.inputHeight + 4),
+    ...inputHeight(theme.sizes.inputHeight + theme.sizes.largeInputExtraHeight),
     '& $label': {
       marginBottom: 2,
-    },
-    '& + &': {
-      marginTop: -theme.sizes.inputGutterBottom + 14,
-    },
-    '& $label ~ textarea ~ $addon': {
-      top: Math.floor(theme.typography.labelFontSize * 1.4 + 2),
     },
   },
   inlineLabel: {

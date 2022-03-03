@@ -18,7 +18,7 @@ export function inputHeight(height: number) {
     '& .form-select:not([multiple])': {
       backgroundPosition: `calc(100% - 15px) ${height / 2 - 2}px, calc(100% - 10px) ${height / 2 - 2}px`,
     },
-    '& $addon': {
+    '& $prefix, & $suffix': {
       height,
       lineHeight: `${height}px`,
     },

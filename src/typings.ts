@@ -61,8 +61,8 @@ export interface fullTheme {
     rowGutter: number,
     formActionsDistance: number,
     onlyBottomBorder: boolean,
-    moveAddonToLeft: boolean,
-    addonSpacing: number,
+    largeInputExtraHeight: number,
+    prefixExtraSpacing: number,
   },
   colors: {
     accent: string,
@@ -109,8 +109,8 @@ export interface themeOverrides {
     rowGutter?: number,
     formActionsDistance?: number,
     onlyBottomBorder?: boolean,
-    moveAddonToLeft?: boolean,
-    addonSpacing?: number,
+    largeInputExtraHeight?: number,
+    prefixExtraSpacing?: number,
   },
   colors?: {
     accent?: string,
@@ -185,7 +185,8 @@ export interface FormControlProps {
   displayName: string,
   label?: React.ReactNode,
   help?: React.ReactNode,
-  addon?: React.ReactNode,
+  prefix?: React.ReactNode,
+  suffix?: React.ReactNode,
   className?: string,
   children: React.ReactNode,
 }

@@ -12,8 +12,8 @@ export default {
     rowGutter: 50,
     formActionsDistance: 60,
     onlyBottomBorder: false,
-    moveAddonToLeft: false,
-    addonSpacing: 10,
+    largeInputExtraHeight: 10,
+    prefixExtraSpacing: 20,
   },
 
   colors: {

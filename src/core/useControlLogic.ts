@@ -16,7 +16,8 @@ const useControlLogic = (
     type,
     help,
     className,
-    addon,
+    prefix,
+    suffix,
     narrow,
     large,
     inlineLabel,
@@ -66,7 +67,8 @@ const useControlLogic = (
     displayName: InputComponent.displayName || '',
     label,
     help: fieldsDataHelp || help,
-    addon,
+    prefix,
+    suffix,
     className,
   }
 
