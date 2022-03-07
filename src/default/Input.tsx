@@ -12,7 +12,7 @@ const Input = ({
   debounceTime = 500,
   accept,
   activateEnterPress,
-  required,
+  mandatory,
   setValue,
   ...otherProps
 }: InputProps) => {
@@ -24,7 +24,7 @@ const Input = ({
   }, [value])
 
   const handleSetValue = (val: value) => {
-    setValue(name, val, required, { type, min })
+    setValue(name, val, mandatory, { type, min })
   }
 
   const debouncedSetValue = React.useCallback(
@@ -53,7 +53,7 @@ const Input = ({
               type: fileType.split('/')[0],
               data,
               dataFile,
-            }, required)
+            }, mandatory)
           }
         } else {
           setInternalValue(e.target.value)
@@ -63,7 +63,7 @@ const Input = ({
       onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {
         if (activateEnterPress && e.code === 'Enter') {
           e.preventDefault()
-          setValue(name, internalValue, required, { type, min, forceSubmit: true })
+          setValue(name, internalValue, mandatory, { type, min, forceSubmit: true })
         }
       }}
       accept={accept}
@@ -83,7 +83,7 @@ export interface InputProps {
   debounceTime: number,
   accept: string,
   activateEnterPress?: boolean,
-  required: boolean,
+  mandatory: boolean,
   setValue: setValue,
 }
 

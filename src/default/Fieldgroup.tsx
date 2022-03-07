@@ -17,7 +17,7 @@ const Fieldgroup = ({
   value: valueProp,
   setValue: setValueProp,
   name,
-  required,
+  mandatory,
   fields,
   moreComponent,
   moreLabel = 'Add more',
@@ -39,7 +39,7 @@ const Fieldgroup = ({
 
   React.useEffect(() => {
     // Bind component state to Form's field state.
-    setValueProp(name, value, required)
+    setValueProp(name, value, mandatory)
   }, [value])
 
   const handleDelete = async (e: React.MouseEvent<HTMLButtonElement>, index: number) => {
@@ -89,7 +89,7 @@ interface FieldgroupProps {
   value: valueT,
   setValue: setValueT,
   name: string,
-  required: boolean,
+  mandatory: boolean,
   fields: string[],
   formProps: React.ComponentProps<any>,
   moreComponent: React.ComponentType<{ onClick: any }>,

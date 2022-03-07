@@ -9,7 +9,7 @@ import { value, setValue, fullTheme } from '../typings'
 const MultiImageUpload = ({
   name,
   value,
-  required,
+  mandatory,
   setValue,
   columns = 4,
 }: MultiImageUploadProps) => {
@@ -30,7 +30,7 @@ const MultiImageUpload = ({
                 onClick={() => setValue(
                   name,
                   value.filter((_subItem: string, subIndex: number) => subIndex !== index),
-                  required,
+                  mandatory,
                 )}
               >⨯</div>
             </div>
@@ -62,7 +62,7 @@ const MultiImageUpload = ({
                     data,
                     dataFile,
                   }],
-                  required,
+                  mandatory,
                 )
                 oldValue = [...oldValue, {
                   fileName,
@@ -85,7 +85,7 @@ const MultiImageUpload = ({
 export interface MultiImageUploadProps {
   name: string
   value: value,
-  required: boolean,
+  mandatory: boolean,
   setValue: setValue,
   columns?: number,
 }

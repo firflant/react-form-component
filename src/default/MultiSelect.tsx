@@ -14,7 +14,7 @@ const MultiSelect = ({
   name,
   value,
   placeholder,
-  required,
+  mandatory,
   setValue,
   options,
 }: MultiSelectProps) => {
@@ -38,7 +38,7 @@ const MultiSelect = ({
             >{optionLabel}</span>
           })}
         </div>
-        : placeholder || (required ? 'Select' : 'All')
+        : placeholder || (mandatory ? 'Select' : 'All')
       }
       {isOpen &&
         <React.Fragment>
@@ -53,7 +53,7 @@ const MultiSelect = ({
               return <div
                 key={index}
                 className={classNames(classes.option, { [classes.isChecked]: checked })}
-                onClick={() => setValue(name, checkboxHandler(!checked, optionValue, value), required)}
+                onClick={() => setValue(name, checkboxHandler(!checked, optionValue, value), mandatory)}
               >
                 {optionLabel}{checked &&
                   <>
@@ -74,7 +74,7 @@ export interface MultiSelectProps {
   name: string,
   value: value,
   placeholder: React.ReactNode,
-  required?: boolean,
+  mandatory?: boolean,
   setValue: setValue,
   options: options,
 }

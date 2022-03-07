@@ -7,7 +7,7 @@ import { value, setValue, options } from '../typings'
 const Switches = ({
   name,
   value,
-  required,
+  mandatory,
   setValue,
   options,
 }: SwitchesProps) => {
@@ -32,7 +32,7 @@ const Switches = ({
               checked={checked}
               onChange={() => {
                 const finalValue = checkboxHandler(!checked, optionValue, value)
-                setValue(name, finalValue, required)
+                setValue(name, finalValue, mandatory)
               }}
             /> {optionLabel}
           </label>
@@ -45,7 +45,7 @@ const Switches = ({
 export interface SwitchesProps {
   name: string,
   value: value,
-  required: boolean,
+  mandatory: boolean,
   setValue: setValue,
   options: options,
 }

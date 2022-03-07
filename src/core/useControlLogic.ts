@@ -33,7 +33,7 @@ const useControlLogic = (
   React.useEffect(() => {
     // Appply default field value on init and when it changes.
     if (initialValue) {
-      setValue(name, initialValue, required)
+      setValue(name, initialValue, mandatory)
     }
   }, [initialValue])
 
@@ -42,7 +42,7 @@ const useControlLogic = (
   const {
     value,
     validation,
-    required,
+    mandatory,
     help: fieldsDataHelp,
   } = fieldData
 
@@ -50,7 +50,7 @@ const useControlLogic = (
     ...otherProps,
     name,
     value: (value !== null ? value : initialValue) || '',
-    required,
+    mandatory,
     type,
     setValue,
   }

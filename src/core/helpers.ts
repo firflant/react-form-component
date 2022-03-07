@@ -15,7 +15,7 @@ import {
 export function processField(
   name: string,
   value: value,
-  required: boolean,
+  mandatory: boolean,
   options: {
     type?: string,
     min?: number,
@@ -35,11 +35,11 @@ export function processField(
   let validation = null; let help = null
 
   // VALIDATION - If any check will fail, raise error state and set help message.
-  if (required && (!processedValue || (valueIsArray && processedValue.length === 0))) {
-    // If the field is required and its value is empty, set an error. Otherwise
+  if (mandatory && (!processedValue || (valueIsArray && processedValue.length === 0))) {
+    // If the field is mandatory and its value is empty, set an error. Otherwise
     // continue the validation.
     validation = 'error'
-    help = textLabels.requiredField
+    help = textLabels.mandatoryField
   } else if (processedValue?.length && processedValue.length > 0) {
 
     // Force error message if it is present and abandon further validation.
@@ -48,7 +48,7 @@ export function processField(
         [name]: {
           value: processedValue,
           validation: 'error',
-          required,
+          mandatory,
           help: forceErrorMessage,
         },
       }
@@ -122,7 +122,7 @@ export function processField(
     [name]: {
       value: processedValue,
       validation,
-      required,
+      mandatory,
       help,
       type,
     },
@@ -133,7 +133,7 @@ export function processField(
 /**
  * Generate initial form state, where all values are undefined.
  */
-export function initiateFormFields(fieldNames: string[], required?: string[]) {
+export function initiateFormFields(fieldNames: string[], mandatory?: string[]) {
   return fieldNames.reduce((acc: object, field: string) => (
     { ...acc,
       [field]: {
@@ -142,7 +142,7 @@ export function initiateFormFields(fieldNames: string[], required?: string[]) {
         // It is being used in formIsInitiated variable inside <Form> component.
         // TODO: Consider adding additional property called `untouch`.
         validation: null,
-        required: required && required.includes(field),
+        mandatory: mandatory && mandatory.includes(field),
         help: null,
       } }
   ), {})
@@ -152,17 +152,17 @@ export function initiateFormFields(fieldNames: string[], required?: string[]) {
 /**
  * Reset valdiation states of all fields in a form.
  */
-export function updateFieldsRequirements(fieldsData: fieldsData, required?: string[]) {
+export function updateFieldsRequirements(fieldsData: fieldsData, mandatory?: string[]) {
   let updatedFieldsData: object = {}
   Object.keys(fieldsData).forEach(key => {
     const { value, help } = fieldsData[key]
-    const isRequired = required && required.includes(key)
+    const isMandatory = mandatory && mandatory.includes(key)
     updatedFieldsData[key] = {
       value,
-      // If the field is not on required anymore, validation must be cleaned up.
-      validation: (fieldsData[key].validation === 'error' && !isRequired) ? null : fieldsData[key].validation,
+      // If the field is not on mandatory anymore, validation must be cleaned up.
+      validation: (fieldsData[key].validation === 'error' && !isMandatory) ? null : fieldsData[key].validation,
       help,
-      required: isRequired,
+      mandatory: isMandatory,
     }
   })
   return updatedFieldsData
@@ -201,25 +201,25 @@ export function checkboxHandler(
 export function formIsInvalid(fieldsData: fieldsData, fieldKeys = []) {
   // Check only fields of given keys, otherwise check whole form.
   const fieldsToCheck = fieldKeys.length ? fieldKeys : Object.keys(fieldsData)
-  let requiredButEmpty = false
+  let mandatoryButEmpty = false
   let hasAnyError = false
 
   fieldsToCheck.forEach(key => {
-    const { value, validation, required } = fieldsData[key]
-    if (required && (
+    const { value, validation, mandatory } = fieldsData[key]
+    if (mandatory && (
       typeof value === 'undefined' ||
       (typeof value === 'string' && value === '') ||
       (Array.isArray(value) && value.length === 0) ||
       (typeof value === 'object' && !Array.isArray(value) && (value === null || !Object.keys(value).length))
     )) {
-      requiredButEmpty = true
+      mandatoryButEmpty = true
     }
     if (validation === 'error') {
       hasAnyError = true
     }
   })
 
-  return requiredButEmpty || hasAnyError
+  return mandatoryButEmpty || hasAnyError
 }
 
 

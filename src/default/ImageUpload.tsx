@@ -9,7 +9,7 @@ const ImageUpload = ({
   name,
   value,
   placeholder,
-  required,
+  mandatory,
   setValue,
 }: ImageUploadProps) =>  {
   const classes = useStyles()
@@ -34,7 +34,7 @@ const ImageUpload = ({
                 type: fileType.split('/')[0],
                 data,
                 dataFile,
-              }, required)
+              }, mandatory)
             }
           }}
         />
@@ -59,7 +59,7 @@ const ImageUpload = ({
         }</div>
         <button
           className={classes.delete}
-          onClick={() => setValue(name, '', required)}
+          onClick={() => setValue(name, '', mandatory)}
         >Delete {placeholder || 'image'}</button>
       </div>
   )
@@ -69,7 +69,7 @@ export interface ImageUploadProps {
   name: string,
   value: value,
   placeholder: React.ReactNode,
-  required: boolean,
+  mandatory: boolean,
   setValue: setValue,
 }
 

@@ -8,7 +8,7 @@ import { value, setValue, options, option } from '../typings'
 const Radio = ({
   name,
   value,
-  required,
+  mandatory,
   small,
   setValue,
   options,
@@ -31,7 +31,7 @@ const Radio = ({
               className={classes.input}
               id={`${name}${index}`}
               checked={optionValue === value}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(name, e.target.value, required)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(name, e.target.value, mandatory)}
             /> {optionLabel}
           </label>
         )
@@ -43,7 +43,7 @@ const Radio = ({
 export interface RadioProps {
   name: string,
   value: value,
-  required: boolean,
+  mandatory: boolean,
   small?: boolean,
   setValue: setValue,
   options: options,

@@ -7,7 +7,7 @@ import { value, setValue, fullTheme } from '../typings'
 const Slider = ({
   name,
   value,
-  required,
+  mandatory,
   setValue,
   min = 0,
   max = 300,
@@ -26,7 +26,7 @@ const Slider = ({
         max={max}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const newVal = parseInt(e.target.value)
-          setValue(name, Math.floor(newVal / step) * step, required)
+          setValue(name, Math.floor(newVal / step) * step, mandatory)
         }}
       />
       <div className={classes.value}>
@@ -39,7 +39,7 @@ const Slider = ({
 export interface SliderProps {
   name: string,
   value: value,
-  required: boolean,
+  mandatory: boolean,
   setValue: setValue,
   min?: number,
   max?: number,

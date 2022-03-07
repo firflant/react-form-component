@@ -23,8 +23,8 @@ function useSubmit(suppressErrorMessage?: boolean) {
     if (formIsInvalid(fieldsData)) {
       // Trigger valdiation check of all fields to prevent submitting before debounce etc.
       Object.entries(fieldsData).forEach(([key, data]) => {
-        const { value, required, type } = data as fieldData
-        setValue(key, value, required, { type })
+        const { value, mandatory, type } = data as fieldData
+        setValue(key, value, mandatory, { type })
       })
       // TODO: Turn back the suppressErrorMessage prop support on TS.
       if (!suppressErrorMessage && theme?.errorNotificationFunc && theme.textLabels?.formInvalid) {

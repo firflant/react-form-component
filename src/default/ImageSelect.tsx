@@ -9,7 +9,7 @@ import { value, setValue, fullTheme } from '../typings'
 const ImageSelect = ({
   name,
   value,
-  required,
+  mandatory,
   setValue,
   options,
   multiple,
@@ -25,7 +25,7 @@ const ImageSelect = ({
             className={classNames(classes.input, 'form-checkitem', { [classes.isChecked]: checked })}
             onClick={() => {
               const finalValue = multiple ? checkboxHandler(!checked, option.value, value) : option.value
-              setValue(name, finalValue, required)
+              setValue(name, finalValue, mandatory)
             }}>
             <img src={option.image} alt='' />
             {option.label && <span className={classes.label}>{option.label}</span>}
@@ -39,7 +39,7 @@ const ImageSelect = ({
 export interface ImageSelectProps {
   name: string,
   value: value,
-  required: boolean,
+  mandatory: boolean,
   setValue: setValue,
   options: { image: string, label: string, value: string }[],
   multiple?: boolean,

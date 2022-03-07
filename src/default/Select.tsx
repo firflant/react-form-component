@@ -9,7 +9,7 @@ const Select = ({
   name,
   value,
   placeholder,
-  required,
+  mandatory,
   setValue,
   options,
 }: SelectProps) => {
@@ -20,10 +20,10 @@ const Select = ({
       className={classNames(classes.select, 'form-input form-select')}
       name={name}
       value={value}
-      onChange={e => setValue(name, e.target.value, required)}
+      onChange={e => setValue(name, e.target.value, mandatory)}
     >
-      {(!value || !required) && <option value='' disabled={required}>
-        {placeholder || (required ? 'Select' : 'All')}
+      {(!value || !mandatory) && <option value='' disabled={mandatory}>
+        {placeholder || (mandatory ? 'Select' : 'All')}
       </option>}
       {options.map((option, index) => {
         const { optionLabel, optionValue} = parseOption(option)
@@ -39,7 +39,7 @@ export interface SelectProps {
   name: string,
   value: value,
   placeholder: React.ReactNode,
-  required?: boolean,
+  mandatory?: boolean,
   setValue: setValue,
   options: options,
 }

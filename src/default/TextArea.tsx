@@ -9,7 +9,7 @@ const TextArea = ({
   name,
   value,
   placeholder,
-  required,
+  mandatory,
   setValue,
   rows = 5,
   min,
@@ -21,7 +21,7 @@ const TextArea = ({
       name={name}
       rows={rows}
       placeholder={placeholder}
-      onChange={e => setValue(name, e.target.value, required, { min })}
+      onChange={e => setValue(name, e.target.value, mandatory, { min })}
       value={value}
     />
   )
@@ -31,7 +31,7 @@ export interface TextAreaProps {
   name: string,
   value: value,
   placeholder: string,
-  required: boolean,
+  mandatory: boolean,
   setValue: setValue,
   rows: number,
   min: number,

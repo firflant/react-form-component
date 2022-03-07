@@ -5,7 +5,7 @@ export type value = any
 export type setValue = (
   name?: string,
   value?: value,
-  required?: boolean | undefined,
+  mandatory?: boolean | undefined,
   options?: anyObject,
 ) => void
 
@@ -21,7 +21,7 @@ export type anyObject = { [key: string]: any }
 
 export type fieldData = {
   value: value,
-  required: boolean,
+  mandatory: boolean,
   help: string,
   validation: validation,
   type?: string,
@@ -33,7 +33,7 @@ export type fieldsData = {} | {
 
 export type textLabels = {
   formInvalid: string,
-  requiredField:string,
+  mandatoryField:string,
   minChars: string,
   passwordInvalid: string,
   emailInvalid: string,
@@ -139,7 +139,7 @@ export interface themeOverrides {
   },
   textLabels?: {
     formInvalid?: string,
-    requiredField?:string,
+    mandatoryField?:string,
     minChars?: string,
     passwordInvalid?: string,
     emailInvalid?: string,
@@ -167,7 +167,7 @@ export interface ControlLogicProps {
   name: string,
   narrow?: boolean,
   noBottomGutter?: boolean,
-  required?: boolean,
+  mandatory?: boolean,
   type?: string,
   validation?: validation,
   [key: string]: any,
@@ -194,7 +194,7 @@ export interface FormControlProps {
 export type InputProps = {
   name: string,
   value: value,
-  required?: boolean,
+  mandatory?: boolean,
   type?: string,
   validation?: validation,
   setValue: setValue,

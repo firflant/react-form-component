@@ -10,7 +10,7 @@ const Switch = ({
   name,
   value,
   text,
-  required,
+  mandatory,
   setValue,
 }: SwitchProps) => {
   const classes = useSwitchStyles()
@@ -25,7 +25,7 @@ const Switch = ({
         className={classes.input}
         id={name}
         checked={value}
-        onChange={e => setValue(name, e.target.checked, required)}
+        onChange={e => setValue(name, e.target.checked, mandatory)}
       /> {text}
     </label>
   )
@@ -35,7 +35,7 @@ export interface SwitchProps {
   name: string,
   value: value,
   text: React.ReactNode,
-  required: boolean,
+  mandatory: boolean,
   setValue: setValue,
 }
 
