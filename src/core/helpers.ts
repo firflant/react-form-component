@@ -153,7 +153,7 @@ export function initiateFormFields(fieldNames: string[], mandatory?: string[]) {
  * Reset valdiation states of all fields in a form.
  */
 export function updateFieldsRequirements(fieldsData: fieldsData, mandatory?: string[]) {
-  let updatedFieldsData: object = {}
+  const updatedFieldsData: object = {}
   Object.keys(fieldsData).forEach(key => {
     const { value, help } = fieldsData[key]
     const isMandatory = mandatory && mandatory.includes(key)
@@ -227,7 +227,7 @@ export function formIsInvalid(fieldsData: fieldsData, fieldKeys = []) {
  * Get values from all fields and organize them into API friendly format.
  */
 export function getValues(fieldsData: fieldsData) {
-  let values: object = {}
+  const values: object = {}
   Object.keys(fieldsData).forEach(key => {
     values[key] = fieldsData[key].value
   })
