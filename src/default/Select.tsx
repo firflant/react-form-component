@@ -17,7 +17,7 @@ const Select = ({
 
   return (
     <select
-      className={classNames(classes.select, 'form-input form-select')}
+      className={classNames(classes.select, 'rfc-input rfc-select')}
       name={name}
       value={value}
       onChange={e => setValue(name, e.target.value, mandatory)}

@@ -17,7 +17,7 @@ const TextArea = ({
   const classes = useStyles()
   return (
     <textarea
-      className={classNames(classes.textArea, 'form-input')}
+      className={classNames(classes.textArea, 'rfc-input')}
       name={name}
       rows={rows}
       placeholder={placeholder}

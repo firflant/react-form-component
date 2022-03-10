@@ -16,7 +16,7 @@ const Checkbox = ({
   const classes = useCheckboxStyles()
   return (
     <label
-      className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
+      className={classNames(classes.label, 'rfc-checkitem', { [classes.small]: small })}
       htmlFor={name}
     >
       <input

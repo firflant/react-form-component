@@ -31,7 +31,7 @@ const FormControl = ({
 
   return (
     <div
-      className={classNames(classes.formControl, 'form-control', {
+      className={classNames(classes.formControl, 'rfc-form-control', {
         [classes.inlineLabel]: inlineLabel,
         [classes.inline]: inline,
         [classes.narrow]: narrow,
@@ -46,14 +46,17 @@ const FormControl = ({
     >
       {label
         ? displayName && ['Checkbox', 'Checkboxes', 'Radio', 'Switch'].find(item => displayName.includes(item))
-          ? <span className={classes.label}>{label}</span>
-          : <label className={classes.label} htmlFor={name}>{label}</label>
+          ? <span className={classNames(classes.label, 'rfc-label')}>{label}</span>
+          : <label className={classNames(classes.label, 'rfc-label')} htmlFor={name}>{label}</label>
         : null
       }
       {children}
-      {prefix && <div className={classes.prefix}>{prefix}</div>}
-      {suffix && <div className={classes.suffix}>{suffix}</div>}
-      {help && <span className={classes.help}>{help}</span>}
+      {prefix &&
+        <div className={classNames(classes.prefix, 'rfc-prefix')}>{prefix}</div>}
+      {suffix &&
+        <div className={classNames(classes.suffix, 'rfc-suffix')}>{suffix}</div>}
+      {help &&
+        <span className={classNames(classes.help, 'rfc-help')}>{help}</span>}
     </div>
   )
 }
@@ -69,7 +72,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     maxWidth: '100%',
     textAlign: 'left',
     ...inputHeight(theme.sizes.inputHeight),
-    '& .form-input': {
+    '& .rfc-input': {
       width: '100%',
       margin: 0,
       borderStyle: 'solid',
@@ -92,7 +95,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
         color: theme.colors.placeholder,
       }),
     },
-    '& .form-input[type=number]': {
+    '& .rfc-input[type=number]': {
       '-moz-appearance': 'textfield',
       appearance: 'textfield',
       '&::-webkit-inner-spin-button': {
@@ -108,7 +111,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     },
 
     // States
-    '& .form-input:focus': {
+    '& .rfc-input:focus': {
       borderColor: theme.colors.accent,
       boxShadow: theme.colors.inputFocusShadow,
       outlineWidth: 0,
@@ -118,7 +121,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   disabled: {
     opacity: 0.5,
     cursor: 'not-allowed',
-    '& .form-input, & .form-checkitem': {
+    '& .rfc-input, & .rfc-checkitem': {
       pointerEvents: 'none',
     },
   },
@@ -126,25 +129,25 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     '& $label, & $addon, & $help': {
       color: theme.colors.success,
     },
-    '& .form-input:not(:focus)': {
+    '& .rfc-input:not(:focus)': {
       borderColor: theme.colors.success,
     },
   },
   withPrefix: {
-    '& .form-input': {
+    '& .rfc-input': {
       paddingLeft: theme.sizes.inputSidePaddings + theme.sizes.prefixExtraSpacing,
     },
   },
   withSuffix: {
-    '& .form-input': {
+    '& .rfc-input': {
       paddingRight: theme.sizes.inputSidePaddings + theme.sizes.prefixExtraSpacing,
     },
   },
   error: {
-    '& $label, & $addon, & $help, & .form-checkitem': {
+    '& $label, & $addon, & $help, & .rfc-checkitem': {
       color: theme.colors.error,
     },
-    '& .form-input:not(:focus)': {
+    '& .rfc-input:not(:focus)': {
       borderColor: theme.colors.error,
       backgroundColor: lighten(0.54, theme.colors.error),
     },
@@ -219,7 +222,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   },
   inline: {
     width: '100%',
-    '& .form-checkitem': {
+    '& .rfc-checkitem': {
       display: 'inline-flex',
       whiteSpace: 'nowrap',
       marginRight: 20,

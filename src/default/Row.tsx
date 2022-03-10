@@ -34,7 +34,7 @@ const useStyles = createUseStyles((theme: fullTheme) => {
     display: 'flex',
     alignItems: 'flex-end',
     marginBottom: theme.sizes.inputGutterBottom,
-    '& .form-control': {
+    '& .rfc-form-control': {
       marginBottom: 0,
     },
     '& > div + *': {

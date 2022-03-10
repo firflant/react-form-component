@@ -34,7 +34,7 @@ const Input = ({
 
   return (
     <input
-      className='form-input'
+      className='rfc-input'
       name={name}
       type={type === 'password-novalidation' ? 'password' : type}
       // This allows to add a custom validation rule for password field, while still

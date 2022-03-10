@@ -20,7 +20,7 @@ const Switches = ({
         const checked = (value && value.includes(optionValue))
         return (
           <label
-            className={classNames(classes.label, 'form-checkitem')}
+            className={classNames(classes.label, 'rfc-checkitem')}
             htmlFor={`${name}${index}`}
             key={index}
           >

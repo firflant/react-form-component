@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
     display: 'flex',
     '& > *:not(:last-child)': {
       flexGrow: 1,
-      '&, & .form-input': {
+      '&, & .rfc-input': {
         borderTopRightRadius: '0 !important',
         borderBottomRightRadius: '0 !important',
       },

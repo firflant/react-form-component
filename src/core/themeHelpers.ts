@@ -2,7 +2,7 @@ import theme from './theme'
 
 export function inputHeight(height: number) {
   return {
-    '& *.form-input': {
+    '& *.rfc-input': {
       height: height,
       lineHeight: `${height - (height / 3)}px`,
       paddingTop: height / 6,
@@ -11,11 +11,11 @@ export function inputHeight(height: number) {
         lineHeight: `${height * 0.45}px`,
       },
     },
-    '& textarea.form-input': {
+    '& textarea.rfc-input': {
       minHeight: height,
       height: 'auto',
     },
-    '& .form-select:not([multiple])': {
+    '& .rfc-select:not([multiple])': {
       backgroundPosition: `calc(100% - 15px) ${height / 2 - 2}px, calc(100% - 10px) ${height / 2 - 2}px`,
     },
     '& $prefix, & $suffix': {
@@ -28,7 +28,7 @@ export function inputHeight(height: number) {
         marginBottom: 0,
       },
     },
-    '&$inlineLabel .form-checkitem': {
+    '&$inlineLabel .rfc-checkitem': {
       marginTop: height / 4,
     },
   }

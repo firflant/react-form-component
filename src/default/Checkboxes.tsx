@@ -25,7 +25,7 @@ const Checkboxes = ({
         const checked = (value && value.includes(optionValue))
         return (
           <label
-            className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
+            className={classNames(classes.label, 'rfc-checkitem', { [classes.small]: small })}
             htmlFor={`${name}${index}`}
             key={index}
           >

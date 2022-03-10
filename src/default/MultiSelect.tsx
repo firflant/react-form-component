@@ -25,7 +25,7 @@ const MultiSelect = ({
 
   return (
     <div
-      className={classNames(classes.select, classes.multiSelect, 'form-input form-select')}
+      className={classNames(classes.select, classes.multiSelect, 'rfc-input rfc-select')}
       onClick={() => !isOpen && setIsOpen(true)}
     >
       {value && value.length && options && options.length

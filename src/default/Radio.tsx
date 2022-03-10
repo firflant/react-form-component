@@ -20,7 +20,7 @@ const Radio = ({
         const { optionLabel, optionValue} = parseOption(option)
         return (
           <label
-            className={classNames(classes.label, 'form-checkitem', { [classes.small]: small })}
+            className={classNames(classes.label, 'rfc-checkitem', { [classes.small]: small })}
             key={index}
             htmlFor={`${name}${index}`}
           >

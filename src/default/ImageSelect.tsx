@@ -22,7 +22,7 @@ const ImageSelect = ({
         return (
           <div
             key={index}
-            className={classNames(classes.input, 'form-checkitem', { [classes.isChecked]: checked })}
+            className={classNames(classes.input, 'rfc-checkitem', { [classes.isChecked]: checked })}
             onClick={() => {
               const finalValue = multiple ? checkboxHandler(!checked, option.value, value) : option.value
               setValue(name, finalValue, mandatory)
