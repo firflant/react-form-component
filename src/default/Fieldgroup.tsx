@@ -1,6 +1,6 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
-import { Form, withFormControl, DefaultButton, breakpoint } from '../.'
+import Form, { withFormControl, DefaultButton, breakpoint } from '../.'
 import {
   value as valueT,
   setValue as setValueT,

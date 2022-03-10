@@ -1,4 +1,5 @@
-export { default as Form } from './core/Form'
+import Form from './core/Form'
+export default Form
 export { FieldsContext, SetValueContext } from './core/Form'
 export { default as FormThemeProvider } from './core/FormThemeProvider'
 export {
