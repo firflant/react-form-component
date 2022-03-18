@@ -2,9 +2,8 @@
   "name": "react-form-component",
   "version": "2.0.1",
   "description": "Create React forms just with a pure JSX and let the react-standalone-form manage its state for you.",
-  "main": "./lib/index.js",
-  "module": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "rm -rf ./lib/* && tsc --build",
     "clean": "rm -rf ./lib/* && tsc --build --clean",

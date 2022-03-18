@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-      "outDir": "./lib/",         // path to output directory
+      "outDir": "./dist/",         // path to output directory
       "strictNullChecks": true,   // enable strict null checks as a best practice
       "module": "es6",            // specify module code generation
       "noImplicitAny": true,
@@ -19,5 +19,5 @@
       "suppressImplicitAnyIndexErrors": true,
   },
   "include": ["src"],
-  "exclude": ["node_modules", "lib"],
+  "exclude": ["node_modules", "dist"],
 }
