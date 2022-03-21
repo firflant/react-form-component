@@ -83,15 +83,6 @@ export function processField(
         }
         break
 
-      case 'json':
-        try {
-          JSON.parse(value)
-        } catch (e) {
-          validation = 'error'
-          help = textLabels.jsonInvalid
-        }
-        break
-
       default:
         // Handle custom validation function.
         if (type && customValidationFunction) {

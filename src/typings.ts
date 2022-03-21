@@ -41,7 +41,6 @@ export type textLabels = {
   phoneInvalid: string,
   postCodeInvalid: string,
   addMore: string,
-  jsonInvalid: string,
 }
 
 export type errorNotificationFunc = (message: string) => void
@@ -148,7 +147,6 @@ export interface themeOverrides {
     phoneInvalid?: string,
     postCodeInvalid?: string,
     addMore?: string,
-    jsonInvalid?: string,
   },
   toastContainerProps?: object,
   errorNotificationFunc?: errorNotificationFunc,
