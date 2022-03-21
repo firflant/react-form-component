@@ -22,7 +22,7 @@ yarn add react-form-component
 
 1. Wrap entitre app into `<FormThemeProvider>`. Optionally define a [custom theme](https://github.com/firflant/react-form-component/wiki/Theming) in theme prop.
 2. Use `<Form>` component anywhere in the app, declare all field names in a `fields` prop.
-3. Use any from built-in [input widgets](https://github.com/firflant/react-form-component/wiki/Components-API) or [build custom inputs](https://github.com/firflant/react-form-component/wiki/Advanced-usage#creating-custom-inputs) to compose a form. Give each input a `name` prop that corresponds with one defined in a `fields` prop of the ancestor `<Form>` component.
+3. Use any from built-in [input widgets](https://github.com/firflant/react-form-component/wiki/Components) or [build custom inputs](https://github.com/firflant/react-form-component/wiki/Advanced-usage#creating-custom-inputs) to compose a form. Give each input a `name` prop that corresponds with one defined in a `fields` prop of the ancestor `<Form>` component.
 4. Use `<FormButton>` to trigger a submit function that returns all values formatted in a form of a simple javascript object.
 
 ```jsx
@@ -84,7 +84,7 @@ export default BasicExampleForm
 * Marking fields as required
 * *Loading* state support for asynchronous operations
 * Submit action triggered by a submit button or on each change with debounce
-* Optional reseting of all fields after a successful submit ([show docs](https://github.com/firflant/react-form-component/wiki/Components-API#FormButton))
+* Optional reseting of all fields after a successful submit ([show docs](https://github.com/firflant/react-form-component/wiki/Components#FormButton))
 * Data collected from forms is formatted well for API calls
 * Nested forms (possibility to put a form as a multiple fieldset of anorher form)
 * Built in, repleacable react-toastify notification plugin
@@ -95,7 +95,7 @@ export default BasicExampleForm
 
 ## Docs
 
-* [Components API](https://github.com/firflant/react-form-component/wiki/Components-API)
+* [Components API](https://github.com/firflant/react-form-component/wiki/Components)
 * [Form layouts](https://github.com/firflant/react-form-component/wiki/Form-layouts)
 * [Theming](https://github.com/firflant/react-form-component/wiki/Theming)
 * [Advanced usage](https://github.com/firflant/react-form-component/wiki/Advanced-usage)
