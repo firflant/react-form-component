@@ -209,7 +209,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
         },
       },
     },
-    '& $help': {
+    '& > $help': {
       [breakpoint(theme.breakpoints.sm)]: {
         left: theme.sizes.inlineLabelWidth + 10,
       },
