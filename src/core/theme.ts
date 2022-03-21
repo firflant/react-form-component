@@ -45,7 +45,7 @@ export default {
   },
 
   textLabels: {
-    formInvalid: 'Form contains errors. Check all fields.',
+    formInvalid: 'The form is not filled correctly.',
     mandatoryField: 'This field is mandatory.',
     minChars: 'This field should have at least :length: characters.',
     passwordInvalid: 'Password should be at least 6 characters long.',

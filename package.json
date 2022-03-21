@@ -41,12 +41,13 @@
     "react-dom": "^16.8.4"
   },
   "dependencies": {
-    "polished": "^3.0.3",
-    "react-jss": "^10.0.3",
+    "classnames": "^2.3.1",
+    "polished": "^4.1.4",
+    "react-jss": "^10.9.0",
     "react-loading": "^2.0.3",
-    "react-toastify": "^5.1.0",
-    "throttle-debounce": "^2.1.0",
-    "validator": "^10.11.0"
+    "react-toastify": "^8.2.0",
+    "throttle-debounce": "^3.0.1",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.39",
