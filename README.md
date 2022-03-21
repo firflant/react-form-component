@@ -3,8 +3,7 @@ manage its state for you. A themeable form library based on Context API, with a
 selection of user friendly inputs and wide customization abilities to match your
 design and functionality.
 
->This package is a continuation of [react-standalone-form](https://www.npmjs.com/package/react-standalone-form),
-which in version 1.x had a different name.
+>From version 2.x this package is a continuation of [react-standalone-form](https://www.npmjs.com/package/react-standalone-form).
 
 ## Install
 
