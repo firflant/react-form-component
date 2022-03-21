@@ -4,6 +4,9 @@
   "description": "Create React forms just with a pure JSX and let the react-standalone-form manage its state for you.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rm -rf ./lib/* && tsc --build",
     "clean": "rm -rf ./lib/* && tsc --build --clean",

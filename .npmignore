@@ -1,8 +1,9 @@
 src
 node_modules
 .babelrc
-.eslintrc
+.eslintrc.js
 .gitignore
 .nvmrc
-yarn-error.log
 screenshot.jpg
+yarn-error.log
+tsconfig.json
