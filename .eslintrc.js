@@ -27,6 +27,7 @@ module.exports = {
       named: 'never',
       asyncArrow: 'always',
     }],
+    '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
     'react/jsx-closing-tag-location': 'off',
