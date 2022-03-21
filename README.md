@@ -21,33 +21,37 @@ yarn add react-form-component
 ## Quick start example
 
 1. Wrap entitre app into `<FormThemeProvider>`. Optionally define a [custom theme](https://github.com/firflant/react-form-component/wiki/Theming) in theme prop.
-2. Use `<Form>` component anywhere in the app, declare all fields in a `fields` prop array.
-3. Use any from built-in [input widgets](https://github.com/firflant/react-form-component/wiki/Components-API) or [build custom inputs](https://github.com/firflant/react-form-component/wiki/Advanced-usage#creating-custom-inputs) to compose a form. Give each input a `name` prop that corresponds with a name defined in a `fields` array of the ancestor `<Form>` component.
-4. Use `<FormButton>` to trigger a submit function that returns all field values formatted in a form of a simple javascript object.
+2. Use `<Form>` component anywhere in the app, declare all field names in a `fields` prop.
+3. Use any from built-in [input widgets](https://github.com/firflant/react-form-component/wiki/Components-API) or [build custom inputs](https://github.com/firflant/react-form-component/wiki/Advanced-usage#creating-custom-inputs) to compose a form. Give each input a `name` prop that corresponds with one defined in a `fields` prop of the ancestor `<Form>` component.
+4. Use `<FormButton>` to trigger a submit function that returns all values formatted in a form of a simple javascript object.
 
 ```jsx
 // App.js
+// Wrap entitre app into a FormThemeProvider.
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { FormThemeProvider } from 'react-form-component'
+import BasicExampleForm from './BasicExampleForm'
+
+const App = () =>
+  <FormThemeProvider>
+    <BasicExampleForm />
+  </FormThemeProvider>
+
+ReactDOM.render(<App />, document.querySelector('#app'))
+
+
+// BasicExampleForm.js
+// Create a fully operational form.
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Form, {
-  FormThemeProvider,
   Input,
   Select,
   FormButton,
 } from 'react-form-component'
 
-
-// Wrap entitre app into FormThemeProvider.
-const App = () =>
-  <FormThemeProvider>
-    <div className='my-app'>
-      <BasicFormExample />
-    </div>
-  </FormThemeProvider>
-
-
-// Build a fully operational form.
-const BasicFormExample = () =>
+const BasicExampleForm = () =>
   <Form fields={['name', 'email', 'type']}>
     <Input
       name='name'
@@ -68,7 +72,7 @@ const BasicFormExample = () =>
     >Save</FormButton>
   </Form>
 
-ReactDOM.render(<App />, document.querySelector('#app'))
+export default BasicExampleForm
 ```
 
 ## Features
