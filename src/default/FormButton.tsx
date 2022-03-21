@@ -1,24 +1,40 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
 import { lighten } from 'polished'
-import { fullTheme } from '../typings'
+import { useSubmit, Loader } from '../.'
+import { fieldsData, fullTheme } from '../typings'
 
 
-const DefaultButton = ({ onClick, disabled, children }: DefaultButtonProps) => {
+/**
+ * A button component to handle form actions, like submit or reset.
+ */
+const FormButton = ({
+  onClick,
+  reset,
+  loading,
+  suppressErrorMessage,
+  children,
+}: FormButtonProps) => {
   const classes = useStyles()
+  const submit = useSubmit(suppressErrorMessage)
+
   return (
     <button
       type='button'
       className={classes.button}
-      onClick={e => onClick(e)}
-      disabled={disabled}
-    >{children}</button>
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => submit && submit(e, onClick, reset)}
+      disabled={loading}
+    >
+      {loading && <><Loader />&nbsp;</>}{children}
+    </button>
   )
 }
 
-export interface DefaultButtonProps {
-  onClick(event: React.MouseEvent): void,
-  disabled?: boolean,
+export interface FormButtonProps {
+  onClick: (fieldsData: fieldsData) => void,
+  loading?: boolean,
+  reset?: boolean,
+  suppressErrorMessage?: boolean,
   children: React.ReactNode,
 }
 
@@ -49,4 +65,4 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   },
 }))
 
-export default DefaultButton
+export default FormButton

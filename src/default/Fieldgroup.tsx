@@ -1,6 +1,6 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
-import Form, { withFormControl, DefaultButton, breakpoint } from '../.'
+import Form, { withFormControl, FormButton, breakpoint } from '../.'
 import {
   value as valueT,
   setValue as setValueT,
@@ -26,7 +26,7 @@ const Fieldgroup = ({
   children: Children,
 }: FieldgroupProps) => {
   const classes = useStyles()
-  const MoreComponentProp = moreComponent || DefaultButton
+  const MoreComponentProp = moreComponent || FormButton
   const [value, setValue] = React.useState<anyObject[]>([{}])
   const [renderItems, setRenderItems] = React.useState(true)
 
