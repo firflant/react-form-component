@@ -1,5 +1,5 @@
 import React from 'react'
-import { createUseStyles } from 'react-jss'
+import { createUseStyles, useTheme } from 'react-jss'
 import Form, { withFormControl, FormButton, breakpoint } from '../.'
 import {
   value as valueT,
@@ -20,13 +20,15 @@ const Fieldgroup = ({
   mandatory,
   fields,
   moreComponent,
-  moreLabel = 'Add more',
   moreComponentProps,
+  customMoreLabel,
   deleteIcon = DefaultDeleteIcon,
   children: Children,
 }: FieldgroupProps) => {
   const classes = useStyles()
-  const MoreComponentProp = moreComponent || FormButton
+  const theme = useTheme() as fullTheme
+  const MoreComponent = moreComponent || FormButton
+  const moreLabel = customMoreLabel || theme.textLabels.addMore
   const [value, setValue] = React.useState<anyObject[]>([{}])
   const [renderItems, setRenderItems] = React.useState(true)
 
@@ -77,10 +79,10 @@ const Fieldgroup = ({
         )
         : null
       }
-      <MoreComponentProp
+      <MoreComponent
         onClick={() => setValue((prevState: valueT) => ([...prevState, {}]))}
         {...moreComponentProps}
-      >{moreLabel}</MoreComponentProp>
+      >{moreLabel}</MoreComponent>
     </div>
   )
 }
@@ -92,9 +94,9 @@ interface FieldgroupProps {
   mandatory: boolean,
   fields: string[],
   formProps: React.ComponentProps<any>,
-  moreComponent: React.ComponentType<{ onClick: any }>,
-  moreLabel: string,
-  moreComponentProps: React.ComponentProps<any>,
+  moreComponent?: React.ComponentType<{ onClick: any }>,
+  moreComponentProps?: React.ComponentProps<any>,
+  customMoreLabel?: string,
   deleteIcon: React.ReactNode,
   children: React.ComponentType<{ values: anyObject }>
 }

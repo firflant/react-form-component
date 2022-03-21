@@ -53,6 +53,7 @@ export default {
     urlInvalid: 'This is not a valid URL.',
     phoneInvalid: 'This is not a valid phone number.',
     postCodeInvalid: 'This is not a valid postal code.',
+    addMore: 'Add more test',
     jsonInvalid: 'Enter a valid JSON.',
   },
 

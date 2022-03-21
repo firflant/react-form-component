@@ -40,6 +40,7 @@ export type textLabels = {
   urlInvalid: string,
   phoneInvalid: string,
   postCodeInvalid: string,
+  addMore: string,
   jsonInvalid: string,
 }
 
@@ -146,6 +147,7 @@ export interface themeOverrides {
     urlInvalid?: string,
     phoneInvalid?: string,
     postCodeInvalid?: string,
+    addMore?: string,
     jsonInvalid?: string,
   },
   toastContainerProps?: object,
