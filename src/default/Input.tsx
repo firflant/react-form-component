@@ -3,9 +3,12 @@ import { debounce } from 'throttle-debounce'
 import { setValue, value } from '../typings'
 import { withFormControl } from '../.'
 
+/**
+ * A basic input field.
+ */
 const Input = ({
   name,
-  type= 'text',
+  type = 'text',
   value,
   placeholder,
   min,
@@ -76,7 +79,7 @@ const Input = ({
 
 export interface InputProps {
   name: string,
-  type?: string,
+  type?: 'text' | 'email' | 'password' | 'url' | 'tel' | 'number' | 'search' | 'file' | 'date' | 'datetime-local' | 'month' | 'week' | 'time' | 'postcode' | 'password-novalidation',
   value: value,
   placeholder: string | undefined,
   min: number,
