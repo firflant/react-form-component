@@ -1,0 +1,76 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import Form, { Input } from '../src'
+
+<Meta
+  title="Docs/FormControl"
+  parameters={{ previewTabs: { canvas: { hidden: true }}}}
+/>
+
+export const Template = (args) => <Form
+    fields={[args.name]}
+  >
+    <Input {...args} />
+  </Form>
+
+# FormControl
+
+If you would go into React Form Component source code, you would notice that
+each input component is wrapped into withFormControl HOC (Higher Order
+Component). It has two purposes. At first, it puts an input into the context of
+ancestor Form component. As second, it adds the proper surronding UI elements,
+like a label, help, prefix and suffix.
+
+## UI Elements
+
+Common UI Elements provided by FormControl:
+
+- **Label** - title of a field, displayed before the input
+- **Input** - the input itself
+- **Help** - help text, also used to display error messages
+
+Also, all inputs of text type, so Input, TextArea, Select, MultiSelect, also
+may utilize following elements:
+
+- **Prefix** - a symbol, icon or unit at the beginning of input (✨ on example)
+- **Suffix** - the same, but at the end of input (€ on example)
+
+Below is a full example.
+
+<Canvas>
+  <Story
+    name="Example"
+    args={{
+      name: 'example',
+      label: 'Label',
+      help: 'Help',
+      prefix: '✨',
+      suffix: '€',
+    }}>
+    {Template.bind({})}
+   </Story>
+</Canvas>
+
+> For inputs of other types, like Radio, Checkbox, ImageUpload, these elements
+> won't work correctly.
+
+
+## Common input props
+
+Because every input provided by React Form Component is wrapped into
+withFormControl, it gains following props:
+
+| Prop           | Type          | Description                                 |
+|----------------|---------------|---------------------------------------------|
+| name           | *string*      | Field identifier unique for a form.         |
+| label          | *string*      | Field label.                                |
+| initialValue   | *bool/string* | Default value of a field.                   |
+| help           | *string*      | Text displayed under a field.               |
+| noBottomGutter | *bool*        | Disables the bottom margin.                 |
+| inlineLabel    | *bool*        | Move label from top to left.                |
+| disabled       | *bool*        | Turns off the interaction with field.       |
+| className      | *string*      | Give input control wrapper a class.         |
+| prefix         | *node*        | Only for inputs of text type.               |
+| suffix         | *node*        | Only for inputs of text type.               |
+
+As mentioned in previous chapter, the name prop is crucial. All others
+are optional.

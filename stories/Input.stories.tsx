@@ -44,8 +44,8 @@ export default {
 const Template: ComponentStory<typeof Input> = args =>
   <Form
     fields={[args.name]}
-    {...args.debounceTime ? { onChange: fields => actions('onChange', fields) } : {}}
-    {...args.activateEnterPress ? { onEnterPress: fields => actions('onEnterPress', fields) } : {}}
+    {...args.debounceTime ? actions('onChange') : {}}
+    {...args.activateEnterPress ? actions('onEnterPress') : {}}
   >
     <Input {...args} />
   </Form>
@@ -56,8 +56,8 @@ BasicUsage.args = {
   label: 'Input label',
   type: 'text',
   placeholder: 'Placeholder',
-  prefix: '$',
-  suffix: '$',
+  prefix: '👤',
+  suffix: '€',
   min: 5,
   narrow: false,
   large: false,
@@ -69,15 +69,15 @@ BasicUsage.args = {
 export const Debounce = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Debounce.args = {
-  name: 'debounce-example',
+  name: 'debouncedInput',
   label: 'Debounce example',
   debounceTime: 500,
   help: 'Add onChange prop to parent Form component to see how build-in debounce updates the form state with debounce.',
 }
 
-export const OnEnter = Template.bind({})
-OnEnter.args = {
-  name: 'enter-example',
+export const OnEnterPress = Template.bind({})
+OnEnterPress.args = {
+  name: 'enterInput',
   label: 'Type something and press Enter key',
   activateEnterPress: true,
   help: 'Set activateEnterPress to true and set onEnterPress prop on a parent Form component to submit whole form when pressing Enter inside an input.',
