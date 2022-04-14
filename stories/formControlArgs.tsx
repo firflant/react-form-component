@@ -16,6 +16,9 @@ export const formControlArgTypes = {
   help: {
     description: 'Text displayed under a field',
   },
+  initialValue: {
+    description: 'Default value of a field',
+  },
   noBottomGutter: {
     description: 'Disables the bottom margin',
   },

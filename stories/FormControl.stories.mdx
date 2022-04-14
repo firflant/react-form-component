@@ -14,27 +14,28 @@ export const Template = (args) => <Form
 
 # FormControl
 
-If you would go into React Form Component source code, you would notice that
-each input component is wrapped into withFormControl HOC (Higher Order
-Component). It is a key part of this library. It has two purposes. At first, it
-puts an input into the context of ancestor Form component. As second, it adds
-the proper surronding UI elements, like a label, help, prefix and suffix.
+If you would go into **React Form Component** source code, you would notice that
+each input component is wrapped into **withFormControl** *HOC* (*Higher Order
+Component*). It is a key part of this library, which has two purposes. At first,
+it puts an input into the logical context of ancestor Form component. As second,
+it adds surronding UI elements, like a label, help, prefix and suffix.
 
-## UI Elements
+The UI presentation of **Input** component wrapped into **FormControl** HOC is
+called a **Field**.
 
-Common UI Elements provided by FormControl:
+## Common UI Elements provided for all fields
 
 - **Label** - title of a field, displayed before the input
 - **Input** - the input itself
-- **Help** - help text, also used to display error messages
+- **Help** - help text under a field, also used to display error messages
 
-Also, all inputs of text type, so Input, TextArea, Select, MultiSelect, also
-may utilize following elements:
+Beside these, all inputs of text type, like *Input*, *TextArea*, *Select*,
+*MultiSelect*, may additionaly utilize following elements:
 
 - **Prefix** - a symbol, icon or unit at the beginning of input (✨ on example)
 - **Suffix** - the same, but at the end of input (€ on example)
 
-Below is a full example.
+Below is an example of a complete **Field** with all elements in use:
 
 <Canvas>
   <Story

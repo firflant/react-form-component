@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { actions } from '@storybook/addon-actions'
 
 import Form, { Input } from '../src'
-import { formControlArgs, formControlArgTypes}  from './formControlArgs'
+import { formControlArgs, formControlArgTypes } from './formControlArgs'
 
 Input.displayName = 'Input'
 
@@ -26,9 +26,6 @@ export default {
     },
     large: {
       description: 'Increases input height',
-    },
-    initialValue: {
-      description: 'Default value of a field',
     },
     type: {
       description: 'Type of input',
@@ -53,10 +50,10 @@ const Template: ComponentStory<typeof Input> = args =>
 export const BasicUsage = Template.bind({})
 BasicUsage.args = {
   name: 'example',
-  label: 'Input label',
+  label: 'Basic input',
   type: 'text',
   placeholder: 'Placeholder',
-  prefix: '👤',
+  prefix: '✨',
   suffix: '€',
   min: 5,
   narrow: false,
