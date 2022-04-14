@@ -129,9 +129,9 @@ export function initiateFormFields(fieldNames: string[], mandatory?: string[]) {
     { ...acc,
       [field]: {
         value: undefined,
-        // undefined means that field is in the initial state.
+        // undefined means that field is in the initial (fresh) state.
         // It is being used in formIsInitiated variable inside <Form> component.
-        // TODO: Consider adding additional property called `untouch`.
+        // TODO: Consider adding additional property called `untouch` or `fresh`.
         validation: null,
         mandatory: mandatory && mandatory.includes(field),
         help: null,
