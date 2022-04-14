@@ -1,0 +1,59 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import Form, { Input } from '../src'
+
+<Meta
+  title='Docs/Custom validation rules'
+  parameters={{ previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Custom validation rules
+
+While building custom inputs, you may also want to create a custom validation
+rule. New validation rules can be defined with help of
+`customValidationFunction`, which is a part of theme configuration object. You
+can distinguish the behavior of validation function for various values of *type*
+in *options* argument of *setValue* updater function.
+
+Let's consider an example with custom text input for entering geo coordinates.
+Input should check whether entered content is a valid coordinates format with a
+help of [coord-parser](https://www.npmjs.com/package/coord-parser) plugin. The
+parser function is being imported here by `import parse from 'coord-parser'`
+statement.
+
+### How to declare the custom validation rules?
+
+In a place where you define the [theme object](http://localhost:6006/?path=/docs/docs-theming--page),
+add a `customValidationFunction` property. It should be a function that accepts
+two arguments: a `value` - which is a value from an input and a `type` - which
+is an identifier for a rule that gives possibility to define as many rules as
+necessary. A content of this function should be a *switch* statement that
+operates on `type` argument and returns *false* when validation is successful or
+a `string` with a content of error message when validation has failed.
+
+```js
+customValidationFunction: (value, type) => {
+  switch (type) {
+    case 'coordinates':
+      // Rule for coordinates input:
+      try {
+        parse(value)
+        return false
+      } catch (err) {
+        return 'Incorrect coordinates format.'
+      }
+
+    default:
+      return false
+  }
+},
+```
+
+### How to use the custom validation rules:
+
+In a place, where you utulize the `setValue` function in your
+[custom input](/?path=/docs/docs-custom-inputs--page), put `type: 'coordinates'`
+into fourth, *options* argument:
+
+```js
+setValue(name, value, required, { type: 'coordinates' })
+```

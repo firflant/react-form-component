@@ -1,0 +1,59 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import Form, { Input } from '../src'
+
+<Meta
+  title="Docs/Handling asynchronous"
+  parameters={{ previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Handling asynchronous API calls
+
+It is highly recommended to add loading prop to a submit button. It prevents
+users against triggering parallel requests and gives the visual output of the
+busy state.
+
+An example of correct implementation of asynchronous API call, using
+**React Form Component**
+
+```jsx
+// LoginForm.js
+import React from 'react'
+import axios from 'axios'
+
+import Form, {
+  FormThemeProvider,
+  Input,
+  FormButton
+} from 'react-form-component'
+
+const LoginForm = () => {
+  const [loading, setLoading] = React.useState(false)
+
+  const handleSubmit = async (fields) => {
+    setLoading(true);
+    try {
+      // Fake API login call.
+      const resp = await axios.get(
+        'https://reqres.in/api/login?delay=1',
+        fields
+      );
+      console.log(resp);
+      alert("Successfuly logged in!")
+    } catch (err) {
+      alert("There was an error during login")
+    }
+    setLoading(false)
+  };
+  return (
+    <Form fields={["email", "password"]} allRequired>
+      <Input name="email" type="email" label="E-mail" large />
+      <Input name="password" type="password" label="Password" large />
+      <FormButton onClick={handleSubmit} loading={loading}>
+        Log in
+      </FormButton>
+    </Form>
+  )
+}
+```
+
+

@@ -1,0 +1,143 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import Form, { Input } from '../src'
+
+<Meta
+  title="Docs/Theming"
+  parameters={{ previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Theming
+
+**React Standalone Form** has its own default theme provided by
+`FormThemeProvider`. Any parameter in a theme can be overridden with a custom
+value. To declare these overrides, customize your own theme - pass an object to
+`theme` prop, like on example.
+
+Example. Change primary color and input height:
+
+```jsx
+<FormThemeProvider theme={{ colors: { accent: 'blue' }, sizes: { inputHeight: 30 } }}>
+```
+
+### Default theme
+
+The default theme object has following structure and values:
+
+```js
+{
+  sizes: {
+    inputHeight: 40,
+    inputWidth: '100%',
+    inputGutterBottom: 30,
+    inputSidePaddings: 10,
+    labelGutterBottom: 10,
+    narrowInputWidth: 140,
+    inlineLabelWidth: 130,
+    borderRadius: 0,
+    borderWidth: 2,
+    rowGutter: 50,
+    formActionsDistance: 60,
+    onlyBottomBorder: false,
+    largeInputExtraHeight: 10,
+    prefixExtraSpacing: 20,
+  },
+
+  colors: {
+    accent: '#1fc59c',
+    inputText: '#3d4348',
+    inputBorder: '#e6edf4',
+    inputBg: 'white',
+    inputFocusShadow: 'none',
+    label: 'inherit',
+    fill: '#e6edf4',
+    placeholder: '#c3d4e4',
+    success: '#00a651',
+    error: '#e50038',
+  },
+
+  typography: {
+    inputFontSize: 16,
+    inputFontWeight: 'normal',
+    labelFontSize: 14,
+    labelFontWeight: 'normal',
+    helpFontSize: 12,
+  },
+
+  breakpoints: {
+    xs: 0,
+    sm: '768px',
+    md: '1000px',
+    lg: '1400px',
+  },
+
+  textLabels: {
+    formInvalid: 'The form is not filled correctly.',
+    mandatoryField: 'This field is mandatory.',
+    minChars: 'This field should have at least :length: characters.',
+    passwordInvalid: 'Password should be at least 6 characters long.',
+    emailInvalid: 'This is not a valid email address.',
+    urlInvalid: 'This is not a valid URL.',
+    phoneInvalid: 'This is not a valid phone number.',
+    postCodeInvalid: 'This is not a valid postal code.',
+    addMore: 'Add more',
+  },
+
+  toastContainerProps: {
+    hideProgressBar: true,
+    autoClose: 5000,
+  },
+
+  errorNotificationFunc: message => toast.error(message),
+  customValidationFunction: (value, type) => false,
+}
+```
+
+## Custom component as a form button
+
+On most projects it is highly possible that you prefer to use own Button component for forms. The same that is also used in all other places of the app, beside forms.
+
+Let's assume you created your own button component that can be used in a following way:
+
+```jsx
+<Button onClick={() => console.log('Click!')>Submit</Button>
+```
+
+To use it as a reusable form button, the best practice is to create a separate component, similar to [default one](https://github.com/firflant/react-form-component/blob/master/src/default/FormButton.tsx), that utilizes the `useSubmit()` hook.
+
+```jsx
+import { useSubmit } from 'react-form-component'
+import Button from './Button'
+
+const FormButton = ({
+  onClick,
+  reset,
+  loading,
+  suppressErrorMessage,
+  children,
+  ...otherProps
+}) => {
+  const submit = useSubmit(suppressErrorMessage)
+  return (
+    <Button
+      onClick={e => submit && submit(e, onClick, reset)}
+      {...otherProps}
+    >{children}</Button>
+  )
+}
+```
+
+### Custom "Add more" button in Formgroup
+
+Another place of react-form-component where button is used, is Formgroup input. Own button can be used as an "Add more" button in a following manner:
+
+
+```jsx
+<Formgroup
+  name='career'
+  label='My job experience'
+  fields={['job', 'startDate', 'endDate', 'description']}
+  moreComponent={Button}
+  moreComponentProps={{ variant: 'light', size='small' }} // example Button props.
+>
+...
+```

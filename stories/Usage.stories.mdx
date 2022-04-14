@@ -1,16 +1,99 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
-import Form, { Input } from '../src'
+import Form, { Input, Select, FormButton } from '../src'
 
 <Meta
-  title="Docs/Usage"
-  parameters={{ previewTabs: { canvas: { hidden: true }}}}
+  title='Introduction/Getting started'
 />
 
-export const Template = (args) => <Form
-    fields={[args.name]}
-  >
-    <Input {...args} />
+export const Template = (args) =>
+  <Form fields={['name', 'email', 'type']}>
+    <Input
+      name='name'
+      label='User name'
+    />
+    <Input
+      name='email'
+      type='email'
+      label='E-mail'
+    />
+    <Select
+      name='type'
+      label='Type of a user'
+      options={['Viewer', 'Moderator', 'Admin']}
+    />
+    <FormButton
+      onClick={fields => console.log(fields)}
+    >Save</FormButton>
   </Form>
 
-# Installation
+# Introduction
 
+## Installation
+
+```
+yarn add react-form-component
+```
+
+
+## Building first form
+
+1. Wrap entitre app into `<FormThemeProvider>`. Optionally add theme prop to [define a custom theme](http://localhost:6006/?path=/docs/docs-theming--page).
+
+```jsx
+// App.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { FormThemeProvider } from 'react-form-component'
+
+const App = () =>
+  <FormThemeProvider>
+    Content of the app
+  </FormThemeProvider>
+
+ReactDOM.render(<App />, document.querySelector('#app'))
+```
+
+2. Use `<Form>` component anywhere in the app, declare all field names in a fields prop.
+3. Use any from built-in input widgets or build custom inputs to compose a form. Give each input a name prop that corresponds with one defined in a fields prop of the ancestor `<Form>` component.
+4. Use `<FormButton>` to trigger a submit function that returns all values formatted in a form of a simple javascript object.
+
+```jsx
+// ExampleUserForm.js
+import React from 'react'
+import Form, {
+  Input,
+  Select,
+  FormButton,
+} from 'react-form-component'
+
+const ExampleUserForm = () =>
+  <Form fields={['name', 'email', 'type']}>
+    <Input
+      name='name'
+      label='User name'
+    />
+    <Input
+      name='email'
+      type='email'
+      label='E-mail'
+    />
+    <Select
+      name='type'
+      label='Type of a user'
+      options={['Viewer', 'Moderator', 'Admin']}
+    />
+    <FormButton
+      onClick={fields => console.log(fields)}
+    >Save</FormButton>
+  </Form>
+
+export default BasicExampleForm
+```
+
+<Canvas>
+  <Story
+    name='Example'
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

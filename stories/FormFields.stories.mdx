@@ -2,17 +2,22 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs'
 import Form, { Input } from '../src'
 
 <Meta
-  title="Docs/FormControl"
+  title="Introduction/Form fields"
   parameters={{ previewTabs: { canvas: { hidden: true }}}}
 />
 
-export const Template = (args) => <Form
-    fields={[args.name]}
-  >
-    <Input {...args} />
+export const Template = (args) =>
+  <Form fields={['example']}>
+    <Input
+      name='example'
+      label='Label'
+      help='Help'
+      prefix='✨'
+      suffix='€'
+    />
   </Form>
 
-# FormControl
+# Form fields
 
 If you would go into **React Form Component** source code, you would notice that
 each input component is wrapped into **withFormControl** *HOC* (*Higher Order
@@ -20,7 +25,7 @@ Component*). It is a key part of this library, which has two purposes. At first,
 it puts an input into the logical context of ancestor Form component. As second,
 it adds surronding UI elements, like a label, help, prefix and suffix.
 
-The UI presentation of **Input** component wrapped into **FormControl** HOC is
+The combination of **Input** component wrapped into **FormControl** HOC is
 called a **Field**.
 
 ## Common UI Elements provided for all fields
@@ -38,17 +43,9 @@ Beside these, all inputs of text type, like *Input*, *TextArea*, *Select*,
 Below is an example of a complete **Field** with all elements in use:
 
 <Canvas>
-  <Story
-    name="Example"
-    args={{
-      name: 'example',
-      label: 'Label',
-      help: 'Help',
-      prefix: '✨',
-      suffix: '€',
-    }}>
+  <Story name='Example'>
     {Template.bind({})}
-   </Story>
+  </Story>
 </Canvas>
 
 > For inputs of other types, like Radio, Checkbox, ImageUpload, these elements

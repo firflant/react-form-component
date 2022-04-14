@@ -1,0 +1,37 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import Form, { Input } from '../src'
+
+<Meta
+  title="Docs/Field layouts"
+  parameters={{ previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Field layouts
+
+**React Form Component** provides some features to compose a form into various
+layouts, so you do not need to put additional styles.
+
+### Inline label
+
+By default, field label is displayed above the field. You can move it to left by
+adding the `inlineLabel` prop to a particular field. Inline label will always
+have the same width, which is configurable in a
+[theme](/?path=/docs/docs-form-layouts--page#default-theme).
+
+### Fields in one row
+
+To combine multiple fields into one row, put them into `<FormRow>` component.
+Wrapped fields will be displayed one after one with a proper gap in between. On
+smaller screens they will keep the default, column behavior.
+
+### Inputs in _Subscribe box_ style.
+
+To combine elements into one row, where all elements are the same height, do not
+have a gutter or a border radius in between, put them into `<Compound>`
+component. The common usage example of this component is a combination of email
+input with _Subscribe_ button of a subscribe form.
+
+### Form action buttons group
+
+Wrap `<FormButton>` and other action buttons into `<FormActions>` component to
+position them accordingly and move them away from the fields above.
