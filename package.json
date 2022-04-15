@@ -13,8 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "start-storybook -p 6006",
     "build-docs": "build-storybook",
-    "predeploy": "build-storybook",
-    "deploy-docs": "gh-pages -d storybook-static"
+    "deploy-docs": "build-storybook && gh-pages -d storybook-static"
   },
   "homepage": "https://firflant.github.io/react-form-component",
   "repository": {
