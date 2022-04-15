@@ -1,22 +1,26 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import Form, { Input, FormButton, Compound } from '../src'
+import Form, {
+  Input,
+  FormButton,
+  Compound as CompoundComponent,
+} from '../src'
 
 
 export default {
   title: 'Components/Various/Compound',
-  component: Compound,
-} as ComponentMeta<typeof Compound>
+  component: CompoundComponent,
+} as ComponentMeta<typeof CompoundComponent>
 
-export const Example: ComponentStory<typeof Compound> = args =>
+export const Compound: ComponentStory<typeof CompoundComponent> = args =>
   <Form fields={['email']} >
-    <Compound {...args}>
+    <CompoundComponent {...args}>
       <Input
         name='email'
         type='email'
         placeholder='E-mail'
       />
       <FormButton>Subscribe</FormButton>
-    </Compound>
+    </CompoundComponent>
   </Form>

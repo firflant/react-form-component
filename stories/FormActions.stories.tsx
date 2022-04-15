@@ -1,21 +1,26 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import Form, { Input, TextArea, FormButton, FormActions } from '../src'
+import Form, {
+  Input,
+  TextArea,
+  FormButton,
+  FormActions as FormActionsComponent,
+} from '../src'
 
 
 export default {
-  title: 'Components/Various/FormActions',
-  component: FormActions,
-} as ComponentMeta<typeof FormActions>
+  title: 'Components/Various/Form Actions',
+  component: FormActionsComponent,
+} as ComponentMeta<typeof FormActionsComponent>
 
-export const Example: ComponentStory<typeof FormActions> = args =>
+export const FormActions: ComponentStory<typeof FormActionsComponent> = args =>
   <Form fields={['name', 'title', 'message']}>
     <Input name='name' label='Name' />
     <Input name='title' label='Title' />
     <TextArea name='message' label='Message' />
-    <FormActions {...args}>
+    <FormActionsComponent {...args}>
       <FormButton>Submit</FormButton>
       <FormButton reset>Reset</FormButton>
-    </FormActions>
+    </FormActionsComponent>
   </Form>
