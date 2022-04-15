@@ -9,7 +9,7 @@ Input.displayName = 'Input'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Input',
+  title: 'Components/Inputs/Input',
   component: Input,
   argTypes: {
     placeholder: {
@@ -52,7 +52,7 @@ BasicUsage.args = {
   name: 'example',
   label: 'Basic input',
   type: 'text',
-  placeholder: 'Placeholder',
+  placeholder: 'Placeholder text',
   prefix: '✨',
   suffix: '€',
   min: 5,
@@ -61,6 +61,14 @@ BasicUsage.args = {
   initialValue: '',
   activateEnterPress: false,
   ...formControlArgs,
+}
+
+
+export const InlineLabel = Template.bind({})
+InlineLabel.args = {
+  name: 'example',
+  label: 'Inline label',
+  inlineLabel: true,
 }
 
 export const Debounce = Template.bind({})

@@ -19,4 +19,16 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  options: {
+    storySort: {
+      order: [
+        'Introduction',
+        ['Overview', 'Getting started', 'Concept'],
+        'Docs',
+        ['Theming', 'Async', 'Field layouts', '*', 'Contribution guidelines'],
+        'Components',
+        ['Form']
+      ],
+    },
+  },
 }

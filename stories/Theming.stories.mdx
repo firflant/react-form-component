@@ -92,6 +92,28 @@ The default theme object has following structure and values:
 }
 ```
 
+## Styling via classes
+
+In special scenarios, where customization available from theme object is not
+enough, various Form UI Components rendered by *React Standalone Form*
+shares some HTML classes, than can be selected by CSS to write some additional
+styling. These classes starts from `rfc-*` and can be found with
+inspector developer tool.
+
+Classes of Form UI Components and its roles:
+
+| CSS Class          | Role                          |
+|--------------------|-------------------------------|
+| `rfc-input`        | Basic input styling           |
+| `rfc-form-control` | Form Control wrapper          |
+| `rfc-label`        | Field label                   |
+| `rfc-prefix`       | Input prefix                  |
+| `rfc-suffix`       | Input suffix                  |
+| `rfc-help`         | Help text                     |
+| `rfc-select`       | Styling of select input       |
+| `rfc-checkitem`    | Styling of radio, checkboxes  |
+
+
 ## Custom component as a form button
 
 On most projects it is highly possible that you prefer to use own Button component for forms. The same that is also used in all other places of the app, beside forms.
@@ -140,4 +162,5 @@ Another place of react-form-component where button is used, is Formgroup input. 
   moreComponentProps={{ variant: 'light', size='small' }} // example Button props.
 >
 ...
+</Formgroup>
 ```

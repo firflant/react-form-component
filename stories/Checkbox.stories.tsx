@@ -10,8 +10,7 @@ Checkboxes.displayName = 'Checkboxes'
 
 
 export default {
-  title: 'Components/Checkbox',
-  component: Checkbox,
+  title: 'Components/Inputs/Checkbox',
   argTypes: {
     text: {
       description: 'Text near the single checkbox',
@@ -31,6 +30,7 @@ export const Single: ComponentStory<typeof Checkbox> = args =>
     <Checkbox {...args} />
   </Form>
 
+Single.component = Checkbox
 Single.args = {
   name: 'checkbox',
   label: 'Optional input label',

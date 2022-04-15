@@ -19,7 +19,9 @@ export const FieldsContext = React.createContext({})
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 export const SetValueContext = React.createContext(() => {})
 
-
+/**
+ * Initiates a scope of new form.
+ */
 const Form = ({
   fields,
   mandatory: mandatoryFields,
@@ -98,14 +100,41 @@ const Form = ({
 }
 
 export interface FormProps {
+  /**
+   * Names of all fields prescribed for a form
+   */
   fields: string[],
+  /**
+   * Names of fields that should be mandatory
+   */
   mandatory?: string[],
+  /**
+   * Sets all fields as mandatory
+   */
   allMandatory?: boolean,
+  /**
+   * Replace `<form>` with another HTML tag or component
+   */
   component?: React.ComponentType,
+  /**
+   * Function to run on each fields change
+   */
   onChange?: (fieldsData: fieldsData, fieldName?: string) => void,
+  /**
+   * Prop used by Fieldgroup component.
+   */
   fieldGroup?: boolean,
+  /**
+   * Runs onChange function also on initial render
+   */
   runOnChangeInitially?: boolean,
+  /**
+   * Submit function called when pressing enter within input
+   */
   onEnterPress?: (fieldsData: fieldsData) => void,
+  /**
+   * Give form element a class
+   */
   className?: string,
   children: React.ReactNode,
 }

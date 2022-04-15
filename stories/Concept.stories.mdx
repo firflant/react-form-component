@@ -2,11 +2,17 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs'
 import Form, { Input } from '../src'
 
 <Meta
-  title="Introduction/Form fields"
+  title='Introduction/Concept'
   parameters={{ previewTabs: { canvas: { hidden: true }}}}
 />
 
-export const Template = (args) =>
+export const FormTemplate = (args) =>
+  <Form fields={['username', 'role']}>
+    <Input name='username' placeholder='Username' />
+    <Input name='role' placeholder='Role' />
+  </Form>
+
+export const FieldTemplate = (args) =>
   <Form fields={['example']}>
     <Input
       name='example'
@@ -17,19 +23,40 @@ export const Template = (args) =>
     />
   </Form>
 
-# Contept
+# Concept
 
 ## Form
 
+`<Form>` component indicates that "**Hey, this is a scope of particular form and
+all its children fields of given names, are fields of that form**". The Form
+component does not provide any rendered output by itself, except the `<form>` tag.
+But as the name suggests, is a core of whole library. It stores and updates the
+state of all fields, handles validation and formats a data for submit functions.
+
+Example, how to use Form component to say "Hey, this is a form with username and
+role fields".
+
+<Canvas withSource='open'>
+  <Story name='Form example'>
+    {FormTemplate.bind({})}
+  </Story>
+</Canvas>
+
+Because fields are paired with Form by a *name* string, the name of each field
+must stay unique.
+
+To get familiar with all props, see documentation of [Form component](?path=/docs/components-form--example)
+
+
 ## Fields
 
-If you would go into **React Form Component** source code, you would notice that
+If you would go into **React Form Component** source code, you may notice that
 each input component is wrapped into **withFormControl** *HOC* (*Higher Order
-Component*). It is a key part of this library, which has two purposes. At first,
-it puts an input into the logical context of ancestor Form component. As second,
-it adds surronding UI elements, like a label, help, prefix and suffix.
+Component*). This is a second core part of this library. It has two purposes.
+At first, it communicates with ancestor Form component. Beside this, it adds
+surronding UI elements, like label, help, prefix and suffix.
 
-The combination of **Input** component wrapped into **FormControl** HOC is
+The combination of **Input** component wrapped into **FormControl** is
 called a **Field**.
 
 ### Common UI Elements provided for all fields
@@ -41,14 +68,14 @@ called a **Field**.
 Beside these, all inputs of text type, like *Input*, *TextArea*, *Select*,
 *MultiSelect*, may additionaly utilize following elements:
 
-- **Prefix** - a symbol, icon or unit at the beginning of input (✨ on example)
-- **Suffix** - the same, but at the end of input (€ on example)
+- **Prefix** - a symbol, icon or unit at the beginning of input (✨)
+- **Suffix** - the same, but at the end of input (€)
 
 Below is an example of a complete **Field** with all elements in use:
 
-<Canvas>
-  <Story name='Example'>
-    {Template.bind({})}
+<Canvas withSource='open'>
+  <Story name='Field example'>
+    {FieldTemplate.bind({})}
   </Story>
 </Canvas>
 

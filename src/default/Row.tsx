@@ -4,7 +4,10 @@ import classNames from 'classnames'
 import { breakpoint } from '..'
 import { fullTheme } from '../typings'
 
-
+/**
+ * A wrapper to put multiple form items into one line. By default, for the
+ * purpose of better RWD experience, it keeps a column layout for mobile devices.
+ */
 const Row = ({
   mobile,
   noBottomGutter,
@@ -23,8 +26,17 @@ const Row = ({
 }
 
 export interface RowProps {
+  /**
+   * Keeps row layout also for mobile devices
+   */
   mobile?: boolean,
+  /**
+   * Disables bottom margin
+   */
   noBottomGutter?: boolean,
+  /**
+   * Set additional classes
+   */
   className?: string,
   children: React.ReactNode,
 }

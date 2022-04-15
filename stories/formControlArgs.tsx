@@ -1,5 +1,5 @@
 export const formControlArgs = {
-  help: 'This is a basic help text',
+  help: 'Help text',
   noBottomGutter: false,
   inlineLabel: false,
   disabled: false,
