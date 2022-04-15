@@ -26,7 +26,7 @@ export const Template = (args) =>
     >Save</FormButton>
   </Form>
 
-# Introduction
+# Getting started
 
 ## Installation
 
@@ -37,7 +37,7 @@ yarn add react-form-component
 
 ## Building first form
 
-1. Wrap entitre app into `<FormThemeProvider>`. Optionally add theme prop to [define a custom theme](http://localhost:6006/?path=/docs/docs-theming--page).
+1. Wrap entitre app into `<FormThemeProvider>`. **Optionally add theme** prop to [define a custom theme](http://localhost:6006/?path=/docs/docs-theming--page).
 
 ```jsx
 // App.js
@@ -46,7 +46,7 @@ import ReactDOM from 'react-dom'
 import { FormThemeProvider } from 'react-form-component'
 
 const App = () =>
-  <FormThemeProvider>
+  <FormThemeProvider theme={{}}>
     Content of the app
   </FormThemeProvider>
 

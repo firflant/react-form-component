@@ -2,7 +2,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs'
 import Form, { Input } from '../src'
 
 <Meta
-  title="Docs/Handling asynchronous"
+  title="Docs/Async"
   parameters={{ previewTabs: { canvas: { hidden: true }}}}
 />
 
@@ -32,7 +32,7 @@ const LoginForm = () => {
   const handleSubmit = async (fields) => {
     setLoading(true);
     try {
-      // Fake API login call.
+      // API login call.
       const resp = await axios.get(
         'https://reqres.in/api/login?delay=1',
         fields

@@ -10,7 +10,7 @@ Checkboxes.displayName = 'Checkboxes'
 
 
 export default {
-  title: 'Inputs/Checkbox',
+  title: 'Components/Checkbox',
   component: Checkbox,
   argTypes: {
     text: {

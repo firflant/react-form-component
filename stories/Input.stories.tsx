@@ -9,7 +9,7 @@ Input.displayName = 'Input'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Inputs/Input',
+  title: 'Components/Input',
   component: Input,
   argTypes: {
     placeholder: {
