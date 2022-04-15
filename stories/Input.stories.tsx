@@ -63,14 +63,6 @@ BasicUsage.args = {
   ...formControlArgs,
 }
 
-
-export const InlineLabel = Template.bind({})
-InlineLabel.args = {
-  name: 'example',
-  label: 'Inline label',
-  inlineLabel: true,
-}
-
 export const Debounce = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Debounce.args = {

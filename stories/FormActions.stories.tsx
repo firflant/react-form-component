@@ -5,7 +5,7 @@ import Form, { Input, TextArea, FormButton, FormActions } from '../src'
 
 
 export default {
-  title: 'Components/Layouts/FormActions',
+  title: 'Components/Various/FormActions',
   component: FormActions,
 } as ComponentMeta<typeof FormActions>
 

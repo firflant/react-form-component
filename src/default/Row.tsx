@@ -5,8 +5,9 @@ import { breakpoint } from '..'
 import { fullTheme } from '../typings'
 
 /**
- * A wrapper to put multiple form items into one line. By default, for the
- * purpose of better RWD experience, it keeps a column layout for mobile devices.
+ * Combines multiple fields into one row. Wrapped fields will be displayed one
+ * after one with a proper gap in between. On smaller screens they will keep the
+ * default, column behavior.
  */
 const Row = ({
   mobile,

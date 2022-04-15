@@ -5,7 +5,7 @@ import Form, { Input, Row } from '../src'
 
 
 export default {
-  title: 'Components/Layouts/Row',
+  title: 'Components/Various/Row',
   component: Row,
 } as ComponentMeta<typeof Row>
 

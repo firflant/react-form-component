@@ -1,7 +1,10 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
 
-
+/**
+ * Combines elements into one row, where all elements are the same height, do
+ * not have a gutter or a border radius in between.
+ */
 const Compound = ({ children }: CompoundProps) => {
   const classes = useStyles()
   return <div className={classes.root}>{children}</div>

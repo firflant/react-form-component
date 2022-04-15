@@ -1,11 +1,11 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import Form, { Input, FormButton, FormActions, Row, Compound } from '../src'
+import Form, { Input, FormButton, Compound } from '../src'
 
 
 export default {
-  title: 'Components/Layouts/Compound',
+  title: 'Components/Various/Compound',
   component: Compound,
 } as ComponentMeta<typeof Compound>
 
