@@ -4,7 +4,11 @@ import classNames from 'classnames'
 import { breakpoint } from '..'
 import { fullTheme } from '../typings'
 
-
+/**
+ * Combines multiple fields into one row. Wrapped fields will be displayed one
+ * after one with a proper gap in between. On smaller screens they will keep the
+ * default, column behavior.
+ */
 const Row = ({
   mobile,
   noBottomGutter,
@@ -23,8 +27,17 @@ const Row = ({
 }
 
 export interface RowProps {
+  /**
+   * Keeps row layout also for mobile devices
+   */
   mobile?: boolean,
+  /**
+   * Disables bottom margin
+   */
   noBottomGutter?: boolean,
+  /**
+   * Set additional classes
+   */
   className?: string,
   children: React.ReactNode,
 }

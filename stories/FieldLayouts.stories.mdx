@@ -1,0 +1,27 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta
+  title='Docs/Field layouts'
+  parameters={{ previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Field layouts
+
+**React Form Component** provides some features to compose a form into various
+layouts, so you do not need to put additional styles.
+
+## Inline label
+
+By default, field label is displayed above the field. You can move it to left by
+adding the `inlineLabel` prop to a particular field. Inline label will always
+have the same width, which is configurable in
+[theme](/?path=/docs/docs-form-layouts--page#default-theme).
+
+## Layout components
+
+In the *Components/Various* chapter there are some components, that are wrappers
+for fields, that puts them into various layouts:
+
+- [**Row**](?path=/docs/components-layouts-row--example)
+- [**Compound**](?path=/docs/components-layouts-compound--example)
+- [**FormActions**](?path=/docs/components-layouts-formactions--example)

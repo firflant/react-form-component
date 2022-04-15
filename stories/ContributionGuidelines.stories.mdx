@@ -1,0 +1,33 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import Form, { Input } from '../src'
+
+<Meta
+  title="Docs/Contribution guidelines"
+  parameters={{ previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Contribution guidelines
+
+Pull requests are welcome! The best way to develop a cloned react-form-component
+repo before committing any change is to import and use it on a local react
+project. It can be done with help of yarn link functionality. All peer
+dependencies must be linked:
+
+```
+cd YOUR_CLONNED_REACT-FORM-COMPONENT_FORK
+yarn link
+yarn install
+cd node_modules/react
+yarn link
+cd ../react-dom
+yarn link
+
+cd YOUR_REACT_PROJECT
+yarn link react-form-component
+yarn link react
+yarn link react-dom
+```
+
+To apply changes introduced in a source core, run `yarn build`.
+
+Make sure you use the version of Node mentioned in `.nvmrc` file.

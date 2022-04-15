@@ -1,0 +1,68 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import Form, { Input } from '../src'
+
+<Meta
+  title='Docs/Custom inputs'
+  parameters={{ previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Custom inputs
+
+To create custom **Field**, compatible with **React Form Component**, use
+`withFormControl`. This Higher Order Component provides various props, that
+should be utilized in taken input to ensuere seamless communication with a
+library:
+
+| Prop      | Type       | Description                                                         |
+|-----------|------------|---------------------------------------------------------------------|
+| name      | *string*   | Unique identifier of a field in the form.                           |
+| value     | *any*      | Value of the field retrieved from a form state.                     |
+| mandatory | *bool*     | Flag that distinguishes the logic for required and optional fields. |
+| setValue  | *function* | Updater function for a form state.                               |
+
+The most basic, functional example of a custom input:
+
+```jsx
+// CustomBasicInput.js
+import React from 'react'
+import { withFormControl } from 'react-form-component'
+
+const CustomBasicInput = ({
+  name,
+  value,
+  mandatory,
+  setValue,
+}) =>
+  <input
+    value={value}
+    onChange={e => setValue(name, e.target.value, mandatory)}
+  />
+
+export default withFormControl(CustomBasicInput)
+```
+
+## Updater function
+
+Usage of updater function is following:
+
+```js
+setValue(name, newValue, mandatory, options)
+```
+
+where `newValue` is a new value returned by the input and options is an optional
+object, that accepts following properties:
+
+| Option            | Type       | Description                                                         |
+|-------------------|------------|---------------------------------------------------------------------|
+| type              | *string*   | Input type for validation function.                                 |
+| min               | *number*   | Minimal amount of characters for validation function.               |
+| forceErrorMessage | *string*   | Displays custom error message in help area of a field.              |
+
+
+### While creating custom inputs, keep a following rules in mind:
+
+* Make sure that yours component returns a single DOM element. Do not wrap it into `React.Fragment`, as it may cause layout issues.
+* If you want to use styling of a standard text input, add `rfc-form-input` class to it.
+
+For examples and inspiration, [check out the code of built-in inputs](https://github.com/firflant/react-form-component/tree/master/src/default).
+

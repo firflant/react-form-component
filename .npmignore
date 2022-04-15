@@ -7,3 +7,5 @@ node_modules
 screenshot.jpg
 yarn-error.log
 tsconfig.json
+.storybook
+storybook-static

@@ -1,0 +1,34 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import Form, { Input } from '../src'
+
+<Meta
+  title='Docs/Customizing notifications'
+  parameters={{ previewTabs: { canvas: { hidden: true }}}}
+/>
+
+# Customizing notifications
+
+By default, **React Form Component** uses
+[react-toastify](https://www.npmjs.com/package/react-toastify) package to
+display the error messages. You can customize its behavior with a
+`toastContainerProps` theme property. This property accepts all options
+mentioned in **react-toastify** documentation. See
+[theme object](?path=/docs/docs-theming--page#default-theme) for example.
+
+Optionally, you can replace the *react-toastify* with any other notification
+plugin. Let's say you want to use the
+[notistack](https://www.npmjs.com/package/notistack) instead.
+Import it
+
+```js
+import { useSnackbar } from 'notistack'
+```
+, then set it as a`errorNotificationFunc` property of theme configuration object
+in a following manner:
+
+```js
+errorNotificationFunc: message => enqueueSnackbar(message, { variant: 'error' }),
+```
+
+`errorNotificationFunc` is a function that provides one argument - a content of
+message.
