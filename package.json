@@ -11,8 +11,8 @@
     "build": "rm -rf ./lib/* && tsc --build",
     "clean": "rm -rf ./lib/* && tsc --build --clean",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "demo": "start-storybook -p 6006",
-    "build-demo": "build-storybook"
+    "start": "start-storybook -p 6006",
+    "build-docs": "build-storybook"
   },
   "repository": {
     "type": "git",
