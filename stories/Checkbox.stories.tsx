@@ -16,7 +16,7 @@ export default {
       description: 'Text near the single checkbox',
     },
     options: {
-      description: 'Available options of multiple checkboxes',
+      description: 'Available options of multiple checkboxes `{ label, value }[]` or `string[]`',
     },
     ...formControlArgTypes,
     label: {
@@ -32,7 +32,7 @@ export const Single: ComponentStory<typeof Checkbox> = args =>
 
 Single.component = Checkbox
 Single.args = {
-  name: 'checkbox',
+  name: 'checkboxes',
   label: 'Optional input label',
   text: 'Single checkbox that returns a boolean value',
   initialValue: false,
@@ -45,6 +45,7 @@ export const Multiple: ComponentStory<typeof Checkboxes> = args =>
     <Checkboxes {...args} />
   </Form>
 
+Multiple.component = Checkboxes
 Multiple.args = {
   name: 'checkbox',
   label: 'Multiple checkboxes:',

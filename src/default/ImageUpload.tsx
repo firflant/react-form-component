@@ -5,6 +5,9 @@ import { withFormControl, maxRows } from '../.'
 import { value, setValue, fullTheme } from '../typings'
 
 
+/**
+ * Single image upload. Displays current image as a thumbnail.
+ */
 const ImageUpload = ({
   name,
   value,

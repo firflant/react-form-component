@@ -5,6 +5,9 @@ import { withFormControl } from '../.'
 import { value, setValue } from '../typings'
 
 
+/**
+ * Multiple rows input for entering longer paragraphs of text.
+ */
 const TextArea = ({
   name,
   value,

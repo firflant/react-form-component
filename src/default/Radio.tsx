@@ -5,6 +5,9 @@ import { parseOption, withFormControl } from '../.'
 import { value, setValue, options, option } from '../typings'
 
 
+/**
+ * A list of options, where user can pick only one.
+ */
 const Radio = ({
   name,
   value,

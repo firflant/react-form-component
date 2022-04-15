@@ -6,6 +6,10 @@ import { withFormControl } from '../.'
 import { value, setValue, fullTheme } from '../typings'
 
 
+/**
+ * A single switcher that can be a visual alternative for checkbox.
+ * Operates on a boolean value.
+ */
 const Switch = ({
   name,
   value,

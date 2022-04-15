@@ -6,6 +6,10 @@ import { withFormControl, checkboxHandler } from '../.'
 import { value, setValue, fullTheme } from '../typings'
 
 
+/**
+ * A list of selectable options, where each one is represented by an image and
+ * text.
+ */
 const ImageSelect = ({
   name,
   value,

@@ -10,6 +10,10 @@ import {
 } from '../.'
 import { value, setValue, option, options, fullTheme } from '../typings'
 
+
+/**
+ * A multiple select dropdown.
+ */
 const MultiSelect = ({
   name,
   value,

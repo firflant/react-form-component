@@ -4,7 +4,9 @@ import { createUseStyles } from 'react-jss'
 import { withFormControl } from '../.'
 import { value, setValue, fullTheme } from '../typings'
 
-
+/**
+ * A single checkbox that operates on a boolean value.
+ */
 const Checkbox = ({
   name,
   value,

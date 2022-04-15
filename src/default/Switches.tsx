@@ -4,6 +4,9 @@ import { withFormControl, checkboxHandler, useSwitchStyles } from '../.'
 import { value, setValue, options } from '../typings'
 
 
+/**
+ * A list of switches, where user can pick multiple options.
+ */
 const Switches = ({
   name,
   value,

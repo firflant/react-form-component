@@ -5,6 +5,9 @@ import { withFormControl, parseOption } from '../.'
 import { value, setValue, options, fullTheme } from '../typings'
 
 
+/**
+ * A select dropdown, where user can pick only one option.
+ */
 const Select = ({
   name,
   value,

@@ -6,6 +6,9 @@ import { withFormControl, breakpoint } from '../.'
 import { value, setValue, fullTheme } from '../typings'
 
 
+/**
+ * Allows to upload a whole gallery of images.
+ */
 const MultiImageUpload = ({
   name,
   value,

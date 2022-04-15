@@ -4,6 +4,9 @@ import { withFormControl } from '../.'
 import { value, setValue, fullTheme } from '../typings'
 
 
+/**
+ * A range input where user chooses a value by moving a dot on a trail.
+ */
 const Slider = ({
   name,
   value,

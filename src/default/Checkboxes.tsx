@@ -8,7 +8,9 @@ import {
 } from '../.'
 import { value, setValue, options, option } from '../typings'
 
-
+/**
+ * A list of checkboxes, where user can pick multiple options.
+ */
 const Checkboxes = ({
   name,
   value,
