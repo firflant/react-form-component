@@ -7,6 +7,9 @@ import React from 'react'
 import defautTheme from './theme'
 import { fullTheme, themeOverrides } from '../typings'
 
+/**
+ * A wrapper for entire app that provides theme context.
+ */
 const FormThemeProvider = ({ theme = {}, children }: FormThemeProviderProps) => {
   const [customizedTheme, setCustomizedTheme] = React.useState<fullTheme | null>(null)
   const [toastContainerProps, setToastContainerProps] = React.useState({})
@@ -65,6 +68,9 @@ const FormThemeProvider = ({ theme = {}, children }: FormThemeProviderProps) => 
 }
 
 export interface FormThemeProviderProps {
+  /**
+   * Object with properties that overrides default theme.
+   */
   theme?: themeOverrides,
   children: React.ReactNode,
 }

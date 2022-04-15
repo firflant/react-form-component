@@ -31,9 +31,21 @@ const FormButton = ({
 }
 
 export interface FormButtonProps {
+  /**
+   * Submit function
+   */
   onClick: (fieldsData: fieldsData) => void,
+  /**
+   * Turns on loading state
+   */
   loading?: boolean,
+  /**
+   * Clean up whole form after successfull submit
+   */
   reset?: boolean,
+  /**
+   * Disables default notification when form is not filled correctly
+   */
   suppressErrorMessage?: boolean,
   children: React.ReactNode,
 }
