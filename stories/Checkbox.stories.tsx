@@ -11,9 +11,16 @@ Checkboxes.displayName = 'Checkboxes'
 
 export default {
   title: 'Components/Inputs/Checkbox',
+  parameters: {
+    docs: {
+      description: {
+        component: 'A single checkbox that operates on a boolean value, or a list of checkboxes, where user can pick multiple options.',
+      },
+    },
+  },
   argTypes: {
     text: {
-      description: 'Text near the single checkbox',
+      description: 'Text near the single checkbox `ReactNode`',
     },
     options: {
       description: 'Available options of multiple checkboxes `{ label, value }[]` or `string[]`',
@@ -26,15 +33,15 @@ export default {
 } as ComponentMeta<typeof Checkbox>
 
 export const Single: ComponentStory<typeof Checkbox> = args =>
-  <Form fields={[args.name]} >
+  <Form fields={[args.name]} {...actions('onChange')}>
     <Checkbox {...args} />
   </Form>
 
 Single.component = Checkbox
 Single.args = {
-  name: 'checkboxes',
+  name: 'singleCheckbox',
   label: 'Optional input label',
-  text: 'Single checkbox that returns a boolean value',
+  text: 'Single checkbox',
   initialValue: false,
   ...formControlArgs,
   help: '',
@@ -47,7 +54,7 @@ export const Multiple: ComponentStory<typeof Checkboxes> = args =>
 
 Multiple.component = Checkboxes
 Multiple.args = {
-  name: 'checkbox',
+  name: 'checkboxList',
   label: 'Multiple checkboxes:',
   options: [
     'Option one',

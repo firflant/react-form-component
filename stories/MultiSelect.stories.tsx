@@ -10,6 +10,13 @@ MultiSelectComponent.displayName = 'Multi Select'
 export default {
   title: 'Components/Inputs/Multi Select',
   component: MultiSelectComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Multiple select dropdown.',
+      },
+    },
+  },
   args: {
     name: 'example',
     label: 'Multi Select',
@@ -28,22 +35,22 @@ export default {
   },
   argTypes: {
     options: {
-      description: 'Available options: `{ label, value }[]` or `string[]`',
+      description: 'Available options `{ label, value }[]` or `string[]`',
     },
     prefix: {
-      description: 'Decorates left side of a field with symbol, unit etc.',
+      description: 'Decorates left side of a field with symbol, unit etc. `ReactNode`',
     },
     suffix: {
-      description: 'Decorates right side of a field with symbol, unit etc.',
+      description: 'Decorates right side of a field with symbol, unit etc. `ReactNode`',
     },
     narrow: {
-      description: 'Decreases input width',
+      description: 'Decreases input width `bool`',
     },
     large: {
-      description: 'Increases input height',
+      description: 'Increases input height `bool`',
     },
     placeholder: {
-      description: 'Text displayed when value is empty',
+      description: 'Text displayed when value is empty `string`',
     },
     ...formControlArgTypes,
   },

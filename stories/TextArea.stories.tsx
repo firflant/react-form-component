@@ -10,6 +10,13 @@ TextAreaComponent.displayName = 'Text Area'
 export default {
   title: 'Components/Inputs/Text Area',
   component: TextAreaComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Multiple rows input for longer paragraphs of text.',
+      },
+    },
+  },
   args: {
     name: 'example',
     label: 'Select',
@@ -25,7 +32,10 @@ export default {
   },
   argTypes: {
     rows: {
-      description: 'Initial amount of rows',
+      description: 'Initial amount of rows `number`',
+      table: {
+        defaultValue: { summary: 5 },
+      },
     },
     prefix: {
       description: 'Decorates left side of a field with symbol, unit etc.',
@@ -38,9 +48,6 @@ export default {
     },
     large: {
       description: 'Increases input height',
-    },
-    type: {
-      description: 'Type of input',
     },
     min: {
       description: 'Minimal amount of input characters',

@@ -16,6 +16,13 @@ FieldgroupComponent.displayName = 'Fieldgroup'
 export default {
   title: 'Components/Inputs/Fieldgroup',
   component: FieldgroupComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Allows to build a nested form structure. The composition of fields, where every row has the same structure.',
+      },
+    },
+  },
   args: {
     name: 'people',
     label: 'Fieldgroup',
@@ -29,19 +36,22 @@ export default {
   },
   argTypes: {
     fields: {
-      descripton: 'Names of inputs in a group',
+      description: 'Names of fields in a group `string[]`',
     },
     moreComponent: {
-      descripton: 'Replace the default more button',
+      description: 'Replace the default _Add more_ button component',
     },
     moreComponentProps: {
-      descripton: 'Props for custom more button component',
+      description: 'Props for custom _Add more_ button component',
     },
     customMoreLabel: {
-      descripton: 'Custom label for add more button',
+      description: 'Custom label for _Add more_ button',
+      table: {
+        defaultValue: { summary: 'Comes from theme' },
+      },
     },
     deleteIcon: {
-      descripton: 'Replace the default delete icon',
+      description: 'Replace the default delete icon',
     },
     ...formControlArgTypes,
   },

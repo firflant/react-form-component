@@ -10,6 +10,13 @@ MultiImageUploadComponent.displayName = 'MultiImageUpload'
 export default {
   title: 'Components/Inputs/Multi Image Upload',
   component: MultiImageUploadComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Allows to upload a whole gallery of images at once.',
+      },
+    },
+  },
   args: {
     name: 'example',
     label: 'Multi image upload',
@@ -17,8 +24,11 @@ export default {
     ...formControlArgs,
   },
   argTypes: {
-    placeholder: {
-      description: 'Amount of columns in grid',
+    columns: {
+      description: 'Amount of columns in a grid',
+      table: {
+        defaultValue: { summary: 4 },
+      },
     },
     ...formControlArgTypes,
   },

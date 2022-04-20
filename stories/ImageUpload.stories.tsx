@@ -10,6 +10,13 @@ ImageUploadComponent.displayName = 'ImageUpload'
 export default {
   title: 'Components/Inputs/Image Upload',
   component: ImageUploadComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Input for a single image upload. Displays current image as a thumbnail.',
+      },
+    },
+  },
   args: {
     name: 'example',
     label: 'Image upload',
@@ -18,7 +25,7 @@ export default {
   },
   argTypes: {
     placeholder: {
-      description: 'Replaces the "image" word on labels',
+      description: 'Replaces the "image" word on labels `ReactNode`',
     },
     ...formControlArgTypes,
   },

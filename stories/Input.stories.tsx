@@ -11,15 +11,22 @@ Input.displayName = 'Input'
 export default {
   title: 'Components/Inputs/Input',
   component: Input,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Basic text input with built-in _debounce_ feature, which prevents too many updates while typing.',
+      },
+    },
+  },
   argTypes: {
     placeholder: {
       description: 'Displayed when value is empty',
     },
     prefix: {
-      description: 'Decorates left side of a field with symbol, unit etc.',
+      description: 'Decorates left side of a field with symbol, unit etc. `ReactNode`',
     },
     suffix: {
-      description: 'Decorates right side of a field with symbol, unit etc.',
+      description: 'Decorates right side of a field with symbol, unit etc. `ReactNode`',
     },
     narrow: {
       description: 'Decreases input width',
@@ -29,9 +36,15 @@ export default {
     },
     type: {
       description: 'Type of input',
+      table: {
+        defaultValue: { summary: 'text' },
+      },
     },
     min: {
-      description: 'Minimal amount of input characters',
+      description: 'Minimal amount of input characters `number`',
+    },
+    activateEnterPress: {
+      description: 'Turns on the submit on enter function, which is declared on a parent `Form` component, via `onEnterPress` prop. See *On Enter Press* example.',
     },
     ...formControlArgTypes,
   },
@@ -75,8 +88,8 @@ Debounce.args = {
 export const OnEnterPress = Template.bind({})
 OnEnterPress.args = {
   name: 'enterInput',
-  label: 'Type something and press Enter key',
+  label: 'ActivateEnterPress prop example',
   activateEnterPress: true,
-  help: 'Set activateEnterPress to true and set onEnterPress prop on a parent Form component to submit whole form when pressing Enter inside an input.',
+  help: 'Type something, press Enter key. See the actions log in a canvas mode.',
 }
 

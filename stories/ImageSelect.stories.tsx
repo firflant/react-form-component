@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import Form, { ImageUpload as ImageSelectComponent } from '../src'
+import Form, { ImageSelect as ImageSelectComponent } from '../src'
 import { formControlArgs, formControlArgTypes } from './formControlArgs'
 
 ImageSelectComponent.displayName = 'ImageSelect'
@@ -10,6 +10,13 @@ ImageSelectComponent.displayName = 'ImageSelect'
 export default {
   title: 'Components/Inputs/Image Select',
   component: ImageSelectComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: 'A list of selectable options, where each one is represented by an image and text.',
+      },
+    },
+  },
   args: {
     name: 'example',
     label: 'Image select',

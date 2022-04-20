@@ -10,6 +10,13 @@ SliderComponent.displayName = 'Slider'
 export default {
   title: 'Components/Inputs/Slider',
   component: SliderComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: 'A range input, where user chooses a value by moving a dot on a trail.',
+      },
+    },
+  },
   args: {
     name: 'example',
     label: 'Range',
@@ -20,16 +27,16 @@ export default {
   },
   argTypes: {
     min: {
-      description: 'Minimal value',
+      description: 'Minimal value `number`',
     },
     max: {
-      description: 'Maximal value',
+      description: 'Maximal value `number`',
     },
     step: {
-      description: 'Interval between available values',
+      description: 'Interval between available values `number`',
     },
     unit: {
-      description: 'Display unit',
+      description: 'Display unit `string`',
     },
     ...formControlArgTypes,
   },

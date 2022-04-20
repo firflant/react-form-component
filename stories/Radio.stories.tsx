@@ -10,6 +10,13 @@ RadioComponent.displayName = 'Radio'
 export default {
   title: 'Components/Inputs/Radio',
   component: RadioComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: 'A list of options, where user can pick only one.',
+      },
+    },
+  },
   args: {
     name: 'example',
     label: 'Radio',
@@ -26,13 +33,13 @@ export default {
   },
   argTypes: {
     options: {
-      description: 'Available options: `{ label, value }[]` or `string[]`',
+      description: 'Available options `{ label, value }[]` or `string[]`',
     },
     small: {
-      description: 'Decrease radio text size.',
+      description: 'Decrease radio text size `bool`',
     },
     inline: {
-      description: 'Displays all options in one row',
+      description: 'Displays all options in one row `bool`',
     },
     ...formControlArgTypes,
   },

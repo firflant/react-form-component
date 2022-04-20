@@ -11,17 +11,21 @@ Switches.displayName = 'Switches'
 
 export default {
   title: 'Components/Inputs/Switch',
+  parameters: {
+    docs: {
+      description: {
+        component: 'A nice, non-default looking, single switch that operates on a boolean value, or a list of switches, where user can pick multiple options.',
+      },
+    },
+  },
   argTypes: {
     text: {
-      description: 'Text near the single switch',
+      description: 'Text near the single switch `ReactNode`',
     },
     options: {
       description: 'Available options of multiple switches `{ label, value }[]` or `string[]`',
     },
     ...formControlArgTypes,
-    label: {
-      description: 'Input label displayed before it',
-    },
   },
 } as ComponentMeta<typeof Switch>
 
