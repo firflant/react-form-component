@@ -1,7 +1,12 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import Form, { Fieldgroup as FieldgroupComponent, FormButton, Row } from '../src'
+import Form, {
+  Fieldgroup as FieldgroupComponent,
+  FormButton,
+  Row,
+  Input,
+} from '../src'
 import { formControlArgs, formControlArgTypes } from './formControlArgs'
 import { actions } from '@storybook/addon-actions'
 
@@ -44,9 +49,7 @@ export default {
 
 const Template: ComponentStory<typeof FieldgroupComponent> = args =>
   <Form fields={[args.name]}>
-    <p>Enter emails and names of a people to invite.</p>
-    <p>TODO: Fix the widget preview</p>
-    {/* <Fieldgroup {...args}>
+    <FieldgroupComponent {...args}>
       {({ values }) => (
         <Row>
           <Input name='name' label='Name' initialValue={values.name} />
@@ -58,7 +61,7 @@ const Template: ComponentStory<typeof FieldgroupComponent> = args =>
           />
         </Row>
       )}
-    </Fieldgroup> */}
+    </FieldgroupComponent>
     <FormButton {...actions('onClick')}>
       Save
     </FormButton>
