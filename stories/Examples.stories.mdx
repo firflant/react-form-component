@@ -1,9 +1,103 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
-import Form, { Input } from '../src'
+import Form, {
+  Input,
+  MultiSelect,
+  TextArea,
+  ImageUpload,
+  Fieldgroup,
+  Row,
+  FormActions,
+  FormButton,
+} from '../src'
 
 <Meta
-  title="Docs/Examples"
+  title='Docs/Examples'
   parameters={{ previewTabs: { canvas: { hidden: true }}}}
 />
 
+export const BlogPostFormTemplate = args =>
+  <Form
+    fields={['title', 'content', 'image', 'date', 'tags']}
+    required={['title', 'content']}
+  >
+    <Input name='title' label='Title' inlineLabel />
+    <TextArea name='content' label='Content' inlineLabel />
+    <ImageUpload name='image' label='Featured image' inlineLabel />
+    <Input name='date' type='date' label='Publication date' inlineLabel />
+    <MultiSelect
+      name='tags'
+      label='Categories'
+      options={['Lifestyle', 'Nature', 'Technology']}
+      inlineLabel
+    />
+    <FormActions>
+      <FormButton reset>Reset</FormButton>
+      <FormButton onClick={fields => console.log(fields)}>Submit</FormButton>
+    </FormActions>
+  </Form>
+
+export const InvitePeopleFormTemplate = args =>
+  <Form fields={['people', 'message']}>
+    <p>Enter emails and names of a people to invite.</p>
+    <Fieldgroup name='people' fields={['name', 'email']}>
+      {({ values }) => (
+        <Row>
+          <Input
+            name='name'
+            label='Name'
+            initialValue={values.name}
+            help='Enter user name'
+          />
+          <Input
+            name='email'
+            type='email'
+            label='E-mail'
+            initialValue={values.email}
+            help='Enter email address'
+          />
+        </Row>
+      )}
+    </Fieldgroup>
+    <TextArea name='message' label='Invitation message' />
+    <FormButton onClick={fields => console.log(fields)}>Invite</FormButton>
+  </Form>
+
+export const DynamicSearchForm = args =>
+  <Form
+    fields={['phrase']}
+    onChange={fields => console.log(fields.phrase)}
+  >
+    <Input
+      name='phrase'
+      type='search'
+      placeholder='Enter search phrase'
+      suffix='🔎'
+    />
+  </Form>
+
+
 # Examples
+
+## Blog post form
+
+<Canvas withSource='open'>
+  <Story name='Blog post form'>
+    {BlogPostFormTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Invite people form
+
+<Canvas withSource='open'>
+  <Story name='Invite people form'>
+    {InvitePeopleFormTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Dynamic search
+
+<Canvas withSource='open'>
+  <Story name='Dynamic search'>
+    {DynamicSearchForm.bind({})}
+  </Story>
+</Canvas>
