@@ -1,4 +1,5 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
+// import React from 'react'
 import Form, { Input, Select, FormButton } from '../src'
 
 <Meta
@@ -9,26 +10,38 @@ import Form, { Input, Select, FormButton } from '../src'
   }}
 />
 
-export const Template = (args) =>
-  <Form fields={['name', 'email', 'type']}>
-    <Input
-      name='name'
-      label='User name'
-    />
-    <Input
-      name='email'
-      type='email'
-      label='E-mail'
-    />
-    <Select
-      name='type'
-      label='Type of a user'
-      options={['Viewer', 'Moderator', 'Admin']}
-    />
-    <FormButton
-      onClick={fields => console.log(fields)}
-    >Save</FormButton>
-  </Form>
+export const Template = (args) => {
+  const [state, setState] = React.useState('> ')
+  return (
+    <Form fields={['name', 'email', 'type']}>
+      <Input
+        name='name'
+        label='User name'
+      />
+      <Input
+        name='email'
+        type='email'
+        label='E-mail'
+      />
+      <Select
+        name='type'
+        label='Type of a user'
+        options={['Viewer', 'Moderator', 'Admin']}
+      />
+      <FormButton
+        onClick={fields => setState(prevState => `${prevState}${JSON.stringify(fields)}\n> `)}
+      >Save</FormButton>
+      {<div style={{ marginTop: 30 }}>
+          Console: <pre style={{
+            backgroundColor: '#F8F8F8 ',
+            border: '1px solid #EEEEEE',
+            padding: 20,
+          }}><code>{state}</code></pre>
+        </div>
+      }
+    </Form>
+  )
+}
 
 # Getting started
 
