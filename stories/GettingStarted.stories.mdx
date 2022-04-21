@@ -13,7 +13,7 @@ import Form, { Input, Select, FormButton } from '../src'
 export const Template = (args) => {
   const [state, setState] = React.useState('> ')
   return (
-    <Form fields={['name', 'email', 'type']}>
+    <Form fields={['name', 'email', 'type']} mandatory={['name']}>
       <Input
         name='name'
         label='User name'
@@ -22,6 +22,7 @@ export const Template = (args) => {
         name='email'
         type='email'
         label='E-mail'
+        help='Type a valid email address'
       />
       <Select
         name='type'
@@ -56,7 +57,7 @@ yarn add react-form-component
 
 ## Code steps
 
-1. Wrap entitre app into `<FormThemeProvider>`. **Optionally add a theme** prop to define a [custom theme](http://localhost:6006/?path=/docs/docs-theming--page).
+1. Wrap entitre app into `<FormThemeProvider>`. **Optionally add a theme** prop to [customize a theme](http://localhost:6006/?path=/docs/docs-theming--page).
 
 ```jsx
 // App.js
@@ -66,13 +67,13 @@ import { FormThemeProvider } from 'react-form-component'
 
 const App = () =>
   <FormThemeProvider theme={{}}>
-    Content of the app
+    <ExampleUserForm />
   </FormThemeProvider>
 
-ReactDOM.render(<App />, document.querySelector('#app'))
+ReactDOM.render(<App />, document.querySelector('#root'))
 ```
 
-2. Put `Form` component anywhere in the app, declare field names in a `fields` prop - each unique for a form.
+2. Put `Form` component anywhere in the app, declare field names in a `fields` prop - each unique for a form. Point out the fields that are mandatory with a `mandatory` prop.
 3. Use any input from the collection of default _Form UI Components_. Give each field a name prop, that corresponds with the one defined in `fields` prop of the ancestor `Form` component.
 4. Use `FormButton` to trigger a submit function that returns all values formatted in a form of an object, that consists of keys declared as field names.
 
@@ -86,7 +87,7 @@ import Form, {
 } from 'react-form-component'
 
 const ExampleUserForm = () =>
-  <Form fields={['name', 'email', 'type']}>
+  <Form fields={['name', 'email', 'type']} mandatory={['name']}>
     <Input
       name='name'
       label='User name'
@@ -95,6 +96,7 @@ const ExampleUserForm = () =>
       name='email'
       type='email'
       label='E-mail'
+      help='Type a valid email address'
     />
     <Select
       name='type'
