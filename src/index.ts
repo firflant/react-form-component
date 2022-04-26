@@ -32,7 +32,8 @@ export { default as Row } from './default/Row'
 export { default as Compound } from './default/Compound'
 
 export { default as Checkbox, useCheckboxStyles } from './default/Checkbox'
-export { default as Checkboxes } from './default/Checkboxes'
+export { default as CheckboxList } from './default/CheckboxList'
+export { default as Checkboxes } from './default/CheckboxList' // Legacy
 export { default as ImageSelect } from './default/ImageSelect'
 export { default as ImageUpload } from './default/ImageUpload'
 export { default as Input } from './default/Input'

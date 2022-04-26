@@ -2,11 +2,11 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { actions } from '@storybook/addon-actions'
 
-import Form, { Checkbox, Checkboxes } from '../src'
+import Form, { Checkbox, CheckboxList } from '../src'
 import { formControlArgs, formControlArgTypes } from './formControlArgs'
 
 Checkbox.displayName = 'Checkbox'
-Checkboxes.displayName = 'Checkboxes'
+CheckboxList.displayName = 'CheckboxList'
 
 
 export default {
@@ -47,12 +47,12 @@ Single.args = {
   help: '',
 }
 
-export const Multiple: ComponentStory<typeof Checkboxes> = args =>
+export const Multiple: ComponentStory<typeof CheckboxList> = args =>
   <Form fields={[args.name]} {...actions('onChange')}>
-    <Checkboxes {...args} />
+    <CheckboxList {...args} />
   </Form>
 
-Multiple.component = Checkboxes
+Multiple.component = CheckboxList
 Multiple.args = {
   name: 'checkboxList',
   label: 'Multiple checkboxes:',

@@ -11,14 +11,14 @@ import { value, setValue, options, option } from '../typings'
 /**
  * A list of checkboxes, where user can pick multiple options.
  */
-const Checkboxes = ({
+const CheckboxList = ({
   name,
   value,
   mandatory,
   setValue,
   options,
   small,
-}: CheckboxesProps) => {
+}: CheckboxListProps) => {
   const classes = useCheckboxStyles()
   return (
     <div>
@@ -49,7 +49,7 @@ const Checkboxes = ({
   )
 }
 
-export interface CheckboxesProps {
+export interface CheckboxListProps {
   name: string,
   value: value,
   mandatory: boolean,
@@ -58,4 +58,4 @@ export interface CheckboxesProps {
   small?: boolean,
 }
 
-export default withFormControl(Checkboxes)
+export default withFormControl(CheckboxList)
