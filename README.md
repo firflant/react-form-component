@@ -5,19 +5,20 @@ design and functionality.
 
 >From version 2.x this package is a continuation of [react-standalone-form](https://www.npmjs.com/package/react-standalone-form).
 
-## Install
+## [Docs and examples](https://firflant.github.io/react-form-component)
+
+![Screenshot](https://raw.githubusercontent.com/firflant/react-form-component/master/screenshot.jpg "Screenshot")
+
+
+## Quick start
+
+### Install
 
 ```
 yarn add react-form-component
 ```
 
-## Demo
-
-![Screenshot](https://raw.githubusercontent.com/firflant/react-form-component/master/screenshot.jpg "Screenshot")
-
-[![See working example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-form-component-advanced-example-24uz22?fontsize=14&hidenavigation=1&theme=dark)
-
-## Quick start example
+### Use
 
 1. Wrap entitre app into `<FormThemeProvider>`. Optionally define a [custom theme](https://github.com/firflant/react-form-component/wiki/Theming) in theme prop.
 2. Use `<Form>` component anywhere in the app, declare all field names in a `fields` prop.
@@ -78,24 +79,15 @@ export default BasicExampleForm
 
 * Built in form state management
 * Wide range of UI form components
-* Built in, customizable form validation system
+* Handles validation, success states, error state and error messages
 * Customizable theme and notification labels
-* Marking fields as required
+* Marking mandatory fields
 * *Loading* state support for asynchronous operations
-* Submit action triggered by a submit button or on each change with debounce
+* Various ways for triggering submit action.
 * Optional reseting of all fields after a successful submit ([show docs](https://github.com/firflant/react-form-component/wiki/Components#FormButton))
-* Data collected from forms is formatted well for API calls
-* Nested forms (possibility to put a form as a multiple fieldset of anorher form)
+* Values from all fields formatted as one object, well formatted for API calls
+* Suppports nested structure of a form (Field groups)
 * Built in, repleacable react-toastify notification plugin
-* Cross browser tested
+* Cross-browser tested
 * SSR support
-* Easy way of creating custom inputs
-
-
-## Docs
-
-* [Components API](https://github.com/firflant/react-form-component/wiki/Components)
-* [Form layouts](https://github.com/firflant/react-form-component/wiki/Form-layouts)
-* [Theming](https://github.com/firflant/react-form-component/wiki/Theming)
-* [Advanced usage](https://github.com/firflant/react-form-component/wiki/Advanced-usage)
-* [Contribution guidelines](https://github.com/firflant/react-form-component/wiki/Contribution-guidelines)
+* Easy way of custom inputs creation
