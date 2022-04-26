@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import Form, {
-  Fieldgroup as FieldgroupComponent,
+  FieldGroup as FieldGroupComponent,
   FormButton,
   Row,
   Input,
@@ -10,12 +10,12 @@ import Form, {
 import { formControlArgs, formControlArgTypes } from './formControlArgs'
 import { actions } from '@storybook/addon-actions'
 
-FieldgroupComponent.displayName = 'Fieldgroup'
+FieldGroupComponent.displayName = 'FieldGroup'
 
 
 export default {
-  title: 'Components/Inputs/Fieldgroup',
-  component: FieldgroupComponent,
+  title: 'Components/Inputs/Field Group',
+  component: FieldGroupComponent,
   parameters: {
     docs: {
       description: {
@@ -25,7 +25,7 @@ export default {
   },
   args: {
     name: 'people',
-    label: 'Fieldgroup',
+    label: 'FieldGroup',
     fields: ['name', 'email'],
     // moreComponent: undefined,
     // moreComponentProps: undefined,
@@ -55,11 +55,11 @@ export default {
     },
     ...formControlArgTypes,
   },
-} as ComponentMeta<typeof FieldgroupComponent>
+} as ComponentMeta<typeof FieldGroupComponent>
 
-const Template: ComponentStory<typeof FieldgroupComponent> = args =>
+const Template: ComponentStory<typeof FieldGroupComponent> = args =>
   <Form fields={[args.name]}>
-    <FieldgroupComponent {...args}>
+    <FieldGroupComponent {...args}>
       {({ values }) => (
         <Row>
           <Input name='name' label='Name' initialValue={values.name} />
@@ -71,10 +71,10 @@ const Template: ComponentStory<typeof FieldgroupComponent> = args =>
           />
         </Row>
       )}
-    </FieldgroupComponent>
+    </FieldGroupComponent>
     <FormButton {...actions('onClick')}>
       Save
     </FormButton>
   </Form>
 
-export const Fieldgroup = Template.bind({})
+export const FieldGroup = Template.bind({})

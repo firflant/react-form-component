@@ -13,7 +13,7 @@ const DefaultDeleteIcon =
   <div style={{ fontSize: '2em', transform: 'translateY(-0.14em)' }}>⨯</div>
 
 
-const Fieldgroup = ({
+const FieldGroup = ({
   value: valueProp,
   setValue: setValueProp,
   name,
@@ -24,7 +24,7 @@ const Fieldgroup = ({
   customMoreLabel,
   deleteIcon = DefaultDeleteIcon,
   children: Children,
-}: FieldgroupProps) => {
+}: FieldGroupProps) => {
   const classes = useStyles()
   const theme = useTheme() as fullTheme
   const MoreComponent = moreComponent || FormButton
@@ -87,7 +87,7 @@ const Fieldgroup = ({
   )
 }
 
-interface FieldgroupProps {
+interface FieldGroupProps {
   value: valueT,
   setValue: setValueT,
   name: string,
@@ -131,4 +131,4 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   },
 }))
 
-export default withFormControl(Fieldgroup)
+export default withFormControl(FieldGroup)
