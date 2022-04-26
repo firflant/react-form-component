@@ -37,7 +37,7 @@ const GalleryUpload = ({
                 )}
               >⨯</div>
             </div>
-          </div>
+          </div>,
         )
       }
       <div className={classes.item}>
