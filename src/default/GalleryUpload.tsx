@@ -7,15 +7,15 @@ import { value, setValue, fullTheme } from '../typings'
 
 
 /**
- * Allows to upload a whole gallery of images.
+ * Allows to upload multiple images at once.
  */
-const MultiImageUpload = ({
+const GalleryUpload = ({
   name,
   value,
   mandatory,
   setValue,
   columns = 4,
-}: MultiImageUploadProps) => {
+}: GalleryUploadProps) => {
   const classes = useStyles({ columns })
   return (
     <div className={classes.root}>
@@ -85,7 +85,7 @@ const MultiImageUpload = ({
   )
 }
 
-export interface MultiImageUploadProps {
+export interface GalleryUploadProps {
   name: string
   value: value,
   mandatory: boolean,
@@ -161,4 +161,4 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   },
 }))
 
-export default withFormControl(MultiImageUpload)
+export default withFormControl(GalleryUpload)

@@ -35,10 +35,11 @@ export { default as Checkbox, useCheckboxStyles } from './default/Checkbox'
 export { default as Checkboxes } from './default/Checkboxes'
 export { default as ImageSelect } from './default/ImageSelect'
 export { default as ImageUpload } from './default/ImageUpload'
-export { default as MultiImageUpload } from './default/MultiImageUpload'
 export { default as Input } from './default/Input'
 export { default as FieldGroup } from './default/FieldGroup'
 export { default as Fieldgroup } from './default/FieldGroup' // Legacy
+export { default as GalleryUpload } from './default/GalleryUpload'
+export { default as MultiImageUpload } from './default/GalleryUpload' // Legacy
 export { default as MultiSelect } from './default/MultiSelect'
 export { default as Radio } from './default/Radio'
 export { default as Slider } from './default/Slider'

@@ -1,25 +1,25 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import Form, { MultiImageUpload as MultiImageUploadComponent } from '../src'
+import Form, { GalleryUpload as GalleryUploadComponent } from '../src'
 import { formControlArgs, formControlArgTypes } from './formControlArgs'
 
-MultiImageUploadComponent.displayName = 'MultiImageUpload'
+GalleryUploadComponent.displayName = 'GalleryUpload'
 
 
 export default {
-  title: 'Components/Inputs/Multi Image Upload',
-  component: MultiImageUploadComponent,
+  title: 'Components/Inputs/Gallery Upload',
+  component: GalleryUploadComponent,
   parameters: {
     docs: {
       description: {
-        component: 'Allows to upload a whole gallery of images at once.',
+        component: 'Allows to upload multiple images at once.',
       },
     },
   },
   args: {
     name: 'example',
-    label: 'Multi image upload',
+    label: 'Gallery upload',
     columns: '4',
     ...formControlArgs,
   },
@@ -32,11 +32,11 @@ export default {
     },
     ...formControlArgTypes,
   },
-} as ComponentMeta<typeof MultiImageUploadComponent>
+} as ComponentMeta<typeof GalleryUploadComponent>
 
-const Template: ComponentStory<typeof MultiImageUploadComponent> = args =>
+const Template: ComponentStory<typeof GalleryUploadComponent> = args =>
   <Form fields={[args.name]}>
-    <MultiImageUploadComponent {...args} />
+    <GalleryUploadComponent {...args} />
   </Form>
 
-export const MultiImageUpload = Template.bind({})
+export const GalleryUpload = Template.bind({})
