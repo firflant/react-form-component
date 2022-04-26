@@ -75,7 +75,7 @@ const FieldGroup = ({
               onClick={e => handleDelete(e, index)}
               title='Delete'
             >{deleteIcon}</button>
-          </div>
+          </div>,
         )
         : null
       }

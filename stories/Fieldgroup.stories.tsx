@@ -25,33 +25,31 @@ export default {
   },
   args: {
     name: 'people',
-    label: 'FieldGroup',
+    label: 'Field group',
     fields: ['name', 'email'],
-    // moreComponent: undefined,
-    // moreComponentProps: undefined,
     customMoreLabel: 'Add next person',
-    // deleteIcon: undefined,
     ...formControlArgs,
     initialValue: undefined,
   },
   argTypes: {
     fields: {
       description: 'Names of fields in a group `string[]`',
+      type: { required: true },
     },
     moreComponent: {
-      description: 'Replace the default _Add more_ button component',
+      description: 'Replace the default _Add more_ button component `ComponentType`',
     },
     moreComponentProps: {
-      description: 'Props for custom _Add more_ button component',
+      description: 'Props for custom _Add more_ button component `ComponentProps`',
     },
     customMoreLabel: {
-      description: 'Custom label for _Add more_ button',
+      description: 'Custom label for _Add more_ button `string`',
       table: {
         defaultValue: { summary: 'Comes from theme' },
       },
     },
     deleteIcon: {
-      description: 'Replace the default delete icon',
+      description: 'Replace the default delete icon `ReactNode`',
     },
     ...formControlArgTypes,
   },
