@@ -2,7 +2,7 @@ import React from 'react'
 import { createUseStyles, useTheme } from 'react-jss'
 import Form, { withFormControl, FormButton, breakpoint } from '../.'
 import {
-  value as valueT,
+  fieldGroupValue,
   setValue as setValueT,
   anyObject,
   fullTheme,
@@ -33,22 +33,23 @@ const FieldGroup = ({
   const [renderItems, setRenderItems] = React.useState(true)
 
   React.useEffect(() => {
-    // Apply initial Value.
-    if (valueProp) {
+    // Apply initial value, if given.
+    if (valueProp?.length && Object.keys(valueProp[0]).length && !Object.keys(value[0]).length) {
       setValue(valueProp)
     }
-  }, [])
+  }, [valueProp])
 
   React.useEffect(() => {
-    // Bind component state to Form's field state.
-    setValueProp(name, value, mandatory)
+    // Bind component state to Form's field state. Keep field untouched, as
+    // success validation should be indicated only in children form fields.
+    setValueProp(name, value, mandatory, { forceUntouched: true })
   }, [value])
 
   const handleDelete = async (e: React.MouseEvent<HTMLButtonElement>, index: number) => {
     e.preventDefault()
     // Force rerender to prevent bugs when deleting any item.
     await setRenderItems(false)
-    await setValue((prevState: valueT) =>
+    await setValue((prevState: fieldGroupValue) =>
       prevState.filter((_item: anyObject, prevIndex: number) => prevIndex !== index),
     )
     setRenderItems(true)
@@ -60,13 +61,14 @@ const FieldGroup = ({
         ? value.map((fieldgroupValues: anyObject, index: number) =>
           <div className={classes.fieldgroup} key={index}>
             <Form
-              onChange={(updatedFields: anyObject) => setValue((prevState: valueT) =>
-                prevState.map((item: valueT, subIndex: number) =>
+              onChange={(updatedFields: anyObject) => setValue((prevState: fieldGroupValue) =>
+                prevState.map((item: fieldGroupValue, subIndex: number) =>
                   index !== subIndex ? item : updatedFields,
                 ),
               )}
               fields={fields}
-              fieldGroup
+              allMandatory
+              isFieldGroup
             >
               <Children values={fieldgroupValues} />
             </Form>
@@ -80,7 +82,7 @@ const FieldGroup = ({
         : null
       }
       <MoreComponent
-        onClick={() => setValue((prevState: valueT) => ([...prevState, {}]))}
+        onClick={() => setValue((prevState: fieldGroupValue) => ([...prevState, {}]))}
         {...moreComponentProps}
       >{moreLabel}</MoreComponent>
     </div>
@@ -88,7 +90,7 @@ const FieldGroup = ({
 }
 
 interface FieldGroupProps {
-  value: valueT,
+  value: fieldGroupValue,
   setValue: setValueT,
   name: string,
   mandatory: boolean,

@@ -4,9 +4,9 @@ import { useTheme } from 'react-jss'
 import {
   initiateFormFields,
   processField,
-  updateFieldsRequirements,
+  updateMandatory,
   getValues,
-} from './helpers'
+} from './utils'
 import {
   fieldsData,
   fieldData,
@@ -28,19 +28,19 @@ const Form = ({
   allMandatory,
   component,
   onChange,
-  fieldGroup,
+  isFieldGroup,
   runOnChangeInitially,
   onEnterPress,
   className = '',
   children,
 }: FormProps) => {
   const [fieldsData, setFieldsData] = React.useState(
-    initiateFormFields(fields, mandatoryFields),
+    initiateFormFields(fields, allMandatory ? fields : mandatoryFields),
   )
   const theme = useTheme() as fullTheme
 
   React.useEffect(() => {
-    setFieldsData(prevState => updateFieldsRequirements(
+    setFieldsData(prevState => updateMandatory(
       prevState,
       allMandatory ? fields : mandatoryFields,
     ))
@@ -65,6 +65,7 @@ const Form = ({
           ...processField(
             name,
             value,
+            prevState[name].touched,
             mandatory || false,
             options,
             theme.textLabels,
@@ -87,7 +88,7 @@ const Form = ({
   }
 
   // Prevent nesting <form> tags when using form as a Fieldgroup.
-  const Component = fieldGroup ? 'div' : component || 'form'
+  const Component = isFieldGroup ? 'div' : component || 'form'
   return (
     <Component className={className || undefined}>
       <FieldsContext.Provider value={fieldsData}>
@@ -123,7 +124,7 @@ export interface FormProps {
   /**
    * Prop used by Fieldgroup component.
    */
-  fieldGroup?: boolean,
+  isFieldGroup?: boolean,
   /**
    * Runs onChange function also on initial render
    */

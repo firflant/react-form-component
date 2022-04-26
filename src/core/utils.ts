@@ -15,16 +15,18 @@ import {
 export function processField(
   name: string,
   value: value,
+  wasTouched: boolean,
   mandatory: boolean,
   options: {
-    type?: string,
-    min?: number,
-    forceErrorMessage?: string,
+    type?: string, // Type of input for validation
+    min?: number, // Minimal acceptable lenght of input
+    forceErrorMessage?: string, // Skip validation and rise error with given message
+    forceUntouched?: boolean, // Set field's touched state to false
   } = {},
   textLabels: textLabels,
   customValidationFunction: customValidationFunction,
 ) {
-  const { type, min, forceErrorMessage } = options
+  const { type, min, forceErrorMessage, forceUntouched } = options
 
   // If the value is an array, remove its empty values for safety.
   const valueIsArray = Array.isArray(value)
@@ -47,6 +49,7 @@ export function processField(
       return {
         [name]: {
           value: processedValue,
+          touched: forceUntouched ? false : true,
           validation: 'error',
           mandatory,
           help: forceErrorMessage,
@@ -103,15 +106,17 @@ export function processField(
     }
   }
 
-  // If there is no error and value is not empty, indicate success state.
+  // If there is no error, value is not empty, and field state was touched,
+  // indicate the success state.
   if (validation !== 'error' && ((processedValue && processedValue.length > 0) ||
-  (typeof value === 'object' && !Array.isArray(value)))) {
+  (typeof value === 'object' && !Array.isArray(value))) && wasTouched) {
     validation = 'success'
   }
 
   return {
     [name]: {
       value: processedValue,
+      touched: forceUntouched ? false : true, // Whether the field was touched by user.
       validation,
       mandatory,
       help,
@@ -129,9 +134,7 @@ export function initiateFormFields(fieldNames: string[], mandatory?: string[]) {
     { ...acc,
       [field]: {
         value: undefined,
-        // undefined means that field is in the initial (fresh) state.
-        // It is being used in formIsInitiated variable inside <Form> component.
-        // TODO: Consider adding additional property called `untouch` or `fresh`.
+        touched: false, // Untouched means that user did not interacted with a field yet.
         validation: null,
         mandatory: mandatory && mandatory.includes(field),
         help: null,
@@ -143,17 +146,18 @@ export function initiateFormFields(fieldNames: string[], mandatory?: string[]) {
 /**
  * Reset valdiation states of all fields in a form.
  */
-export function updateFieldsRequirements(fieldsData: fieldsData, mandatory?: string[]) {
+export function updateMandatory(fieldsData: fieldsData, mandatory?: string[]) {
   const updatedFieldsData: object = {}
   Object.keys(fieldsData).forEach(key => {
     const { value, help } = fieldsData[key]
     const isMandatory = mandatory && mandatory.includes(key)
     updatedFieldsData[key] = {
       value,
+      touched: false,
       // If the field is not on mandatory anymore, validation must be cleaned up.
       validation: (fieldsData[key].validation === 'error' && !isMandatory) ? null : fieldsData[key].validation,
-      help,
       mandatory: isMandatory,
+      help,
     }
   })
   return updatedFieldsData

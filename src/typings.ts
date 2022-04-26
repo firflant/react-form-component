@@ -11,6 +11,8 @@ export type setValue = (
 
 export type checkboxValue = boolean | string
 
+export type fieldGroupValue = anyObject[] | []
+
 export type option = string | { label: React.ReactNode, value: string }
 
 export type options = option[]
@@ -22,6 +24,7 @@ export type anyObject = { [key: string]: any }
 export type fieldData = {
   value: value,
   mandatory: boolean,
+  touched: boolean,
   help: string,
   validation: validation,
   type?: string,

@@ -5,13 +5,13 @@ export { default as FormThemeProvider } from './core/FormThemeProvider'
 export {
   processField,
   initiateFormFields,
-  updateFieldsRequirements,
+  updateMandatory,
   parseOption,
   checkboxHandler,
   formIsInvalid,
   getValues,
   imageUrltoImageData,
-} from './core/helpers'
+} from './core/utils'
 export {
   inputHeight,
   breakpoint,

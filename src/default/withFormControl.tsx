@@ -22,5 +22,3 @@ function withFormControl<T>(
 }
 
 export default withFormControl
-
-

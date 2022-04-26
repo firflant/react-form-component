@@ -27,7 +27,9 @@ const Input = ({
   }, [value])
 
   const handleSetValue = (val: value) => {
-    setValue(name, val, mandatory, { type, min })
+    if (val !== value) {
+      setValue(name, val, mandatory, { type, min })
+    }
   }
 
   const debouncedSetValue = React.useCallback(
