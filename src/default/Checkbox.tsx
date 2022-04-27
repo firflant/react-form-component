@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import { createUseStyles } from 'react-jss'
-import { withFormControl } from '../.'
+import { withFormControl, calculateInputTranslation } from '../.'
 import { value, setValue, fullTheme } from '../typings'
 
 /**
@@ -46,8 +46,6 @@ export interface CheckboxProps {
 
 export const useCheckboxStyles = createUseStyles((theme: fullTheme) => {
   const inputSize = 18
-  const calculateInputTranslation = (fontSize: number) =>
-    `translateY(${(fontSize / 2) - (inputSize / 2 - 2)}px)`
 
   return {
     label: {
@@ -62,7 +60,7 @@ export const useCheckboxStyles = createUseStyles((theme: fullTheme) => {
       margin: '0 10px 0 0',
       position: 'relative',
       outline: 'none',
-      transform: calculateInputTranslation(theme.typography.inputFontSize),
+      transform: calculateInputTranslation(theme.typography.inputFontSize, inputSize),
       minWidth: inputSize,
       '&::before': {
         content: '""',
@@ -104,7 +102,7 @@ export const useCheckboxStyles = createUseStyles((theme: fullTheme) => {
     small: {
       fontSize: `${theme.typography.inputFontSize - 4}px !important`,
       '& $input': {
-        transform: calculateInputTranslation(theme.typography.inputFontSize - 4),
+        transform: calculateInputTranslation(theme.typography.inputFontSize - 4, inputSize),
       },
     },
   }

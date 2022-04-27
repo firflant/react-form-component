@@ -81,3 +81,7 @@ export function placeholder(styles: React.CSSProperties) {
     },
   }
 }
+
+export function calculateInputTranslation(fontSize: number, inputSize: number) {
+  return `translateY(${(fontSize / 2) - (inputSize / 2 - 2)}px)`
+}

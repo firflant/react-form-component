@@ -2,7 +2,7 @@ import React from 'react'
 import { createUseStyles } from 'react-jss'
 import classNames from 'classnames'
 import { darken } from 'polished'
-import { withFormControl } from '../.'
+import { withFormControl, calculateInputTranslation } from '../.'
 import { value, setValue, fullTheme } from '../typings'
 
 
@@ -47,8 +47,6 @@ export interface SwitchProps {
 
 export const useSwitchStyles = createUseStyles((theme: fullTheme) => {
   const inputSize = 20
-  const calculateInputTranslation = (fontSize: number) =>
-    `translateY(${(fontSize / 2) - (inputSize / 2 - 2)}px)`
 
   return {
     label: {
@@ -72,7 +70,7 @@ export const useSwitchStyles = createUseStyles((theme: fullTheme) => {
       border: `1px solid ${darken(0.2, theme.colors.inputBorder)}`,
       outline: 'none',
       verticalAlign: 'middle',
-      transform: calculateInputTranslation(theme.typography.inputFontSize),
+      transform: calculateInputTranslation(theme.typography.inputFontSize, inputSize),
       cursor: 'pointer',
       transition: 'background-color 100ms ease-in 25ms',
       '&::after': {

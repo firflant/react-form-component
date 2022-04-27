@@ -19,6 +19,7 @@ export {
   overlay,
   maxRows,
   placeholder,
+  calculateInputTranslation,
 } from './core/themeHelpers'
 export { default as useSubmit } from './core/useSubmit'
 export { default as useControlLogic } from './core/useControlLogic'
