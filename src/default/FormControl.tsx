@@ -109,6 +109,10 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     '& $label ~ textarea ~ $addon': {
       top: Math.floor(theme.typography.labelFontSize * 1.4 + theme.sizes.labelGutterBottom),
     },
+    '& .rfc-checkitem': {
+      fontSize: theme.typography.inputFontSize,
+      lineHeight: 'normal',
+    },
 
     // States
     '& .rfc-input:focus': {

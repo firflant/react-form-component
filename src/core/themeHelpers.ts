@@ -4,7 +4,7 @@ export function inputHeight(height: number) {
   return {
     '& *.rfc-input': {
       height: height,
-      lineHeight: `${height - (height / 3)}px`,
+      lineHeight: `${height * 2 / 3}px`,
       paddingTop: height / 6,
       paddingBottom: height / 6,
       '&[type=file]': {
@@ -28,8 +28,8 @@ export function inputHeight(height: number) {
         marginBottom: 0,
       },
     },
-    '&$inlineLabel .rfc-checkitem': {
-      marginTop: height / 4,
+    '&$inlineLabel .rfc-checkitem:first-child': {
+      marginTop: height / 6,
     },
   }
 }

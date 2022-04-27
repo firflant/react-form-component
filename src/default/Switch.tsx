@@ -19,19 +19,21 @@ const Switch = ({
 }: SwitchProps) => {
   const classes = useSwitchStyles()
   return (
-    <label
-      className={classNames(classes.label, 'rfc-checkitem')}
-      htmlFor={name}
-    >
-      <input
-        type='checkbox'
-        name={name}
-        className={classes.input}
-        id={name}
-        checked={value}
-        onChange={e => setValue(name, e.target.checked, mandatory, { touched: true })}
-      /> {text}
-    </label>
+    <div>
+      <label
+        className={classNames(classes.label, 'rfc-checkitem')}
+        htmlFor={name}
+      >
+        <input
+          type='checkbox'
+          name={name}
+          className={classes.input}
+          id={name}
+          checked={value}
+          onChange={e => setValue(name, e.target.checked, mandatory, { touched: true })}
+        /> {text}
+      </label>
+    </div>
   )
 }
 
@@ -43,51 +45,58 @@ export interface SwitchProps {
   setValue: setValue,
 }
 
-export const useSwitchStyles = createUseStyles((theme: fullTheme) => ({
-  label: {
-    display: 'flex',
-    position: 'relative',
-    textAlign: 'left',
-    alignItems: 'flex-start',
-    cursor: 'pointer',
-  },
-  input: {
-    position: 'relative',
-    minWidth: theme.sizes.inputHeight * 7 / 8,
-    height: theme.sizes.inputHeight / 2,
-    display: 'inline-block',
-    backgroundColor: theme.colors.inputBg,
-    marginRight: 10,
-    padding: 0,
-    borderRadius: theme.sizes.inputHeight / 4,
-    '-webkit-appearance': 'none',
-    border: `1px solid ${darken(0.2, theme.colors.inputBorder)}`,
-    outline: 0,
-    verticalAlign: 'middle',
-    transform: 'translateY(0.3em)',
-    cursor: 'pointer',
-    transition: 'background-color 100ms ease-in',
-    '&::after': {
-      content: '""',
-      display: 'block',
-      width: theme.sizes.inputHeight / 2 + 2,
-      height: theme.sizes.inputHeight / 2 + 2,
-      position: 'absolute',
-      left: -1,
-      top: -2,
-      backgroundColor: theme.colors.inputBorder,
-      border: `1px solid ${darken(0.2, theme.colors.inputBorder)}`,
-      borderRadius: '50%',
-      boxSizing: 'border-box',
-      transition: 'left 200ms ease-in',
+export const useSwitchStyles = createUseStyles((theme: fullTheme) => {
+  const inputSize = 20
+  const calculateInputTranslation = (fontSize: number) =>
+    `translateY(${(fontSize / 2) - (inputSize / 2 - 2)}px)`
+
+  return {
+    label: {
+      display: 'flex',
+      position: 'relative',
+      textAlign: 'left',
+      alignItems: 'flex-start',
+      cursor: 'pointer',
+      minHeight: inputSize + 4,
     },
-    '&:checked': {
-      backgroundColor: theme.colors.success,
+    input: {
+      position: 'relative',
+      minWidth: inputSize * 1.67,
+      height: inputSize,
+      display: 'inline-block',
+      backgroundColor: theme.colors.inputBg,
+      margin: '0 10px 0 0',
+      padding: 0,
+      borderRadius: inputSize / 2,
+      '-webkit-appearance': 'none',
+      border: `1px solid ${darken(0.2, theme.colors.inputBorder)}`,
+      outline: 'none',
+      verticalAlign: 'middle',
+      transform: calculateInputTranslation(theme.typography.inputFontSize),
+      cursor: 'pointer',
+      transition: 'background-color 100ms ease-in 25ms',
       '&::after': {
-        left: 'calc(100% - 19px)',
+        content: '""',
+        display: 'block',
+        boxSizing: 'border-box',
+        width: inputSize,
+        height: inputSize,
+        position: 'absolute',
+        left: -1,
+        top: -1,
+        backgroundColor: theme.colors.inputBorder,
+        border: `1px solid ${darken(0.2, theme.colors.inputBorder)}`,
+        borderRadius: '50%',
+        transition: 'left 150ms ease-in',
+      },
+      '&:checked': {
+        backgroundColor: theme.colors.success,
+        '&::after': {
+          left: 'calc(100% - 19px)',
+        },
       },
     },
-  },
-}))
+  }
+})
 
 export default withFormControl(Switch)

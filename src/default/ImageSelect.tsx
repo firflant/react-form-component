@@ -26,7 +26,7 @@ const ImageSelect = ({
         return (
           <div
             key={index}
-            className={classNames(classes.input, 'rfc-checkitem', { [classes.isChecked]: checked })}
+            className={classNames(classes.input, { [classes.isChecked]: checked })}
             onClick={() => {
               const finalValue = multiple ? checkboxHandler(!checked, option.value, value) : option.value
               setValue(name, finalValue, mandatory, { touched: true })
@@ -72,7 +72,8 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     zIndex: 1,
   },
   label: {
-    marginTop: 12,
+    marginTop: 6,
+    paddingBottom: 2,
   },
   isChecked: {
     '&:before': {
@@ -83,7 +84,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
       bottom: -5,
       left: 1,
       backgroundColor: lighten(0.6, theme.colors.accent),
-      border: `1px solid ${theme.colors.accent}`,
+      border: `2px solid ${theme.colors.accent}`,
       borderRadius: theme.sizes.borderRadius,
       zIndex: -1,
     },
