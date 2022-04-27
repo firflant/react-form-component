@@ -17,7 +17,7 @@ export default {
   },
 
   colors: {
-    accent: '#1fc59c',
+    accent: '#1565c0',
     inputText: '#3d4348',
     inputBorder: '#e6edf4',
     inputBg: 'white',
