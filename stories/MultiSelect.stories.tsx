@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Form, { MultiSelect as MultiSelectComponent } from '../src'
 import { formControlArgs, formControlArgTypes } from './formControlArgs'
 
-MultiSelectComponent.displayName = 'Multi Select'
+MultiSelectComponent.displayName = 'MultiSelect'
 
 
 export default {
