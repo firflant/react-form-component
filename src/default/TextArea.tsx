@@ -24,7 +24,9 @@ const TextArea = ({
       name={name}
       rows={rows}
       placeholder={placeholder}
-      onChange={e => setValue(name, e.target.value, mandatory, { min })}
+      onChange={e =>
+        setValue(name, e.target.value, mandatory, { touched: true, min })
+      }
       value={value}
     />
   )

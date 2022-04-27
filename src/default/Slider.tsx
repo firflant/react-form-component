@@ -28,8 +28,8 @@ const Slider = ({
         min={min}
         max={max}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          const newVal = parseInt(e.target.value)
-          setValue(name, Math.floor(newVal / step) * step, mandatory)
+          const newVal = Math.floor(parseInt(e.target.value) / step)
+          setValue(name, newVal * step, mandatory, { touched: true })
         }}
       />
       <div className={classes.value}>

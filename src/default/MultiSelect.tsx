@@ -57,7 +57,10 @@ const MultiSelect = ({
               return <div
                 key={index}
                 className={classNames(classes.option, { [classes.isChecked]: checked })}
-                onClick={() => setValue(name, checkboxHandler(!checked, optionValue, value), mandatory)}
+                onClick={() => {
+                  const finalValue = checkboxHandler(!checked, optionValue, value)
+                  setValue(name, finalValue, mandatory, { touched: true })
+                }}
               >
                 {optionLabel}{checked &&
                   <>

@@ -45,7 +45,7 @@ const FormControl = ({
       })}
     >
       {label
-        ? displayName && ['Checkbox', 'Checkboxes', 'Radio', 'Switch'].find(item => displayName.includes(item))
+        ? displayName && ['Checkbox', 'CheckboxList', 'Radio', 'Switch', 'Switches'].find(item => displayName.includes(item))
           ? <span className={classNames(classes.label, 'rfc-label')}>{label}</span>
           : <label className={classNames(classes.label, 'rfc-label')} htmlFor={name}>{label}</label>
         : null

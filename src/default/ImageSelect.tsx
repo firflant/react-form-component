@@ -29,8 +29,9 @@ const ImageSelect = ({
             className={classNames(classes.input, 'rfc-checkitem', { [classes.isChecked]: checked })}
             onClick={() => {
               const finalValue = multiple ? checkboxHandler(!checked, option.value, value) : option.value
-              setValue(name, finalValue, mandatory)
-            }}>
+              setValue(name, finalValue, mandatory, { touched: true })
+            }}
+          >
             <img src={option.image} alt='' />
             {option.label && <span className={classes.label}>{option.label}</span>}
           </div>

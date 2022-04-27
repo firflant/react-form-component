@@ -37,7 +37,7 @@ const ImageUpload = ({
                 type: fileType.split('/')[0],
                 data,
                 dataFile,
-              }, mandatory)
+              }, mandatory, { touched: true })
             }
           }}
         />
@@ -62,7 +62,7 @@ const ImageUpload = ({
         }</div>
         <button
           className={classes.delete}
-          onClick={() => setValue(name, '', mandatory)}
+          onClick={() => setValue(name, '', mandatory, { touched: true })}
         >Delete {placeholder || 'image'}</button>
       </div>
   )

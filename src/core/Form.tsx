@@ -65,7 +65,6 @@ const Form = ({
           ...processField(
             name,
             value,
-            prevState[name].touched,
             mandatory || false,
             options,
             theme.textLabels,

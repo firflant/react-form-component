@@ -34,6 +34,7 @@ const GalleryUpload = ({
                   name,
                   value.filter((_subItem: string, subIndex: number) => subIndex !== index),
                   mandatory,
+                  { touched: true },
                 )}
               >⨯</div>
             </div>
@@ -66,6 +67,7 @@ const GalleryUpload = ({
                     dataFile,
                   }],
                   mandatory,
+                  { touched: true },
                 )
                 oldValue = [...oldValue, {
                   fileName,

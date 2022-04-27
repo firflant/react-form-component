@@ -15,41 +15,43 @@ import {
 export function processField(
   name: string,
   value: value,
-  wasTouched: boolean,
   mandatory: boolean,
   options: {
+    touched?: boolean, // Override touched flag
     type?: string, // Type of input for validation
     min?: number, // Minimal acceptable lenght of input
     forceErrorMessage?: string, // Skip validation and rise error with given message
-    forceUntouched?: boolean, // Set field's touched state to false
   } = {},
   textLabels: textLabels,
   customValidationFunction: customValidationFunction,
 ) {
-  const { type, min, forceErrorMessage, forceUntouched } = options
+  const { type, min, forceErrorMessage, touched = false } = options
 
   // If the value is an array, remove its empty values for safety.
   const valueIsArray = Array.isArray(value)
-  const processedValue = valueIsArray
+  const safeValue = valueIsArray
     ? value.filter(item => Number.isInteger(item) || item instanceof Object || item.length)
     : value
 
+  const valueIsEmpty = !safeValue || (valueIsArray && safeValue.length === 0)
+
+  // Vintage, mutable javascript ;)
   let validation = null; let help = null
 
   // VALIDATION - If any check will fail, raise error state and set help message.
-  if (mandatory && (!processedValue || (valueIsArray && processedValue.length === 0))) {
+  if (mandatory && valueIsEmpty) {
     // If the field is mandatory and its value is empty, set an error. Otherwise
     // continue the validation.
     validation = 'error'
     help = textLabels.mandatoryField
-  } else if (processedValue?.length && processedValue.length > 0) {
+  } else if (safeValue?.length && safeValue.length > 0) {
 
     // Force error message if it is present and abandon further validation.
     if (forceErrorMessage) {
       return {
         [name]: {
-          value: processedValue,
-          touched: forceUntouched ? false : true,
+          value: safeValue,
+          touched: true,
           validation: 'error',
           mandatory,
           help: forceErrorMessage,
@@ -98,7 +100,7 @@ export function processField(
         }
 
         // Minimal length option support.
-        if (min && processedValue.length < min) {
+        if (min && safeValue.length < min) {
           validation = 'error'
           help = textLabels.minChars.replace(':length:', min.toString())
         }
@@ -108,15 +110,15 @@ export function processField(
 
   // If there is no error, value is not empty, and field state was touched,
   // indicate the success state.
-  if (validation !== 'error' && ((processedValue && processedValue.length > 0) ||
-  (typeof value === 'object' && !Array.isArray(value))) && wasTouched) {
+  if (validation !== 'error' && (!valueIsEmpty ||
+  (typeof value === 'object' && !Array.isArray(value))) && touched) {
     validation = 'success'
   }
 
   return {
     [name]: {
-      value: processedValue,
-      touched: forceUntouched ? false : true, // Whether the field was touched by user.
+      value: safeValue,
+      touched, // Whether the field was touched by user.
       validation,
       mandatory,
       help,

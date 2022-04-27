@@ -28,7 +28,7 @@ const Input = ({
 
   const handleSetValue = (val: value) => {
     if (val !== value) {
-      setValue(name, val, mandatory, { type, min })
+      setValue(name, val, mandatory, { touched: true, type, min })
     }
   }
 

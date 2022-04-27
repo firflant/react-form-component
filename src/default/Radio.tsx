@@ -34,7 +34,9 @@ const Radio = ({
               className={classes.input}
               id={`${name}${index}`}
               checked={optionValue === value}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(name, e.target.value, mandatory)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setValue(name, e.target.value, mandatory, { touched: true })
+              }
             /> {optionLabel}
           </label>
         )

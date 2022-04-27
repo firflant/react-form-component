@@ -27,7 +27,7 @@ const Checkbox = ({
         className={classes.input}
         id={name}
         checked={value}
-        onChange={e => setValue(name, e.target.checked, mandatory)}
+        onChange={e => setValue(name, e.target.checked, mandatory, { touched: true })}
       /> {text}
     </label>
   )

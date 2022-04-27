@@ -39,7 +39,7 @@ const CheckboxList = ({
               checked={checked}
               onChange={() => {
                 const finalValue = checkboxHandler(!checked, optionValue, value)
-                setValue(name, finalValue, mandatory)
+                setValue(name, finalValue, mandatory, { touched: true })
               }}
             /> {optionLabel}
           </label>

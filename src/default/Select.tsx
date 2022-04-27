@@ -23,7 +23,9 @@ const Select = ({
       className={classNames(classes.select, 'rfc-input rfc-select')}
       name={name}
       value={value}
-      onChange={e => setValue(name, e.target.value, mandatory)}
+      onChange={e =>
+        setValue(name, e.target.value, mandatory, { touched: true })
+      }
     >
       {(!value || !mandatory) && <option value='' disabled={mandatory}>
         {placeholder || (mandatory ? 'Select' : 'All')}

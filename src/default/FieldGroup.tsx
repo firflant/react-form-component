@@ -40,9 +40,9 @@ const FieldGroup = ({
   }, [valueProp])
 
   React.useEffect(() => {
-    // Bind component state to Form's field state. Keep field untouched, as
-    // success validation should be indicated only in children form fields.
-    setValueProp(name, value, mandatory, { forceUntouched: true })
+    // Bind component state to Form's field state. Touch flag is not sent here,
+    // as success validation should be indicated only in children form fields.
+    setValueProp(name, value, mandatory)
   }, [value])
 
   const handleDelete = async (e: React.MouseEvent<HTMLButtonElement>, index: number) => {
