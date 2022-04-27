@@ -7,13 +7,13 @@ import { value, setValue, options } from '../typings'
 /**
  * A list of switches, where user can pick multiple options.
  */
-const Switches = ({
+const SwitchList = ({
   name,
   value,
   mandatory,
   setValue,
   options,
-}: SwitchesProps) => {
+}: SwitchListProps) => {
   const classes = useSwitchStyles()
   return (
     <div>
@@ -45,7 +45,7 @@ const Switches = ({
   )
 }
 
-export interface SwitchesProps {
+export interface SwitchListProps {
   name: string,
   value: value,
   mandatory: boolean,
@@ -53,4 +53,4 @@ export interface SwitchesProps {
   options: options,
 }
 
-export default withFormControl(Switches)
+export default withFormControl(SwitchList)

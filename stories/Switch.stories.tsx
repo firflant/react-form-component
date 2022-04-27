@@ -2,11 +2,11 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { actions } from '@storybook/addon-actions'
 
-import Form, { Switch, Switches } from '../src'
+import Form, { Switch, SwitchList } from '../src'
 import { formControlArgs, formControlArgTypes } from './formControlArgs'
 
 Switch.displayName = 'Switch'
-Switches.displayName = 'Switches'
+SwitchList.displayName = 'SwitchList'
 
 
 export default {
@@ -44,12 +44,12 @@ Single.args = {
   help: '',
 }
 
-export const Multiple: ComponentStory<typeof Switch> = args =>
+export const Multiple: ComponentStory<typeof SwitchList> = args =>
   <Form fields={[args.name]} {...actions('onChange')}>
-    <Switches {...args} />
+    <SwitchList {...args} />
   </Form>
 
-Multiple.component = Switches
+Multiple.component = SwitchList
 Multiple.args = {
   name: 'switches',
   label: 'Multiple switches:',

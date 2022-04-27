@@ -46,6 +46,7 @@ export { default as Radio } from './default/Radio'
 export { default as Slider } from './default/Slider'
 export { default as Select, useSelectStyles } from './default/Select'
 export { default as Switch, useSwitchStyles } from './default/Switch'
-export { default as Switches } from './default/Switches'
+export { default as SwitchList } from './default/SwitchList'
+export { default as Switches } from './default/SwitchList' // Legacy
 export { default as TextArea } from './default/TextArea'
 export { default as Loader } from './default/Loader'
