@@ -35,8 +35,10 @@ const MultiSelect = ({
       {value && value.length && options && options.length
         ? <div className={classes.values}>
           {value.map((option: option, index: number) => {
-            const currentOption = options.find(item => item === option || item.value === option)
+            const currentOption = options.find((item: option) =>
+              (typeof item === 'object' && item.value === option) || item === option) || 'n/d'
             const { optionLabel } = parseOption(currentOption)
+
             return <span
               key={index}
               className={classes.value}
