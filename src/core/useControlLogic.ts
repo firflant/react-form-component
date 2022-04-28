@@ -49,7 +49,7 @@ const useControlLogic = (
   const inputProps = {
     ...otherProps,
     name,
-    value: (value !== null ? value : initialValue) || '',
+    value: value !== null ? value : initialValue,
     mandatory,
     type,
     setValue,
