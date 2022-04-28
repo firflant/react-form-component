@@ -1,6 +1,6 @@
 import React from 'react'
 import { createUseStyles, useTheme } from 'react-jss'
-import Form, { withFormControl, FormButton, breakpoint } from '../.'
+import Form, { withFormControl, Button, breakpoint } from '../.'
 import {
   fieldGroupValue,
   setValue as setValueT,
@@ -14,8 +14,8 @@ const DefaultDeleteIcon =
 
 
 const FieldGroup = ({
-  value: valueProp,
-  setValue: setValueProp,
+  value = [{}],
+  setValue,
   name,
   mandatory,
   fields,
@@ -27,30 +27,18 @@ const FieldGroup = ({
 }: FieldGroupProps) => {
   const classes = useStyles()
   const theme = useTheme() as fullTheme
-  const MoreComponent = moreComponent || FormButton
+  const MoreComponent = moreComponent || Button
   const moreLabel = customMoreLabel || theme.textLabels.addMore
-  const [value, setValue] = React.useState<anyObject[]>([{}])
   const [renderItems, setRenderItems] = React.useState(true)
-
-  React.useEffect(() => {
-    // Apply initial value, if given.
-    if (valueProp?.length && Object.keys(valueProp[0]).length && !Object.keys(value[0]).length) {
-      setValue(valueProp)
-    }
-  }, [valueProp])
-
-  React.useEffect(() => {
-    // Bind component state to Form's field state. Touch flag is not sent here,
-    // as success validation should be indicated only in children form fields.
-    setValueProp(name, value, mandatory)
-  }, [value])
 
   const handleDelete = async (e: React.MouseEvent<HTMLButtonElement>, index: number) => {
     e.preventDefault()
     // Force rerender to prevent bugs when deleting any item.
     await setRenderItems(false)
-    await setValue((prevState: fieldGroupValue) =>
-      prevState.filter((_item: anyObject, prevIndex: number) => prevIndex !== index),
+    await setValue(
+      name,
+      value.filter((_item: anyObject, prevIndex: number) => prevIndex !== index),
+      mandatory,
     )
     setRenderItems(true)
   }
@@ -61,10 +49,14 @@ const FieldGroup = ({
         ? value.map((fieldgroupValues: anyObject, index: number) =>
           <div className={classes.fieldgroup} key={index}>
             <Form
-              onChange={(updatedFields: anyObject) => setValue((prevState: fieldGroupValue) =>
-                prevState.map((item: fieldGroupValue, subIndex: number) =>
+              onChange={(updatedFields: anyObject) => setValue(
+                name,
+                value.map((item: fieldGroupValue, subIndex: number) =>
                   index !== subIndex ? item : updatedFields,
                 ),
+                mandatory,
+                // Touch flag is not sent here, as success validation should be
+                // indicated only in children form fields.
               )}
               fields={fields}
               allMandatory
@@ -82,7 +74,7 @@ const FieldGroup = ({
         : null
       }
       <MoreComponent
-        onClick={() => setValue((prevState: fieldGroupValue) => ([...prevState, {}]))}
+        onClick={() => setValue(name, [...value, {}], mandatory)}
         {...moreComponentProps}
       >{moreLabel}</MoreComponent>
     </div>
