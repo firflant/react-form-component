@@ -30,21 +30,22 @@ const useControlLogic = (
   const fieldsData = React.useContext(FieldsContext) as fieldsData
   const setValue = React.useContext(SetValueContext) as setValue
 
-  React.useEffect(() => {
-    // Appply default field value on init and when it changes.
-    if (initialValue) {
-      setValue(name, initialValue, mandatory)
-    }
-  }, [initialValue])
-
   const fieldData = fieldsData[name] || {}
 
   const {
     value,
+    touched,
     validation,
     mandatory,
     help: fieldsDataHelp,
   } = fieldData
+
+  React.useEffect(() => {
+    // Appply default field value on init and when it changes.
+    if (initialValue && !touched) {
+      setValue(name, initialValue, mandatory)
+    }
+  }, [initialValue])
 
   const inputProps = {
     ...otherProps,

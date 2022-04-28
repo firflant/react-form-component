@@ -47,7 +47,7 @@ const FieldGroup = ({
     <div>
       {renderItems
         ? value.map((fieldgroupValues: anyObject, index: number) =>
-          <div className={classes.fieldgroup} key={index}>
+          <div className={classes.group} key={index}>
             <Form
               onChange={(updatedFields: anyObject) => setValue(
                 name,
@@ -96,7 +96,7 @@ interface FieldGroupProps {
 }
 
 const useStyles = createUseStyles((theme: fullTheme) => ({
-  fieldgroup: {
+  group: {
     display: 'flex',
     '& + &': {
       marginTop: theme.sizes.inputGutterBottom,
