@@ -23,7 +23,9 @@ const Input = ({
 
   // Apply initial value and react on initialValue change.
   React.useEffect(() => {
-    setInternalValue(value)
+    if (value !== internalValue) {
+      setInternalValue(value)
+    }
   }, [value])
 
   const handleSetValue = (val: value) => {
@@ -58,7 +60,7 @@ const Input = ({
               type: fileType.split('/')[0],
               data,
               dataFile,
-            }, mandatory)
+            }, mandatory, { touched: true })
           }
         } else {
           setInternalValue(e.target.value)
