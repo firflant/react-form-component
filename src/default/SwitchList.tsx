@@ -9,7 +9,7 @@ import { value, setValue, options } from '../typings'
  */
 const SwitchList = ({
   name,
-  value,
+  value = [],
   mandatory,
   setValue,
   options,

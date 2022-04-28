@@ -9,7 +9,7 @@ import { withFormControl } from '../.'
 const Input = ({
   name,
   type = 'text',
-  value,
+  value = '',
   placeholder,
   min,
   debounceTime = 500,
