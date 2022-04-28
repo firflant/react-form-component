@@ -20,7 +20,7 @@ export default {
   },
   argTypes: {
     placeholder: {
-      description: 'Displayed when value is empty',
+      description: 'Displayed when value is empty `string`',
     },
     prefix: {
       description: 'Decorates left side of a field with symbol, unit etc. `ReactNode`',
@@ -29,13 +29,13 @@ export default {
       description: 'Decorates right side of a field with symbol, unit etc. `ReactNode`',
     },
     narrow: {
-      description: 'Decreases input width',
+      description: 'Decreases input width `boolean`',
     },
     large: {
-      description: 'Increases input height',
+      description: 'Increases input height `boolean`',
     },
     type: {
-      description: 'Type of input',
+      description: `Type of input \`text\` \`email\` \`password\` \`url\` \`tel\` \`number\` \`search\` \`file\` \`date\` \`datetime-local\` \`month\` \`week\` \`time\` \`postcode\` \`password-novalidation\``,
       table: {
         defaultValue: { summary: 'text' },
       },
@@ -44,7 +44,7 @@ export default {
       description: 'Minimal amount of input characters `number`',
     },
     activateEnterPress: {
-      description: 'Turns on the submit on enter function, which is declared on a parent `Form` component, via `onEnterPress` prop. See *On Enter Press* example.',
+      description: 'Turns on the submit on enter function, which is declared on a parent _Form_ component, via _onEnterPress_ prop. See _On Enter Press_ example.',
     },
     ...formControlArgTypes,
   },
