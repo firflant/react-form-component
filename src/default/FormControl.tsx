@@ -130,7 +130,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     },
   },
   success: {
-    '&  > $label, & > $prefix, & > $suffix, & $addon, &  > $help': {
+    '&  > $label, & > $prefix, & > $suffix, & $addon, & > $help': {
       color: theme.colors.success,
     },
     '& > .rfc-input:not(:focus)': {
@@ -148,7 +148,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     },
   },
   error: {
-    '& > $label, & > $prefix, & > $suffix, & > $help, & > .rfc-checkitem': {
+    '& > $label, & > $prefix, & > $suffix, & > $help, & > * > .rfc-checkitem': {
       color: theme.colors.error,
     },
     '& > .rfc-input:not(:focus)': {

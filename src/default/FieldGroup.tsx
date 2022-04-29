@@ -30,18 +30,21 @@ const FieldGroup = ({
   const MoreComponent = moreComponent || Button
   const moreLabel = customMoreLabel || theme.textLabels.addMore
   const [renderItems, setRenderItems] = React.useState(true)
+  // Use ref to let value in handleChange function be always up to date.
+  const valueRef = React.useRef(value)
+
+  const updateValue = (newValue: fieldGroupValue, options?: anyObject) => {
+    setValue(name, newValue, mandatory, options)
+    valueRef.current = newValue
+  }
 
   const handleChange = (updatedFields: anyObject, hasErrors: boolean, rowIndex: number) => {
-    setValue(
-      name,
-      value.map((item: fieldGroupValue, subIndex: number) =>
+    updateValue(
+      valueRef.current.map((item: fieldGroupValue, subIndex: number) =>
         rowIndex !== subIndex ? item : updatedFields,
       ),
-      mandatory,
       {
-        forceErrorMessage: hasErrors
-          ? 'Some rows are not filled correctly.'
-          : false,
+        forceErrorMessage: hasErrors ? theme.textLabels.fieldgroupInvalid : false,
       },
     )
   }
@@ -50,11 +53,9 @@ const FieldGroup = ({
     e.preventDefault()
     // Force rerender to prevent bugs when deleting any item.
     await setRenderItems(false)
-    await setValue(
-      name,
-      value.filter((_item: anyObject, prevIndex: number) => prevIndex !== rowIndex),
-      mandatory,
-    )
+    await updateValue(value.filter(
+      (_item, index: number) => index !== rowIndex,
+    ))
     setRenderItems(true)
   }
 
@@ -81,7 +82,7 @@ const FieldGroup = ({
         : null
       }
       <MoreComponent
-        onClick={() => setValue(name, [...value, {}], mandatory)}
+        onClick={() => updateValue([...value, {}])}
         {...moreComponentProps}
       >{moreLabel}</MoreComponent>
     </div>

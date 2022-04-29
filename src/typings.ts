@@ -43,6 +43,7 @@ export type textLabels = {
   urlInvalid: string,
   phoneInvalid: string,
   postCodeInvalid: string,
+  fieldgroupInvalid: string,
   addMore: string,
 }
 
