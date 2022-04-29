@@ -30,21 +30,36 @@ const FieldGroup = ({
   const MoreComponent = moreComponent || Button
   const moreLabel = customMoreLabel || theme.textLabels.addMore
   const [renderItems, setRenderItems] = React.useState(true)
-  // Use ref to let value in handleChange function be always up to date.
+  // Use ref to let values in handleChange function be always up to date.
   const valueRef = React.useRef(value)
+  const invalidRowsRef = React.useRef<number[]>([])
 
   const updateValue = (newValue: fieldGroupValue, options?: anyObject) => {
     setValue(name, newValue, mandatory, options)
     valueRef.current = newValue
   }
 
-  const handleChange = (updatedFields: anyObject, hasErrors: boolean, rowIndex: number) => {
+  const updateValidation = (rowHasErrors: boolean, rowIndex: number) => {
+    if (rowHasErrors) {
+      // Add this row to invalid rows array, but keep it without duplicates.
+      const uniqueArray = [...new Set([...invalidRowsRef.current, rowIndex])]
+      return uniqueArray
+    } else {
+      return invalidRowsRef.current.filter((item: number) => item !== rowIndex)
+    }
+  }
+
+  const handleChange = (updatedFields: anyObject, rowHasErrors: boolean, rowIndex: number) => {
+    const updatedValidation = updateValidation(rowHasErrors, rowIndex)
+    invalidRowsRef.current = updatedValidation
     updateValue(
       valueRef.current.map((item: fieldGroupValue, subIndex: number) =>
         rowIndex !== subIndex ? item : updatedFields,
       ),
       {
-        forceErrorMessage: hasErrors ? theme.textLabels.fieldgroupInvalid : false,
+        forceErrorMessage: updatedValidation.length
+          ? theme.textLabels.fieldgroupInvalid
+          : false,
       },
     )
   }
