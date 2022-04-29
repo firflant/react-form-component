@@ -1,5 +1,6 @@
 import React from 'react'
 import { createUseStyles, useTheme } from 'react-jss'
+import classNames from 'classnames'
 import Form, { withFormControl, Button, breakpoint } from '../.'
 import {
   fieldGroupValue,
@@ -78,7 +79,12 @@ const FieldGroup = ({
     <div className={classes.root}>
       {renderItems
         ? value.map((fieldgroupValues: anyObject, rowIndex: number) =>
-          <div className={classes.row} key={rowIndex}>
+          <div
+            className={classNames('rfc-grouprow', classes.groupRow, {
+              [classes.groupRowError]: invalidRowsRef.current.includes(rowIndex),
+            })}
+            key={rowIndex}
+          >
             <Form
               onChange={(updatedFields, hasErrors) => handleChange(updatedFields, hasErrors, rowIndex)}
               fields={fields}
@@ -87,11 +93,13 @@ const FieldGroup = ({
             >
               <Children values={fieldgroupValues} />
             </Form>
-            <button
-              className={classes.delete}
-              onClick={e => handleDelete(e, rowIndex)}
-              title='Delete'
-            >{deleteIcon}</button>
+            <div className={classes.deleteWrapper}>
+              <button
+                className={classes.delete}
+                onClick={e => handleDelete(e, rowIndex)}
+                title='Delete'
+              >{deleteIcon}</button>
+            </div>
           </div>,
         )
         : null
@@ -122,31 +130,50 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   root: {
     marginBottom: 10,
   },
-  row: {
+  groupRow: {
     display: 'flex',
+    borderColor: theme.colors.fill,
+    borderStyle: 'solid',
+    borderLeftWidth: 2,
+    padding: 10,
     '& + &': {
-      marginTop: theme.sizes.inputGutterBottom,
+      marginTop: -2,
     },
     '& > *:first-child': {
       flexGrow: 1,
     },
+    '& .rfc-row, & .fc-form-control': {
+      marginBottom: 10,
+    },
   },
-  delete: {
-    backgroundImage: 'none',
-    backgroundColor: theme.colors.inputBorder, // lighen
-    color: 'white',
-    fontSize: theme.typography.inputFontSize,
-    padding: theme.sizes.inputSidePaddings,
+  groupRowError: {
+    borderLeftColor: theme.colors.error,
+  },
+  deleteWrapper: {
+    marginTop: -10,
+    marginRight: -12,
+    marginBottom: -10,
     marginLeft: 15,
-    border: 'none',
-    borderTopRightRadius: theme.sizes.borderRadius,
-    borderBottomRightRadius: theme.sizes.borderRadius,
-    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
     [breakpoint(theme.breakpoints.sm)]: {
       marginLeft: 30,
     },
+  },
+  delete: {
+    backgroundImage: 'none',
+    backgroundColor: theme.colors.inputBorder,
+    color: 'white',
+    fontSize: theme.typography.inputFontSize,
+    width: 30,
+    height: 30,
+    border: 'none',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     '&:hover': {
-      backgroundColor: theme.colors.inputBorder,
+      backgroundColor: theme.colors.inputText,
     },
   },
 }))
