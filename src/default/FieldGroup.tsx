@@ -69,9 +69,15 @@ const FieldGroup = ({
     e.preventDefault()
     // Force rerender to prevent bugs when deleting any item.
     await setRenderItems(false)
-    await updateValue(value.filter(
-      (_item, index: number) => index !== rowIndex,
-    ))
+    // Prevent removing last row. Turn back to default state instead.
+    if (value.length === 1) {
+      invalidRowsRef.current = []
+      await updateValue([{}], { touched: false, forceErrorMessage: false })
+    } else {
+      await updateValue(value.filter(
+        (_item, index: number) => index !== rowIndex,
+      ))
+    }
     setRenderItems(true)
   }
 
