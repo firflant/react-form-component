@@ -6,6 +6,7 @@ import {
   processField,
   updateMandatory,
   getValues,
+  formHasErrors,
 } from './utils'
 import {
   fieldsData,
@@ -47,7 +48,7 @@ const Form = ({
   }, [mandatoryFields])
 
   const debouncedOnChange = React.useCallback(
-    debounce(500, (nextValue, name) => onChange && onChange(nextValue, name)),
+    debounce(500, (nextValue, hasErrors, name) => onChange && onChange(nextValue, hasErrors, name)),
     [],
   )
 
@@ -77,8 +78,8 @@ const Form = ({
           // run it also on Initial load.
           const formIsInitiated = Object.values(prevState)
             .every((item: fieldData) => typeof item.value === 'undefined')
-          if (!formIsInitiated || runOnChangeInitially) {
-            debouncedOnChange(getValues(fieldsData), name)
+          if (!formIsInitiated || runOnChangeInitially || isFieldGroup) {
+            debouncedOnChange(getValues(fieldsData), formHasErrors(fieldsData), name)
           }
         }
         return fieldsData
@@ -119,7 +120,7 @@ export interface FormProps {
   /**
    * Function to run on each fields change
    */
-  onChange?: (fieldsData: fieldsData, fieldName?: string) => void,
+  onChange?: (fieldsData: fieldsData, hasErrors: boolean, fieldName?: string) => void,
   /**
    * Prop used by Fieldgroup component.
    */

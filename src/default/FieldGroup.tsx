@@ -31,33 +31,40 @@ const FieldGroup = ({
   const moreLabel = customMoreLabel || theme.textLabels.addMore
   const [renderItems, setRenderItems] = React.useState(true)
 
-  const handleDelete = async (e: React.MouseEvent<HTMLButtonElement>, index: number) => {
+  const handleChange = (updatedFields: anyObject, hasErrors: boolean, rowIndex: number) => {
+    setValue(
+      name,
+      value.map((item: fieldGroupValue, subIndex: number) =>
+        rowIndex !== subIndex ? item : updatedFields,
+      ),
+      mandatory,
+      {
+        forceErrorMessage: hasErrors
+          ? 'Some rows are not filled correctly.'
+          : false,
+      },
+    )
+  }
+
+  const handleDelete = async (e: React.MouseEvent<HTMLButtonElement>, rowIndex: number) => {
     e.preventDefault()
     // Force rerender to prevent bugs when deleting any item.
     await setRenderItems(false)
     await setValue(
       name,
-      value.filter((_item: anyObject, prevIndex: number) => prevIndex !== index),
+      value.filter((_item: anyObject, prevIndex: number) => prevIndex !== rowIndex),
       mandatory,
     )
     setRenderItems(true)
   }
 
   return (
-    <div>
+    <div className={classes.root}>
       {renderItems
-        ? value.map((fieldgroupValues: anyObject, index: number) =>
-          <div className={classes.group} key={index}>
+        ? value.map((fieldgroupValues: anyObject, rowIndex: number) =>
+          <div className={classes.row} key={rowIndex}>
             <Form
-              onChange={(updatedFields: anyObject) => setValue(
-                name,
-                value.map((item: fieldGroupValue, subIndex: number) =>
-                  index !== subIndex ? item : updatedFields,
-                ),
-                mandatory,
-                // Touch flag is not sent here, as success validation should be
-                // indicated only in children form fields.
-              )}
+              onChange={(updatedFields, hasErrors) => handleChange(updatedFields, hasErrors, rowIndex)}
               fields={fields}
               allMandatory
               isFieldGroup
@@ -66,7 +73,7 @@ const FieldGroup = ({
             </Form>
             <button
               className={classes.delete}
-              onClick={e => handleDelete(e, index)}
+              onClick={e => handleDelete(e, rowIndex)}
               title='Delete'
             >{deleteIcon}</button>
           </div>,
@@ -96,7 +103,10 @@ interface FieldGroupProps {
 }
 
 const useStyles = createUseStyles((theme: fullTheme) => ({
-  group: {
+  root: {
+    marginBottom: 10,
+  },
+  row: {
     display: 'flex',
     '& + &': {
       marginTop: theme.sizes.inputGutterBottom,

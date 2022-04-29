@@ -20,7 +20,7 @@ export function processField(
     touched?: boolean, // Override touched flag
     type?: string, // Type of input for validation
     min?: number, // Minimal acceptable lenght of input
-    forceErrorMessage?: string, // Skip validation and rise error with given message
+    forceErrorMessage?: string | false, // Skip validation and rise error with given message
   } = {},
   textLabels: textLabels,
   customValidationFunction: customValidationFunction,
@@ -195,13 +195,12 @@ export function checkboxHandler(
 /**
  * Check whether whole form is filled correctly.
  */
-export function formIsInvalid(fieldsData: fieldsData, fieldKeys = []) {
+export function formHasErrors(fieldsData: fieldsData) {
   // Check only fields of given keys, otherwise check whole form.
-  const fieldsToCheck = fieldKeys.length ? fieldKeys : Object.keys(fieldsData)
   let mandatoryButEmpty = false
   let hasAnyError = false
 
-  fieldsToCheck.forEach(key => {
+  Object.keys(fieldsData).forEach(key => {
     const { value, validation, mandatory } = fieldsData[key]
     if (mandatory && (
       typeof value === 'undefined' ||

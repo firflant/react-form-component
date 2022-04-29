@@ -8,7 +8,7 @@ export {
   updateMandatory,
   parseOption,
   checkboxHandler,
-  formIsInvalid,
+  formHasErrors,
   getValues,
   imageUrltoImageData,
 } from './core/utils'

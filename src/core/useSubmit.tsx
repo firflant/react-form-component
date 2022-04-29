@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTheme } from 'react-jss'
-import { FieldsContext, SetValueContext, getValues, formIsInvalid } from '..'
+import { FieldsContext, SetValueContext, getValues, formHasErrors } from '..'
 import {
   fieldsData,
   fieldData,
@@ -20,7 +20,7 @@ function useSubmit(suppressErrorMessage?: boolean) {
     reset?: boolean,
   ) => {
     e.preventDefault()
-    if (formIsInvalid(fieldsData)) {
+    if (formHasErrors(fieldsData)) {
       // Trigger valdiation check of all fields to prevent submitting before debounce etc.
       Object.entries(fieldsData).forEach(([key, data]) => {
         const { value, mandatory, type } = data as fieldData
