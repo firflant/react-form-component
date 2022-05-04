@@ -34,7 +34,6 @@ export const Single: ComponentStory<typeof Switch> = args =>
     <Switch {...args} />
   </Form>
 
-Single.component = Switch
 Single.args = {
   name: 'switch',
   label: 'Optional input label',
@@ -49,7 +48,6 @@ export const Multiple: ComponentStory<typeof SwitchList> = args =>
     <SwitchList {...args} />
   </Form>
 
-Multiple.component = SwitchList
 Multiple.args = {
   name: 'switches',
   label: 'Multiple switches:',

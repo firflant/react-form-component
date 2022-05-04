@@ -37,7 +37,6 @@ export const Single: ComponentStory<typeof Checkbox> = args =>
     <Checkbox {...args} />
   </Form>
 
-Single.component = Checkbox
 Single.args = {
   name: 'singleCheckbox',
   label: 'Optional input label',
@@ -52,7 +51,6 @@ export const Multiple: ComponentStory<typeof CheckboxList> = args =>
     <CheckboxList {...args} />
   </Form>
 
-Multiple.component = CheckboxList
 Multiple.args = {
   name: 'checkboxList',
   label: 'Multiple checkboxes:',
