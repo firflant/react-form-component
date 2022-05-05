@@ -19,7 +19,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Allows to build a nested form structure. The composition of fields, where every row has the same structure.',
+        component: `Allows to build a nested form structure. The composition of fields, where every row has the same structure.\n\n**The code example of FieldGroup component misses the crucial fragment**, due to limitations of Storybook plugin, which does not render code of functions as a children.\n\n**[See the complete code example here](https://codesandbox.io/s/rfc-fieldgroup-1tig2u)**`,
       },
     },
   },
