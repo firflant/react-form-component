@@ -202,6 +202,8 @@ export type InputProps = {
   type?: string,
   validation?: validation,
   setValue: setValue,
+  prefix?: React.ReactNode,
+  suffix?: React.ReactNode,
   [key: string]: any,
 }
 

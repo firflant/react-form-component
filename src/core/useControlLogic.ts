@@ -54,6 +54,10 @@ const useControlLogic = (
     mandatory,
     type,
     setValue,
+    // It is not required for React Form Component defaults, but some design
+    // systems, like MUI, sets prefix and suffix on an input level.
+    prefix,
+    suffix,
   }
 
   const formControlProps = {
