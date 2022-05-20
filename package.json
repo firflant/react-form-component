@@ -54,7 +54,6 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.9",
     "@storybook/addon-actions": "^6.4.21",
     "@storybook/addon-essentials": "^6.4.21",
     "@storybook/addon-interactions": "^6.4.21",
@@ -68,7 +67,6 @@
     "@types/validator": "^13.7.1",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
-    "babel-loader": "^8.2.4",
     "eslint": "^8.8.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",

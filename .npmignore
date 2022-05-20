@@ -1,6 +1,5 @@
 src
 node_modules
-.babelrc
 .eslintrc.js
 .gitignore
 .nvmrc
