@@ -29,7 +29,8 @@ export { default as FormControl } from './default/FormControl'
 export { default as defautTheme } from './core/theme'
 export { default as FormActions } from './default/FormActions'
 export { default as Button } from './default/Button'
-export { default as FormButton } from './default/FormButton'
+export { default as SubmitButton } from './default/SubmitButton'
+export { default as FormButton } from './default/SubmitButton' // Legacy
 export { default as Row } from './default/Row'
 export { default as Compound } from './default/Compound'
 

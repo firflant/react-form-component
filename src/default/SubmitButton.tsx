@@ -4,15 +4,15 @@ import { fieldsData } from '../typings'
 
 
 /**
- * A button component to handle form actions, like submit or reset.
+ * A button component to trigger form submit action. Cane also uti or reset.
  */
-const FormButton = ({
-  onClick,
+const SubmitButton = ({
+  onClick = () => {},
   reset,
   loading,
   suppressErrorMessage,
   children,
-}: FormButtonProps) => {
+}: SubmitButtonProps) => {
   const submit = useSubmit(suppressErrorMessage)
   return (
     <Button
@@ -24,17 +24,17 @@ const FormButton = ({
   )
 }
 
-export interface FormButtonProps {
+export interface SubmitButtonProps {
   /**
-   * Submit function
+   * Submit function. It triggers validation of a whole form and collects all values into one _fieldsData_ object.
    */
-  onClick: (fieldsData: fieldsData) => void,
+  onClick?: (fieldsData: fieldsData) => void,
   /**
-   * Turns on loading state
+   * Turns on the loading state for async operations.
    */
   loading?: boolean,
   /**
-   * Clean up whole form after successfull submit
+   * Cleans up all inputs on click, if validation was successfull.
    */
   reset?: boolean,
   /**
@@ -44,4 +44,4 @@ export interface FormButtonProps {
   children: React.ReactNode,
 }
 
-export default FormButton
+export default SubmitButton

@@ -1,5 +1,5 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
-import Form, { Input, Select, FormButton } from '../src'
+import Form, { Input, Select, SubmitButton } from '../src'
 
 <Meta
   title='Introduction/Getting started'
@@ -28,9 +28,9 @@ export const Template = (args) => {
         label='Type of a user'
         options={['Viewer', 'Moderator', 'Admin']}
       />
-      <FormButton
+      <SubmitButton
         onClick={fields => setState(prevState => `${prevState}${JSON.stringify(fields)}\n> `)}
-      >Save</FormButton>
+      >Save</SubmitButton>
       {<div style={{ marginTop: 30 }}>
           Console: <pre style={{
             backgroundColor: '#F8F8F8 ',
@@ -74,7 +74,7 @@ ReactDOM.render(<App />, document.querySelector('#root'))
 
 2. Put `Form` component anywhere in the app, declare field names in a `fields` prop - each unique for a form. Point out the fields that are mandatory with a `mandatory` prop.
 3. Use any input from the collection of default _Form UI Components_. Give each field a name prop, that corresponds with the one defined in `fields` prop of the ancestor `Form` component.
-4. Use `FormButton` to trigger a submit function that returns all values formatted in a form of an object, that consists of keys declared as field names.
+4. Use `SubmitButton` to trigger a submit function that returns all values formatted in a form of an object, that consists of keys declared as field names.
 
 ```jsx
 // ExampleUserForm.js
@@ -82,7 +82,7 @@ import React from 'react'
 import Form, {
   Input,
   Select,
-  FormButton,
+  SubmitButton,
 } from 'react-form-component'
 
 const ExampleUserForm = () =>
@@ -102,9 +102,9 @@ const ExampleUserForm = () =>
       label='Type of a user'
       options={['Viewer', 'Moderator', 'Admin']}
     />
-    <FormButton
+    <SubmitButton
       onClick={fields => console.log(fields)}
-    >Save</FormButton>
+    >Save</SubmitButton>
   </Form>
 
 export default BasicExampleForm

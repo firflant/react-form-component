@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Form, {
   Input,
   TextArea,
-  FormButton,
+  SubmitButton,
   FormActions as FormActionsComponent,
 } from '../src'
 
@@ -20,7 +20,7 @@ export const FormActions: ComponentStory<typeof FormActionsComponent> = args =>
     <Input name='title' label='Title' />
     <TextArea name='message' label='Message' />
     <FormActionsComponent {...args}>
-      <FormButton>Submit</FormButton>
-      <FormButton reset>Reset</FormButton>
+      <SubmitButton>Submit</SubmitButton>
+      <SubmitButton reset>Reset</SubmitButton>
     </FormActionsComponent>
   </Form>

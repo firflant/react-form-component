@@ -7,7 +7,7 @@ import Form, {
   Fieldgroup,
   Row,
   FormActions,
-  FormButton,
+  SubmitButton,
 } from '../src'
 
 <Meta
@@ -31,8 +31,8 @@ export const BlogPostFormTemplate = args =>
       inlineLabel
     />
     <FormActions>
-      <FormButton reset>Reset</FormButton>
-      <FormButton onClick={fields => console.log(fields)}>Submit</FormButton>
+      <SubmitButton reset>Reset</SubmitButton>
+      <SubmitButton onClick={fields => console.log(fields)}>Submit</SubmitButton>
     </FormActions>
   </Form>
 
@@ -59,7 +59,7 @@ export const InvitePeopleFormTemplate = args =>
       )}
     </Fieldgroup>
     <TextArea name='message' label='Invitation message' />
-    <FormButton onClick={fields => console.log(fields)}>Invite</FormButton>
+    <SubmitButton onClick={fields => console.log(fields)}>Invite</SubmitButton>
   </Form>
 
 export const DynamicSearchForm = args =>

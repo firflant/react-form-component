@@ -23,7 +23,7 @@ import axios from 'axios'
 import Form, {
   FormThemeProvider,
   Input,
-  FormButton
+  SubmitButton
 } from 'react-form-component'
 
 const LoginForm = () => {
@@ -48,9 +48,9 @@ const LoginForm = () => {
     <Form fields={["email", "password"]} allRequired>
       <Input name="email" type="email" label="E-mail" large />
       <Input name="password" type="password" label="Password" large />
-      <FormButton onClick={handleSubmit} loading={loading}>
+      <SubmitButton onClick={handleSubmit} loading={loading}>
         Log in
-      </FormButton>
+      </SubmitButton>
     </Form>
   )
 }

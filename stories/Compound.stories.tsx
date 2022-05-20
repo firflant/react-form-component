@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import Form, {
   Input,
-  FormButton,
+  SubmitButton,
   Compound as CompoundComponent,
 } from '../src'
 
@@ -21,6 +21,6 @@ export const Compound: ComponentStory<typeof CompoundComponent> = args =>
         type='email'
         placeholder='E-mail'
       />
-      <FormButton>Subscribe</FormButton>
+      <SubmitButton>Subscribe</SubmitButton>
     </CompoundComponent>
   </Form>

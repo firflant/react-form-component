@@ -125,13 +125,13 @@ Let's assume you created your own button component that can be used in a followi
 <Button onClick={() => console.log('Click!')>Submit</Button>
 ```
 
-To use it as a reusable form button, the best practice is to create a separate component, similar to [default one](https://github.com/firflant/react-form-component/blob/master/src/default/FormButton.tsx), that utilizes the `useSubmit()` hook.
+To use it as a reusable form button, the best practice is to create a separate component, similar to [default one](https://github.com/firflant/react-form-component/blob/master/src/default/SubmitButton.tsx), that utilizes the `useSubmit()` hook.
 
 ```jsx
 import { useSubmit } from 'react-form-component'
 import Button from './Button'
 
-const FormButton = ({
+const SubmitButton = ({
   onClick,
   reset,
   loading,

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import Form, {
   FieldGroup as FieldGroupComponent,
-  FormButton,
+  SubmitButton,
   Row,
   Input,
 } from '../src'
@@ -70,9 +70,9 @@ const Template: ComponentStory<typeof FieldGroupComponent> = args =>
         </Row>
       )}
     </FieldGroupComponent>
-    <FormButton {...actions('onClick')}>
+    <SubmitButton {...actions('onClick')}>
       Save
-    </FormButton>
+    </SubmitButton>
   </Form>
 
 export const FieldGroup = Template.bind({})
