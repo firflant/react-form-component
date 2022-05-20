@@ -53,3 +53,5 @@ export { default as SwitchList } from './default/SwitchList'
 export { default as Switches } from './default/SwitchList' // Legacy
 export { default as TextArea } from './default/TextArea'
 export { default as Loader } from './default/Loader'
+
+export * from './typings'
