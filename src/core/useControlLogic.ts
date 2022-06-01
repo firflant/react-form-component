@@ -54,8 +54,13 @@ const useControlLogic = (
     mandatory,
     type,
     setValue,
-    // It is not required for React Form Component defaults, but some design
-    // systems, like MUI, sets prefix and suffix on an input level.
+    // Props below are typical for FormControl, but some design systems, like
+    // MUI for example, sets them on an input level. Puting them there makes
+    // this library more universal.
+    label,
+    validation: validation || '',
+    help,
+    disabled,
     prefix,
     suffix,
   }
