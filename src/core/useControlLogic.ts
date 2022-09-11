@@ -59,7 +59,7 @@ const useControlLogic = (
     // this library more universal.
     label,
     validation: validation || '',
-    help,
+    help: fieldsDataHelp || help,
     disabled,
     prefix,
     suffix,
