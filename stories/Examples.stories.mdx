@@ -18,7 +18,7 @@ import Form, {
 export const BlogPostFormTemplate = args =>
   <Form
     fields={['title', 'content', 'image', 'date', 'tags']}
-    required={['title', 'content']}
+    mandatory={['title', 'content']}
   >
     <Input name='title' label='Title' inlineLabel />
     <TextArea name='content' label='Content' inlineLabel />
