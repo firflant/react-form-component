@@ -114,7 +114,6 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
       lineHeight: 'normal',
     },
 
-    // States
     '& .rfc-input:focus': {
       borderColor: theme.colors.accent,
       boxShadow: theme.colors.inputFocusShadow,
@@ -133,7 +132,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     '&  > $label, & > $prefix, & > $suffix, & $addon, & > $help': {
       color: theme.colors.success,
     },
-    '& > .rfc-input:not(:focus)': {
+    '& > .rfc-input, & > .rfc-input:focus': {
       borderColor: theme.colors.success,
     },
   },
@@ -151,7 +150,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     '& > $label, & > $prefix, & > $suffix, & > $help, & > * > .rfc-checkitem': {
       color: theme.colors.error,
     },
-    '& > .rfc-input:not(:focus)': {
+    '& > .rfc-input, & > .rfc-input:focus': {
       borderColor: theme.colors.error,
       backgroundColor: lighten(0.54, theme.colors.error),
     },
