@@ -34,7 +34,7 @@ export default {
   argTypes: {
     fields: {
       description: 'Names of fields in a group `string[]`',
-      type: { required: true },
+      type: { mandatory: true },
     },
     moreComponent: {
       description: 'Replace the default _Add more_ button component `ComponentType`',

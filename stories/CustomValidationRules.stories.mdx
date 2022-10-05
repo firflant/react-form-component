@@ -22,7 +22,7 @@ statement.
 
 ### How to declare the custom validation rules?
 
-In a place where you define the [theme object](http://localhost:6006/?path=/docs/docs-theming--page),
+In a place where you define the [theme object](?path=/docs/docs-theming--page),
 add a `customValidationFunction` property. It should be a function that accepts
 two arguments: a `value` - which is a value from an input and a `type` - which
 is an identifier for a rule that gives possibility to define as many rules as
@@ -51,9 +51,9 @@ customValidationFunction: (value, type) => {
 ### How to use the custom validation rules:
 
 In a place, where you utulize the `setValue` function in your
-[custom input](/?path=/docs/docs-custom-inputs--page), put `type: 'coordinates'`
+[custom input](?path=/docs/docs-custom-inputs--page), put `type: 'coordinates'`
 into fourth, *options* argument:
 
 ```js
-setValue(name, value, required, { type: 'coordinates' })
+setValue(name, value, mandatory, { type: 'coordinates' })
 ```

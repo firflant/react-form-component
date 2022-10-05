@@ -9,7 +9,7 @@ export const formControlArgs = {
 export const formControlArgTypes = {
   name: {
     description: 'Unique field identifier for a _Form_ `string`',
-    type: { name: 'string', required: true },
+    type: { name: 'string', mandatory: true },
   },
   label: {
     description: 'Field label, displayed before it `ReactNode`',
