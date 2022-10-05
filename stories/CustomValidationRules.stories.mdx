@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs'
-import Form, { Input } from '../src'
+import Form, { Input, FormThemeProvider, withFormControl } from '../src'
+import parse from 'coord-parser'
 
 <Meta
   title='Docs/Custom validation rules'
@@ -47,6 +48,63 @@ customValidationFunction: (value, type) => {
   }
 },
 ```
+
+#### Result:
+
+export const CoordinatesInput = withFormControl(({
+  name,
+  value,
+  mandatory,
+  setValue,
+}) =>
+  <input
+    value={value}
+    name={name}
+    className='rfc-input'
+    onChange={e => setValue(name, e.target.value, mandatory, { type: 'coordinates' })}
+  />
+)
+
+export const Template = (args) => {
+  const formTheme = {
+    customValidationFunction: (value, type) => {
+      switch (type) {
+        case 'coordinates':
+          // Rule for coordinates input:
+          try {
+            parse(value)
+            return false
+          } catch (err) {
+            return 'Incorrect coordinates format.'
+          }
+        default:
+          return false
+      }
+    },
+  }
+  return (
+    <FormThemeProvider theme={formTheme}>
+      <Form fields={['coords']}>
+        <CoordinatesInput
+          name={'coords'}
+          label='Coordinates'
+          help={<>Try with a following value: <strong>54.448451, 18.578087</strong></>}
+        />
+      </Form>
+    </FormThemeProvider>
+  )
+}
+
+<Canvas withSource='none'>
+  <Story
+    name='Custom validation rules'
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+
+
 
 ### How to use the custom validation rules:
 
