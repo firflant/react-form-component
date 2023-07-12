@@ -1,19 +1,18 @@
 import theme from './theme'
 
-export function inputHeight(height: number) {
+export function inputHeight(height: number, borderWidth: number) {
+  const inputPadding = Math.round(height / 6)
   return {
     '& *.rfc-input': {
-      height: height,
-      lineHeight: `${height * 2 / 3}px`,
-      paddingTop: height / 6,
-      paddingBottom: height / 6,
+      lineHeight: `${height - (inputPadding + borderWidth) * 2}px`,
+      paddingTop: inputPadding,
+      paddingBottom: inputPadding,
       '&[type=file]': {
         lineHeight: `${height * 0.45}px`,
       },
     },
     '& textarea.rfc-input': {
       minHeight: height,
-      height: 'auto',
     },
     '& .rfc-select:not([multiple])': {
       backgroundPosition: `calc(100% - 15px) ${height / 2 - 2}px, calc(100% - 10px) ${height / 2 - 2}px`,

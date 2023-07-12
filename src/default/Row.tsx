@@ -50,7 +50,7 @@ const useStyles = createUseStyles((theme: fullTheme) => {
     '& .rfc-form-control': {
       marginBottom: 0,
     },
-    '& > div + *': {
+    '& > * + *': {
       marginLeft: theme.sizes.rowGutter,
     },
   }

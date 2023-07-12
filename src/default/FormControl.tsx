@@ -71,9 +71,10 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     boxSizing: 'border-box',
     maxWidth: '100%',
     textAlign: 'left',
-    ...inputHeight(theme.sizes.inputHeight),
+    ...inputHeight(theme.sizes.inputHeight, theme.sizes.borderWidth),
     '& .rfc-input': {
       width: '100%',
+      height: 'auto',
       margin: 0,
       borderStyle: 'solid',
       borderColor: theme.colors.inputBorder,
@@ -188,7 +189,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
 
   // Modifiers
   large: {
-    ...inputHeight(theme.sizes.inputHeight + theme.sizes.largeInputExtraHeight),
+    ...inputHeight(theme.sizes.inputHeight + theme.sizes.largeInputExtraHeight, theme.sizes.borderWidth),
     '& $label': {
       marginBottom: 2,
     },
