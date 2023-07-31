@@ -26,7 +26,6 @@ export function processField(
   customValidationFunction: customValidationFunction,
 ) {
   const { type, min, forceErrorMessage, touched = false } = options
-  console.log('customValidationFunction: ', customValidationFunction);
 
   // If the value is an array, remove its empty values for safety.
   const valueIsArray = Array.isArray(value)
