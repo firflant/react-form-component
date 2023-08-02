@@ -1,6 +1,6 @@
 {
   "name": "react-form-component",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "Create React forms just with a pure JSX and let the react-standalone-form manage its state for you.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
