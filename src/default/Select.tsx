@@ -22,7 +22,7 @@ const Select = ({
     <select
       className={classNames(classes.select, 'rfc-input rfc-select')}
       name={name}
-      value={value}
+      value={value || ''} // Selects placeholder when value is empty.
       onChange={e =>
         setValue(name, e.target.value, mandatory, { touched: true })
       }
