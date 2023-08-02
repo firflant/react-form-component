@@ -1,11 +1,12 @@
 import validator from 'validator'
 import {
-  value,
-  checkboxValue,
-  fieldsData,
-  textLabels,
-  customValidationFunction,
-  option,
+  type value,
+  type checkboxValue,
+  type fieldsData,
+  type textLabels,
+  type customValidationFunction,
+  type option,
+  type parsedOption,
 } from '../typings'
 
 
@@ -168,7 +169,7 @@ export function updateMandatory(fieldsData: fieldsData, mandatory?: string[]) {
 /**
  * Parse option, which can be a string or an object, to return an object.
  */
-export function parseOption(option: option) {
+export function parseOption(option: option): parsedOption {
   const optionLabel = (typeof option === 'string') ? option : option.label
   const optionValue = (typeof option === 'string') ? option : option.value
   return { optionLabel, optionValue }

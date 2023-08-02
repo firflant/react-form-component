@@ -7,26 +7,34 @@ import { fullTheme } from '../typings'
  * to position them accordingly and move them away from the fields above.
  */
 const FormActions = ({ align = 'right', children }: FormActionsProps) => {
-  const classes = useStyles()
+  const classes = useStyles({ align })
   return (
-    <div
-      className={classes.root}
-      style={{ justifyContent: align === 'left'
-        ? 'flex-start'
-        : align === 'right'
-          ? 'flex-end'
-          : 'center',
-      }}
-    >{children}</div>
+    <div className={classes.root}>{children}</div>
   )
 }
 
+type align = 'left' | 'right' | 'center' | 'space-between'
+
 export interface FormActionsProps {
-  /**
-   * Align buttons to left or right
-   */
-  align?: 'left' | 'right',
+  align?: align,
   children: React.ReactNode,
+}
+
+const alignToJustify = (align: align) => {
+  switch (align) {
+    case 'left':
+      return 'flex-start'
+    case 'right':
+      return 'flex-end'
+    case 'center':
+      return 'center'
+    case 'left':
+      return 'space-between'
+  }
+}
+
+interface styleProps {
+  align: align
 }
 
 const useStyles = createUseStyles((theme: fullTheme) => ({
@@ -36,9 +44,10 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     display: 'flex',
     alignItems: 'center',
     flexWrap: 'wrap',
-    margin: -10,
+    margin: -theme.sizes.rowGutter,
+    justifyContent: ({ align }: styleProps) => alignToJustify(align),
     '& > *': {
-      margin: 10,
+      margin: theme.sizes.rowGutter,
     },
   },
 }))

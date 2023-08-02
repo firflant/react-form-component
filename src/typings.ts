@@ -13,6 +13,8 @@ export type checkboxValue = boolean | string
 
 export type fieldGroupValue = anyObject[] | []
 
+export type parsedOption = { optionLabel: React.ReactNode, optionValue: string }
+
 export type option = string | { label: React.ReactNode, value: string }
 
 export type options = option[]
