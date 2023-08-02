@@ -28,7 +28,7 @@ const alignToJustify = (align: align) => {
       return 'flex-end'
     case 'center':
       return 'center'
-    case 'left':
+    case 'space-between':
       return 'space-between'
   }
 }
