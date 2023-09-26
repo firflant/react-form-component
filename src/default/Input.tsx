@@ -14,6 +14,7 @@ const Input = ({
   min,
   debounceTime = 500,
   accept,
+  onChange,
   activateEnterPress,
   mandatory,
   setValue,
@@ -31,6 +32,7 @@ const Input = ({
   const handleSetValue = (val: value) => {
     if (val !== value) {
       setValue(name, val, mandatory, { touched: true, type, min })
+      onChange && onChange(val)
     }
   }
 
@@ -89,6 +91,7 @@ export interface InputProps {
   min: number,
   debounceTime: number,
   accept: string,
+  onChange?: (value: value) => void,
   activateEnterPress?: boolean,
   mandatory: boolean,
   setValue: setValue,

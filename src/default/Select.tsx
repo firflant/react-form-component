@@ -12,6 +12,7 @@ const Select = ({
   name,
   value,
   placeholder,
+  onChange,
   mandatory,
   setValue,
   options,
@@ -23,9 +24,10 @@ const Select = ({
       className={classNames(classes.select, 'rfc-input rfc-select')}
       name={name}
       value={value || ''} // Selects placeholder when value is empty.
-      onChange={e =>
+      onChange={e => {
         setValue(name, e.target.value, mandatory, { touched: true })
-      }
+        onChange && onChange(e.target.value)
+      }}
     >
       {(!value || !mandatory) && <option value='' disabled={mandatory}>
         {placeholder || (mandatory ? 'Select' : 'All')}
@@ -44,6 +46,7 @@ export interface SelectProps {
   name: string,
   value: value,
   placeholder: React.ReactNode,
+  onChange: (value: value) => void,
   mandatory?: boolean,
   setValue: setValue,
   options: options,

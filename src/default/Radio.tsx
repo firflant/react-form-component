@@ -13,6 +13,7 @@ const Radio = ({
   value,
   mandatory,
   small,
+  onChange,
   setValue,
   options,
 }: RadioProps) => {
@@ -34,9 +35,10 @@ const Radio = ({
               className={classes.input}
               id={`${name}${index}`}
               checked={optionValue === value}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setValue(name, e.target.value, mandatory, { touched: true })
-              }
+                onChange && onChange(e.target.value)
+              }}
             /> {optionLabel}
           </label>
         )
@@ -50,6 +52,7 @@ export interface RadioProps {
   value: value,
   mandatory: boolean,
   small?: boolean,
+  onChange: (value: value) => void,
   setValue: setValue,
   options: options,
 }
