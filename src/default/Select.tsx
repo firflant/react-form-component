@@ -46,7 +46,7 @@ export interface SelectProps {
   name: string,
   value: value,
   placeholder: React.ReactNode,
-  onChange: (value: value) => void,
+  onChange?: (value: value) => void,
   mandatory?: boolean,
   setValue: setValue,
   options: options,

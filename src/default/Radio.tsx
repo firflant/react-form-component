@@ -52,7 +52,7 @@ export interface RadioProps {
   value: value,
   mandatory: boolean,
   small?: boolean,
-  onChange: (value: value) => void,
+  onChange?: (value: value) => void,
   setValue: setValue,
   options: options,
 }
