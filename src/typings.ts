@@ -101,7 +101,16 @@ export type fullTheme = {
   customValidationFunction: customValidationFunction,
 }
 
-export type themeOverrides = Partial<fullTheme>
+export type themeOverrides = {
+  sizes?: Partial<fullTheme['sizes']>,
+  colors?: Partial<fullTheme['colors']>,
+  typography?: Partial<fullTheme['typography']>,
+  breakpoints?: Partial<fullTheme['breakpoints']>,
+  textLabels?: Partial<fullTheme['textLabels']>,
+  toastContainerProps?: fullTheme['toastContainerProps'],
+  errorNotificationFunc?: fullTheme['errorNotificationFunc'],
+  customValidationFunction?: fullTheme['customValidationFunction'],
+}
 
 export interface ControlLogicProps {
   addon?: React.ReactNode,
