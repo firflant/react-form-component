@@ -53,7 +53,7 @@ export type errorNotificationFunc = (message: string) => void
 
 export type customValidationFunction = (value: value, type: string) => boolean
 
-export interface fullTheme {
+export type fullTheme = {
   sizes: {
     inputHeight: number,
     inputWidth: number | string,
@@ -101,63 +101,7 @@ export interface fullTheme {
   customValidationFunction: customValidationFunction,
 }
 
-export interface themeOverrides {
-  sizes?: {
-    inputHeight?: number,
-    inputWidth?: number | string,
-    inputGutterBottom?: number,
-    inputSidePaddings?: number,
-    labelGutterBottom?: number,
-    narrowInputWidth?: number,
-    inlineLabelWidth?: number,
-    borderRadius?: number,
-    borderWidth?: number,
-    rowGutter?: number,
-    formActionsDistance?: number,
-    onlyBottomBorder?: boolean,
-    largeInputExtraHeight?: number,
-    prefixExtraSpacing?: number,
-  },
-  colors?: {
-    accent?: string,
-    inputText?: string,
-    inputBorder?: string,
-    inputBg?: string,
-    inputFocusShadow?: string,
-    label?: string,
-    fill?: string,
-    placeholder?: string,
-    success?: string,
-    error?: string,
-  },
-  typography?: {
-    inputFontSize?: number,
-    inputFontWeight?: string,
-    labelFontSize?: number,
-    labelFontWeight?: string,
-    helpFontSize?: number,
-  },
-  breakpoints?: {
-    xs?: number | string,
-    sm?: string,
-    md?: string,
-    lg?: string,
-  },
-  textLabels?: {
-    formInvalid?: string,
-    mandatoryField?:string,
-    minChars?: string,
-    passwordInvalid?: string,
-    emailInvalid?: string,
-    urlInvalid?: string,
-    phoneInvalid?: string,
-    postCodeInvalid?: string,
-    addMore?: string,
-  },
-  toastContainerProps?: object,
-  errorNotificationFunc?: errorNotificationFunc,
-  customValidationFunction?: customValidationFunction,
-}
+export type themeOverrides = Partial<fullTheme>
 
 export interface ControlLogicProps {
   addon?: React.ReactNode,
