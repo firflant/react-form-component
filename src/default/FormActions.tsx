@@ -39,12 +39,14 @@ interface styleProps {
 
 const useStyles = createUseStyles((theme: fullTheme) => ({
   root: {
-    marginTop: theme.sizes.formActionsDistance,
     lineHeight: 'normal',
     display: 'flex',
     alignItems: 'center',
     flexWrap: 'wrap',
-    margin: -theme.sizes.rowGutter,
+    marginTop: theme.sizes.formActionsDistance - theme.sizes.rowGutter,
+    marginRight: -theme.sizes.rowGutter,
+    marginBottom: -theme.sizes.rowGutter,
+    marginLeft: -theme.sizes.rowGutter,
     justifyContent: ({ align }: styleProps) => alignToJustify(align),
     '& > *': {
       margin: theme.sizes.rowGutter,
