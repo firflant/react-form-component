@@ -77,7 +77,7 @@ const Input = ({
       }}
       accept={accept}
       value={type !== 'file' ? internalValue : undefined}
-      onBlur={e => handleSetValue(e.target.value)}
+      onBlur={e => type !== 'file' && handleSetValue(e.target.value)}
       {...otherProps}
     />
   )
