@@ -179,11 +179,13 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   prefix: {
     position: 'absolute',
     bottom: 0,
+    fontSize: theme.typography.inputFontSize,
     left: theme.sizes.inputSidePaddings,
   },
   suffix: {
     position: 'absolute',
     bottom: 0,
+    fontSize: theme.typography.inputFontSize,
     right: theme.sizes.inputSidePaddings,
   },
 
