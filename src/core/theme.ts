@@ -45,16 +45,18 @@ export default {
   },
 
   textLabels: {
-    formInvalid: 'The form is not filled correctly.',
-    mandatoryField: 'This field is mandatory.',
-    minChars: 'This field should have at least :length: characters.',
-    passwordInvalid: 'Password should be at least 6 characters long.',
-    emailInvalid: 'This is not a valid email address.',
-    urlInvalid: 'This is not a valid URL.',
-    phoneInvalid: 'This is not a valid phone number.',
-    postCodeInvalid: 'This is not a valid postal code.',
-    fieldgroupInvalid: 'Some rows are not filled correctly.',
-    addMore: 'Add more',
+    formInvalid: 'The form is incomplete or contains errors.',
+    mandatoryField: 'This field is required.',
+    minChars: 'Minimum :length: characters required.',
+    passwordInvalid: 'Password must be at least 6 characters long.',
+    emailInvalid: 'Please enter a valid email address.',
+    urlInvalid: 'Please enter a valid URL.',
+    phoneInvalid: 'Please enter a valid phone number.',
+    postCodeInvalid: 'Please enter a valid postal code.',
+    fieldgroupInvalid: 'Some rows are not filled in correctly.',
+    addMore: 'Add More',
+    upload: 'Upload',
+    delete: 'Delete',
   },
 
   toastContainerProps: {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { createUseStyles } from 'react-jss'
+import { createUseStyles, useTheme } from 'react-jss'
 import { lighten, darken } from 'polished'
 import { withFormControl, maxRows } from '../.'
 import { value, setValue, fullTheme } from '../typings'
@@ -16,6 +16,8 @@ const ImageUpload = ({
   setValue,
 }: ImageUploadProps) =>  {
   const classes = useStyles()
+  const theme = useTheme() as fullTheme
+
   return (
     !value
       ? <div className={classes.root}>
@@ -43,7 +45,7 @@ const ImageUpload = ({
         />
         <label htmlFor={name}>
           <div className={classes.upload}>
-            + Upload {placeholder || 'image'}
+            + {theme.textLabels.upload} {placeholder || 'image'}
           </div>
         </label>
       </div>
@@ -63,7 +65,7 @@ const ImageUpload = ({
         <button
           className={classes.delete}
           onClick={() => setValue(name, '', mandatory, { touched: true })}
-        >Delete {placeholder || 'image'}</button>
+        >{theme.textLabels.delete} {placeholder || 'image'}</button>
       </div>
   )
 }

@@ -47,6 +47,8 @@ export type textLabels = {
   postCodeInvalid: string,
   fieldgroupInvalid: string,
   addMore: string,
+  upload: string,
+  delete: string,
 }
 
 export type errorNotificationFunc = (message: string) => void
