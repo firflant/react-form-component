@@ -54,7 +54,7 @@ const Input = ({
           const fileReader = new FileReader()
           const dataFile = e.target.files[0]
           const { name: fileName, type: fileType } = dataFile
-          fileReader.readAsDataURL(e.target.files[0])
+          fileReader.readAsDataURL(dataFile)
           fileReader.onload = () => {
             const data = fileReader.result
             setValue(name, {
@@ -64,6 +64,7 @@ const Input = ({
               dataFile,
             }, mandatory, { touched: true })
           }
+          onChange && onChange(dataFile)
         } else {
           setInternalValue(e.target.value)
           debouncedSetValue(e.target.value)
