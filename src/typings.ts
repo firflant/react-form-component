@@ -53,7 +53,7 @@ export type textLabels = {
 
 export type errorNotificationFunc = (message: string) => void
 
-export type customValidationFunction = (value: value, type: string) => boolean
+export type customValidationFunction = (value: value, type: string) => false | string
 
 export type fullTheme = {
   sizes: {
