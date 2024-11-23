@@ -3,8 +3,6 @@ manage its state for you. A themeable form library based on Context API, with a
 selection of user friendly inputs and wide customization abilities to match your
 design and functionality.
 
->From version 2.x this package is a continuation of [react-standalone-form](https://www.npmjs.com/package/react-standalone-form).
-
 ## [Docs and examples](https://firflant.github.io/react-form-component)
 
 ![Screenshot](https://raw.githubusercontent.com/firflant/react-form-component/master/screenshot.jpg "Screenshot")
