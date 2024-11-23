@@ -4,3 +4,7 @@ npm-debug.log
 yarn-error.log
 storybook-static
 .DS_Store
+.yarn
+.yarnrc
+.pnp.cjs
+.pnp.loader.mjs
