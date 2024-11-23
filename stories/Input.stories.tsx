@@ -43,8 +43,17 @@ export default {
     min: {
       description: 'Minimal amount of input characters `number`',
     },
+    onChange: {
+      description: 'Run function on every input change `(value: value) => void`',
+    },
     activateEnterPress: {
       description: 'Turns on the submit on enter function, which is declared on a parent _Form_ component, via _onEnterPress_ prop. See _On Enter Press_ example.',
+    },
+    accept: {
+      description: 'Limit file input to exact extensions. `string`',
+    },
+    debounceTime: {
+      description: 'Set time of debounce in miliseconds `number`',
     },
     ...formControlArgTypes,
   },

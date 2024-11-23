@@ -23,7 +23,7 @@ export default {
       description: 'Text near the single switch `ReactNode`',
     },
     options: {
-      description: 'Available options of multiple switches `{ label, value }[]` or `string[]`',
+      description: 'Available options of multiple switches `{ label: string, value: ReactNode }[]` or `string[]`',
     },
     ...formControlArgTypes,
   },

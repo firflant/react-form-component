@@ -24,22 +24,22 @@ export default {
       {
         label: 'Animals',
         value: 'animals',
-        image: 'https://placeimg.com/54/54/animals',
+        image: 'https://placehold.co/64x64',
       },
       {
         label: 'People',
         value: 'people',
-        image: 'https://placeimg.com/54/54/people',
+        image: 'https://placehold.co/64x64',
       },
       {
         label: 'Nature',
         value: 'nature',
-        image: 'https://placeimg.com/54/54/nature',
+        image: 'https://placehold.co/64x64',
       },
       {
         label: 'Tech',
         value: 'tech',
-        image: 'https://placeimg.com/54/54/tech',
+        image: 'https://placehold.co/64x64',
       },
     ],
     multiple: false,

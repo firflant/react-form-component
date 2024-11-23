@@ -23,7 +23,7 @@ export default {
       description: 'Text near the single checkbox `ReactNode`',
     },
     options: {
-      description: 'Available options of multiple checkboxes `{ label, value }[]` or `string[]`',
+      description: 'Available options of multiple checkboxes `{ label: string, value: ReactNode }[]` or `string[]`',
     },
     ...formControlArgTypes,
     label: {
@@ -42,6 +42,7 @@ Single.args = {
   label: 'Optional input label',
   text: 'Single checkbox',
   initialValue: false,
+  small: false,
   ...formControlArgs,
   help: '',
 }
@@ -62,5 +63,6 @@ Multiple.args = {
     },
   ],
   initialValue: [],
+  small: false,
   ...formControlArgs,
 }

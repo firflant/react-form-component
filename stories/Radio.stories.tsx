@@ -41,6 +41,9 @@ export default {
     inline: {
       description: 'Displays all options in one row `bool`',
     },
+    onChange: {
+      description: 'Run function on every input change `(value: value) => void`',
+    },
     ...formControlArgTypes,
   },
 } as ComponentMeta<typeof RadioComponent>

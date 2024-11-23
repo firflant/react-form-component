@@ -35,7 +35,7 @@ export default {
   },
   argTypes: {
     options: {
-      description: 'Available options `{ label, value }[]` or `string[]`',
+      description: 'Available options `{ label: string, value: ReactNode }[]` or `string[]`',
     },
     prefix: {
       description: 'Decorates left side of a field with symbol, unit etc. `ReactNode`',

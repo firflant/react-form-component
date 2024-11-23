@@ -1,7 +1,7 @@
 {
   "name": "react-form-component",
   "version": "2.6.7",
-  "description": "Create React forms just with a pure JSX and let the react-standalone-form manage its state for you.",
+  "description": "Agnostic solution to build react forms with minimalistic styling framework and logic management.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [

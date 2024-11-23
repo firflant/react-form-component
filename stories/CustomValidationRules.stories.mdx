@@ -32,7 +32,7 @@ operates on `type` argument and returns *false* when validation is successful or
 a `string` with a content of error message when validation has failed.
 
 ```js
-customValidationFunction: (value, type) => {
+customValidationFunction: (value: string, type: string): string | false => {
   switch (type) {
     case 'coordinates':
       // Rule for coordinates input:
