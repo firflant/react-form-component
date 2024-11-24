@@ -53,6 +53,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   ImageSelect: {
     display: 'flex',
     alignItems: 'center',
+    gap: 4,
   },
   input: {
     flex: '65px 0 0',
@@ -62,16 +63,14 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     justifyContent: 'space-between',
     fontSize: 9,
     lineHeight: 'normal',
-    marginTop: 5,
-    marginBottom: 10,
-    padding: '0 1px',
+    marginBottom: 8,
     color: theme.colors.inputText,
     cursor: 'pointer',
     position: 'relative',
     zIndex: 1,
   },
   label: {
-    marginTop: 6,
+    marginTop: 4,
     paddingBottom: 2,
   },
   isChecked: {

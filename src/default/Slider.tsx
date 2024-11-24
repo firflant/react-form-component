@@ -62,7 +62,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     width: '100%',
     cursor: 'pointer',
     height: theme.sizes.inputHeight,
-    marginBottom: -5,
+    margin: 0,
     backgroundColor: 'transparent',
     '&:focus': {
       outline: 'none',
@@ -70,13 +70,13 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     '&::-webkit-slider-runnable-track': {
       backgroundColor: theme.colors.inputBorder,
       boxShadow: '0 0 60px 15px white',
-      height: 6,
+      height: 4,
     },
     '&::-webkit-slider-thumb': {
-      width: 12,
-      height: 12,
-      borderRadius: 6,
-      marginTop: -3,
+      width: 16,
+      height: 16,
+      borderRadius: 8,
+      marginTop: -6,
       backgroundColor: theme.colors.accent,
       border: 'none',
       '-webkit-appearance': 'none',

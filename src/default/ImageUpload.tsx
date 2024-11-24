@@ -81,7 +81,7 @@ export interface ImageUploadProps {
 const useStyles = createUseStyles((theme: fullTheme) => ({
   root: {
     textAlign: 'center',
-    padding: 20,
+    padding: 24,
     backgroundColor: theme.colors.fill,
     maxWidth: 300,
     borderRadius: theme.sizes.borderRadius,
@@ -92,7 +92,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   upload: {
     border: `2px dashed ${darken(0.2, theme.colors.inputBorder)}`,
     color: darken(0.3, theme.colors.inputBorder),
-    padding: '30px 20px',
+    padding: '32px 24px',
     cursor: 'pointer',
     fontSize: theme.typography.labelFontSize,
     lineHeight: 'normal',
@@ -105,7 +105,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     color: theme.colors.inputBg !== 'transparent' ? theme.colors.inputBg : 'white',
     fontSize: theme.typography.labelFontSize,
     lineHeight: 'normal',
-    padding: '5px 8px',
+    padding: '4px 8px',
     border: 'none',
     cursor: 'pointer',
     '&:hover': {
@@ -115,15 +115,15 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   image: {
     display: 'block',
     backgroundColor: 'white',
-    padding: 5,
-    margin: '0 auto 10px',
+    padding: 4,
+    margin: '0 auto 8px',
     maxWidth: '100%',
     boxSizing: 'border-box',
   },
   filename: {
     maxWidth: '100%',
     textOverflow: 'ellipsis',
-    marginBottom: 10,
+    marginBottom: 8,
     fontSize: 11,
     color: theme.colors.inputText,
     lineHeight: 'normal',

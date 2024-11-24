@@ -103,12 +103,11 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    margin: -10,
+    gap: 12,
   },
   item: {
     maxWidth: '50%',
     minWidth: '50%',
-    padding: 10,
     boxSizing: 'border-box',
     [breakpoint(theme.breakpoints.md)]: {
       maxWidth: ({ columns }: styleProps) => `${100 / columns}%`,
@@ -120,7 +119,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: theme.colors.fill,
-    padding: 15,
+    padding: 16,
     height: '33vw',
     position: 'relative',
     [breakpoint(theme.breakpoints.md)]: {
@@ -134,6 +133,9 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
   image: {
     maxWidth: '100%',
     maxHeight: '100%',
+    padding: 2,
+    backgroundColor: 'white',
+    boxSizing: 'border-box',
   },
   delete: {
     position: 'absolute',
@@ -141,7 +143,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     right: 0,
     lineHeight: '30px',
     fontSize: 30,
-    padding: 5,
+    padding: 4,
     cursor: 'pointer',
     '&:hover': {
       color: theme.colors.inputBorder,

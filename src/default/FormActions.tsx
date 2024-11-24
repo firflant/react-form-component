@@ -43,14 +43,9 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     display: 'flex',
     alignItems: 'center',
     flexWrap: 'wrap',
-    marginTop: theme.sizes.formActionsDistance - theme.sizes.rowGutter,
-    marginRight: -theme.sizes.rowGutter,
-    marginBottom: -theme.sizes.rowGutter,
-    marginLeft: -theme.sizes.rowGutter,
+    gap: theme.sizes.rowGutter,
+    marginTop: theme.sizes.formActionsDistance,
     justifyContent: ({ align }: styleProps) => alignToJustify(align),
-    '& > *': {
-      margin: theme.sizes.rowGutter,
-    },
   },
 }))
 

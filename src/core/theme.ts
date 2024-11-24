@@ -2,9 +2,9 @@ export default {
   sizes: {
     inputHeight: 40,
     inputWidth: '100%',
-    inputGutterBottom: 30,
-    inputSidePaddings: 10,
-    labelGutterBottom: 10,
+    inputGutterBottom: 32,
+    inputSidePaddings: 12,
+    labelGutterBottom: 4,
     narrowInputWidth: 140,
     inlineLabelWidth: 130,
     borderRadius: 0,
@@ -12,8 +12,8 @@ export default {
     rowGutter: 32,
     formActionsDistance: 56,
     onlyBottomBorder: false,
-    largeInputExtraHeight: 10,
-    prefixExtraSpacing: 20,
+    largeInputExtraHeight: 8,
+    prefixExtraSpacing: 16,
   },
 
   colors: {
