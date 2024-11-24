@@ -31,7 +31,7 @@ const Select = ({
       value={value || ''} // Selects placeholder when value is empty.
       onChange={e => {
         setValue(name, e.target.value, mandatory, { touched: true })
-        onChange && onChange(e.target.value)
+        if (onChange) onChange(e.target.value)
       }}
     >
       {(!value || !mandatory) && <option value='' disabled={mandatory}>

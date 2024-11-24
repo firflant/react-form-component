@@ -17,7 +17,6 @@ import {
 
 
 export const FieldsContext = React.createContext({})
-// eslint-disable-next-line @typescript-eslint/no-empty-function
 export const SetValueContext = React.createContext(() => {})
 
 /**

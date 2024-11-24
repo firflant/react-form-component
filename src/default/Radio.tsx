@@ -43,7 +43,7 @@ const Radio = ({
               checked={optionValue === value}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setValue(name, e.target.value, mandatory, { touched: true })
-                onChange && onChange(e.target.value)
+                if (onChange) onChange(e.target.value)
               }}
             /> {optionLabel}
           </label>

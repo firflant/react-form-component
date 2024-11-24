@@ -32,7 +32,7 @@ const Input = ({
   const handleSetValue = (val: value) => {
     if (val !== value) {
       setValue(name, val, mandatory, { touched: true, type, min })
-      onChange && onChange(val)
+      if (onChange) onChange(val)
     }
   }
 
@@ -64,7 +64,7 @@ const Input = ({
               dataFile,
             }, mandatory, { touched: true })
           }
-          onChange && onChange(dataFile)
+          if (onChange) onChange(dataFile)
         } else {
           setInternalValue(e.target.value)
           debouncedSetValue(e.target.value)

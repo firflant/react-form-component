@@ -31,8 +31,8 @@ function useSubmit(suppressErrorMessage?: boolean) {
         theme.errorNotificationFunc(theme.textLabels.formInvalid)
       }
     } else {
-      callback && callback(getValues(fieldsData))
-      reset && setValue()
+      if (callback) callback(getValues(fieldsData))
+      if (reset) setValue()
     }
   }
 

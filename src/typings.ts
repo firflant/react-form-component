@@ -32,7 +32,7 @@ export type fieldData = {
   type?: string,
 }
 
-export type fieldsData = {} | {
+export type fieldsData = object | {
   [key: string]: fieldData,
 }
 

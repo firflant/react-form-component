@@ -17,12 +17,14 @@ const Row = ({
 }: RowProps) => {
   const classes = useStyles()
   return (
-    <div className={classNames('rfc-row', {
-      [classes.row]: !mobile,
-      [classes.rowMobile]: mobile,
-      [classes.noBottomGutter]: noBottomGutter,
-      [className]: className,
-    })}>{children}</div>
+    <div
+      className={classNames('rfc-row', {
+        [classes.row]: !mobile,
+        [classes.rowMobile]: mobile,
+        [classes.noBottomGutter]: noBottomGutter,
+        [className]: className,
+      })}
+    >{children}</div>
   )
 }
 
