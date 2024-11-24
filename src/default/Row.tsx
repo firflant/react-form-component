@@ -49,11 +49,9 @@ const useStyles = createUseStyles((theme: fullTheme) => {
     display: 'flex',
     alignItems: 'flex-end',
     marginBottom: theme.sizes.inputGutterBottom,
+    gap: theme.sizes.rowGutter,
     '& .rfc-form-control': {
       marginBottom: 0,
-    },
-    '& > * + *': {
-      marginLeft: theme.sizes.rowGutter,
     },
   }
   return {

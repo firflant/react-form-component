@@ -73,7 +73,8 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     overflow: 'visible',
     boxSizing: 'border-box',
     maxWidth: '100%',
-    textAlign: 'left',
+    textAlign: theme.typography.direction === 'rtl' ? 'right' : 'left',
+    direction: theme.typography.direction,
     ...inputHeight(theme.sizes.inputHeight, theme.sizes.borderWidth),
     '& .rfc-input': {
       width: '100%',
@@ -94,6 +95,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
       paddingLeft: theme.sizes.inputSidePaddings,
       paddingRight: theme.sizes.inputSidePaddings,
       color: theme.colors.inputText,
+      textAlign: theme.typography.direction === 'rtl' ? 'right' : 'left',
       '-webkit-appearance': 'none',
       ...placeholder({
         color: theme.colors.placeholder,
@@ -116,6 +118,7 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     '& .rfc-checkitem': {
       fontSize: theme.typography.inputFontSize,
       lineHeight: 'normal',
+      textAlign: theme.typography.direction === 'rtl' ? 'right' : 'left',
     },
 
     '& .rfc-input:focus': {
@@ -166,13 +169,13 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     fontSize: theme.typography.labelFontSize,
     lineHeight: 'normal',
     textTransform: 'none',
-    textAlign: 'left',
     fontWeight: theme.typography.labelFontWeight,
     color: theme.colors.label,
   },
   help: {
     position: 'absolute',
     top: '100%',
+    width: '100%',
     display: 'block',
     margin: 0,
     fontSize: theme.typography.helpFontSize,

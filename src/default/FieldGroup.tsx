@@ -1,7 +1,7 @@
 import React from 'react'
 import { createUseStyles, useTheme } from 'react-jss'
 import classNames from 'classnames'
-import Form, { withFormControl, Button, breakpoint } from '../.'
+import Form, { withFormControl, Button } from '../.'
 import {
   type fieldGroupValue,
   type setValue as setValueT,
@@ -134,14 +134,20 @@ interface FieldGroupProps {
 
 const useStyles = createUseStyles((theme: fullTheme) => ({
   root: {
-    marginBottom: 10,
+    marginBottom: 8,
   },
   groupRow: {
     display: 'flex',
+    gap: theme.sizes.rowGutter,
     borderColor: theme.colors.fill,
     borderStyle: 'solid',
     borderLeftWidth: 2,
-    padding: 10,
+    paddingTop: 8,
+    paddingBottom: 8,
+    ...(theme.typography.direction === 'rtl'
+      ? { paddingRight: 12 }
+      : { paddingLeft: 12 }
+    ),
     '& + &': {
       marginTop: -2,
     },
@@ -149,22 +155,25 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
       flexGrow: 1,
     },
     '& .rfc-row, & .fc-form-control': {
-      marginBottom: 10,
+      marginBottom: 8,
     },
   },
   groupRowError: {
     borderLeftColor: theme.colors.error,
   },
   deleteWrapper: {
-    marginTop: -10,
-    marginRight: -12,
-    marginBottom: -10,
-    marginLeft: 15,
-    display: 'flex',
     alignItems: 'center',
-    [breakpoint(theme.breakpoints.sm)]: {
-      marginLeft: 30,
-    },
+    display: 'flex',
+    marginTop: 8,
+    marginBottom: 8,
+    // ...(theme.typography.direction === 'rtl'
+    //   ? { marginLeft: -12 }
+    //   : { marginRight: -12 }
+    // ),
+    // [breakpoint(theme.breakpoints.sm)]:
+    //   theme.typography.direction === 'rtl'
+    //   ? { marginRight: 24 }
+    //   : { marginLeft: 24 },
   },
   delete: {
     backgroundImage: 'none',

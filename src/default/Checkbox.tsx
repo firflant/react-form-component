@@ -17,7 +17,7 @@ const Checkbox = ({
 }: CheckboxProps) => {
   const classes = useCheckboxStyles()
   return (
-    <div>
+    <div className={classNames(classes.wrapper)}>
       <label
         className={classNames(classes.label, 'rfc-checkitem', { [classes.small]: small })}
         htmlFor={name}
@@ -48,16 +48,19 @@ export const useCheckboxStyles = createUseStyles((theme: fullTheme) => {
   const inputSize = 18
 
   return {
+    wrapper: {
+      display: 'flex',
+      alignItems: theme.typography.direction === 'rtl' ? 'flex-end' : 'flex-start',
+    },
     label: {
       display: 'flex',
       position: 'relative',
-      textAlign: 'left',
-      alignItems: 'flex-start',
+      gap: 8,
+      alignItems: theme.typography.direction === 'rtl' ? 'flex-end' : 'flex-start',
       cursor: 'pointer',
       minHeight: inputSize,
     },
     input: {
-      margin: '0 10px 0 0',
       position: 'relative',
       outline: 'none',
       transform: calculateInputTranslation(theme.typography.inputFontSize, inputSize),
@@ -69,8 +72,7 @@ export const useCheckboxStyles = createUseStyles((theme: fullTheme) => {
         boxSizing: 'border-box',
         width: inputSize,
         height: inputSize,
-        verticalAlign: 'baseline',
-        top: 0,
+        top: -2,
         left: 0,
         backgroundColor: theme.colors.inputBg !== 'transparent' ? theme.colors.inputBg : 'white',
         cursor: 'pointer',

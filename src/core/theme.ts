@@ -9,8 +9,8 @@ export default {
     inlineLabelWidth: 130,
     borderRadius: 0,
     borderWidth: 2,
-    rowGutter: 50,
-    formActionsDistance: 60,
+    rowGutter: 32,
+    formActionsDistance: 56,
     onlyBottomBorder: false,
     largeInputExtraHeight: 10,
     prefixExtraSpacing: 20,
@@ -35,6 +35,7 @@ export default {
     labelFontSize: 14,
     labelFontWeight: 'normal',
     helpFontSize: 12,
+    direction: 'ltr',
   },
 
   breakpoints: {

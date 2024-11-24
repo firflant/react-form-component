@@ -90,6 +90,7 @@ export type fullTheme = {
     labelFontSize: number,
     labelFontWeight: string,
     helpFontSize: number,
+    direction: 'ltr' | 'rtl',
   },
   breakpoints: {
     xs: number | string,

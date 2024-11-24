@@ -70,10 +70,10 @@ const useStyles = createUseStyles((theme: fullTheme) => {
     label: {
       display: 'flex',
       cursor: 'pointer',
+      gap: 8,
       minHeight: inputSize + 2,
     },
     input: {
-      margin: '0 10px 0 0',
       position: 'relative',
       outline: 'none',
       transform: calculateInputTranslation(theme.typography.inputFontSize, inputSize),

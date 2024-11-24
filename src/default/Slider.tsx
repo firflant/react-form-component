@@ -89,7 +89,10 @@ const useStyles = createUseStyles((theme: fullTheme) => ({
     whiteSpace: 'nowrap',
     position: 'absolute',
     top: -3,
-    right: 0,
+    ...(theme.typography.direction === 'rtl'
+      ? { left: 0 }
+      : { right: 0 }
+    ),
   },
 }))
 
