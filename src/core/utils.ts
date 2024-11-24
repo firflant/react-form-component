@@ -13,7 +13,7 @@ import {
 /**
  * Process data from given field and prepare it for a form mutation.
  */
-export function processField(
+export const processField = (
   name: string,
   value: value,
   mandatory: boolean,
@@ -25,7 +25,7 @@ export function processField(
   } = {},
   textLabels: textLabels,
   customValidationFunction: customValidationFunction,
-) {
+): fieldsData => {
   const { type, min, forceErrorMessage, touched = false } = options
 
   // If the value is an array, remove its empty values for safety.
@@ -125,15 +125,15 @@ export function processField(
       help,
       type,
     },
-  }
+  } as fieldsData
 }
 
 
 /**
  * Generate initial form state, where all values are undefined.
  */
-export function initiateFormFields(fieldNames: string[], mandatory?: string[]) {
-  return fieldNames.reduce((acc: object, field: string) => (
+export const initiateFormFields = (fieldNames: string[], mandatory?: string[]): fieldsData =>
+  fieldNames.reduce((acc: object, field: string) => (
     { ...acc,
       [field]: {
         value: undefined,
@@ -143,33 +143,33 @@ export function initiateFormFields(fieldNames: string[], mandatory?: string[]) {
         help: null,
       } }
   ), {})
-}
-
 
 /**
  * Reset valdiation states of all fields in a form.
  */
-export function updateMandatory(fieldsData: fieldsData, mandatory?: string[]) {
-  const updatedFieldsData: object = {}
-  Object.keys(fieldsData).forEach(key => {
-    const { value, help } = fieldsData[key]
+export const updateMandatory = (
+  fieldsData: fieldsData,
+  mandatory?: string[],
+): fieldsData =>
+  Object.entries(fieldsData).reduce((acc, [key, { value, help, validation }]) => {
     const isMandatory = mandatory && mandatory.includes(key)
-    updatedFieldsData[key] = {
-      value,
-      touched: false,
-      // If the field is not on mandatory anymore, validation must be cleaned up.
-      validation: (fieldsData[key].validation === 'error' && !isMandatory) ? null : fieldsData[key].validation,
-      mandatory: isMandatory,
-      help,
+    return {
+      ...acc,
+      [key]: {
+        value,
+        touched: false,
+        // If the field is not on mandatory anymore, validation must be cleaned up.
+        validation: (validation === 'error' && !isMandatory) ? null : validation,
+        mandatory: isMandatory,
+        help,
+      },
     }
-  })
-  return updatedFieldsData
-}
+  }, {})
 
 /**
  * Parse option, which can be a string or an object, to return an object.
  */
-export function parseOption(option: option): parsedOption {
+export const parseOption = (option: option): parsedOption => {
   const optionLabel = (typeof option === 'string') ? option : option.label
   const optionValue = (typeof option === 'string') ? option : option.value
   return { optionLabel, optionValue }
@@ -178,11 +178,11 @@ export function parseOption(option: option): parsedOption {
 /**
  * Update single checkbox value in a list of all checkboxes.
  */
-export function checkboxHandler(
+export const checkboxHandler = (
   checked: boolean,
   newValue: checkboxValue,
-  previousValues: [checkboxValue],
-) {
+  previousValues: checkboxValue[],
+): checkboxValue[] => {
   if (checked) {
     if (previousValues) {
       return [...previousValues, newValue]
@@ -196,13 +196,12 @@ export function checkboxHandler(
 /**
  * Check whether whole form is filled correctly.
  */
-export function formHasErrors(fieldsData: fieldsData) {
+export const formHasErrors = (fieldsData: fieldsData): boolean => {
   // Check only fields of given keys, otherwise check whole form.
   let mandatoryButEmpty = false
   let hasAnyError = false
 
-  Object.keys(fieldsData).forEach(key => {
-    const { value, validation, mandatory } = fieldsData[key]
+  Object.values(fieldsData).forEach(({ value, validation, mandatory }) => {
     if (mandatory && (
       typeof value === 'undefined' ||
       (typeof value === 'string' && value === '') ||
@@ -223,20 +222,18 @@ export function formHasErrors(fieldsData: fieldsData) {
 /**
  * Get values from all fields and organize them into API friendly format.
  */
-export function getValues(fieldsData: fieldsData) {
-  const values: object = {}
-  Object.keys(fieldsData).forEach(key => {
-    values[key] = fieldsData[key].value
-  })
-  return values
-}
+export const getValues = (fieldsData: fieldsData): fieldsData =>
+  Object.entries(fieldsData).reduce((acc, [key, { value }]) => ({
+    ...acc,
+    [key]: value,
+  }), {})
 
 
 /**
  * Convert image url to image data format that is compatible with image upload
  * input.
  */
-export function imageUrltoImageData(imageUrl: string) {
+export const imageUrltoImageData = (imageUrl: string) => {
   if (imageUrl) {
     return {
       name: imageUrl.split('/').pop(),

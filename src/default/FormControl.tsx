@@ -16,7 +16,7 @@ const FormControl = ({
   narrow,
   large,
   noBottomGutter,
-  validation = null,
+  validation,
   disabled,
   displayName = 'Input',
   label,
@@ -30,18 +30,22 @@ const FormControl = ({
 
   return (
     <div
-      className={classNames(classes.formControl, 'rfc-form-control', {
-        [classes.inlineLabel]: inlineLabel,
-        [classes.inline]: inline,
-        [classes.narrow]: narrow,
-        [classes.large]: large,
-        [classes.noBottomGutter]: noBottomGutter,
-        [classes.withPrefix]: prefix,
-        [classes.withSuffix]: suffix,
-        [classes[validation || '']]: validation,
-        [classes.disabled]: disabled,
-        [className]: className,
-      })}
+      className={classNames(
+        classes.formControl,
+        'rfc-form-control',
+        {
+          [classes.inlineLabel]: inlineLabel,
+          [classes.inline]: inline,
+          [classes.narrow]: narrow,
+          [classes.large]: large,
+          [classes.noBottomGutter]: noBottomGutter,
+          [classes.withPrefix]: prefix,
+          [classes.withSuffix]: suffix,
+          [classes.disabled]: disabled,
+        },
+        validation && [classes[validation]],
+        className,
+      )}
     >
       {label
         ? displayName && ['Checkbox', 'CheckboxList', 'Radio', 'Switch', 'SwitchList'].find(item => displayName.includes(item))

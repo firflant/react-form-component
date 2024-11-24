@@ -51,7 +51,7 @@ const Form = ({
     [],
   )
 
-  const setValue:setValue = (name, value, mandatory, options) => {
+  const setValue: setValue = (name, value, mandatory, options) => {
     if (onEnterPress && options?.forceSubmit) {
       onEnterPress(getValues(fieldsData))
     }
