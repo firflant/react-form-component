@@ -1,7 +1,11 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
 import { withFormControl } from '../.'
-import { value, setValue, fullTheme } from '../typings'
+import {
+  type value,
+  type setValue,
+  type fullTheme,
+} from '../typings'
 
 
 /**

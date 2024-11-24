@@ -7,7 +7,7 @@ import {
   inputHeight,
   placeholder,
 } from '../.'
-import { fullTheme, FormControlProps } from '../typings'
+import { type fullTheme, type FormControlProps } from '../typings'
 
 
 const FormControl = ({

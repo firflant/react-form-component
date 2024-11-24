@@ -1,7 +1,11 @@
 import React from 'react'
 import classNames from 'classnames'
 import { withFormControl, checkboxHandler, useSwitchStyles } from '../.'
-import { value, setValue, options } from '../typings'
+import {
+  type value,
+  type setValue,
+  type options,
+} from '../typings'
 
 
 /**

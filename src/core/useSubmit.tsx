@@ -2,10 +2,10 @@ import React from 'react'
 import { useTheme } from 'react-jss'
 import { FieldsContext, SetValueContext, getValues, formHasErrors } from '..'
 import {
-  fieldsData,
-  fieldData,
-  setValue,
-  fullTheme,
+  type fieldsData,
+  type fieldData,
+  type setValue,
+  type fullTheme,
 } from '../typings'
 
 

@@ -6,7 +6,12 @@ import {
   useCheckboxStyles,
   withFormControl,
 } from '../.'
-import { value, setValue, options, option } from '../typings'
+import {
+  type value,
+  type setValue,
+  type options,
+  type option,
+} from '../typings'
 
 /**
  * A list of checkboxes, where user can pick multiple options.

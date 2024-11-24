@@ -2,7 +2,13 @@ import React from 'react'
 import classNames from 'classnames'
 import { createUseStyles } from 'react-jss'
 import { parseOption, withFormControl, calculateInputTranslation } from '../.'
-import { value, setValue, options, option, fullTheme } from '../typings'
+import {
+  type value,
+  type setValue,
+  type options,
+  type option,
+  type fullTheme,
+} from '../typings'
 
 
 /**

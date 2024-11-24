@@ -1,6 +1,6 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
-import { fullTheme } from '../typings'
+import { type fullTheme } from '../typings'
 
 /**
  * Wrap `<FormButton>` and other action buttons into `<FormActions>` component

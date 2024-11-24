@@ -2,7 +2,12 @@ import React from 'react'
 import { createUseStyles } from 'react-jss'
 import classNames from 'classnames'
 import { withFormControl, parseOption } from '../.'
-import { value, setValue, options, fullTheme } from '../typings'
+import {
+  type value,
+  type setValue,
+  type options,
+  type fullTheme,
+} from '../typings'
 
 
 /**

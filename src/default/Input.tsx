@@ -1,6 +1,6 @@
 import React from 'react'
 import { debounce } from 'throttle-debounce'
-import { setValue, value } from '../typings'
+import { type setValue, type value } from '../typings'
 import { withFormControl } from '../.'
 
 /**

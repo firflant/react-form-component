@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormControl, useControlLogic } from '../.'
-import { ControlLogicProps, InputProps } from '../typings'
+import { type ControlLogicProps, type InputProps } from '../typings'
 
 
 function withFormControl<T>(

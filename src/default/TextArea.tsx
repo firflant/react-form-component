@@ -2,7 +2,10 @@ import React from 'react'
 import { createUseStyles } from 'react-jss'
 import classNames from 'classnames'
 import { withFormControl } from '../.'
-import { value, setValue } from '../typings'
+import {
+  type value,
+  type setValue,
+} from '../typings'
 
 
 /**

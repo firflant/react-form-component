@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify'
 
 import React from 'react'
 import defautTheme from './theme'
-import { fullTheme, themeOverrides } from '../typings'
+import { type fullTheme, type themeOverrides } from '../typings'
 
 /**
  * A wrapper for entire app that provides theme context.

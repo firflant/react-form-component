@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, useSubmit  } from '../.'
-import { fieldsData } from '../typings'
+import { type fieldsData } from '../typings'
 
 
 /**

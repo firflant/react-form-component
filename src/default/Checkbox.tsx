@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { createUseStyles } from 'react-jss'
 import { withFormControl, calculateInputTranslation } from '../.'
-import { value, setValue, fullTheme } from '../typings'
+import { type value, type setValue, type fullTheme } from '../typings'
 
 /**
  * A single checkbox that operates on a boolean value.

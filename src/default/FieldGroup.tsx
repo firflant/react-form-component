@@ -3,10 +3,10 @@ import { createUseStyles, useTheme } from 'react-jss'
 import classNames from 'classnames'
 import Form, { withFormControl, Button, breakpoint } from '../.'
 import {
-  fieldGroupValue,
-  setValue as setValueT,
-  anyObject,
-  fullTheme,
+  type fieldGroupValue,
+  type setValue as setValueT,
+  type anyObject,
+  type fullTheme,
 } from '../typings'
 
 

@@ -9,10 +9,10 @@ import {
   formHasErrors,
 } from './utils'
 import {
-  fieldsData,
-  fieldData,
-  setValue,
-  fullTheme,
+  type fieldsData,
+  type fieldData,
+  type setValue,
+  type fullTheme,
 } from '../typings'
 
 

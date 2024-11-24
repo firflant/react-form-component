@@ -1,14 +1,15 @@
 import React from 'react'
 import { FieldsContext, SetValueContext } from '../.'
 import {
-  fieldsData,
-  setValue,
-  ControlLogicProps,
-  ControlLogicHook,
+  type fieldsData,
+  type setValue,
+  type ControlLogicProps,
+  type ControlLogicHook,
+  type InputProps,
 } from '../typings'
 
-const useControlLogic = (
-  InputComponent: React.ComponentType,
+const useControlLogic = <T>(
+  InputComponent: React.ComponentType<T | InputProps>,
   {
     name,
     label,

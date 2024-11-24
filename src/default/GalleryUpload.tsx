@@ -3,7 +3,7 @@ import { createUseStyles } from 'react-jss'
 import classNames from 'classnames'
 import { lighten } from 'polished'
 import { withFormControl, breakpoint } from '../.'
-import { value, setValue, fullTheme } from '../typings'
+import { type value, type setValue, type fullTheme } from '../typings'
 
 
 /**

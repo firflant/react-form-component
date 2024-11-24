@@ -2,7 +2,7 @@ import React from 'react'
 import { createUseStyles } from 'react-jss'
 import { lighten } from 'polished'
 import { Loader } from '../.'
-import { fullTheme } from '../typings'
+import { type fullTheme } from '../typings'
 
 
 /**

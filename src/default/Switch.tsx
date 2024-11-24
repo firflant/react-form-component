@@ -3,7 +3,11 @@ import { createUseStyles } from 'react-jss'
 import classNames from 'classnames'
 import { darken } from 'polished'
 import { withFormControl, calculateInputTranslation } from '../.'
-import { value, setValue, fullTheme } from '../typings'
+import {
+  type value,
+  type setValue,
+  type fullTheme,
+} from '../typings'
 
 
 /**

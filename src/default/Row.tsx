@@ -2,7 +2,7 @@ import React from 'react'
 import { createUseStyles } from 'react-jss'
 import classNames from 'classnames'
 import { breakpoint } from '..'
-import { fullTheme } from '../typings'
+import { type fullTheme } from '../typings'
 
 /**
  * Combines multiple fields into one row. Wrapped fields will be displayed one

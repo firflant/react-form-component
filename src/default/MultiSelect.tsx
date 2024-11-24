@@ -8,7 +8,13 @@ import {
   overlay,
   useSelectStyles,
 } from '../.'
-import { value, setValue, option, options, fullTheme } from '../typings'
+import {
+  type value,
+  type setValue,
+  type option,
+  type options,
+  type fullTheme,
+} from '../typings'
 
 
 /**

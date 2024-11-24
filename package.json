@@ -8,8 +8,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf ./lib/* && tsc --build",
-    "clean": "rm -rf ./lib/* && tsc --build --clean",
+    "build": "rm -rf ./dist && tsc --build",
+    "clean": "rm -rf ./dist && tsc --build --clean",
     "start": "start-storybook -p 6006",
     "build-docs": "build-storybook",
     "deploy-docs": "build-storybook && gh-pages -d storybook-static",

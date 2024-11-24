@@ -2,7 +2,7 @@ import React from 'react'
 import { createUseStyles, useTheme } from 'react-jss'
 import { lighten, darken } from 'polished'
 import { withFormControl, maxRows } from '../.'
-import { value, setValue, fullTheme } from '../typings'
+import { type value, type setValue, type fullTheme } from '../typings'
 
 
 /**
